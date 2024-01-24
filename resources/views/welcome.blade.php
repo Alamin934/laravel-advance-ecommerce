@@ -10,6 +10,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/toastr.min.css" />
 
     <!-- Styles -->
     <style>
@@ -1012,6 +1013,30 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('admin') }}/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/toastr.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/sweetalert.min.js"></script>
+    <script>
+        // Toaster
+            @if (session()->has('message'))
+                var type = "{{session()->get('alert-type', 'info')}}";
+                switch (type) {
+                    case 'info':
+                        toastr.info("{{session()->get('message')}}");
+                        break;
+                    case 'success':
+                        toastr.success("{{session()->get('message')}}");
+                        break;
+                    case 'warning':
+                        toastr.warning("{{session()->get('message')}}");
+                        break;
+                    case 'error':
+                        toastr.error("{{session()->get('message')}}");
+                        break;
+                }
+            @endif       
+    </script>
 </body>
 
 </html>

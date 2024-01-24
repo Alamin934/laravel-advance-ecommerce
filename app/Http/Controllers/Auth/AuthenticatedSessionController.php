@@ -30,7 +30,8 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         if(auth()->user()->is_admin === 1){
-            return redirect()->route('admin.dashboard');
+            $notification = ['message'=>'Admin Loggedin successfully', 'alert-type'=>'success'];
+            return redirect()->route('admin.dashboard')->with($notification);
         }else{
             return redirect()->intended(RouteServiceProvider::HOME);
         }
@@ -46,7 +47,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
-        return redirect('/');
+        $notification = ['message'=>'Admin Logged out successfully', 'alert-type'=>'success'];
+        return redirect()->route('home')->with($notification);;
     }
 }

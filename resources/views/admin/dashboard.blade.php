@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default"
-    data-/assets-path="{{ asset('admin') }}/assets/" data-template="vertical-menu-template-free">
+    data-template="vertical-menu-template-free">
 
 <head>
     <meta charset="utf-8" />
@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/css/theme-default.css"
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/demo.css" />
+    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/toastr.min.css" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -39,9 +40,8 @@
 
     <!-- Helpers -->
     <script src="{{ asset('admin') }}/assets/vendor/js/helpers.js"></script>
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('admin') }}/assets/js/config.js"></script>
+
 </head>
 
 <body>
@@ -677,11 +677,14 @@
     <script src="{{ asset('admin') }}/assets/vendor/js/bootstrap.js"></script>
     <script src="{{ asset('admin') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="{{ asset('admin') }}/assets/vendor/js/menu.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/toastr.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/sweetalert.min.js"></script>
 
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="{{ asset('admin') }}/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="{{ asset('admin') }}/assets/vendor/libs/apex-charts/apexcharts.js">
+    </script>
 
     <!-- Main JS -->
     <script src="{{ asset('admin') }}/assets/js/main.js"></script>
@@ -691,6 +694,49 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script>
+        // Sweet Alert
+        $(document).ready(function () {
+            $(document).on('click', '#delete', function (e) {
+                e.preventDefault();
+                // var link = $(this).attr("href");
+                swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        // window.location.href = link;
+                        swal("Here's the title!");
+                    }
+                });
+            });
+ 
+        });
+    </script>
+    <script>
+        // Toaster
+        @if (session()->has('message'))
+            var type = "{{session()->get('alert-type', 'info')}}";
+            switch (type) {
+                case 'info':
+                    toastr.info("{{session()->get('message')}}");
+                    break;
+                case 'success':
+                    toastr.success("{{session()->get('message')}}");
+                    break;
+                case 'warning':
+                    toastr.warning("{{session()->get('message')}}");
+                    break;
+                case 'error':
+                    toastr.error("{{session()->get('message')}}");
+                    break;
+            }
+        @endif       
+    </script>
 </body>
 
 </html>
