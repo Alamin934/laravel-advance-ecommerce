@@ -15,21 +15,23 @@
     {{-- Menu Start --}}
     <ul class="menu-inner py-1">
         <!-- Dashboards -->
-        <li class="menu-item active open">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <li class="menu-item {{request()->routeIs('admin.dashboard') ? 'active' : ''}}">
+            <a href="{{route('admin.dashboard')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Dashboards">Dashboards</div>
                 {{-- <div class="badge bg-danger rounded-pill ms-auto">5</div> --}}
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item active">
-                    <a href="" id="" class="menu-link">
-                        <div data-i18n="Analytics">Analytics</div>
-                    </a>
-                </li>
-            </ul>
+        </li>
+        <!-- Category -->
+        <li class="menu-item {{request()->routeIs('admin.category.index') ? 'active' : ''}}">
+            <a href="{{route('admin.category.index')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Category">Category</div>
+                {{-- <div class="badge bg-danger rounded-pill ms-auto">5</div> --}}
+            </a>
         </li>
 
+        {{--
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
         <!-- User interface -->
@@ -45,7 +47,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 
     </ul>
 </aside>
