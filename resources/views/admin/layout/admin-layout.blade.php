@@ -137,7 +137,7 @@
         $(document).ready(function () {
             $(document).on('click', '#delete', function (e) {
                 e.preventDefault();
-                // var link = $(this).attr("href");
+                var link = $(this).attr("href");
                 swal({
                     title: "Are you sure?",
                     text: "Once deleted, you will not be able to recover this imaginary file!",
@@ -147,8 +147,7 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        // window.location.href = link;
-                        swal("Here's the title!");
+                        window.location.href = link;
                     }
                 });
             });
@@ -175,6 +174,7 @@
             }
         @endif       
     </script>
+    @stack('scripts')
 </body>
 
 </html>

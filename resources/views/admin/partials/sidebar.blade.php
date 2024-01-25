@@ -23,8 +23,8 @@
             </a>
         </li>
         <!-- Category -->
-        <li class="menu-item {{request()->routeIs('admin.category.index') ? 'active' : ''}}">
-            <a href="{{route('admin.category.index')}}" class="menu-link">
+        <li class="menu-item {{request()->routeIs('category.index') ? 'active' : ''}}">
+            <a href="{{route('category.index')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Category">Category</div>
                 {{-- <div class="badge bg-danger rounded-pill ms-auto">5</div> --}}

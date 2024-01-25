@@ -7,7 +7,13 @@
 
         <!-- Basic Bootstrap Table -->
         <div class="card">
-            <h5 class="card-header">Categories</h5>
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="card-header">Categories</h5>
+                <div class="pe-3">
+                    <button type="button" class="btn btn-primary p-2" data-bs-toggle="modal"
+                        data-bs-target="#addCategory">+Add Category</button>
+                </div>
+            </div>
             <div class="table-responsive text-nowrap">
                 <table class="table">
                     <thead>
@@ -27,14 +33,15 @@
                             <td>
                                 <div>
                                     <!-- Button trigger Edit Modal -->
-                                    <button type="button" class="btn btn-primary p-2" data-bs-toggle="modal"
-                                        data-bs-target="#basicModal">
+                                    <button type="button" data-cat_id="{{$category->id}}"
+                                        class="btn btn-primary p-2 cat_edit" data-bs-toggle="modal"
+                                        data-bs-target="#editCategory">
                                         <i class="bx bx-edit-alt"></i>
                                     </button>
-
-                                    <button type="button" class="btn btn-danger p-2">
+                                    <a href="{{ route('category.delete', $category->id) }}" id="delete"
+                                        class="btn btn-danger p-2">
                                         <i class="bx bx-trash"></i>
-                                    </button>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
@@ -46,40 +53,75 @@
         <!--/ Basic Bootstrap Table -->
     </div>
 
-    {{-- Category Edit Modal Start --}}
+    {{-- Category Add Modal Start --}}
     <div class="mt-3">
         <!-- Modal -->
-        <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+        <div class="modal fade" id="addCategory" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel1">Add Category</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col mb-3">
-                                <label for="nameBasic" class="form-label">Name</label>
-                                <input type="text" id="nameBasic" class="form-control" placeholder="Enter Name" />
+                    <form action="{{ route('category.store') }}" method="POST">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <label for="category_name" class="form-label">Category Name</label>
+                                    <input type="text" name="category_name" id="category_name" class="form-control"
+                                        placeholder="Enter Category Name" />
+                                    @error('category_name')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
-                        <div class="row g-2">
-                            <div class="col mb-0">
-                                <label for="emailBasic" class="form-label">Email</label>
-                                <input type="email" id="emailBasic" class="form-control" placeholder="xxxx@xxx.xx" />
-                            </div>
-                            <div class="col mb-0">
-                                <label for="dobBasic" class="form-label">DOB</label>
-                                <input type="date" id="dobBasic" class="form-control" />
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Category Edit Modal Start --}}
+    <div class="mt-3">
+        <!-- Modal -->
+        <div class="modal fade" id="editCategory" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel1">Edit Category</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="{{route('update.category')}}" method="POST">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <label for="" class="form-label">Category Name</label>
+                                    <input type="hidden" id="edit_cat_id" name="edit_cat_id" />
+
+                                    <input type="text" name="edit_cat_name" id="edit_cat_name" class="form-control"
+                                        placeholder="Enter Category Name" />
+                                    @error('edit_cat_name')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                            Close
-                        </button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="submit" id="cat_update" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -87,3 +129,22 @@
 
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function () {
+            $('.cat_edit').on('click', function () {
+                let cat_id = $(this).data('cat_id');
+
+                $.ajax({
+                    type: "GET",
+                    url: `category/${cat_id}/edit`,
+                    success: function (data) {
+                        $('#edit_cat_id').val(data.id);
+                        $('#edit_cat_name').val(data.name);
+                    }
+                });
+            });
+        });
+</script>
+@endpush
