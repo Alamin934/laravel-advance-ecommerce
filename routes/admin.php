@@ -1,16 +1,22 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{AdminController,CategoryController};
+use App\Http\Controllers\Admin\{AdminController,CategoryController,SubCategoryController};
 
-Route::get('/admin/login', [AdminController::class, 'showLogin'])->middleware('guest')->name('admin.login');
+Route::prefix('admin')->name('admin.')->controller(AdminController::class)->group(function () {
+    Route::get('/login', 'showLogin')->middleware('guest')->name('login');
+    
+    Route::get('/dashboard', 'showDashboard')->middleware(['is_admin.auth','is_admin'])->name('dashboard');
+});
 
-Route::get('/admin/dashboard', [AdminController::class, 'showDashboard'])->middleware(['is_admin.auth','is_admin'])->name('admin.dashboard');
+
+Route::prefix('admin')->middleware('is_admin')->controller(CategoryController::class)->group(function () {
+    Route::get('category/{id}', 'destroy')->name('category.delete');
+    Route::post('category/update', 'update')->name('update.category');
+});
 
 
-Route::get('category/{id}', [CategoryController::class, 'destroy'])->middleware('is_admin')->name('category.delete');
-Route::post('category/update', [CategoryController::class, 'update'])->middleware('is_admin')->name('update.category');
-
-Route::resource('category', CategoryController::class)->middleware('is_admin');
+Route::resource('admin/category', CategoryController::class)->middleware('is_admin');
+Route::resource('admin/subCategory', SubCategoryController::class)->middleware('is_admin');
 
 Route::fallback(function () {
     abort(404);

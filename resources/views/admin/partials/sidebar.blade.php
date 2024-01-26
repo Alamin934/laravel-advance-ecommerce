@@ -23,12 +23,23 @@
             </a>
         </li>
         <!-- Category -->
-        <li class="menu-item {{request()->routeIs('category.index') ? 'active' : ''}}">
-            <a href="{{route('category.index')}}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Category">Category</div>
-                {{-- <div class="badge bg-danger rounded-pill ms-auto">5</div> --}}
+        <li class="menu-item {{request()->routeIs('category.index') ? 'active open' : ''}}">
+            <a href="javascript:void(0)" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-box"></i>
+                <div data-i18n="User interface">Category</div>
             </a>
+            <ul class="menu-sub ">
+                <li class="menu-item {{request()->routeIs('category.index') ? 'active' : ''}}">
+                    <a href="{{route('category.index')}}" class="menu-link">
+                        <div data-i18n="Category">Category</div>
+                    </a>
+                </li>
+                <li class="menu-item {{request()->routeIs('subCategory.index') ? 'active' : ''}}">
+                    <a href="{{route('subCategory.index')}}" class="menu-link">
+                        <div data-i18n="subCategory">Sub Category</div>
+                    </a>
+                </li>
+            </ul>
         </li>
 
         {{--

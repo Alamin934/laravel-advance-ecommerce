@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::get();
-        return view('admin.category', compact('categories'));
+        return view('admin.categories.category.category', compact('categories'));
     }
 
     /**
@@ -39,7 +39,7 @@ class CategoryController extends Controller
             'name' => $request->category_name,
             'slug' => Str::slug($request->category_name, '-'),
         ]);
-        $notification = ['message'=>'Category deleted successfully', 'alert-type'=>'success'];
+        $notification = ['message'=>'Category Added successfully', 'alert-type'=>'success'];
         return redirect()->back()->with($notification);
     }
 
