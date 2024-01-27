@@ -9,14 +9,14 @@ Route::prefix('admin')->name('admin.')->controller(AdminController::class)->grou
 });
 
 
-Route::prefix('admin')->middleware('is_admin')->controller(CategoryController::class)->group(function () {
+Route::prefix('admin')->middleware(['is_admin.auth','is_admin'])->controller(CategoryController::class)->group(function () {
     Route::get('category/{id}', 'destroy')->name('category.delete');
     Route::post('category/update', 'update')->name('update.category');
 });
 
 
-Route::resource('admin/category', CategoryController::class)->middleware('is_admin');
-Route::resource('admin/subCategory', SubCategoryController::class)->middleware('is_admin');
+Route::resource('admin/category', CategoryController::class)->middleware(['is_admin.auth','is_admin']);
+Route::resource('admin/subCategory', SubCategoryController::class)->middleware(['is_admin.auth','is_admin']);
 
 Route::fallback(function () {
     abort(404);

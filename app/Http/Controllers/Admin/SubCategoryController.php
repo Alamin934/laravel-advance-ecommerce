@@ -59,15 +59,27 @@ class SubCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $edit_sub_category = SubCategory::with('category')->find($id);
+        return $edit_sub_category;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'edit_parent_cat' => 'required',
+            'sub_cat_id' => 'required',
+            'edit_sub_cat_name' => 'required',
+        ]);
+
+        $sub_category = SubCategory::where('id', $request->sub_cat_id)->update([
+            'name' => $request->edit_sub_cat_name,
+            'category_id' => $request->edit_parent_cat,
+        ]);
+        $notification = ['message'=>'Sub Category Updated successfully', 'alert-type'=>'success'];
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -75,6 +87,10 @@ class SubCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $sub_category = SubCategory::find($id);
+        $sub_category->delete();
+        $notification = ['message'=>'Sub Category Deleted successfully', 'alert-type'=>'success'];
+        return redirect()->back()->with($notification);
+
     }
 }
