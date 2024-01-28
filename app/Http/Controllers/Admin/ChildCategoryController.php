@@ -35,13 +35,12 @@ class ChildCategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'parent_category' => 'required',
             'sub_category' => 'required',
             'name' => 'required|unique:child_categories',
         ]);
-
+        $sub_category = SubCategory::find($request->sub_category);
         $child_category = ChildCategory::create([
-            'category_id' => $request->parent_category,
+            'category_id' => $sub_category->category_id,
             'sub_category_id' => $request->sub_category,
             'name' => $request->name,
             'slug' => Str::slug($request->name, '-'),
@@ -77,13 +76,14 @@ class ChildCategoryController extends Controller
     public function update(Request $request, string $id)
     {
          $validated = $request->validate([
-            'parent_category' => 'required',
             'sub_category' => 'required',
             'name' => 'required',Rule::unique('child_categories')->ignore($id)
         ]);
 
+        $sub_category = SubCategory::find($request->sub_category);
+
         $child_category = ChildCategory::where('id', $id)->update([
-            'category_id' => $request->parent_category,
+            'category_id' => $sub_category->category_id,
             'sub_category_id' => $request->sub_category,
             'name' => $request->name,
         ]);
@@ -97,6 +97,9 @@ class ChildCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $child_category = ChildCategory::find($id)->delete();
+
+        $notification = ['message'=>'Child Category Deleted Successfully', 'alert-type'=>'success'];
+        return redirect()->route('childCategory.index')->with($notification);
     }
 }

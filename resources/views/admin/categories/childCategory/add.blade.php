@@ -16,18 +16,26 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 mb-3">
-                        <label class="form-label">Parent Category</label>
-                        <select type="text" name="parent_category" class="form-select form-select-lg">
+                        <label class="form-label">Category/Sub Category</label>
+                        <select type="text" name="sub_category" class="form-select form-select-lg">
                             <option value="" selected>Select...</option>
                             @foreach ($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            <option disabled value="{{$category->id}}">{{$category->name}}</option>
+
+                            @foreach ($sub_categories as $sub_category)
+                            @if ($sub_category->category_id == $category->id)
+
+                            <option value="{{$sub_category->id}}">--- {{$sub_category->name}}</option>
+                            @endif
+                            @endforeach
+
                             @endforeach
                         </select>
-                        @error('parent_category')
+                        @error('sub_category')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
-                    <div class="col-12 mb-3">
+                    {{-- <div class="col-12 mb-3">
                         <label class="form-label">Sub Category</label>
                         <select type="text" name="sub_category" class="form-select form-select-lg">
                             <option value="" selected>Select...</option>
@@ -38,7 +46,7 @@
                         @error('sub_category')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
-                    </div>
+                    </div> --}}
                     <div class="col-12 mb-3">
                         <label class="form-label">Child Category Name</label>
                         <input type="text" value="{{old('name')}}" name="name" class="form-control form-control-lg"
