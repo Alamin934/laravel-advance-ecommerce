@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Models\Brand;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use Illuminate\Validation\Rule;
 
 class BrandsController extends Controller
 {
@@ -82,7 +83,8 @@ class BrandsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $brand = Brand::find($id);
+        return view('admin.brands.edit-brand', compact('brand'));
     }
 
     /**
@@ -90,7 +92,36 @@ class BrandsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'brand_name' => 'required',Rule::unique('brands')->ignore($id)
+        ]);
+
+        $slug = Str::slug($request->brand_name, '-');
+
+        if($request->file('brand_logo')){
+            $file = $request->file('brand_logo');
+            $extension = $file->getClientOriginalExtension();
+            $new_file_name = $slug.'-'.date('d-m-Y-H-i-s').'.'.$extension;
+
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($file);
+            $image->resize(240, 120);
+            $image->toPng()->save('admin/assets/files/brands/'.$new_file_name);
+
+            unlink(public_path('admin/assets/files/brands/'.$request->old_brand_logo));
+
+            $brand = Brand::where('id', $id)->update([
+                'brand_name' => $request->brand_name,
+                'brand_logo' => $new_file_name,
+            ]);
+        }else{
+            $brand = Brand::where('id', $id)->update([
+                'brand_name' => $request->brand_name,
+            ]);
+        }
+
+        $notification = ['message'=>'Brand Updated successfully', 'alert-type'=>'success'];
+        return redirect()->route('brand.index')->with($notification);
     }
 
     /**
