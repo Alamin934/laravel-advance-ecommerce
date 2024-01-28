@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "656fccd514eb5b0ea337112cbd5caf26",
+    "content-hash": "2b2088a3babb51cd2dc7c236616f45ed",
     "packages": [
         {
             "name": "brick/math",
@@ -1118,16 +1118,16 @@
         },
         {
             "name": "intervention/gif",
-            "version": "4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/gif.git",
-                "reference": "521010e0cf1f5cde9df54b8adcd7496ab5f1504f"
+                "reference": "3d4fa6e5eed87f344ada9c0beb410d68e9f274ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/gif/zipball/521010e0cf1f5cde9df54b8adcd7496ab5f1504f",
-                "reference": "521010e0cf1f5cde9df54b8adcd7496ab5f1504f",
+                "url": "https://api.github.com/repos/Intervention/gif/zipball/3d4fa6e5eed87f344ada9c0beb410d68e9f274ae",
+                "reference": "3d4fa6e5eed87f344ada9c0beb410d68e9f274ae",
                 "shasum": ""
             },
             "require": {
@@ -1135,7 +1135,8 @@
             },
             "require-dev": {
                 "phpstan/phpstan": "^1",
-                "phpunit/phpunit": "^9"
+                "phpunit/phpunit": "^9",
+                "squizlabs/php_codesniffer": "^3.8"
             },
             "type": "library",
             "autoload": {
@@ -1164,9 +1165,19 @@
             ],
             "support": {
                 "issues": "https://github.com/Intervention/gif/issues",
-                "source": "https://github.com/Intervention/gif/tree/4.0.0"
+                "source": "https://github.com/Intervention/gif/tree/4.0.1"
             },
-            "time": "2024-01-06T16:35:57+00:00"
+            "funding": [
+                {
+                    "url": "https://paypal.me/interventionio",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/Intervention",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-01-27T08:01:45+00:00"
         },
         {
             "name": "intervention/image",
@@ -1241,16 +1252,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.41.0",
+            "version": "v10.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "da31969bd35e6ee0bbcd9e876f88952dc754b012"
+                "reference": "fef1aff874a6749c44f8e142e5764eab8cb96890"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/da31969bd35e6ee0bbcd9e876f88952dc754b012",
-                "reference": "da31969bd35e6ee0bbcd9e876f88952dc754b012",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/fef1aff874a6749c44f8e142e5764eab8cb96890",
+                "reference": "fef1aff874a6749c44f8e142e5764eab8cb96890",
                 "shasum": ""
             },
             "require": {
@@ -1442,7 +1453,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-01-16T15:23:58+00:00"
+            "time": "2024-01-23T15:07:56+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -1883,16 +1894,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.23.0",
+            "version": "3.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d4ad81e2b67396e33dc9d7e54ec74ccf73151dcc"
+                "reference": "199e1aebbe3e62bd39f4d4fc8c61ce0b3786197e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d4ad81e2b67396e33dc9d7e54ec74ccf73151dcc",
-                "reference": "d4ad81e2b67396e33dc9d7e54ec74ccf73151dcc",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/199e1aebbe3e62bd39f4d4fc8c61ce0b3786197e",
+                "reference": "199e1aebbe3e62bd39f4d4fc8c61ce0b3786197e",
                 "shasum": ""
             },
             "require": {
@@ -1957,7 +1968,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.23.0"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.23.1"
             },
             "funding": [
                 {
@@ -1969,20 +1980,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-04T10:16:17+00:00"
+            "time": "2024-01-26T18:42:03+00:00"
         },
         {
             "name": "league/flysystem-local",
-            "version": "3.23.0",
+            "version": "3.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem-local.git",
-                "reference": "5cf046ba5f059460e86a997c504dd781a39a109b"
+                "reference": "b884d2bf9b53bb4804a56d2df4902bb51e253f00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem-local/zipball/5cf046ba5f059460e86a997c504dd781a39a109b",
-                "reference": "5cf046ba5f059460e86a997c504dd781a39a109b",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-local/zipball/b884d2bf9b53bb4804a56d2df4902bb51e253f00",
+                "reference": "b884d2bf9b53bb4804a56d2df4902bb51e253f00",
                 "shasum": ""
             },
             "require": {
@@ -2017,7 +2028,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem-local/issues",
-                "source": "https://github.com/thephpleague/flysystem-local/tree/3.23.0"
+                "source": "https://github.com/thephpleague/flysystem-local/tree/3.23.1"
             },
             "funding": [
                 {
@@ -2029,7 +2040,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-04T10:14:46+00:00"
+            "time": "2024-01-26T18:25:23+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -2190,16 +2201,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.72.1",
+            "version": "2.72.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "2b3b3db0a2d0556a177392ff1a3bf5608fa09f78"
+                "reference": "3e7edc41b58d65509baeb0d4a14c8fa41d627130"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/2b3b3db0a2d0556a177392ff1a3bf5608fa09f78",
-                "reference": "2b3b3db0a2d0556a177392ff1a3bf5608fa09f78",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/3e7edc41b58d65509baeb0d4a14c8fa41d627130",
+                "reference": "3e7edc41b58d65509baeb0d4a14c8fa41d627130",
                 "shasum": ""
             },
             "require": {
@@ -2293,7 +2304,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-08T23:47:49+00:00"
+            "time": "2024-01-19T00:21:53+00:00"
         },
         {
             "name": "nette/schema",
@@ -5903,93 +5914,6 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
-        },
-        {
-            "name": "yajra/laravel-datatables-oracle",
-            "version": "v10.11.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "d110a78db8dc76a61bdbb8364502c771ff71d5ff"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/d110a78db8dc76a61bdbb8364502c771ff71d5ff",
-                "reference": "d110a78db8dc76a61bdbb8364502c771ff71d5ff",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "^9|^10",
-                "illuminate/filesystem": "^9|^10",
-                "illuminate/http": "^9|^10",
-                "illuminate/support": "^9|^10",
-                "illuminate/view": "^9|^10",
-                "php": "^8.0.2"
-            },
-            "require-dev": {
-                "algolia/algoliasearch-client-php": "^3.4",
-                "larastan/larastan": "^2.4",
-                "laravel/scout": "^10.5",
-                "meilisearch/meilisearch-php": "^1.4",
-                "orchestra/testbench": "^8",
-                "yajra/laravel-datatables-html": "^9.3.4|^10"
-            },
-            "suggest": {
-                "yajra/laravel-datatables-buttons": "Plugin for server-side exporting of dataTables.",
-                "yajra/laravel-datatables-editor": "Plugin to use DataTables Editor (requires a license).",
-                "yajra/laravel-datatables-export": "Plugin for server-side exporting using livewire and queue worker.",
-                "yajra/laravel-datatables-fractal": "Plugin for server-side response using Fractal.",
-                "yajra/laravel-datatables-html": "Plugin for server-side HTML builder of dataTables."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "10.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Yajra\\DataTables\\DataTablesServiceProvider"
-                    ],
-                    "aliases": {
-                        "DataTables": "Yajra\\DataTables\\Facades\\DataTables"
-                    }
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/helper.php"
-                ],
-                "psr-4": {
-                    "Yajra\\DataTables\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Arjay Angeles",
-                    "email": "aqangeles@gmail.com"
-                }
-            ],
-            "description": "jQuery DataTables API for Laravel 4|5|6|7|8|9|10",
-            "keywords": [
-                "datatables",
-                "jquery",
-                "laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/yajra/laravel-datatables/issues",
-                "source": "https://github.com/yajra/laravel-datatables/tree/v10.11.3"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/sponsors/yajra",
-                    "type": "github"
-                }
-            ],
-            "time": "2023-12-27T07:07:01+00:00"
         }
     ],
     "packages-dev": [
@@ -6392,16 +6316,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.27.1",
+            "version": "v1.27.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "9dc648978e4276f2bfd37a076a52e3bd9394777f"
+                "reference": "2276a8d9d6cfdcaad98bf67a34331d100149d5b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/9dc648978e4276f2bfd37a076a52e3bd9394777f",
-                "reference": "9dc648978e4276f2bfd37a076a52e3bd9394777f",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/2276a8d9d6cfdcaad98bf67a34331d100149d5b6",
+                "reference": "2276a8d9d6cfdcaad98bf67a34331d100149d5b6",
                 "shasum": ""
             },
             "require": {
@@ -6453,7 +6377,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2024-01-13T18:46:48+00:00"
+            "time": "2024-01-21T17:13:42+00:00"
         },
         {
             "name": "maximebf/debugbar",

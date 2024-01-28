@@ -7,6 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
@@ -135,6 +136,14 @@
     <script>
         // Sweet Alert
         $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+
+
             $(document).on('click', '#delete', function (e) {
                 e.preventDefault();
                 let link = $(this).attr('href');
