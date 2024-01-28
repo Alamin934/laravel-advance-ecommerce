@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('brand_name');
             $table->string('brand_slug');
-            $table->string('brand_logo');
+            $table->string('brand_logo')->nullable();
+            $table->boolean('is_homepage')->default(0);
             $table->timestamps();
         });
     }

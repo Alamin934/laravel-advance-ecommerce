@@ -32,6 +32,7 @@
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/demo.css" />
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/toastr.min.css" />
+    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/dropify.min.css" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -118,6 +119,7 @@
     <script src="{{ asset('admin') }}/assets/vendor/js/menu.js"></script>
     <script src="{{ asset('admin') }}/assets/js/toastr.min.js"></script>
     <script src="{{ asset('admin') }}/assets/js/sweetalert.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/dropify.min.js"></script>
 
     <!-- endbuild -->
 

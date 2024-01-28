@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Brand;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class BrandsController extends Controller
 {
@@ -30,7 +33,40 @@ class BrandsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'brand_name' => 'required | unique:brands',
+        ]);
+
+        $slug = Str::slug($request->brand_name, '-');
+
+        if($request->file('brand_logo')){
+            // get & make a new file
+            $file = $request->file('brand_logo');
+            $extension = $file->getClientOriginalExtension();
+            $new_file_name = $slug.'-'.date('d-m-Y-H-i-s').'.'.$extension;
+
+            // resize & save to file
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($file);
+            $image->resize(240, 120);
+            $image->toPng()->save('admin/assets/files/brands/'.$new_file_name);
+
+            // insert into database
+            $brand = Brand::create([
+                'brand_name' => $request->brand_name,
+                'brand_slug' => $slug,
+                'brand_logo' => $new_file_name,
+            ]);
+        }else{
+            $brand = Brand::create([
+                'brand_name' => $request->brand_name,
+                'brand_slug' => $slug,
+            ]);
+        }
+
+        // $file->move('admin/assets/files/brands/', $new_file_name);
+        $notification = ['message'=>'Brand Added successfully', 'alert-type'=>'success'];
+        return redirect()->route('brand.index')->with($notification);
     }
 
     /**
@@ -62,6 +98,13 @@ class BrandsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $brand = Brand::find($id);
+        if(!empty($brand->brand_logo)){
+            unlink(public_path('admin/assets/files/brands/'.$brand->brand_logo));
+        }
+
+        $brand->delete();
+        $notification = ['message'=>'Brand Deleted successfully', 'alert-type'=>'success'];
+        return redirect()->route('brand.index')->with($notification);
     }
 }

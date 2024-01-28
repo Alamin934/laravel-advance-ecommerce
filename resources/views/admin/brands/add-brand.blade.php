@@ -11,7 +11,7 @@
                 <a href="{{route('brand.index')}}" class="btn btn-primary p-2">See Brands List</a>
             </div>
         </div>
-        <form action="{{route('brand.store')}}" method="POST">
+        <form action="{{route('brand.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="row">

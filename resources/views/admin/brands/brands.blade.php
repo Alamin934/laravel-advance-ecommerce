@@ -28,21 +28,23 @@
                         @foreach ($brands as $brand)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $brand->name }}</td>
-                            <td>{{ $brand->slug }}</td>
-                            <td>{{ $brand->logo }}</td>
+                            <td>{{ $brand->brand_name }}</td>
+                            <td>{{ $brand->brand_slug }}</td>
+                            <td>
+                                <img width="130" src="{{asset('admin/assets/files/brands/'.$brand->brand_logo)}}"
+                                    alt="">
+                            </td>
                             <td>
                                 <div class="d-flex">
                                     <!-- Button trigger Edit Modal -->
-                                    <a href="{{route('childCategory.edit', $brand->id)}}"
-                                        class="btn btn-primary p-2 me-2">
+                                    <a href="{{route('brand.edit', $brand->id)}}" class="btn btn-primary p-2 me-2">
                                         <i class="bx bx-edit-alt"></i>
                                     </a>
 
-                                    <form action="{{route('childCategory.destroy', $brand->id)}}" method="POST">
+                                    <form action="{{route('brand.destroy', $brand->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="childmit" class="btn btn-danger p-2"><i
+                                        <button type="submit" class="btn btn-danger p-2"><i
                                                 class="bx bx-trash"></i></button>
                                     </form>
                                 </div>
