@@ -1,11 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{AdminController,CategoryController,SubCategoryController,ChildCategoryController};
+use App\Http\Controllers\Admin\{AdminController,CategoryController,SubCategoryController,ChildCategoryController, BrandsController};
 
-
-Route::fallback(function () {
-    return abort(404);
-});
 
 Route::prefix('admin')->name('admin.')->controller(AdminController::class)->group(function () {
     Route::get('/login', 'showLogin')->middleware('guest')->name('login');
@@ -22,6 +18,7 @@ Route::middleware(['is_admin.auth','is_admin'])->group(function () {
     Route::resource('admin/category', CategoryController::class);
     Route::resource('admin/subCategory', SubCategoryController::class);
     Route::resource('admin/childCategory', ChildCategoryController::class);
+    Route::resource('admin/brand', BrandsController::class);
     
 });
 

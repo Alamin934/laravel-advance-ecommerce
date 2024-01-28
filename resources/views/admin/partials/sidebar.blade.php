@@ -47,6 +47,26 @@
                 </li>
             </ul>
         </li>
+        <!-- Category -->
+        <li class="menu-item {{request()->routeIs('brand.*') ? 'active open' : ''}}">
+            <a href="javascript:void(0)" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-box"></i>
+                <div data-i18n="Brands">Brands</div>
+            </a>
+
+            <ul class="menu-sub ">
+                <li class="menu-item {{request()->routeIs('brand.index') ? 'active' : ''}}">
+                    <a href="{{route('brand.index')}}" class="menu-link">
+                        <div data-i18n="Category">Brands List</div>
+                    </a>
+                </li>
+                <li class="menu-item {{request()->routeIs('brand.create') ? 'active' : ''}}">
+                    <a href="{{route('brand.create')}}" class="menu-link">
+                        <div data-i18n="subCategory">Add New Brand</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
         {{--
         <!-- Components -->
