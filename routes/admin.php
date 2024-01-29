@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{AdminController,CategoryController,SubCategoryController,ChildCategoryController, BrandsController,SettingController};
+use App\Http\Controllers\Admin\{AdminController,CategoryController,SubCategoryController,ChildCategoryController, BrandsController,SettingController,ProductController};
 
 
 Route::prefix('admin')->name('admin.')->controller(AdminController::class)->group(function () {
@@ -19,6 +19,7 @@ Route::middleware(['is_admin.auth','is_admin'])->group(function () {
     Route::resource('admin/subCategory', SubCategoryController::class);
     Route::resource('admin/childCategory', ChildCategoryController::class);
     Route::resource('admin/brand', BrandsController::class);
+    Route::resource('admin/product', ProductController::class);
     
     // Website Settings
     Route::prefix('admin/setting')->name('setting.')->controller(SettingController::class)->group(function () {
