@@ -69,31 +69,13 @@
 @push('scripts')
 <script>
     $(document).ready(function () {
+        
         // Store Data with Ajax
         $('#submitCoupon').on('submit', function(e){
             e.preventDefault();
             let formData = $(this).serialize();
-            $.ajax({
-                type: "POST",
-                url: "{{route('coupon.store')}}",
-                data: formData,
-                // dataType: "dataType",
-                success: function (response) {
-                    if(response.status == 'success'){
-                        $('.error-msg').hide();
-                        $('#addCoupon').modal('hide');
-                        $('#submitCoupon').trigger('reset');
-                        $('.table').load(location.href+' .table');
-                        toastr.success("Coupon Added Successfully");
-                    }
-                },error:function(err){
-                    let error = err.responseJSON;
-                    $.each(error.errors, function (index, value) {
-                        $('.error-msg').append(`<span class="text-danger">${value}</span><br>`);
-                    });
-                    
-                }
-            });
+            // Ajax Call Method
+            ajaxStoreAndUpdate("POST", "{{route('coupon.store')}}", formData, "#addCoupon", "Coupon Added Successfully");
         });
 
         // Edit Coupon
@@ -129,53 +111,15 @@
             e.preventDefault();
             let coupon_id = $("#up_id").val();
             let formData = $(this).serialize();
-            $.ajax({
-                type: "PUT",
-                url: "{{url('admin/coupon/{coupon_id}')}}",
-                data: formData,
-                success: function (response) {
-                    if(response.status == 'success'){
-                        $('.error-msg').hide();
-                        $('#editCoupon').modal('hide');
-                        $('#updateCoupon')[0].reset();
-                        $('.table').load(location.href+' .table');
-                        toastr.success("Coupon Updated Successfully");
-                    }
-                },error:function(err){
-                    let error = err.responseJSON;
-                    $.each(error.errors, function (index, value) {
-                        $('.error-msg').append(`<span class="text-danger">${value}</span><br>`);
-                    });
-                
-                }
-            });
+            // Ajax Call Method
+            ajaxStoreAndUpdate("PUT", "{{url('admin/coupon/{coupon_id}')}}", formData, "#editCoupon", "Coupon Updated Successfully");
         });
 
         // Delete Coupon
         $('.deleteCoupon').on('click', function () {
             let coupon_id = $(this).data('id');
-            swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this imaginary file!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    $.ajax({
-                        type: "DELETE",
-                        url: "{{url('admin/coupon/{coupon_id}')}}",
-                        data: {id:coupon_id},
-                        success: function (response) {
-                            if(response.status == 'success'){
-                                $('.table').load(location.href+' .table');
-                                toastr.success("Coupon Deleted Successfully");
-                            }
-                        }
-                    });
-                }
-            });
+            let data = {id:coupon_id};
+            ajaxDeleteWithToastr("DELETE", "{{url('admin/coupon/{coupon_id}')}}", data, "Coupon Deleted Successfully")
         });
 
     });

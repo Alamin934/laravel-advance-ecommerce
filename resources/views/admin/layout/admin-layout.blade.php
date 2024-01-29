@@ -43,7 +43,6 @@
     <!-- Helpers -->
     <script src="{{ asset('admin') }}/assets/vendor/js/helpers.js"></script>
     <script src="{{ asset('admin') }}/assets/js/config.js"></script>
-
 </head>
 
 <body>
@@ -135,36 +134,7 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script>
-        // Sweet Alert
-        $(document).ready(function () {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-
-
-            $(document).on('click', '#delete', function (e) {
-                e.preventDefault();
-                let link = $(this).attr('href');
-                swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this imaginary file!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        window.location.href = link;
-                    }
-                });
-            });
- 
-        });
-    </script>
+    <script src="{{ asset('admin') }}/assets/js/custom.js"></script>
     <script>
         // Toaster
         @if (session()->has('message'))
@@ -185,6 +155,7 @@
             }
         @endif       
     </script>
+
     @stack('scripts')
 </body>
 
