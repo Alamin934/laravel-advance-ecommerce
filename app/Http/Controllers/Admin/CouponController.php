@@ -29,6 +29,8 @@ class CouponController extends Controller
             'type' => 'Fixed',
             'amount' => $request->coupon_amount,
             'status' => $request->coupon_status,
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
 
         return response()->json(['status'=> 'success']);
@@ -53,6 +55,7 @@ class CouponController extends Controller
             'type' => 'Fixed',
             'amount' => $request->up_coupon_amount,
             'status' => $request->up_coupon_status,
+            'updated_at' => now(),
         ]);
         return response()->json(['status'=> 'success']);
     }

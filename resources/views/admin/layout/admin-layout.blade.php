@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/demo.css" />
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/toastr.min.css" />
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/dropify.min.css" />
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -131,6 +132,7 @@
 
     <!-- Page JS -->
     <script src="{{ asset('admin') }}/assets/js/dashboards-analytics.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>

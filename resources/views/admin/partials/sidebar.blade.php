@@ -22,6 +22,25 @@
                 {{-- <div class="badge bg-danger rounded-pill ms-auto">5</div> --}}
             </a>
         </li>
+        <!-- Products -->
+        <li class="menu-item {{request()->routeIs('product.*') ? 'active open' : ''}}">
+            <a href="javascript:void(0)" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-box"></i>
+                <div data-i18n="User interface">Products</div>
+            </a>
+            <ul class="menu-sub ">
+                <li class="menu-item {{request()->routeIs('product.index') ? 'active' : ''}}">
+                    <a href="{{route('product.index')}}" class="menu-link">
+                        <div data-i18n="All Products">All Products</div>
+                    </a>
+                </li>
+                <li class="menu-item {{request()->routeIs('product.create') ? 'active' : ''}}">
+                    <a href="{{route('product.create')}}" class="menu-link">
+                        <div data-i18n="Add Product">Add Product</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <!-- Category -->
         <li
             class="menu-item {{request()->routeIs('category.*') || request()->routeIs('subCategory.*') || request()->routeIs('childCategory.*') ? 'active open' : ''}}">
@@ -47,7 +66,7 @@
                 </li>
             </ul>
         </li>
-        <!-- Category -->
+        <!-- Brands -->
         <li class="menu-item {{request()->routeIs('brand.*') ? 'active open' : ''}}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-box"></i>

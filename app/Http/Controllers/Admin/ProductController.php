@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\{Category, SubCategory, ChildCategory, Brand};
 
 class ProductController extends Controller
 {
@@ -12,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::paginate(10);
+        return view('admin.products.products', compact('products'));
     }
 
     /**
@@ -20,7 +23,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::get();
+        $subCategories = SubCategory::get();
+        $childCategories = ChildCategory::get();
+        $brands = Brand::get();
+        return view('admin.products.add-product', compact('categories','subCategories','childCategories','brands'));
     }
 
     /**
@@ -28,7 +35,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->file('images');
+        // $extension = $file->getClientOriginalExtension();
+        dd($file);
+
     }
 
     /**

@@ -30,7 +30,6 @@ return new class extends Migration
             $table->decimal('discount_price', 8, 2)->nullable();
             $table->string('video')->nullable();
             $table->string('stock_quantity');
-            $table->integer('warehouse')->nullable();
             $table->boolean('featured')->nullable();
             $table->boolean('today_deal')->nullable();
             $table->boolean('flash_deal_id')->nullable();
