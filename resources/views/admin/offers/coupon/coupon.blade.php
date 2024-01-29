@@ -44,12 +44,10 @@
                                         <i class="bx bx-edit-alt"></i>
                                     </a>
 
-                                    <form action="" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger p-2"><i
-                                                class="bx bx-trash"></i></button>
-                                    </form>
+                                    <button type="button" class="btn btn-danger deleteCoupon p-2"
+                                        data-id="{{$coupon->id}}">
+                                        <i class="bx bx-trash"></i>
+                                    </button>
                                 </div>
                             </td>
                         </tr>
@@ -154,7 +152,31 @@
         });
 
         // Delete Coupon
-        
+        $('.deleteCoupon').on('click', function () {
+            let coupon_id = $(this).data('id');
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        type: "DELETE",
+                        url: "{{url('admin/coupon/{coupon_id}')}}",
+                        data: {id:coupon_id},
+                        success: function (response) {
+                            if(response.status == 'success'){
+                                $('.table').load(location.href+' .table');
+                                toastr.success("Coupon Deleted Successfully");
+                            }
+                        }
+                    });
+                }
+            });
+        });
 
     });
 </script>

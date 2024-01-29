@@ -56,8 +56,9 @@ class CouponController extends Controller
         ]);
         return response()->json(['status'=> 'success']);
     }
-
+    
     public function destroy(Request $request){
-
+        $coupon = DB::table('coupons')->where('id', $request->id)->delete();
+        return response()->json(['status'=> 'success']);
     }
 }
