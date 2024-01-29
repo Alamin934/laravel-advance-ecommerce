@@ -33,4 +33,31 @@ class CouponController extends Controller
 
         return response()->json(['status'=> 'success']);
     }
+
+    public function edit(Request $request){
+        $coupon = DB::table('coupons')->where('id', $request->id)->get();
+        return response()->json(['status'=>'success', 'data' => $coupon]);
+    }
+
+    public function update(Request $request){
+        $validated = $request->validate([
+            'up_coupon_code' => 'required',
+            'up_valid_date' => 'required',
+            'up_coupon_amount' => 'required',
+            'up_coupon_status' => 'required',
+        ]);
+
+        $coupon = DB::table('coupons')->where('id', $request->up_id)->update([
+            'coupon_code' => $request->up_coupon_code,
+            'valid_date' => $request->up_valid_date,
+            'type' => 'Fixed',
+            'amount' => $request->up_coupon_amount,
+            'status' => $request->up_coupon_status,
+        ]);
+        return response()->json(['status'=> 'success']);
+    }
+
+    public function destroy(Request $request){
+
+    }
 }

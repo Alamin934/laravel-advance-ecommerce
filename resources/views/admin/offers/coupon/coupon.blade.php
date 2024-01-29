@@ -39,8 +39,8 @@
                             <td>
                                 <div class="d-flex">
                                     <!-- Button trigger Edit Modal -->
-                                    <a href="" class="btn btn-primary p-2 me-2" data-bs-toggle="modal"
-                                        data-bs-target="#editCoupon">
+                                    <a href="" class="btn btn-primary p-2 me-2 editCoupon" data-id="{{$coupon->id}}"
+                                        data-bs-toggle="modal" data-bs-target="#editCoupon">
                                         <i class="bx bx-edit-alt"></i>
                                     </a>
 
@@ -65,12 +65,13 @@
     </div>
 </div>
 @include('admin.offers.coupon.add-coupon')
+@include('admin.offers.coupon.edit-coupon')
 @endsection
 
 @push('scripts')
 <script>
     $(document).ready(function () {
-
+        // Store Data with Ajax
         $('#submitCoupon').on('submit', function(e){
             e.preventDefault();
             let formData = $(this).serialize();
@@ -96,6 +97,64 @@
                 }
             });
         });
+
+        // Edit Coupon
+        $('.editCoupon').on('click', function () {
+            let coupon_id = $(this).data('id');
+            $.ajax({
+                type: "GET",
+                url: `{{url('admin/coupon/{coupon_id}/edit')}}`,
+                data: {id:coupon_id},
+                success: function (response) {
+                    if(response.status == 'success'){
+                        $.each(response.data, function (index, value) { 
+                            $('#up_id').val(value.id);
+                            $('#up_coupon_code').val(value.coupon_code);
+                            $('#up_valid_date').val(value.valid_date);
+                            $('#up_coupon_amount').val(value.amount);
+
+                            $('#up_coupon_status option').each(function (opIndex, opValue) {
+                                if($(this).val() == value.status){
+                                    $(this).attr("selected","selected");
+                                }else{
+                                    $(this).removeAttr("selected")
+                                }
+                            });
+                        });
+                    }
+                }
+            });
+        });
+
+        // Update Coupon
+        $('#updateCoupon').on('submit', function(e){
+            e.preventDefault();
+            let coupon_id = $("#up_id").val();
+            let formData = $(this).serialize();
+            $.ajax({
+                type: "PUT",
+                url: "{{url('admin/coupon/{coupon_id}')}}",
+                data: formData,
+                success: function (response) {
+                    if(response.status == 'success'){
+                        $('.error-msg').hide();
+                        $('#editCoupon').modal('hide');
+                        $('#updateCoupon')[0].reset();
+                        $('.table').load(location.href+' .table');
+                        toastr.success("Coupon Updated Successfully");
+                    }
+                },error:function(err){
+                    let error = err.responseJSON;
+                    $.each(error.errors, function (index, value) {
+                        $('.error-msg').append(`<span class="text-danger">${value}</span><br>`);
+                    });
+                
+                }
+            });
+        });
+
+        // Delete Coupon
+        
 
     });
 </script>
