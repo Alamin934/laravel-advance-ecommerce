@@ -48,14 +48,15 @@
                                     <label class="form-label">Category/SubCategory <span
                                             class="text-danger">*</span></label>
                                     <select type="text" name="sub_category" class="form-select">
-                                        <option value="" selected>Select...</option>
+                                        <option disabled selected>Select...</option>
                                         @foreach ($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
 
-                                        @foreach ($subCategories as $subCategory)
+                                        @foreach ($category->sub_categories as $subCategory)
                                         @if ($subCategory->category_id == $category->id)
 
-                                        <option value="{{$subCategory->id}}">--- {{$subCategory->name}}</option>
+                                        <option class="subCatOpt" value="{{$subCategory->id}}">---
+                                            {{$subCategory->name}}</option>
                                         @endif
                                         @endforeach
 
@@ -66,10 +67,10 @@
                                 <div class="col mb-3">
                                     <label class="form-label">ChildCategory</label>
                                     <select type="text" name="child_category" class="form-select">
-                                        <option value="" selected>Select...</option>
-                                        @foreach ($childCategories as $childCategory)
+                                        <option disabled selected>Select...</option>
+                                        {{--@foreach ($childCategories as $childCategory)
                                         <option value="{{$childCategory->id}}">{{$childCategory->name}}</option>
-                                        @endforeach
+                                        @endforeach--}}
                                     </select>
                                 </div>
                                 {{-- Brands --}}
@@ -163,6 +164,30 @@
 @push('scripts')
 <script>
     $(document).ready(function () {
+        $("select[name='sub_category']").on("change", function() {
+            let subCatId = $("select[name='sub_category'] .subCatOpt:selected").val();
+            if(subCatId){
+                $.ajax({
+                    type: "GET",
+                    url: '/dependedChildCategory/'+subCatId,
+                    dataType: "json",
+                    success: function (data) {
+                        if(data != ''){
+                            $("select[name='child_category']").empty();
+                            $.each(data, function (index, value) {
+                                $("select[name='child_category']").append(`<option value='${index}'>${value}</option>`);
+                            });
+                        }else{
+                            $("select[name='child_category']").empty();
+                        }
+                    }
+                });
+            }else{
+                $("select[name='child_category']").empty();
+            }
+        });
+
+
         $('.dropify').dropify({
             messages: {
             'default': 'Drag and drop a file here or click',

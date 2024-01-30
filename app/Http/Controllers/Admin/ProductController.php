@@ -21,13 +21,11 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $categories = Category::get();
-        $subCategories = SubCategory::get();
-        $childCategories = ChildCategory::get();
+        $categories = Category::with(['sub_categories','child_categories'])->get();
         $brands = Brand::get();
-        return view('admin.products.add-product', compact('categories','subCategories','childCategories','brands'));
+        return view('admin.products.add-product', compact('categories','brands'));
     }
 
     /**
@@ -71,5 +69,16 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    
+    public function dependedChildCategory($id){
+        $childCategories = ChildCategory::where('sub_category_id', $id)->pluck('name', 'id');
+        if(!empty($childCategories)){
+            return json_encode($childCategories);
+        }else{
+            return json_encode('');
+
+        }
     }
 }

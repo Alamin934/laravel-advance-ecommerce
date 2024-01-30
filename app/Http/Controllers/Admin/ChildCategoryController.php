@@ -102,4 +102,6 @@ class ChildCategoryController extends Controller
         $notification = ['message'=>'Child Category Deleted Successfully', 'alert-type'=>'success'];
         return redirect()->route('childCategory.index')->with($notification);
     }
+
+
 }
