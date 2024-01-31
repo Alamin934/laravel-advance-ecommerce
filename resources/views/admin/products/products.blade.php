@@ -25,6 +25,7 @@
                             <th>Category/Sub Category</th>
                             <th>Child Category</th>
                             <th>InStock</th>
+                            <th>Featured</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -40,11 +41,23 @@
                             </td>
                             <td>{{ $product->code }}</td>
                             <td>{{ $product->purchase_price }}</td>
-                            <td>{{ $product->category->name }}/{{$product->sub_category_id ?
+                            <td>{{ $product->category->name }}/<br>{{$product->sub_category_id ?
                                 $product->subCategory->name : ''}}</td>
                             <td>{{$product->child_category_id ? $product->childCategory->name : '' }}</td>
                             <td>{{ $product->stock_quantity }}</td>
-                            <td>{{ $product->status == 'on' ? 'Active' : 'InActive' }}</td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input data-id="{{$product->id}}" class=" form-check-input" type="checkbox"
+                                        role="switch" id="featured" {{$product->featured == 'on' ? 'checked' : ''}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input data-id="{{$product->id}} {{$product->status}}"
+                                        class="form-check-input status" type="checkbox" role="switch" {{$product->status
+                                    == 'on' ? 'checked' : ''}}>
+                                </div>
+                            </td>
                             <td>
                                 <div class="d-flex">
                                     <!-- Button trigger Edit Modal -->
@@ -63,11 +76,31 @@
                     </tbody>
                 </table>
             </div>
-            {{-- <div class="px-5 mt-4">
+            <div class="px-5 mt-4">
                 {{ $products->links() }}
-            </div> --}}
+            </div>
         </div>
         <!--/ Basic Bootstrap Table -->
     </div>
 </div>
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $(".status").on('change', function() {
+            let status = $(this).data('id');
+            $.ajax({
+                type: "POST",
+                url: "/changeStatus/"+status,
+                data: status,
+                success: function (response) {
+                    if(response.status){
+                        // $('.table').load(location.href+' .table');
+                        toastr.success(response.status);
+                    }
+                }
+            });
+        })
+    });
+</script>
+@endpush

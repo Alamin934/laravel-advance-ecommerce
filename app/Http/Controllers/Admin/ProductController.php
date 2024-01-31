@@ -163,4 +163,15 @@ class ProductController extends Controller
 
         }
     }
+
+    public function changeStatus($status) {
+        if(is_numeric($status)){
+            Product::where('id', $status)->update(['status'=>'on']);
+            return response()->json(['status'=>'Status Active Successfully']);
+        }else{
+            $statusId = explode(" ", $status)[0];
+            Product::where('id', $statusId)->update(['status'=>null]);
+            return response()->json(['status'=>'Status DeActive Successfully']);
+        }
+    }
 }
