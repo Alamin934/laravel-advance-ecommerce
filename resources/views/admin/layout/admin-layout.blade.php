@@ -33,7 +33,9 @@
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/demo.css" />
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/toastr.min.css" />
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/dropify.min.css" />
+    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/tagify.css" />
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -120,6 +122,8 @@
     <script src="{{ asset('admin') }}/assets/js/toastr.min.js"></script>
     <script src="{{ asset('admin') }}/assets/js/sweetalert.min.js"></script>
     <script src="{{ asset('admin') }}/assets/js/dropify.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/jQuery.tagify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
 
     <!-- endbuild -->
 

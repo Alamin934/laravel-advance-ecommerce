@@ -17,7 +17,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(10);
+        $products = Product::with(['category','subCategory','childCategory'])->paginate(10);
+        // foreach ($products as $key => $product) {
+            # code...
+            // return $products;
+        // }
         return view('admin.products.products', compact('products'));
     }
 
@@ -36,6 +40,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'title' => 'required|unique:products|max:255',
             'code' => 'required|unique:products',
@@ -98,7 +103,7 @@ class ProductController extends Controller
             'slug' => Str::slug($request->title, '-'),
             'description' => $request->description,
             'thumbnail' => $thumbnail,
-            'images' => $images,
+            'images' => empty($images) ? null : $images,
             'code' => $request->code,
             'unit' => $request->unit,
             'tags' => $request->tags,

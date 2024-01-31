@@ -61,10 +61,12 @@
                                     <div class="col mb-3">
                                         <label class="form-label">Category/SubCategory <span
                                                 class="text-danger">*</span></label>
+
                                         <select type="text" name="sub_category" class="form-select">
                                             <option disabled selected>Select...</option>
                                             @foreach ($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                            <option class="fw-bold" disabled value="{{$category->id}}">
+                                                {{$category->name}}</option>
 
                                             @foreach ($category->sub_categories as $subCategory)
                                             @if ($subCategory->category_id == $category->id)
@@ -91,7 +93,7 @@
                                     <div class="col mb-3">
                                         <label class="form-label">Brands</label>
                                         <select type="text" name="brand" class="form-select">
-                                            <option value="" selected>Select...</option>
+                                            <option disabled value="" selected>Select...</option>
                                             @foreach ($brands as $brand)
                                             <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
                                             @endforeach
@@ -129,9 +131,9 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <label class="form-label">Description <span class="text-danger">*</span></label>
-                                        <textarea class="form-control rounded-0 d-block" id="editor-textarea"
-                                            name="description">
-                                        </textarea>
+                                        <div class="form-control rounded-0" id="editor-textarea">
+                                        </div>
+                                        <textarea class="d-none" id="description" name="description"></textarea>
                                     </div>
 
                                     <div class="col-12 mt-5 pt-5">
@@ -218,8 +220,20 @@
 
     });
 
+    $('[name=tags],[name=unit]').tagify({
+        duplicates :false,
+        maxItems : 5,
+    });
 
-    var quill = new Quill('#editor-textarea', {placeholder: 'Product Description...', theme: 'snow'});
+    var quill = new Quill('#editor-textarea', {
+        theme: 'snow',
+        placeholder: 'Product Description...',
+    });
+
+    quill.on('text-change', function(delta, oldDelta, source) {
+    // console.log(quill.container.firstChild.innerHTML)
+    $('#description').val(quill.container.firstChild.innerHTML);
+    });
 
 </script>
 @endpush

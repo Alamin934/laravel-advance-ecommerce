@@ -10,7 +10,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-header">Product</h5>
                 <div class="pe-3">
-                    <a href="" class="btn btn-primary p-2" data-bs-toggle="modal" data-bs-target="#addProduct">+Add New
+                    <a href="{{route('product.create')}}" class="btn btn-primary p-2">+Add New
                         Product</a>
                 </div>
             </div>
@@ -19,10 +19,12 @@
                     <thead>
                         <tr>
                             <th>SL</th>
-                            <th>Product Code</th>
-                            <th>Valid Date</th>
-                            <th>Type</th>
-                            <th>Amount</th>
+                            <th>Name</th>
+                            <th>Code</th>
+                            <th>Price</th>
+                            <th>Category/Sub Category</th>
+                            <th>Child Category</th>
+                            <th>InStock</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -30,12 +32,19 @@
                     <tbody class="table-border-bottom-0">
                         @foreach ($products as $product)
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>
+                                <img src="{{asset('admin/assets/files/products/'.$product->thumbnail)}}" alt=""
+                                    class="me-3" style="height:40px;width:auto">
+                                {{Illuminate\Support\Str::words($product->title, 5, '...')}}
+                            </td>
+                            <td>{{ $product->code }}</td>
+                            <td>{{ $product->purchase_price }}</td>
+                            <td>{{ $product->category->name }}/{{$product->sub_category_id ?
+                                $product->subCategory->name : ''}}</td>
+                            <td>{{$product->child_category_id ? $product->childCategory->name : '' }}</td>
+                            <td>{{ $product->stock_quantity }}</td>
+                            <td>{{ $product->status == 'on' ? 'Active' : 'InActive' }}</td>
                             <td>
                                 <div class="d-flex">
                                     <!-- Button trigger Edit Modal -->
