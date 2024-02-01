@@ -174,4 +174,28 @@ class ProductController extends Controller
             return response()->json(['status'=>'Status DeActive Successfully']);
         }
     }
+
+    public function changeFeatured($featured) {
+        if(is_numeric($featured)){
+            Product::where('id', $featured)->update(['featured'=>'on']);
+            return response()->json(['status'=>'Featured Active Successfully']);
+        }else{
+            $featuredId = explode(" ", $featured)[0];
+            Product::where('id', $featuredId)->update(['featured'=>null]);
+            return response()->json(['status'=>'Featured DeActive Successfully']);
+        }
+    }
+
+    // public function statusActivate($status) {
+    //     if(is_numeric($status)){
+    //         Product::where('id', $status)->update(['status'=>'on']);
+    //         return response()->json(['status'=>'Status Active Successfully']);
+    //     }
+    // }
+
+    // public function statusDeactivate($status) {
+    //         $statusId = explode(" ", $status)[0];
+    //         Product::where('id', $statusId)->update(['status'=>null]);
+    //         return response()->json(['status'=>'Status DeActive Successfully']);
+    // }
 }

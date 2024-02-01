@@ -47,15 +47,17 @@
                             <td>{{ $product->stock_quantity }}</td>
                             <td>
                                 <div class="form-check form-switch">
-                                    <input data-id="{{$product->id}}" class=" form-check-input" type="checkbox"
-                                        role="switch" id="featured" {{$product->featured == 'on' ? 'checked' : ''}}>
+                                    <input data-id="{{$product->id}} {{$product->featured}}"
+                                        class="form-check-input featured" type="checkbox" role="switch"
+                                        {{$product->featured == 'on' ?
+                                    'checked' : ''}}>
                                 </div>
                             </td>
                             <td>
                                 <div class="form-check form-switch">
                                     <input data-id="{{$product->id}} {{$product->status}}"
                                         class="form-check-input status" type="checkbox" role="switch" {{$product->status
-                                    == 'on' ? 'checked' : ''}}>
+                                    == 'on' ? 'checked' : ''}} >
                                 </div>
                             </td>
                             <td>
@@ -87,19 +89,53 @@
 @push('scripts')
 <script>
     $(document).ready(function () {
-        $(".status").on('change', function() {
+        $(document).on('change', '.featured', function() {
             let status = $(this).data('id');
             $.ajax({
                 type: "POST",
-                url: "/changeStatus/"+status,
+                url: "/admin/product/changeFeatured/"+status,
                 data: status,
                 success: function (response) {
-                    if(response.status){
-                        // $('.table').load(location.href+' .table');
-                        toastr.success(response.status);
-                    }
+                    $('.table').load(location.href+' .table');
+                    toastr.success(response.status);
                 }
             });
+        });
+
+
+        $(document).on('change', '.status', function() {
+            let status = $(this).data('id');
+            $.ajax({
+                type: "POST",
+                url: "/admin/product/changeStatus/"+status,
+                data: status,
+                success: function (response) {
+                    $('.table').load(location.href+' .table');
+                    toastr.success(response.status);
+                }
+            });
+            // if($(this).prop('checked') == false){
+            //     $.ajax({
+            //         type: "POST",
+            //         url: "/statusDeactivate/"+status,
+            //         data: status,
+            //         success: function (response) {
+            //             $('.table').load(location.href+' .table');
+            //             toastr.success(response.status);
+            //         }
+            //     });
+            // }else{
+            //     $.ajax({
+            //         type: "POST",
+            //         url: "/statusActivate/"+status,
+            //         data: status,
+            //         success: function (response) {
+            //             $('.table').load(location.href+' .table');
+            //             toastr.success(response.status);
+            //         }
+            //     });
+            // }
+            
         })
     });
 </script>
