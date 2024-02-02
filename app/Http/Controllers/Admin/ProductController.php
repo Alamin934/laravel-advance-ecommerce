@@ -9,20 +9,30 @@ use App\Models\Product;
 use App\Models\{Category, SubCategory, ChildCategory, Brand};
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use Illuminate\Database\Query\Builder;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with(['category','subCategory','childCategory'])->paginate(10);
-        // foreach ($products as $key => $product) {
-            # code...
-            // return $products;
-        // }
-        return view('admin.products.products', compact('products'));
+        
+        if($request->ajax()){
+            $cat_id = $request->cat_id;
+            $products =  '';
+            if(!empty($cat_id)){
+                $products = Product::with(['category','subCategory','childCategory'])
+                ->where('category_id', $cat_id)
+                ->paginate(10);
+            }
+            return view('admin.products.products', compact('products'))->render();
+        }else{
+            $products = Product::with(['category','subCategory','childCategory'])->paginate(10);
+            return view('admin.products.products', compact('products'));
+        }
+
     }
 
     /**
@@ -148,9 +158,18 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $product = Product::find($request->id);
+        if(!empty($product->images)){
+            foreach ($product->images as $image) {
+                unlink(public_path('admin/assets/files/products/'.$image));
+            }
+        }
+        unlink(public_path('admin/assets/files/products/'.$product->thumbnail));
+
+        $product->delete();
+        return response()->json(['status'=> 'success']);
     }
 
     

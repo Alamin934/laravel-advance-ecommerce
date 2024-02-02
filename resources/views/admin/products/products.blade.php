@@ -14,7 +14,39 @@
                         Product</a>
                 </div>
             </div>
-            <div class="table-responsive text-nowrap">
+            <div class="card">
+                <div class="row mb-3 px-3">
+                    <div class="col">
+                        <label class="form-label">Categories</label>
+                        <select name="filter_cat" class="form-select product_filter">
+                            <option value="all">All</option>
+                            @foreach (\App\Models\Category::all() as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Brands</label>
+                        <select name="filter_brand" class="form-select product_filter">
+                            <option value="all">All</option>
+                            @foreach (\App\Models\Brand::all() as $brand)
+                            <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Status</label>
+                        <select name="filter_status" class="form-select product_filter">
+                            <option value="all">All</option>
+                            @foreach ($products as $product)
+                            <option value="{{$product->status}}">{{$product->status == 'on' ? 'Active' : 'Inactive'}}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive text-nowrap mt-3">
                 <table class="table">
                     <thead>
                         <tr>
@@ -30,7 +62,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody class="table-border-bottom-0">
+                    <tbody class="table-border-bottom-0 t-body">
                         @foreach ($products as $product)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
@@ -68,7 +100,8 @@
                                         <i class="bx bx-edit-alt"></i>
                                     </a>
 
-                                    <button type="button" class="btn btn-danger deleteProduct p-2" data-id="">
+                                    <button type="button" class="btn btn-danger deleteProduct p-2"
+                                        data-id="{{$product->id}}">
                                         <i class="bx bx-trash"></i>
                                     </button>
                                 </div>
@@ -89,6 +122,39 @@
 @push('scripts')
 <script>
     $(document).ready(function () {
+        // Delete Product with Ajax
+        $('.deleteProduct').on('click', function () {
+            let product_id = $(this).data('id');
+            $.ajax({
+                type: "DELETE",
+                url: "{{url('admin/product/{product_id}')}}",
+                data: {id:product_id},
+                success: function (response) {
+                    $('.table').load(location.href + ' .table');
+                    toastr.success("Deleted");
+                }
+            });
+            // ajaxDeleteWithToastr("DELETE", "{{url('admin/product/{product_id}')}}", {id:product_id}, "Product Deleted Successfully");
+        });
+        
+        // Product Filtering
+        // $('.product_filter').on('change', function(){
+        //     // $('.table').load(location.href+' .table');
+        //     let cat_id = $('.product_filter[name="filter_cat"]').val();
+        //     $.ajax({
+        //         type: "get",
+        //         url: "{{route('product.index')}}",
+        //         data: {cat_id:cat_id},
+        //         success: function (response) {
+        //             console.log(response);
+        //             $(location.href).html('');
+        //             $(location.href).html(response);
+        //             // $('.table').load(location.href+' .table');
+        //         }
+        //     });
+        // });
+
+        // Update Featured without Reload
         $(document).on('change', '.featured', function() {
             let status = $(this).data('id');
             $.ajax({
@@ -101,8 +167,9 @@
                 }
             });
         });
-
-
+        
+        
+        // Update Product Status without Reload
         $(document).on('change', '.status', function() {
             let status = $(this).data('id');
             $.ajax({
@@ -113,30 +180,8 @@
                     $('.table').load(location.href+' .table');
                     toastr.success(response.status);
                 }
-            });
-            // if($(this).prop('checked') == false){
-            //     $.ajax({
-            //         type: "POST",
-            //         url: "/statusDeactivate/"+status,
-            //         data: status,
-            //         success: function (response) {
-            //             $('.table').load(location.href+' .table');
-            //             toastr.success(response.status);
-            //         }
-            //     });
-            // }else{
-            //     $.ajax({
-            //         type: "POST",
-            //         url: "/statusActivate/"+status,
-            //         data: status,
-            //         success: function (response) {
-            //             $('.table').load(location.href+' .table');
-            //             toastr.success(response.status);
-            //         }
-            //     });
-            // }
-            
-        })
+            }); 
+        });
     });
 </script>
 @endpush
