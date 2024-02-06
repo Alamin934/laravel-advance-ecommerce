@@ -6,7 +6,7 @@
         <h4 class="py-3 mb-4">Product List</h4>
 
         <!-- Basic Bootstrap Table -->
-        <div class="card">
+        <div class="card products">
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-header">Product</h5>
                 <div class="pe-3">
@@ -38,10 +38,8 @@
                         <label class="form-label">Status</label>
                         <select name="filter_status" class="form-select product_filter">
                             <option value="all">All</option>
-                            @foreach ($products as $product)
-                            <option value="{{$product->status}}">{{$product->status == 'on' ? 'Active' : 'Inactive'}}
-                            </option>
-                            @endforeach
+                            <option value="on">Active</option>
+                            <option value="">InActive</option>
                         </select>
                     </div>
                 </div>
@@ -112,7 +110,7 @@
                 </table>
             </div>
             <div class="px-5 mt-4">
-                {{ $products->links() }}
+                {{-- {{ $products->links() }} --}}
             </div>
         </div>
         <!--/ Basic Bootstrap Table -->
@@ -123,46 +121,35 @@
 <script>
     $(document).ready(function () {
         // Delete Product with Ajax
-        $('.deleteProduct').on('click', function () {
+        $(document).on('click','.deleteProduct', function () {
             let product_id = $(this).data('id');
-            $.ajax({
-                type: "DELETE",
-                url: "{{url('admin/product/{product_id}')}}",
-                data: {id:product_id},
-                success: function (response) {
-                    $('.table').load(location.href + ' .table');
-                    toastr.success("Deleted");
-                }
-            });
-            // ajaxDeleteWithToastr("DELETE", "{{url('admin/product/{product_id}')}}", {id:product_id}, "Product Deleted Successfully");
+            ajaxDeleteWithToastr("DELETE", "{{url('admin/product/{product_id}')}}", {id:product_id}, "Product Deleted Successfully");
         });
         
         // Product Filtering
-        // $('.product_filter').on('change', function(){
-        //     // $('.table').load(location.href+' .table');
-        //     let cat_id = $('.product_filter[name="filter_cat"]').val();
-        //     $.ajax({
-        //         type: "get",
-        //         url: "{{route('product.index')}}",
-        //         data: {cat_id:cat_id},
-        //         success: function (response) {
-        //             console.log(response);
-        //             $(location.href).html('');
-        //             $(location.href).html(response);
-        //             // $('.table').load(location.href+' .table');
-        //         }
-        //     });
-        // });
+        $(document).on('change','.product_filter', function(){
+            let cat_id = $('.product_filter[name="filter_cat"]').val();
+            let brand_id = $('.product_filter[name="filter_brand"]').val();
+            let status = $('.product_filter[name="filter_status"]').val();
+            $.ajax({
+                type: "POST",
+                url: "{{route('product.filter')}}",
+                data: {cat_id:cat_id, brand_id:brand_id, status:status},
+                success: function (response) {
+                    $('.t-body').html(response);
+                }
+            });
+        });
 
         // Update Featured without Reload
         $(document).on('change', '.featured', function() {
-            let status = $(this).data('id');
+            let featured = $(this).data('id');
             $.ajax({
                 type: "POST",
-                url: "/admin/product/changeFeatured/"+status,
-                data: status,
+                url: "/admin/product/changeFeatured/"+featured,
+                data: featured,
                 success: function (response) {
-                    $('.table').load(location.href+' .table');
+                    $('.products').load(location.href+' .products');
                     toastr.success(response.status);
                 }
             });
@@ -177,7 +164,7 @@
                 url: "/admin/product/changeStatus/"+status,
                 data: status,
                 success: function (response) {
-                    $('.table').load(location.href+' .table');
+                    $('.products').load(location.href+' .products');
                     toastr.success(response.status);
                 }
             }); 

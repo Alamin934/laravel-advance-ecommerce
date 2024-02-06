@@ -24,6 +24,7 @@ Route::middleware(['is_admin.auth','is_admin'])->group(function () {
     Route::get('/dependedChildCategory/{id}', [ProductController::class, 'dependedChildCategory']);
     Route::post('/admin/product/changeFeatured/{status}', [ProductController::class, 'changeFeatured']);
     Route::post('/admin/product/changeStatus/{status}', [ProductController::class, 'changeStatus']);
+    Route::post('/admin/product/filterProduct', [ProductController::class, 'filterProduct'])->name('product.filter');
     
     Route::resource('admin/coupon', CouponController::class);
     

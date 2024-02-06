@@ -18,22 +18,10 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        
-        if($request->ajax()){
-            $cat_id = $request->cat_id;
-            $products =  '';
-            if(!empty($cat_id)){
-                $products = Product::with(['category','subCategory','childCategory'])
-                ->where('category_id', $cat_id)
-                ->paginate(10);
-            }
-            return view('admin.products.products', compact('products'))->render();
-        }else{
-            $products = Product::with(['category','subCategory','childCategory'])->paginate(10);
-            return view('admin.products.products', compact('products'));
-        }
-
+        $products = Product::with(['category','subCategory','childCategory'])->get();
+        return view('admin.products.products', compact('products'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -205,16 +193,70 @@ class ProductController extends Controller
         }
     }
 
-    // public function statusActivate($status) {
-    //     if(is_numeric($status)){
-    //         Product::where('id', $status)->update(['status'=>'on']);
-    //         return response()->json(['status'=>'Status Active Successfully']);
-    //     }
-    // }
+    public function filterProduct(Request $request){
+        $products = "";
+        if($request->cat_id != 'all'){
+            $products = Product::with(['category','subCategory','childCategory'])->where('category_id', $request->cat_id)->get();
+        }
+        if($request->brand_id != 'all'){
+            $products = Product::with(['category','subCategory','childCategory'])->where('brand_id', $request->brand_id)->get();
+        }
+        if($request->status != 'all'){
+            $products = Product::with(['category','subCategory','childCategory'])->where('status', $request->status)->get();
+        }
+        if($request->cat_id == 'all' && $request->brand_id == 'all' && $request->status == 'all'){
+            $products = Product::with(['category','subCategory','childCategory'])->get();
+        }
+        $pd = '';
+        $id = 1;
+        foreach ($products as $product) {
+            if($product->sub_category_id){$sub_category = $product->subCategory->name;}else{$sub_category = "";}
+            if($product->child_category_id){$child_category = $product->childCategory->name;}else{$child_category = "";}
+            if($product->status == "on"){$status = "checked";}else{$status = "";}
+            if($product->featured == "on"){$featured = "checked";}else{$featured = "";}
+            $pd .= '<tr>';
+            $pd .=  '<td>'. $id++ .'</td>';
+            $pd .=  '<td><img src="/admin/assets/files/products/'.$product->thumbnail.'" alt="" class="me-3" style="height:40px;width:auto">'.\Illuminate\Support\Str::words($product->title, 5, "...").'</td>';
+            $pd .=  '<td>'.$product->code.'</td>';
+            $pd .= '<td>'.$product->purchase_price.'</td>';
+            $pd .=  '<td>
+                        <span>'.$product->category->name.'</span>
+                        /<br>
+                        <span>'.$sub_category.'</span>
+                    </td>';
+            $pd .= '<td>'.$child_category.'</td>';
+            $pd .= '<td>'. $product->stock_quantity .'</td>';
+            $pd .= '<td>
+                        <div class="form-check form-switch">
+                            <input data-id="'.$product->id.' '.$product->featured.'"
+                                class="form-check-input featured" type="checkbox" role="switch"
+                                '.$featured.' />
+                        </div>
+                    </td>';
+            $pd .=  '<td>
+                        <div class="form-check form-switch">
+                            <input data-id="'.$product->id.' '.$product->status.'"
+                                class="form-check-input status" type="checkbox" role="switch" '.$status.' />
+                        </div>
+                    </td>';
+            $pd .=  '<td>
+                        <div class="d-flex">
+                            <a href="" class="btn btn-primary p-2 me-2" data-bs-toggle="modal"
+                                data-bs-target="#editProduct">
+                                <i class="bx bx-edit-alt"></i>
+                            </a>
 
-    // public function statusDeactivate($status) {
-    //         $statusId = explode(" ", $status)[0];
-    //         Product::where('id', $statusId)->update(['status'=>null]);
-    //         return response()->json(['status'=>'Status DeActive Successfully']);
-    // }
+                            <button type="button" class="btn btn-danger deleteProduct p-2"
+                                data-id="'.$product->id.'">
+                                <i class="bx bx-trash"></i>
+                            </button>
+                        </div>
+                    </td>';
+            $pd .= '</tr>';
+        }
+        return response()->json($pd);
+        // return view('admin.products.products', compact('products'))->render();
+
+    }
+
 }
