@@ -24,6 +24,58 @@ $(document).ready(function () {
             });
     });
 
+
+    // Add & Edit Product Page
+    // Depended ChildCategory on SubCategory
+    $("select[name='sub_category']").on("change", function () {
+        let subCatId = $("select[name='sub_category'] .subCatOpt:selected").val();
+        if (subCatId) {
+            $.ajax({
+                type: "GET",
+                url: '/dependedChildCategory/' + subCatId,
+                dataType: "json",
+                success: function (data) {
+                    if (data != '') {
+                        $("select[name='child_category']").empty();
+                        $.each(data, function (index, value) {
+                            $("select[name='child_category']").append(`<option value='${index}'>${value}</option>`);
+                        });
+                    } else {
+                        $("select[name='child_category']").empty();
+                    }
+                }
+            });
+        } else {
+            $("select[name='child_category']").empty();
+        }
+    });
+
+    // Image Drag and Drop
+    $('.dropify').dropify({
+        messages: {
+            'default': 'Drag and drop a file here or click',
+            'replace': 'Drag and drop or click to replace',
+            'remove': 'Remove',
+            'error': 'Ooops, something wrong happended.'
+        }
+    });
+
+});
+
+
+$('[name=tags],[name=unit]').tagify({
+    duplicates: false,
+    maxItems: 5,
+});
+
+var quill = new Quill('#editor-textarea', {
+    theme: 'snow',
+    placeholder: 'Product Description...',
+});
+
+quill.on('text-change', function (delta, oldDelta, source) {
+    // console.log(quill.container.firstChild.innerHTML)
+    $('#description').val(quill.container.firstChild.innerHTML);
 });
 
 

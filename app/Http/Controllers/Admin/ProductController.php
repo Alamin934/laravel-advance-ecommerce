@@ -132,7 +132,10 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admin.products.edit-product');
+        $product = Product::find($id);
+        $categories = Category::with(['sub_categories','child_categories'])->get();
+        $brands = Brand::get();
+        return view('admin.products.edit-product', compact('product','categories','brands'));
     }
 
     /**
