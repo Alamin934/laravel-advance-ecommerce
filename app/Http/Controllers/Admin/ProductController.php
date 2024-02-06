@@ -132,7 +132,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.products.edit-product');
     }
 
     /**
@@ -241,8 +241,7 @@ class ProductController extends Controller
                     </td>';
             $pd .=  '<td>
                         <div class="d-flex">
-                            <a href="" class="btn btn-primary p-2 me-2" data-bs-toggle="modal"
-                                data-bs-target="#editProduct">
+                            <a href="'.route('product.edit', $product->id).'" class="btn btn-primary p-2 me-2">
                                 <i class="bx bx-edit-alt"></i>
                             </a>
 
