@@ -25,6 +25,7 @@
         <form action="{{route('product.update', $product->id)}}" method="POST" enctype="multipart/form-data"
             id="product-upload">
             @csrf
+            @method("PUT")
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8 mb-3">
@@ -61,7 +62,6 @@
                                             class="text-danger">*</span></label>
 
                                     <select type="text" name="sub_category" class="form-select">
-                                        <option disabled selected>Select...</option>
                                         @foreach ($categories as $category)
                                         <option class="fw-bold" disabled value="{{$category->id}}">
                                             {{$category->name}}</option>
@@ -69,7 +69,9 @@
                                         @foreach ($category->sub_categories as $subCategory)
                                         @if ($subCategory->category_id == $category->id)
 
-                                        <option class="subCatOpt" value="{{$subCategory->id}}">---
+                                        <option class="subCatOpt" value="{{$subCategory->id}}" {{$product->
+                                            sub_category_id == $subCategory->id ? 'selected' :
+                                            ''}}>---
                                             {{$subCategory->name}}</option>
                                         @endif
                                         @endforeach
@@ -82,9 +84,13 @@
                                     <label class="form-label">ChildCategory</label>
                                     <select type="text" name="child_category" class="form-select">
                                         <option disabled selected>Select...</option>
-                                        {{-- @foreach ($childCategories as $childCategory)
-                                        <option value="{{$childCategory->id}}">{{$childCategory->name}}</option>
-                                        @endforeach --}}
+                                        @if ($product->child_category_id)
+                                        @foreach ($childCategories as $childCategory)
+                                        <option value="{{$childCategory->id}}" {{$product->child_category_id ==
+                                            $childCategory->id ? 'selected' :
+                                            ''}}>{{$childCategory->name}}</option>
+                                        @endforeach
+                                        @endif
                                     </select>
                                 </div>
                                 {{-- Brands --}}
@@ -93,7 +99,8 @@
                                     <select type="text" name="brand" class="form-select">
                                         <option disabled value="" selected>Select...</option>
                                         @foreach ($brands as $brand)
-                                        <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                                        <option value="{{$brand->id}}" {{$brand->id == $product->brand_id ? 'selected' :
+                                            ''}}>{{$brand->brand_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -153,7 +160,11 @@
                                 <div class="mt-3">
                                     <label class="form-label">Product Gallery</label>
                                     <input type="file" class="form-control" name="images[]" multiple />
-                                    <input type="hidden" name="old_images[]" value="{{$product->images}}" multiple />
+                                    @if ($product->images)
+                                    @foreach ($product->images as $image)
+                                    <input type="hidden" name="old_images[]" value="{{$image}}" />
+                                    @endforeach
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-12 mt-4 card p-3">

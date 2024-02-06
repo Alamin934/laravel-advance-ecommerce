@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     // Ajax Setup
     $.ajaxSetup({
@@ -25,7 +26,7 @@ $(document).ready(function () {
     });
 
 
-    // Add & Edit Product Page
+    // Add Product Page
     // Depended ChildCategory on SubCategory
     $("select[name='sub_category']").on("change", function () {
         let subCatId = $("select[name='sub_category'] .subCatOpt:selected").val();
@@ -73,8 +74,8 @@ var quill = new Quill('#editor-textarea', {
     placeholder: 'Product Description...',
 });
 
-quill.on('text-change', function (delta, oldDelta, source) {
-    // console.log(quill.container.firstChild.innerHTML)
+$(document).on('submit', function (delta, oldDelta, source) {
+    // console.log(quill.root.innerHTML)
     $('#description').val(quill.container.firstChild.innerHTML);
 });
 
