@@ -1977,11 +1977,11 @@
                                     <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur
                                         adipiscing elit. Maecenas fermentum laoreet.</div>
                                     <div class="rating_r rating_r_4 banner_2_rating">
-                                        <i class="fas fa-star text-danger m-1"></i>
-                                        <i class="fas fa-star text-danger m-1"></i>
-                                        <i class="fas fa-star text-danger m-1"></i>
-                                        <i class="fas fa-star text-danger m-1"></i>
-                                        <i class="fas fa-star text-danger m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
                                     </div>
                                     <div class="button banner_2_button"><a href="#">Explore</a></div>
                                 </div>
@@ -2011,11 +2011,11 @@
                                     <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur
                                         adipiscing elit. Maecenas fermentum laoreet.</div>
                                     <div class="rating_r rating_r_4 banner_2_rating">
-                                        <i class="fas fa-star text-danger m-1"></i>
-                                        <i class="fas fa-star text-danger m-1"></i>
-                                        <i class="fas fa-star text-danger m-1"></i>
-                                        <i class="fas fa-star text-danger m-1"></i>
-                                        <i class="fas fa-star text-danger m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
                                     </div>
                                     <div class="button banner_2_button"><a href="#">Explore</a></div>
                                 </div>
@@ -2045,11 +2045,11 @@
                                     <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur
                                         adipiscing elit. Maecenas fermentum laoreet.</div>
                                     <div class="rating_r rating_r_4 banner_2_rating">
-                                        <i class="fas fa-star text-danger m-1"></i>
-                                        <i class="fas fa-star text-danger m-1"></i>
-                                        <i class="fas fa-star text-danger m-1"></i>
-                                        <i class="fas fa-star text-danger m-1"></i>
-                                        <i class="fas fa-star text-danger m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fas fa-star text-warning m-1"></i>
                                     </div>
                                     <div class="button banner_2_button"><a href="#">Explore</a></div>
                                 </div>
@@ -3809,11 +3809,11 @@
                                             <div class="arrivals_single_price text-right">$379</div>
                                         </div>
                                         <div class="rating_r rating_r_4 arrivals_single_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <form action="#"><button class="arrivals_single_button">Add to
                                                 Cart</button></form>
@@ -3870,11 +3870,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -3898,11 +3898,11 @@
                                                 href="{{ asset('admin/frontend') }}/product.html">Samsung
                                                 J730F...</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -3926,11 +3926,11 @@
                                                 href="{{ asset('admin/frontend') }}/product.html">Nomi Black
                                                 White</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -3954,11 +3954,11 @@
                                                 href="{{ asset('admin/frontend') }}/product.html">Samsung Charm
                                                 Gold</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -3982,11 +3982,11 @@
                                                 href="{{ asset('admin/frontend') }}/product.html">Beoplay H7</a>
                                         </div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4011,11 +4011,11 @@
                                                 MediaPad
                                                 T3</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4040,11 +4040,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4069,11 +4069,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4098,11 +4098,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4127,11 +4127,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4156,11 +4156,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4185,11 +4185,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4223,11 +4223,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4252,11 +4252,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4281,11 +4281,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4310,11 +4310,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4339,11 +4339,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4368,11 +4368,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4397,11 +4397,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4426,11 +4426,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4455,11 +4455,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4484,11 +4484,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4513,11 +4513,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4542,11 +4542,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4580,11 +4580,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4609,11 +4609,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4638,11 +4638,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4667,11 +4667,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4696,11 +4696,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4725,11 +4725,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4754,11 +4754,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4783,11 +4783,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4812,11 +4812,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4841,11 +4841,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4870,11 +4870,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -4899,11 +4899,11 @@
                                                 Note
                                                 4</a></div>
                                         <div class="rating_r rating_r_4 bestsellers_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="bestsellers_price discount">$225<span>$300</span></div>
                                     </div>
@@ -5193,11 +5193,11 @@
                                     <div class="review_name">Roberto Sanchez</div>
                                     <div class="review_rating_container">
                                         <div class="rating_r rating_r_4 review_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="review_time">2 day ago</div>
                                     </div>
@@ -5221,11 +5221,11 @@
                                     <div class="review_name">Brandon Flowers</div>
                                     <div class="review_rating_container">
                                         <div class="rating_r rating_r_4 review_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="review_time">2 day ago</div>
                                     </div>
@@ -5249,11 +5249,11 @@
                                     <div class="review_name">Emilia Clarke</div>
                                     <div class="review_rating_container">
                                         <div class="rating_r rating_r_4 review_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="review_time">2 day ago</div>
                                     </div>
@@ -5277,11 +5277,11 @@
                                     <div class="review_name">Roberto Sanchez</div>
                                     <div class="review_rating_container">
                                         <div class="rating_r rating_r_4 review_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="review_time">2 day ago</div>
                                     </div>
@@ -5305,11 +5305,11 @@
                                     <div class="review_name">Brandon Flowers</div>
                                     <div class="review_rating_container">
                                         <div class="rating_r rating_r_4 review_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="review_time">2 day ago</div>
                                     </div>
@@ -5333,11 +5333,11 @@
                                     <div class="review_name">Emilia Clarke</div>
                                     <div class="review_rating_container">
                                         <div class="rating_r rating_r_4 review_rating">
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
-                                            <i class="fas fa-star text-danger m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fas fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="review_time">2 day ago</div>
                                     </div>

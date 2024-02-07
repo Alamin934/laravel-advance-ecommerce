@@ -279,7 +279,12 @@ section {
 }
 
 .popular_categories_nav .svg-inline--fa,
+.trends_nav .svg-inline--fa,
 .product_fav .svg-inline--fa {
+	margin: 12px 0px;
+}
+
+.trends_fav .svg-inline--fa {
 	margin: 12px 11px;
 }
 
@@ -2916,6 +2921,7 @@ select option {
 	text-align: center;
 	cursor: pointer;
 	margin-right: 16px;
+	background-color: #fff;
 }
 
 .trends_nav:last-child {
