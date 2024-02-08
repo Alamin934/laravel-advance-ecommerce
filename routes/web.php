@@ -4,9 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::view('/','home')->name('home');
+Route::view('/shop','frontend.shop')->name('shop');
+
 
 Route::get('/dashboard', function () {
     if(auth()->user()->is_admin === 1){

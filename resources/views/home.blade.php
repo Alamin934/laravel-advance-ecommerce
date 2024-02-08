@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('main-content')
+<!-- Main Navigation -->
+@include('frontend.partials.main-navigation')
 <!-- Banner -->
 <div class="banner">
     <div class="banner_background" style="background-image:url({{'admin/frontend/'}}images/banner_background.jpg)">

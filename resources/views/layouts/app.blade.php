@@ -7,8 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/bootstrap4/bootstrap.min.css">
-    <link href="{{ asset('admin/frontend') }}/plugins/fontawesome-free-5.0.1/all.min.css" rel="stylesheet"
+    <link rel="stylesheet" type="text/css" href="{{asset('admin/frontend')}}/styles/bootstrap4/bootstrap.min.css">
+    <link href="{{ asset('admin/frontend') }}/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet"
         type="text/css">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('admin/frontend') }}/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
@@ -19,6 +19,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/responsive.css">
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/toastr.min.css" />
+
+    @stack('style')
 
     <title>{{ config('app.name', 'Laravel E-Commerce') }}</title>
 
@@ -36,13 +38,10 @@
         <!-- Header -->
         <header class="header">
             <!-- TopBar & Header Main -->
-            @include('frontend-partials.header-topbar')
-
-            <!-- Main Navigation -->
-            @include('frontend-partials.main-navigation')
+            @include('frontend.partials.header-topbar')
 
             <!-- Mobile Menu -->
-            @include('frontend-partials.mobile-menu')
+            @include('frontend.partials.mobile-menu')
         </header>
 
         <!-- Main Content -->
@@ -51,13 +50,13 @@
         </main>
 
         <!-- Newsletter -->
-        @include('frontend-partials.newsletter')
+        @include('frontend.partials.newsletter')
 
         <!-- Footer -->
-        @include('frontend-partials.footer')
+        @include('frontend.partials.footer')
 
         <!-- Copyright -->
-        @include('frontend-partials.copyright')
+        @include('frontend.partials.copyright')
 
     </div>
 
@@ -72,8 +71,9 @@
     <script src="{{ asset('admin/frontend') }}/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
     <script src="{{ asset('admin/frontend') }}/plugins/slick-1.8.0/slick.js"></script>
     <script src="{{ asset('admin/frontend') }}/plugins/easing/easing.js"></script>
-    <script src="{{ asset('admin/frontend') }}/plugins/fontawesome-free-5.0.1/all.min.js"></script>
     <script src="{{ asset('admin/frontend') }}/js/custom.js"></script>
+
+    @stack('scripts')
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script> --}}

@@ -278,16 +278,6 @@ section {
 	opacity: 0.8;
 }
 
-.popular_categories_nav .svg-inline--fa,
-.trends_nav .svg-inline--fa,
-.product_fav .svg-inline--fa {
-	margin: 12px 0px;
-}
-
-.trends_fav .svg-inline--fa {
-	margin: 12px 11px;
-}
-
 /*********************************
 3. Header
 *********************************/
@@ -323,8 +313,6 @@ section {
 	font-weight: 300;
 	line-height: 56px;
 	margin-right: 40px;
-	display: flex;
-	align-items: center;
 }
 
 .top_bar_contact_item:not(:first-child) {
@@ -1226,6 +1214,7 @@ select option {
 	padding-top: 68px;
 	padding-bottom: 83px;
 	overflow: hidden;
+	z-index: -10;
 }
 
 .banner_background {
@@ -2666,7 +2655,7 @@ select option {
 	margin-top: 9px;
 }
 
-.bestsellers_rating i {
+.bestsellers_rating i::before {
 	font-size: 13px;
 	margin-right: 8px;
 }
@@ -2921,7 +2910,6 @@ select option {
 	text-align: center;
 	cursor: pointer;
 	margin-right: 16px;
-	background-color: #fff;
 }
 
 .trends_nav:last-child {
