@@ -11,14 +11,23 @@
     </div>
     <div class="container fill_height">
         <div class="row fill_height">
-            <div class="banner_product_image"><img src="{{ asset('admin/frontend') }}/images/banner_product.png" alt="">
+            <div class="banner_product_image"><img src="{{ asset('admin/assets/files/products/'.$banner->thumbnail) }}"
+                    alt="">
             </div>
             <div class="col-lg-5 offset-lg-4 fill_height">
                 <div class="banner_content">
-                    <h1 class="banner_text">new era of smartphones</h1>
-                    <div class="banner_price"><span>$530</span>$460</div>
-                    <div class="banner_product_name">Apple Iphone 6s</div>
-                    <div class="button banner_button"><a href="#">Shop Now</a>
+                    <h1 class="banner_text">{{$banner->title}}</h1>
+                    @if ($banner->selling_price)
+                    <div class="banner_price">
+                        <span>${{\Illuminate\Support\Number::format($banner->purchase_price)}}</span>${{\Illuminate\Support\Number::format($banner->selling_price)}}
+                    </div>
+                    @else
+                    <div class="banner_price">
+                        ${{\Illuminate\Support\Number::format($banner->selling_price)}}
+                    </div>
+                    @endif
+                    <div class="banner_product_name">{{$banner->brand->brand_name}}</div>
+                    <div class="button banner_button"><a href="{{$banner->slug}}">Shop Now</a>
                     </div>
                 </div>
             </div>

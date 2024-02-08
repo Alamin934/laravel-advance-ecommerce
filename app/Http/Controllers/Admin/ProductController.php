@@ -58,7 +58,7 @@ class ProductController extends Controller
             $file = $request->file('thumbnail');
             $original_name = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension();
-            $new_file_name = preg_split("/[\s\-\.]+/", $original_name)[0].'-'.date('d-m-Y-H-i-s').'.'.$extension;
+            $new_file_name = preg_split("/[\s\-\.]+/", $request->title)[0].'-'.date('d-m-Y-H-i-s').'.'.$extension;
             $thumbnail = $new_file_name;
 
             $manager = new ImageManager(new Driver());
@@ -73,7 +73,7 @@ class ProductController extends Controller
             $files = $request->file('images');
             $count = 1;
             foreach ($files as $file) {
-                $original_name = preg_split("/[\s\-\.]+/", $file->getClientOriginalName())[0];
+                $original_name = preg_split("/[\s\-\.]+/", $request->title)[0];
                 if($original_name){
                     $original_name = $original_name.$count++;
                     $new_file_name = $original_name.'-'.date('d-m-Y-H-i-s').'.'.$file->extension();
@@ -172,7 +172,7 @@ class ProductController extends Controller
             $file = $request->file('thumbnail');
             $original_name = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension();
-            $new_file_name = preg_split("/[\s\-\.]+/", $original_name)[0].'-'.date('d-m-Y-H-i-s').'.'.$extension;
+            $new_file_name = preg_split("/[\s\-\.]+/", $request->title)[0].'-'.date('d-m-Y-H-i-s').'.'.$extension;
             $thumbnail = $new_file_name;
 
             $manager = new ImageManager(new Driver());
@@ -187,7 +187,7 @@ class ProductController extends Controller
             $files = $request->file('images');
             $count = 1;
             foreach ($files as $file) {
-                $original_name = preg_split("/[\s\-\.]+/", $file->getClientOriginalName())[0];
+                $original_name = preg_split("/[\s\-\.]+/", $request->title)[0];
                 if($original_name){
                     $original_name = $original_name.$count++;
                     $new_file_name = $original_name.'-'.date('d-m-Y-H-i-s').'.'.$file->extension();
