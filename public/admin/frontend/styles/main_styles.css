@@ -1729,8 +1729,8 @@ select option {
 }
 
 .product_color {
-	visibility: hidden;
-	opacity: 0;
+	visibility: visible;
+	opacity: 1;
 	margin-top: 19px;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;

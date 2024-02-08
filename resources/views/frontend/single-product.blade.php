@@ -9,42 +9,39 @@
 <div class="single_product">
     <div class="container">
         <div class="row">
-
-            <!-- Images -->
-            <div class="col-lg-2 order-lg-1 order-2">
-                <ul class="image_list">
-                    <li data-image="{{asset('admin/assets/files/products/'.$product->thumbnail)}}">
-                        <img src="{{asset('admin/assets/files/products/'.$product->thumbnail)}}" alt="">
-                    </li>
-                    @foreach ($product->images as $image)
-                    <li data-image="{{asset('admin/assets/files/products/'.$image)}}">
-                        <img src="{{asset('admin/assets/files/products/'.$image)}}" alt="">
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-
             <!-- Selected Image -->
-            <div class="col-lg-5 order-lg-2 order-1">
+            <div class="col-lg-5 order-lg-1 order-2">
                 <div class="image_selected">
                     <img src="{{asset('admin/assets/files/products/'.$product->thumbnail)}}" alt="">
+                </div>
+                <div>
+                    <!-- Images -->
+                    <ul class="image_list">
+                        <li data-image="{{asset('admin/assets/files/products/'.$product->thumbnail)}}">
+                            <img src="{{asset('admin/assets/files/products/'.$product->thumbnail)}}" alt="">
+                        </li>
+                        @foreach ($product->images as $image)
+                        <li data-image="{{asset('admin/assets/files/products/'.$image)}}">
+                            <img src="{{asset('admin/assets/files/products/'.$image)}}" alt="">
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
 
             <!-- Description -->
-            <div class="col-lg-5 order-3">
+            <div class="col-lg-4 col-6 order-3">
                 <div class="product_description">
                     <div class="product_category">
                         {{$product->category->name}} >
                         {{$product->subCategory->name}} >
                         {{$product->childCategory->name}}
-
                     </div>
                     <div class="product_name">{{$product->title}}</div>
+                    <p class="mb-0"><span class="text-dark">Stock:</span> {{$product->stock_quantity}}</p>
+                    <p><span class="text-dark">Brand:</span> {{$product->brand->brand_name ? $product->brand->brand_name
+                        : 'No Brand'}}</p>
                     <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
-                    <div class="product_text">
-                        {{$product->description}}
-                    </div>
                     <div class="order_info d-flex flex-row">
                         <form action="#">
                             <div class="clearfix" style="z-index: 1000;">
@@ -62,6 +59,7 @@
                                 </div>
 
                                 <!-- Product Color -->
+                                @if ($product->color)
                                 <ul class="product_color">
                                     <li>
                                         <span>Color: </span>
@@ -83,6 +81,7 @@
                                         </ul>
                                     </li>
                                 </ul>
+                                @endif
 
                             </div>
 
@@ -107,7 +106,41 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-3 col-6 order-4 delivery_product" style="border-left: 1px solid #a1a1a1">
+                <div>
+                    <h4 class="fw-semibold">Delivery Details:</h4>
+                    <p>-> (4-5) days after placed order.</p>
+                    <p>-> Cash on Delivery available.</p>
+                </div>
+                <div class="mt-4">
+                    <h4 class="fw-semibold">Return & Warrenty:</h4>
+                    <p>-> 7 days return guarranty.</p>
+                    <p>-> Warrenty not available.</p>
+                </div>
+            </div>
 
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="product_text card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Product Details</h5>
+                    </div>
+                    <div class="card-body">
+                        {!!$product->description!!}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="product_text card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Product Reviews</h5>
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
