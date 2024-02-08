@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FrontEnd\HomeController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::view('/','home')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::view('/shop','frontend.shop')->name('shop');
 
 
