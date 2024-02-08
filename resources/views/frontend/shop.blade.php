@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
-@section('main-content')
-<!-- Main Navigation -->
+@section('main-nav')
 @include('frontend.partials.collapse-main-navigation')
+@endsection
+
+@section('main-content')
 
 <div class="home">
     <div class="home_background parallax-window" data-parallax="scroll"

@@ -40,6 +40,9 @@
             <!-- TopBar & Header Main -->
             @include('frontend.partials.header-topbar')
 
+            {{-- Main Navigation --}}
+            @yield('main-nav')
+
             <!-- Mobile Menu -->
             @include('frontend.partials.mobile-menu')
         </header>

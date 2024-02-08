@@ -55,6 +55,8 @@
                             <th>Category/Sub Category</th>
                             <th>Child Category</th>
                             <th>InStock</th>
+                            <th>Home Banner</th>
+                            <th>Home Slider</th>
                             <th>Featured</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -75,6 +77,22 @@
                                 $product->subCategory->name : ''}}</td>
                             <td>{{$product->child_category_id ? $product->childCategory->name : '' }}</td>
                             <td>{{ $product->stock_quantity }}</td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input data-id="{{$product->id}} {{$product->home_banner}}"
+                                        class="form-check-input home_banner" type="checkbox" role="switch"
+                                        {{$product->home_banner == 'on' ?
+                                    'checked' : ''}} @disabled(true) />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-switch">
+                                    <input data-id="{{$product->id}} {{$product->home_slider}}"
+                                        class="form-check-input home_slider" type="checkbox" role="switch"
+                                        {{$product->home_slider == 'on' ?
+                                    'checked' : ''}} />
+                                </div>
+                            </td>
                             <td>
                                 <div class="form-check form-switch">
                                     <input data-id="{{$product->id}} {{$product->featured}}"

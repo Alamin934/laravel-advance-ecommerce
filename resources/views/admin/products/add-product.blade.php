@@ -155,6 +155,25 @@
                                         <input type="file" class="form-control" name="images[]" multiple />
                                     </div>
                                 </div>
+                                {{-- Home Banner --}}
+                                <div class="col-12 mt-4 card p-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                            name="home_banner">
+                                        <label class="form-check-label fw-semibold mt-1 ms-3" for="home_banner">Home
+                                            Banner</label>
+                                    </div>
+                                    <small class="text-danger">You can set Only one product on Banner</small>
+                                </div>
+                                {{-- Home Slider --}}
+                                <div class="col-12 mt-4 card p-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                            name="home_slider">
+                                        <label class="form-check-label fw-semibold mt-1 ms-3" for="home_slider">Home
+                                            Slider</label>
+                                    </div>
+                                </div>
                                 <div class="col-12 mt-4 card p-3">
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" role="switch" name="featured">

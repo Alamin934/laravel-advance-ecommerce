@@ -30,11 +30,13 @@ return new class extends Migration
             $table->decimal('discount_price', 8, 2)->nullable();
             $table->string('video')->nullable();
             $table->string('stock_quantity');
-            $table->boolean('featured')->nullable();
-            $table->boolean('today_deal')->nullable();
-            $table->boolean('flash_deal_id')->nullable();
-            $table->boolean('cash_on_delivery')->nullable();
-            $table->boolean('status')->nullable();
+            $table->string('home_banner')->nullable();
+            $table->string('home_slider')->nullable();
+            $table->string('featured')->nullable();
+            // $table->string('today_deal')->nullable();
+            // $table->string('flash_deal_id')->nullable();
+            // $table->string('cash_on_delivery')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

@@ -111,6 +111,8 @@ class ProductController extends Controller
             'discount_price' => $request->discount_price,
             'video' => $request->video,
             'stock_quantity' => $request->stock_quantity,
+            'home_banner' => $request->home_banner,
+            'home_slider' => $request->home_slider,
             'featured' => $request->featured,
             'status' => $request->status,
         ]);
@@ -220,6 +222,8 @@ class ProductController extends Controller
             'discount_price' => $request->discount_price,
             'video' => $request->video,
             'stock_quantity' => $request->stock_quantity,
+            'home_banner' => $request->home_banner,
+            'home_slider' => $request->home_slider,
             'featured' => $request->featured,
             'status' => $request->status,
         ]);
