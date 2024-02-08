@@ -110,6 +110,11 @@
                             </td>
                             <td>
                                 <div class="d-flex">
+                                    <a href="{{route('single.product', $product->slug)}}"
+                                        class="btn btn-primary p-2 me-2">
+                                        <i class='bx bx-low-vision'></i>
+                                    </a>
+
                                     <!-- Button trigger Edit Modal -->
                                     <a href="{{route('product.edit', $product->id)}}" class="btn btn-primary p-2 me-2">
                                         <i class="bx bx-edit-alt"></i>

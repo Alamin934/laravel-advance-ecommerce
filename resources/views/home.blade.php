@@ -27,7 +27,7 @@
                     </div>
                     @endif
                     <div class="banner_product_name">{{$banner->brand->brand_name}}</div>
-                    <div class="button banner_button"><a href="{{$banner->slug}}">Shop Now</a>
+                    <div class="button banner_button"><a href="{{route('single.product',$banner->slug)}}">Shop Now</a>
                     </div>
                 </div>
             </div>

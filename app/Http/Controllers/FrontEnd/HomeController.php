@@ -9,9 +9,14 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $categories = Category::with('sub_categories.ChildCategory')->get();
-        $banner = Product::with('brand')->where('home_banner', 'on')->latest()->first();
-        // return $banner_product;
+        $categories = Category::get();
+        $banner = Product::where('home_banner', 'on')->latest()->first();
         return view('home', compact('categories', 'banner'));
+    }
+
+    public function singleProduct(string $slug){
+        $categories = Category::get();
+        $product = Product::where('slug', $slug)->first();
+        return view('frontend.single-product' ,compact('product','categories'));
     }
 }
