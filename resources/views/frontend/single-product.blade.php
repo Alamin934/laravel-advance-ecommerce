@@ -35,11 +35,11 @@
                     <div class="product_category">
                         {{$product->category->name}} >
                         {{$product->subCategory->name}} >
-                        {{$product->childCategory->name}}
+                        {{$product->childCategory ? $product->childCategory->name : ''}}
                     </div>
                     <div class="product_name">{{$product->title}}</div>
                     <p class="mb-0"><span class="text-dark">Stock:</span> {{$product->stock_quantity}}</p>
-                    <p><span class="text-dark">Brand:</span> {{$product->brand->brand_name ? $product->brand->brand_name
+                    <p><span class="text-dark">Brand:</span> {{$product->brand ? $product->brand->brand_name
                         : 'No Brand'}}</p>
                     <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
                     <div class="order_info d-flex flex-row">
@@ -121,7 +121,7 @@
 
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 px-0">
                 <div class="product_text card">
                     <div class="card-header">
                         <h5 class="mb-0">Product Details</h5>
@@ -131,7 +131,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 px-0">
                 <div class="product_text card">
                     <div class="card-header">
                         <h5 class="mb-0">Product Reviews</h5>

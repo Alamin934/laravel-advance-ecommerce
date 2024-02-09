@@ -75,7 +75,11 @@
                             <td>{{ $product->purchase_price }}</td>
                             <td>{{ $product->category->name }}/<br>{{$product->sub_category_id ?
                                 $product->subCategory->name : ''}}</td>
-                            <td>{{$product->child_category_id ? $product->childCategory->name : '' }}</td>
+                            <td>
+                                @if ($product->child_category_id != null)
+                                {{$product->childCategory->name}}
+                                @endif
+                            </td>
                             <td>{{ $product->stock_quantity }}</td>
                             <td>
                                 <div class="form-check form-switch">

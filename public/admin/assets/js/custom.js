@@ -69,15 +69,12 @@ $('[name=tags],[name=unit]').tagify({
     maxItems: 5,
 });
 
-var quill = new Quill('#editor-textarea', {
-    theme: 'snow',
-    placeholder: 'Product Description...',
+
+var editor = new FroalaEditor('#editor-textarea', {
+    heightMin: 400,
+    heightMax: 250
 });
 
-$(document).on('submit', function (delta, oldDelta, source) {
-    // console.log(quill.root.innerHTML)
-    $('#description').val(quill.container.firstChild.innerHTML);
-});
 
 
 // Store and Update with Ajax Custom Method

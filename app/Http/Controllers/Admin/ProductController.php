@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Product;
+use App\Jobs\StoreAndUpdateProduct;
 use App\Models\{Category, SubCategory, ChildCategory, Brand};
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -19,7 +20,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::with(['category','subCategory','childCategory'])->orderByDesc('id')->get();
+        $products = Product::orderByDesc('id')->get();
         return view('admin.products.products', compact('products'));
     }
 
@@ -92,7 +93,7 @@ class ProductController extends Controller
 
         // Store Product in database
         $sub_category = SubCategory::find($request->sub_category);
-        $product = Product::create([
+        $product = [
             'user_id' => auth()->user()->id,
             'category_id' => $sub_category->category_id,
             'sub_category_id' => $request->sub_category,
@@ -115,7 +116,8 @@ class ProductController extends Controller
             'home_slider' => $request->home_slider,
             'featured' => $request->featured,
             'status' => $request->status,
-        ]);
+        ];
+        StoreAndUpdateProduct::dispatch($product);
 
         $notification = ['message'=>'Product Added successfully', 'alert-type'=>'success'];
         return redirect()->back()->with($notification);

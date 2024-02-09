@@ -41,6 +41,10 @@
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/libs/apex-charts/apex-charts.css" />
 
+    <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet'
+        type='text/css' />
+
+
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -136,8 +140,9 @@
 
     <!-- Page JS -->
     <script src="{{ asset('admin') }}/assets/js/dashboards-analytics.js"></script>
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
+    {{-- <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script> --}}
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'>
+    </script>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="{{ asset('admin') }}/assets/js/custom.js"></script>

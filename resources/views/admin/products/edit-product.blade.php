@@ -135,9 +135,9 @@
                             <div class="row">
                                 <div class="col-12">
                                     <label class="form-label">Description <span class="text-danger">*</span></label>
-                                    <div class="form-control rounded-0" id="editor-textarea">{{$product->description}}
-                                    </div>
-                                    <textarea class="d-none" id="description" name="description"></textarea>
+                                    <textarea class="rounded-0" id="editor-textarea" name="description">
+                                        {!!$product->description!!}
+                                    </textarea>
                                 </div>
 
                                 <div class="col-12 mt-5 pt-5">
