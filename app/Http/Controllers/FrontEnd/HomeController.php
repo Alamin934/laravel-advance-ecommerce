@@ -17,6 +17,7 @@ class HomeController extends Controller
     public function singleProduct(string $slug){
         $categories = Category::get();
         $product = Product::where('slug', $slug)->first();
-        return view('frontend.single-product' ,compact('product','categories'));
+        $related_products = Product::where('sub_category_id', $product->sub_category_id)->get();
+        return view('frontend.single-product' ,compact('product','categories','related_products'));
     }
 }
