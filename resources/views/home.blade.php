@@ -5560,9 +5560,5 @@
 @endsection
 
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/responsive.css">
-@endpush
-@push('scripts')
-<script src="{{ asset('admin/frontend') }}/js/custom.js"></script>
+
 @endpush

@@ -24,6 +24,7 @@
 18. Init Recently Viewed Slider
 19. Init Brands Slider
 20. Init Timer
+21. Favorites product add to database
 
 
 ******************************/
@@ -906,4 +907,23 @@ $(document).ready(function () {
 			});
 		}
 	}
+
+	// 21. Favorites product add to database
+	$(document).on('click', '.product_fav', function () {
+		let product_id = $(this).data('id');
+		$.ajax({
+			type: "GET",
+			url: "/add-to-wishlist/" + product_id,
+			success: function (response) {
+				if (response.status == 'success') {
+					$('.wishlist_count').html('');
+					$('.wishlist_count').html(response.wishlist_count);
+					toastr.success(response.message);
+				} else {
+					toastr.error(response.message);
+				}
+			}
+		});
+	});
+
 });

@@ -854,11 +854,6 @@ select option {
 	color: #0e8ce4;
 }
 
-.wishlist_count {
-	margin-top: -2px;
-	color: #a3a3a3;
-	font-size: 14px;
-}
 
 .cart_count,
 .wishlist_count {

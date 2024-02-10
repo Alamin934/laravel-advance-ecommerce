@@ -100,7 +100,7 @@
                             @php
                             $wishlist_count = \App\Models\Wishlist::where('user_id', Auth::id())->count();
                             @endphp
-                            <div class="wishlist_count"><span>{{$wishlist_count}}</span></div>
+                            <div class="wishlist_count"><span class="text-white">{{$wishlist_count}}</span></div>
                         </div>
                         <div class="wishlist_content">
                             <div class="wishlist_text"><a href="{{route('show.wishlist')}}">Wishlist</a></div>
