@@ -58,7 +58,7 @@
                                     @endif
                                     <!-- Price -->
                                     <div class="mt-lg-0 mt-3">
-                                        <a href="{{route('single.product', $wishlist->product->id)}}"
+                                        <a href="{{route('single.product', $wishlist->product->slug)}}"
                                             class="btn btn-primary btn-sm mb-2" title="See the full details of product">
                                             <i class="fas fa-eye"></i>
                                         </a>

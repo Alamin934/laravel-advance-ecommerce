@@ -4,12 +4,14 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FrontEnd\HomeController;
 use Illuminate\Support\Facades\Route;
 
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/','index')->name('home');
+    Route::get('/single-product/{slug}','singleProduct')->name('single.product');
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/single-product/{slug}', [HomeController::class, 'singleProduct'])->name('single.product');
-Route::get('/wishlist', [HomeController::class, 'showWishlist'])->name('show.wishlist');
-Route::get('/add-to-wishlist/{id}', [HomeController::class, 'addToWishlist'])->name('add.wishlist');
-Route::get('/remove-to-wishlist/{id}', [HomeController::class, 'removeToWishlist'])->name('remove.wishlist');
+    Route::get('/wishlist','showWishlist')->name('show.wishlist');
+    Route::get('/add-to-wishlist/{id}','addToWishlist')->name('add.wishlist');
+    Route::get('/remove-to-wishlist/{id}','removeToWishlist')->name('remove.wishlist');
+});
 Route::view('/shop','frontend.shop')->name('shop');
 
 

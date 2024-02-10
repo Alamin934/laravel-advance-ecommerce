@@ -97,13 +97,13 @@
                 <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
                     <div class="wishlist d-flex flex-row align-items-center justify-content-end">
                         <div class="wishlist_icon"><img src="{{ asset('admin/frontend') }}/images/heart.png" alt="">
-                        </div>
-                        <div class="wishlist_content">
-                            <div class="wishlist_text"><a href="{{route('show.wishlist')}}">Wishlist</a></div>
                             @php
                             $wishlist_count = \App\Models\Wishlist::where('user_id', Auth::id())->count();
                             @endphp
-                            <div class="wishlist_count">{{$wishlist_count}}</div>
+                            <div class="wishlist_count"><span>{{$wishlist_count}}</span></div>
+                        </div>
+                        <div class="wishlist_content">
+                            <div class="wishlist_text"><a href="{{route('show.wishlist')}}">Wishlist</a></div>
                         </div>
                     </div>
 

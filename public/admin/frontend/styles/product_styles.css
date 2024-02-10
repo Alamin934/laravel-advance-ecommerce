@@ -860,7 +860,8 @@ select option {
 	font-size: 14px;
 }
 
-.cart_count {
+.cart_count,
+.wishlist_count {
 	position: absolute;
 	bottom: -1px;
 	right: -14px;
@@ -871,7 +872,8 @@ select option {
 	text-align: center;
 }
 
-.cart_count span {
+.cart_count span,
+.wishlist_count span {
 	display: block;
 	line-height: 23px;
 	font-size: 12px;

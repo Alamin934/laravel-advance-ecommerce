@@ -276,22 +276,4 @@
 
 @push('scripts')
 <script src="{{ asset('admin/frontend') }}/js/product_custom.js"></script>
-<script>
-    $(document).on('click','.product_fav', function(){
-        $product_id = $(this).data('id');
-        $.ajax({
-            type: "GET",
-            url: "/add-to-wishlist/"+$product_id,
-            success: function (response) {
-                if(response.status == 'success'){
-                    $('.wishlist_count').html('');
-                    $('.wishlist_count').html(response.wishlist_count);
-                    toastr.success(response.message);
-                }else{
-                    toastr.error(response.message);
-                }
-            }
-        });
-    });
-</script>
 @endpush
