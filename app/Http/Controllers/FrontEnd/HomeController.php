@@ -11,13 +11,13 @@ class HomeController extends Controller
 {
     public function index(){
         $banner = Product::where('home_banner', 'on')->latest()->first();
-        return view('home', compact('categories', 'banner'));
+        return view('home', compact('banner'));
     }
 
     public function singleProduct(string $slug){
         $product = Product::where('slug', $slug)->first();
         $related_products = Product::where('sub_category_id', $product->sub_category_id)->get();
-        return view('frontend.single-product' ,compact('product','categories','related_products'));
+        return view('frontend.single-product' ,compact('product','related_products'));
     }
 
     public function addToWishlist($id) {
@@ -41,6 +41,7 @@ class HomeController extends Controller
     public function removeToWishlist($id) {
         $wishlist_product = Wishlist::find($id);
         $wishlist_product->delete();
-        return response()->json(['status'=>'success']);
+        $wishlist_count = Wishlist::where('user_id', Auth::id())->count();
+        return response()->json(['status'=>'success','wishlist_count'=>$wishlist_count]);
     }
 }

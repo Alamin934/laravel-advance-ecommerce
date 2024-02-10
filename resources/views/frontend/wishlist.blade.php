@@ -11,9 +11,11 @@
             <div class="col-md-10">
                 <div class="card mb-4">
                     <div class="card-header py-3">
-                        <h5 class="mb-0">Wishlist - {{count($wishlist_product)}} items</h5>
+                        <h5 class="mb-0">Wishlist - <span class="wishlist_count">{{count($wishlist_product)}}</span>
+                            items</h5>
                     </div>
                     <div class="card-body table">
+                        @if (count($wishlist_product)>0)
                         @foreach ($wishlist_product as $wishlist)
                         <!-- Single item -->
                         <div class="row">
@@ -76,6 +78,9 @@
                         <!-- Single item -->
                         <hr class="my-4" />
                         @endforeach
+                        @else
+                        <h3 class="text-center">Wishlist is Empty</h3>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -91,5 +96,37 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/shop_responsive.css">
 @endpush
 @push('scripts')
+<script>
+    function ajaxDeleteWithToastr(method, url, data, toastrMsg) {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    type: method,
+                    url: url,
+                    data: data,
+                    success: function (response) {
+                        if (response.status == 'success') {
+                            $('.wishlist_count').html('');
+                            $('.wishlist_count').html(response.wishlist_count);
+                            $('.table').load(location.href + ' .table');
+                            toastr.success(toastrMsg);
+                        }
+                    }
+                });
+            }
+        });
+    }
 
+    $(document).on('click', '.delete', function(){
+        let wishlist_id = $(this).data('id');
+        ajaxDeleteWithToastr("GET", "/remove-to-wishlist/"+wishlist_id, null, 'Product has been remove from Wishlist.');
+    })
+</script>
 @endpush
