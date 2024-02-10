@@ -10,13 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index(){
-        $categories = Category::get();
         $banner = Product::where('home_banner', 'on')->latest()->first();
         return view('home', compact('categories', 'banner'));
     }
 
     public function singleProduct(string $slug){
-        $categories = Category::get();
         $product = Product::where('slug', $slug)->first();
         $related_products = Product::where('sub_category_id', $product->sub_category_id)->get();
         return view('frontend.single-product' ,compact('product','categories','related_products'));
@@ -34,5 +32,15 @@ class HomeController extends Controller
             $wishlist_count = Wishlist::where('user_id', Auth::id())->count();
             return response()->json(['status'=>'success', 'message'=>'Product Added to Wishlist.', 'wishlist_count'=>$wishlist_count]);
         }
+    }
+    public function showWishlist() {
+        $wishlist_product = Wishlist::where('user_id', Auth::id())->get();
+        // return $wishlist_product;
+        return view('frontend.wishlist', compact('wishlist_product'));
+    }
+    public function removeToWishlist($id) {
+        $wishlist_product = Wishlist::find($id);
+        $wishlist_product->delete();
+        return response()->json(['status'=>'success']);
     }
 }

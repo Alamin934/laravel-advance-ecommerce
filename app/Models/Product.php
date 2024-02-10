@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\{Category,SubCategory,ChildCategory,Brand};
+use App\Models\{Category,SubCategory,ChildCategory,Brand,Wishlist};
 
 class Product extends Model
 {
@@ -16,6 +16,10 @@ class Product extends Model
         'images' => 'array'
     ];
 
+    
+    public function wishlist(){
+        return $this->hasMany(Wishlist::class);
+    }
     
     public function brand(){
         return $this->belongsTo(Brand::class);

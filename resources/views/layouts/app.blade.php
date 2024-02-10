@@ -73,6 +73,7 @@
     <script src="{{ asset('admin/frontend') }}/plugins/slick-1.8.0/slick.js"></script>
     <script src="{{ asset('admin/frontend') }}/plugins/easing/easing.js"></script>
     <script src="{{ asset('admin') }}/assets/js/toastr.min.js"></script>
+    <script src="{{ asset('admin') }}/assets/js/sweetalert.min.js"></script>
 
     @stack('scripts')
 

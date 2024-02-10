@@ -99,7 +99,7 @@
                         <div class="wishlist_icon"><img src="{{ asset('admin/frontend') }}/images/heart.png" alt="">
                         </div>
                         <div class="wishlist_content">
-                            <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                            <div class="wishlist_text"><a href="{{route('show.wishlist')}}">Wishlist</a></div>
                             @php
                             $wishlist_count = \App\Models\Wishlist::where('user_id', Auth::id())->count();
                             @endphp
