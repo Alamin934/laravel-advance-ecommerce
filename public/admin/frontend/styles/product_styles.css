@@ -1644,8 +1644,8 @@ select option {
 
 .product_fav {
 	display: inline-block;
-	width: 36px;
-	height: 36px;
+	width: 45px;
+	height: 45px;
 	background: #FFFFFF;
 	box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
 	border-radius: 50%;
@@ -1664,7 +1664,7 @@ select option {
 }
 
 .product_fav i {
-	line-height: 36px;
+	line-height: 48px;
 	color: #cccccc;
 }
 

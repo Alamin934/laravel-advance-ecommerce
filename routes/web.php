@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/single-product/{slug}', [HomeController::class, 'singleProduct'])->name('single.product');
+Route::get('/add-to-wishlist/{id}', [HomeController::class, 'addToWishlist'])->name('add.wishlist');
 Route::view('/shop','frontend.shop')->name('shop');
 
 

@@ -20,11 +20,13 @@
                         <li data-image="{{asset('admin/assets/files/products/'.$product->thumbnail)}}">
                             <img src="{{asset('admin/assets/files/products/'.$product->thumbnail)}}" alt="">
                         </li>
+                        @if ($product->images)
                         @foreach ($product->images as $image)
                         <li data-image="{{asset('admin/assets/files/products/'.$image)}}">
                             <img src="{{asset('admin/assets/files/products/'.$image)}}" alt="">
                         </li>
                         @endforeach
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -94,12 +96,15 @@
                             </div>
                             @else
                             <div class="product_price">
-                                ${{\Illuminate\Support\Number::format($product->selling_price)}}
+                                ${{\Illuminate\Support\Number::format($product->purchase_price)}}
                             </div>
                             @endif
                             <div class="button_container">
                                 <button type="button" class="button cart_button">Add to Cart</button>
-                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                @auth
+                                <div class="product_fav" data-id="{{$product->id}}" title="Add to Wishlist"><i
+                                        class="fas fa-heart"></i></div>
+                                @endauth
                             </div>
 
                         </form>
@@ -183,10 +188,12 @@
                                     </div>
                                     @else
                                     <div class="viewed_price">
-                                        ${{\Illuminate\Support\Number::format($product->selling_price)}}
+                                        ${{\Illuminate\Support\Number::format($product->purchase_price)}}
                                     </div>
                                     @endif
-                                    <div class="viewed_name"><a href="#">{{$related_product->title}}</a></div>
+                                    <div class="viewed_name"><a
+                                            href="{{route('single.product', $related_product->slug)}}">{{$related_product->title}}</a>
+                                    </div>
                                 </div>
                                 {{-- <ul class="item_marks">
                                     <li class="item_mark item_discount">-25%</li>
@@ -269,4 +276,22 @@
 
 @push('scripts')
 <script src="{{ asset('admin/frontend') }}/js/product_custom.js"></script>
+<script>
+    $(document).on('click','.product_fav', function(){
+        $product_id = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            url: "/add-to-wishlist/"+$product_id,
+            success: function (response) {
+                if(response.status == 'success'){
+                    $('.wishlist_count').html('');
+                    $('.wishlist_count').html(response.wishlist_count);
+                    toastr.success(response.message);
+                }else{
+                    toastr.error(response.message);
+                }
+            }
+        });
+    });
+</script>
 @endpush
