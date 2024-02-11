@@ -36,8 +36,8 @@
                 <div class="product_description">
                     <div class="product_category">
                         {{$product->category->name}} >
-                        {{$product->subCategory->name}} >
-                        {{$product->childCategory ? $product->childCategory->name : ''}}
+                        {{$product->subCategory ? $product->subCategory->name.' >' : ''}}
+                        {{$product->childCategory->name ?? ''}}
                     </div>
                     <div class="product_name">{{$product->title}}</div>
                     <p class="mb-0"><span class="text-dark">Stock:</span> {{$product->stock_quantity}}</p>
@@ -179,20 +179,20 @@
                                         alt="">
                                 </div>
                                 <div class="viewed_content text-center">
-                                    @if ($product->selling_price)
+                                    @if ($related_product->selling_price)
                                     <div>
                                         <strike
-                                            class="d-inline-block">${{\Illuminate\Support\Number::format($product->purchase_price)}}</strike>
+                                            class="d-inline-block">${{\Illuminate\Support\Number::format($related_product->purchase_price)}}</strike>
                                         <span
-                                            class="viewed_price">${{\Illuminate\Support\Number::format($product->selling_price)}}</span>
+                                            class="viewed_price">${{\Illuminate\Support\Number::format($related_product->selling_price)}}</span>
                                     </div>
                                     @else
                                     <div class="viewed_price">
-                                        ${{\Illuminate\Support\Number::format($product->purchase_price)}}
+                                        ${{\Illuminate\Support\Number::format($related_product->purchase_price)}}
                                     </div>
                                     @endif
                                     <div class="viewed_name"><a
-                                            href="{{route('single.product', $related_product->slug)}}">{{$related_product->title}}</a>
+                                            href="{{route('single.product', $related_product->slug)}}">{{\Illuminate\Support\Str::words($related_product->title,4)}}</a>
                                     </div>
                                 </div>
                                 {{-- <ul class="item_marks">

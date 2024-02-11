@@ -52,7 +52,8 @@
                             <th>Name</th>
                             <th>Code</th>
                             <th>Price</th>
-                            <th>Category/Sub Category</th>
+                            <th>Category</th>
+                            <th>Sub Category</th>
                             <th>Child Category</th>
                             <th>InStock</th>
                             <th>Home Banner</th>
@@ -72,14 +73,10 @@
                                 {{Illuminate\Support\Str::words($product->title, 5, '...')}}
                             </td>
                             <td>{{ $product->code }}</td>
-                            <td>{{ $product->purchase_price }}</td>
-                            <td>{{ $product->category->name }}/<br>{{$product->sub_category_id ?
-                                $product->subCategory->name : ''}}</td>
-                            <td>
-                                @if ($product->child_category_id != null)
-                                {{$product->childCategory->name}}
-                                @endif
-                            </td>
+                            <td>{{ $product->selling_price ?? $product->purchase_price }}</td>
+                            <td>{{ $product->category->name }}</td>
+                            <td>{{$product->subCategory->name ?? ''}}</td>
+                            <td>{{$product->childCategory->name ?? ''}}</td>
                             <td>{{ $product->stock_quantity }}</td>
                             <td>
                                 <div class="form-check form-switch">

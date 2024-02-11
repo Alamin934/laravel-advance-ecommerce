@@ -38,7 +38,10 @@
                                 <p>Brand: {{ $wishlist->product->brand ? $wishlist->product->brand->brand_name : 'No
                                     Brand' }}</p>
                                 <p>Category:
-                                    {{$wishlist->product->category->name.' > '.$wishlist->product->subCategory->name}}
+                                    {{$wishlist->product->category->name.' >
+                                    '}}{{$wishlist->product->subCategory->name
+                                    ?? ''}}
+                                    {{$wishlist->product->childCategory->name ?? ''}}
                                 </p>
                                 <!-- Data -->
                             </div>
@@ -53,7 +56,7 @@
                                     </div>
                                     @else
                                     <div class="text-start">
-                                        ${{\Illuminate\Support\Number::format($wishlist->product->selling_price)}}
+                                        ${{\Illuminate\Support\Number::format($wishlist->product->purchase_price)}}
                                     </div>
                                     @endif
                                     <!-- Price -->

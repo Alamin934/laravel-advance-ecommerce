@@ -200,40 +200,43 @@
 @endsection
 @push('scripts')
 <script>
-    $(document).ready(function () {
-
+    // display sub category when category is selected
+    dependedSelect("select[name='category']", '/dependedSubCategory/', "select[name='sub_category']", ".sub_category");
+    // display child category when sub category is selected
+    dependedSelect("select[name='sub_category']", '/dependedChildCategory/', "select[name='child_category']", ".child_category");
+    // $(document).ready(function () {
         // Depended ChildCategory on SubCategory
-        $("select[name='category']").on("change", function () {
-            let id = $(this).val();
-            let subCatSelect = "select[name='sub_category']";
-            if (id) {
-                $.ajax({
-                    type: "GET",
-                    url: '/dependedSubCategory/' + id,
-                    dataType: "json",
-                    success: function (data) {
-                        if (data != '') {
-                            $(subCatSelect).empty();
-                            $("select[name='child_category']").empty();
-                            $('.child_category').fadeOut();
+        // $("select[name='category']").on("change", function () {
+        //     let id = $(this).val();
+        //     let subCatSelect = "select[name='sub_category']";
+        //     if (id) {
+        //         $.ajax({
+        //             type: "GET",
+        //             url: '/dependedSubCategory/' + id,
+        //             dataType: "json",
+        //             success: function (data) {
+        //                 if (data != '') {
+        //                     $(subCatSelect).empty();
+        //                     $("select[name='child_category']").empty();
+        //                     $('.child_category').fadeOut();
 
-                            $(subCatSelect).append('<option value=""> Select...</option >');
-                            $('.sub_category').fadeIn();
-                            $.each(data, function (index, value) {
-                                $(subCatSelect).append(`<option value='${index}'>${value}</option>`);
-                            });
-                        } else {
-                            $(subCatSelect).empty();
-                            $('.sub_category').fadeOut();
-                        }
-                    }
-                });
-            } else {
-                $(subCatSelect).empty();
-                $('.sub_category').fadeOut();
-            }
-        });
-    });
+        //                     $(subCatSelect).append('<option value=""> Select...</option >');
+        //                     $('.sub_category').fadeIn();
+        //                     $.each(data, function (index, value) {
+        //                         $(subCatSelect).append(`<option value='${index}'>${value}</option>`);
+        //                     });
+        //                 } else {
+        //                     $(subCatSelect).empty();
+        //                     $('.sub_category').fadeOut();
+        //                 }
+        //             }
+        //         });
+        //     } else {
+        //         $(subCatSelect).empty();
+        //         $('.sub_category').fadeOut();
+        //     }
+        // });
+    // });
 
 </script>
 @endpush

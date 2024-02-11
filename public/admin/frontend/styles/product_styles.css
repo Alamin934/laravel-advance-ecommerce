@@ -1640,6 +1640,8 @@ select option {
 }
 
 .product_fav {
+	position: relative !important;
+	top: 15px;
 	display: inline-block;
 	width: 45px;
 	height: 45px;

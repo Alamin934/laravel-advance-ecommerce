@@ -44,8 +44,7 @@ class ProductController extends Controller
         $validated = $request->validate([
             'title' => 'required|unique:products|max:255',
             'code' => 'required|unique:products',
-            'sub_category' => 'required',
-            'sub_category' => 'required',
+            'category' => 'required',
             'purchase_price' => 'required|numeric',
             'stock_quantity' => 'required|numeric',
             'description' => 'required',
@@ -92,10 +91,9 @@ class ProductController extends Controller
         }
 
         // Store Product in database
-        $sub_category = SubCategory::find($request->sub_category);
         $product = [
             'user_id' => auth()->user()->id,
-            'category_id' => $sub_category->category_id,
+            'category_id' => $request->category,
             'sub_category_id' => $request->sub_category,
             'child_category_id' => $request->child_category,
             'brand_id' => $request->brand,
@@ -152,7 +150,7 @@ class ProductController extends Controller
         $validated = $request->validate([
             'title' => 'required|max:255',Rule::unique('products')->ignore($id),
             'code' => 'required',Rule::unique('products')->ignore($id),
-            'sub_category' => 'required',
+            'category' => 'required',
             'purchase_price' => 'required|numeric',
             'stock_quantity' => 'required|numeric',
             'description' => 'required',
@@ -208,7 +206,7 @@ class ProductController extends Controller
         $sub_category = SubCategory::find($request->sub_category);
         $product = Product::where('id', $id)->update([
             'user_id' => auth()->user()->id,
-            'category_id' => $sub_category->category_id,
+            'category_id' => $request->category,
             'sub_category_id' => $request->sub_category,
             'child_category_id' => $request->child_category,
             'brand_id' => $request->brand,
@@ -292,22 +290,24 @@ class ProductController extends Controller
     public function filterProduct(Request $request){
         $products = "";
         if($request->cat_id != 'all'){
-            $products = Product::with(['category','subCategory','childCategory'])->where('category_id', $request->cat_id)->get();
+            $products = Product::where('category_id', $request->cat_id)->get();
         }
         if($request->brand_id != 'all'){
-            $products = Product::with(['category','subCategory','childCategory'])->where('brand_id', $request->brand_id)->get();
+            $products = Product::where('brand_id', $request->brand_id)->get();
         }
         if($request->status != 'all'){
-            $products = Product::with(['category','subCategory','childCategory'])->where('status', $request->status)->get();
+            $products = Product::where('status', $request->status)->get();
         }
         if($request->cat_id == 'all' && $request->brand_id == 'all' && $request->status == 'all'){
-            $products = Product::with(['category','subCategory','childCategory'])->get();
+            $products = Product::get();
         }
         $pd = '';
         $id = 1;
         foreach ($products as $product) {
             if($product->sub_category_id){$sub_category = $product->subCategory->name;}else{$sub_category = "";}
             if($product->child_category_id){$child_category = $product->childCategory->name;}else{$child_category = "";}
+            if($product->home_banner == "on"){$home_banner = "checked";}else{$home_banner = "";}
+            if($product->home_slider == "on"){$home_slider = "checked";}else{$home_slider = "";}
             if($product->status == "on"){$status = "checked";}else{$status = "";}
             if($product->featured == "on"){$featured = "checked";}else{$featured = "";}
             $pd .= '<tr>';
@@ -315,13 +315,24 @@ class ProductController extends Controller
             $pd .=  '<td><img src="/admin/assets/files/products/'.$product->thumbnail.'" alt="" class="me-3" style="height:40px;width:auto">'.\Illuminate\Support\Str::words($product->title, 5, "...").'</td>';
             $pd .=  '<td>'.$product->code.'</td>';
             $pd .= '<td>'.$product->purchase_price.'</td>';
-            $pd .=  '<td>
-                        <span>'.$product->category->name.'</span>
-                        /<br>
-                        <span>'.$sub_category.'</span>
-                    </td>';
+            $pd .=  '<td>'.$product->category->name.'</td>';
+            $pd .= '<td>'.$sub_category ?? "".'</td>';
             $pd .= '<td>'.$child_category.'</td>';
             $pd .= '<td>'. $product->stock_quantity .'</td>';
+            $pd .= '<td>
+                        <div class="form-check form-switch">
+                            <input data-id="'.$product->id.' '.$product->home_banner.'"
+                                class="form-check-input home_banner" type="checkbox" role="switch"
+                                '.$home_banner.' />
+                        </div>
+                    </td>';
+            $pd .= '<td>
+                        <div class="form-check form-switch">
+                            <input data-id="'.$product->id.' '.$product->home_slider.'"
+                                class="form-check-input home_slider" type="checkbox" role="switch"
+                                '.$home_slider.' />
+                        </div>
+                    </td>';
             $pd .= '<td>
                         <div class="form-check form-switch">
                             <input data-id="'.$product->id.' '.$product->featured.'"
