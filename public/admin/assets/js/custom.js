@@ -27,30 +27,37 @@ $(document).ready(function () {
 
 
     // Add Product Page
-    // Depended ChildCategory on SubCategory
-    $("select[name='sub_category']").on("change", function () {
-        let subCatId = $("select[name='sub_category'] .subCatOpt:selected").val();
-        if (subCatId) {
-            $.ajax({
-                type: "GET",
-                url: '/dependedChildCategory/' + subCatId,
-                dataType: "json",
-                success: function (data) {
-                    if (data != '') {
-                        $("select[name='child_category']").empty();
-                        $.each(data, function (index, value) {
-                            $("select[name='child_category']").append(`<option value='${index}'>${value}</option>`);
-                        });
-                    } else {
-                        $("select[name='child_category']").empty();
+    // Depended Select Option
+    function dependedSelect(onChangeSelect, url, displaySelect, columnClass) {
+        $(onChangeSelect).on("change", function () {
+            let id = $(onChangeSelect + ' option:selected').val();
+            if (id) {
+                $.ajax({
+                    type: "GET",
+                    url: url + id,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data != '') {
+                            $(displaySelect).empty();
+                            $(displaySelect).append('<option value=""> Select...</option >');
+                            $(columnClass).fadeIn();
+                            $.each(data, function (index, value) {
+                                $(displaySelect).append(`<option value='${index}'>${value}</option>`);
+                            });
+                        } else {
+                            $(displaySelect).empty();
+                            $(columnClass).fadeOut();
+                        }
                     }
-                }
-            });
-        } else {
-            $("select[name='child_category']").empty();
-        }
-    });
-
+                });
+            } else {
+                $(displaySelect).empty();
+                $(columnClass).fadeOut();
+            }
+        });
+    }
+    // dependedSelect("select[name='category']", '/dependedSubCategory/', "select[name='sub_category']", ".sub_category");
+    dependedSelect("select[name='sub_category']", '/dependedChildCategory/', "select[name='child_category']", ".child_category");
     // Image Drag and Drop
     $('.dropify').dropify({
         messages: {

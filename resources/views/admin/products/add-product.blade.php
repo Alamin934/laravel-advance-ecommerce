@@ -57,33 +57,34 @@
                                 </div>
                                 {{-- Categories & Brand --}}
                                 <div class="row">
-                                    {{-- Category/SubCategory --}}
+                                    {{-- Category --}}
                                     <div class="col mb-3">
-                                        <label class="form-label">Category/SubCategory <span
-                                                class="text-danger">*</span></label>
-
-                                        <select type="text" name="sub_category" class="form-select">
+                                        <label class="form-label">Category<span class="text-danger">*</span></label>
+                                        <select type="text" name="category" class="form-select">
                                             <option disabled selected>Select...</option>
                                             @foreach ($categories as $category)
-                                            <option class="fw-bold" disabled value="{{$category->id}}">
+                                            <option class="catOpt" value="{{$category->id}}">
                                                 {{$category->name}}</option>
-
-                                            @foreach ($category->sub_categories as $subCategory)
-                                            @if ($subCategory->category_id == $category->id)
-
-                                            <option class="subCatOpt" value="{{$subCategory->id}}">---
-                                                {{$subCategory->name}}</option>
-                                            @endif
-                                            @endforeach
-
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="col mb-3 sub_category" style="display: none">
+                                        <label class="form-label">SubCategory</label>
+                                        <select type="text" name="sub_category" class="form-select">
+                                            {{-- <option disabled selected>Select...</option> --}}
+                                            {{-- @foreach ($categories as $category)
+                                            @foreach ($category->sub_categories as $subCategory)
+                                            <option class="subCatOpt" value="{{$subCategory->id}}">
+                                                {{$subCategory->name}}</option>
+                                            @endforeach
+                                            @endforeach --}}
+                                        </select>
+                                    </div>
                                     {{-- ChildCategory --}}
-                                    <div class="col mb-3">
+                                    <div class="col mb-3 child_category" style="display: none">
                                         <label class="form-label">ChildCategory</label>
                                         <select type="text" name="child_category" class="form-select">
-                                            <option disabled selected>Select...</option>
+                                            {{-- <option disabled selected>Select...</option> --}}
                                             {{--@foreach ($childCategories as $childCategory)
                                             <option value="{{$childCategory->id}}">{{$childCategory->name}}</option>
                                             @endforeach--}}
@@ -202,54 +203,36 @@
     $(document).ready(function () {
 
         // Depended ChildCategory on SubCategory
-        $("select[name='sub_category']").on("change", function() {
-            let subCatId = $("select[name='sub_category'] .subCatOpt:selected").val();
-            if(subCatId){
+        $("select[name='category']").on("change", function () {
+            let id = $(this).val();
+            let subCatSelect = "select[name='sub_category']";
+            if (id) {
                 $.ajax({
                     type: "GET",
-                    url: '/dependedChildCategory/'+subCatId,
+                    url: '/dependedSubCategory/' + id,
                     dataType: "json",
                     success: function (data) {
-                        if(data != ''){
+                        if (data != '') {
+                            $(subCatSelect).empty();
                             $("select[name='child_category']").empty();
+                            $('.child_category').fadeOut();
+
+                            $(subCatSelect).append('<option value=""> Select...</option >');
+                            $('.sub_category').fadeIn();
                             $.each(data, function (index, value) {
-                                $("select[name='child_category']").append(`<option value='${index}'>${value}</option>`);
+                                $(subCatSelect).append(`<option value='${index}'>${value}</option>`);
                             });
-                        }else{
-                            $("select[name='child_category']").empty();
+                        } else {
+                            $(subCatSelect).empty();
+                            $('.sub_category').fadeOut();
                         }
                     }
                 });
-            }else{
-                $("select[name='child_category']").empty();
+            } else {
+                $(subCatSelect).empty();
+                $('.sub_category').fadeOut();
             }
         });
-
-
-        $('.dropify').dropify({
-            messages: {
-            'default': 'Drag and drop a file here or click',
-            'replace': 'Drag and drop or click to replace',
-            'remove': 'Remove',
-            'error': 'Ooops, something wrong happended.'
-            }
-        });
-
-    });
-
-    $('[name=tags],[name=unit]').tagify({
-        duplicates :false,
-        maxItems : 5,
-    });
-
-    var quill = new Quill('#editor-textarea', {
-        theme: 'snow',
-        placeholder: 'Product Description...',
-    });
-
-    quill.on('text-change', function(delta, oldDelta, source) {
-    // console.log(quill.container.firstChild.innerHTML)
-    $('#description').val(quill.container.firstChild.innerHTML);
     });
 
 </script>

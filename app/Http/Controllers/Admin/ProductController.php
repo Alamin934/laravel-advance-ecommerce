@@ -30,7 +30,7 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
-        $categories = Category::with(['sub_categories','child_categories'])->get();
+        $categories = Category::get();
         $brands = Brand::get();
         return view('admin.products.add-product', compact('categories','brands'));
     }
@@ -252,13 +252,18 @@ class ProductController extends Controller
     }
 
     
+    public function dependedSubCategory($id){
+        $subCategories = SubCategory::where('category_id', $id)->pluck('name', 'id');
+        if(!empty($subCategories)){
+            return response()->json($subCategories);
+        }
+    }
+
+    
     public function dependedChildCategory($id){
         $childCategories = ChildCategory::where('sub_category_id', $id)->pluck('name', 'id');
         if(!empty($childCategories)){
-            return json_encode($childCategories);
-        }else{
-            return json_encode('');
-
+            return response()->json($childCategories);
         }
     }
 

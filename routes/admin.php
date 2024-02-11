@@ -21,6 +21,7 @@ Route::middleware(['is_admin.auth','is_admin'])->group(function () {
     Route::resource('admin/brand', BrandsController::class);
 
     Route::resource('admin/product', ProductController::class);
+    Route::get('/dependedSubCategory/{id}', [ProductController::class, 'dependedSubCategory']);
     Route::get('/dependedChildCategory/{id}', [ProductController::class, 'dependedChildCategory']);
     Route::post('/admin/product/changeFeatured/{status}', [ProductController::class, 'changeFeatured']);
     Route::post('/admin/product/changeStatus/{status}', [ProductController::class, 'changeStatus']);
