@@ -49,7 +49,7 @@ class BrandsController extends Controller
             // resize & save to file
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
-            $image->resize(240, 120);
+            $image->contain(150, 70);
             $image->toPng()->save('admin/assets/files/brands/'.$new_file_name);
 
             // insert into database
@@ -105,10 +105,12 @@ class BrandsController extends Controller
 
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
-            $image->resize(240, 120);
+            $image->contain(150, 70);
             $image->toPng()->save('admin/assets/files/brands/'.$new_file_name);
 
-            unlink(public_path('admin/assets/files/brands/'.$request->old_brand_logo));
+            if($request->hasFile('brand_logo') && !empty($request->old_brand_logo)){
+                unlink(public_path('admin/assets/files/brands/'.$request->old_brand_logo));
+            }
 
             $brand = Brand::where('id', $id)->update([
                 'brand_name' => $request->brand_name,

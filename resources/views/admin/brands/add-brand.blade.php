@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="card-footer pt-0">
-                <button type="submit" class="btn btn-primary">Add Child Category</button>
+                <button type="submit" class="btn btn-primary">Add Brand</button>
             </div>
         </form>
     </div>

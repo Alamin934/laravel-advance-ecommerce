@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Product,Category,Wishlist};
+use App\Models\{Product,Category,Wishlist,Brand};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,8 +16,9 @@ class HomeController extends Controller
         $categories = Category::inRandomOrder()->get();
         $new_arrivals = Category::where('is_home', 1)->get();
         $recent_views = Product::where('status', 'on')->where('product_views', '>','0')->orderByDesc('updated_at')->take(16)->get();
+        $brands = Brand::get();
 
-        return view('home', compact('banner', 'featureds', 'most_populars','categories','new_arrivals','recent_views'));
+        return view('home', compact('banner', 'featureds', 'most_populars','categories','new_arrivals','recent_views','brands'));
     }
 
     public function singleProduct(string $slug){

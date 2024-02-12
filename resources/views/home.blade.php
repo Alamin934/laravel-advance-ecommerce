@@ -2268,39 +2268,17 @@
                     <!-- Brands Slider -->
 
                     <div class="owl-carousel owl-theme brands_slider">
+                        @foreach ($brands as $brand)
+                        <div class="owl-item">
+                            <div class="brands_item d-flex flex-column justify-content-center">
+                                <a href="" title="{{$brand->brand_name}}">
+                                    <img style="width:120px"
+                                        src="{{ asset('admin/assets/files/brands/'.$brand->brand_logo) }}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        @endforeach
 
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_1.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_2.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_3.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_4.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_5.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_6.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_7.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_8.jpg" alt=""></div>
-                        </div>
 
                     </div>
 
