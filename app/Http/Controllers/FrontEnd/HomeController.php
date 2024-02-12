@@ -15,8 +15,9 @@ class HomeController extends Controller
         $most_populars = Product::where('status', 'on')->where('product_views','>', '2')->orderByDesc('product_views')->take(16)->get();
         $categories = Category::inRandomOrder()->get();
         $new_arrivals = Category::where('is_home', 1)->get();
+        $recent_views = Product::where('status', 'on')->where('product_views', '>','0')->orderByDesc('updated_at')->take(16)->get();
 
-        return view('home', compact('banner', 'featureds', 'most_populars','categories','new_arrivals'));
+        return view('home', compact('banner', 'featureds', 'most_populars','categories','new_arrivals','recent_views'));
     }
 
     public function singleProduct(string $slug){
