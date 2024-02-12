@@ -17,19 +17,30 @@
             <div class="table-responsive text-nowrap">
                 <table class="table">
                     <thead>
-                        <tr>
+                        <tr align="center">
                             <th>SL</th>
                             <th>Name</th>
                             <th>Slug</th>
+                            <th>Icon</th>
+                            <th>Show On Home</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
                         @foreach ($categories as $category)
-                        <tr>
+                        <tr align="center">
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->slug }}</td>
+                            <td>
+                                @if ($category->icon != null)
+                                <img src="{{asset('admin/assets/files/category/'.$category->icon)}}"
+                                    alt="{{ $category->slug }}">
+                                @endif
+                            </td>
+                            <td>{!! $category->home_page == 1 ? '<span class="btn btn-success btn-sm">Yes</span>'
+                                :
+                                '<span class="btn btn-info btn-sm">No</span>' !!}</td>
                             <td>
                                 <div>
                                     <!-- Button trigger Edit Modal -->
@@ -63,22 +74,39 @@
                         <h5 class="modal-title" id="exampleModalLabel1">Add Category</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ route('category.store') }}" method="POST">
+                    <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col mb-3">
-                                    <label for="category_name" class="form-label">Category Name</label>
-                                    <input type="text" name="category_name" id="category_name" class="form-control"
+                                <div class="col-12 mb-3">
+                                    <label for="name" class="form-label">Category Name</label>
+                                    <input type="text" name="name" id="name" class="form-control"
                                         placeholder="Enter Category Name" />
-                                    @error('category_name')
+                                    @error('name')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="icon" class="form-label">Icon</label>
+                                    <input type="file" name="icon" id="icon" class="dropify" />
+                                    @error('icon')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="home_page" class="form-label">Show On Home Page</label>
+                                    <select name="home_page" id="home_page" class="form-select">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                    @error('home_page')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                 Close
                             </button>
                             <button type="submit" class="btn btn-primary">Add</button>
@@ -99,11 +127,11 @@
                         <h5 class="modal-title" id="exampleModalLabel1">Edit Category</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{route('update.category')}}" method="POST">
+                    <form action="{{route('update.category')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col mb-3">
+                                <div class="col-12 mb-3">
                                     <label for="" class="form-label">Category Name</label>
                                     <input type="hidden" id="edit_cat_id" name="edit_cat_id" />
 
@@ -113,10 +141,28 @@
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
+                                <div class="col-12 mb-3">
+                                    <label for="icon" class="form-label">Icon</label>
+                                    <input type="file" name="edit_icon" id="edit_icon" class="dropify" />
+                                    <input type="hidden" name="old_icon" id="old_icon" value="" />
+                                    @error('edit_icon')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="home_page" class="form-label">Show On Home Page</label>
+                                    <select name="edit_home_page" id="edit_home_page" class="form-select">
+                                        <option class="yes" value="1">Yes</option>
+                                        <option class="no" value="0">No</option>
+                                    </select>
+                                    @error('edit_home_page')
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                 Close
                             </button>
                             <button type="submit" id="cat_update" class="btn btn-primary">Update</button>
@@ -142,6 +188,14 @@
                     success: function (data) {
                         $('#edit_cat_id').val(data.id);
                         $('#edit_cat_name').val(data.name);
+                        $('#old_icon').val(data.icon);
+                        if(data.home_page == 1){
+                            $('#edit_home_page option.yes').attr('selected', true);
+                            $('#edit_home_page option.no').attr('selected', false);
+                        }else{
+                            $('#edit_home_page option.yes').attr('selected', false);
+                            $('#edit_home_page option.no').attr('selected', true);
+                        }
                     }
                 });
             });

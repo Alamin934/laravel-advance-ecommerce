@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Category;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -32,12 +35,27 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'category_name' => 'required',
+            'name' => 'required|unique:categories',
+            'icon' => 'required|image',
+            'home_page' => 'required|numeric',
         ]);
 
+        $icon = '';
+        if($request->file('icon')){
+            $file = $request->file('icon');
+            $new_file_name = preg_split("/[\s\-\.]+/",  Str::lower($request->name))[0].'-'.date('d-m-Y-H-i-s').'.'.$file->extension();
+            $icon = $new_file_name;
+
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($file);
+            $image->contain(32, 32);
+            $image->toPng()->save('admin/assets/files/category/'.$new_file_name);
+        }
         $category = Category::create([
-            'name' => $request->category_name,
-            'slug' => Str::slug($request->category_name, '-'),
+            'name' => $request->name,
+            'slug' => Str::slug($request->name, '-'),
+            'icon' => $icon,
+            'home_page' => $request->home_page,
         ]);
         $notification = ['message'=>'Category Added successfully', 'alert-type'=>'success'];
         return redirect()->back()->with($notification);
@@ -57,8 +75,7 @@ class CategoryController extends Controller
     public function edit(string $id)
     {
         $category = Category::find($id);
-        return $category;
-        // return view('admin.category', ['edit_cat' => $category]);
+        return response()->json($category);
     }
     /**
      * Update the specified resource in storage.
@@ -66,11 +83,34 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         $validated = $request->validate([
-            'edit_cat_name' => 'required',
+            'edit_cat_name' => 'required',Rule::unique('categories')->ignore($request->edit_cat_id),
+            'edit_icon' => 'required|image',
+            'edit_home_page' => 'required|numeric',
         ]);
+
+        if($request->old_icon != null){
+            unlink(public_path('admin/assets/files/category/'.$request->old_icon));
+        }
+
+        $icon = '';
+        if($request->file('edit_icon')){
+            $file = $request->file('edit_icon');
+            $new_file_name = preg_split("/[\s\-\.]+/",  Str::lower($request->edit_cat_name))[0].'-'.date('d-m-Y-H-i-s').'.'.$file->extension();
+            $icon = $new_file_name;
+
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($file);
+            $image->contain(32, 32);
+            $image->toPng()->save('admin/assets/files/category/'.$new_file_name);
+        }
+
         $category = Category::where('id', $request->edit_cat_id)->update([
             'name' => $request->edit_cat_name,
+            'slug' => Str::slug($request->edit_cat_name, '-'),
+            'icon' => $icon,
+            'home_page' => $request->edit_home_page,
         ]);
+
         $notification = ['message'=>'Category Updated successfully', 'alert-type'=>'success'];
         return redirect()->back()->with($notification);
     }
@@ -82,6 +122,9 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->delete();
+
+        unlink(public_path('admin/assets/files/category/'.$category->icon));
+
 
         $notification = ['message'=>'Category deleted successfully', 'alert-type'=>'success'];
         return redirect()->back()->with($notification);

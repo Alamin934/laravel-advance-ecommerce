@@ -10,7 +10,6 @@ use App\Jobs\StoreAndUpdateProduct;
 use App\Models\{Category, SubCategory, ChildCategory, Brand};
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Validation\Rule;
 
 class ProductController extends Controller

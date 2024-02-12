@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->string('icon')->nullable();
+            $table->integer('home_page')->default(0);
             $table->timestamps();
         });
     }
