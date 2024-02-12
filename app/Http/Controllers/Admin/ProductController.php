@@ -20,7 +20,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::orderByDesc('id')->get();
+        $products = Product::orderByDesc('id')->paginate(8);
         return view('admin.products.products', compact('products'));
     }
 
@@ -136,10 +136,11 @@ class ProductController extends Controller
     public function edit(string $id)
     {
         $product = Product::find($id);
-        $categories = Category::with(['sub_categories'])->get();
-        $brands = Brand::get();
+        $categories = Category::get();
+        $subCategories = SubCategory::get();
         $childCategories = ChildCategory::get();
-        return view('admin.products.edit-product', compact('product','categories','childCategories','brands'));
+        $brands = Brand::get();
+        return view('admin.products.edit-product', compact('product','categories','subCategories','childCategories','brands'));
     }
 
     /**
@@ -290,23 +291,23 @@ class ProductController extends Controller
     public function filterProduct(Request $request){
         $products = "";
         if($request->cat_id != 'all'){
-            $products = Product::where('category_id', $request->cat_id)->get();
+            $products = Product::where('category_id', $request->cat_id)->orderByDesc('id')->get();
         }
         if($request->brand_id != 'all'){
-            $products = Product::where('brand_id', $request->brand_id)->get();
+            $products = Product::where('brand_id', $request->brand_id)->orderByDesc('id')->get();
         }
         if($request->status != 'all'){
-            $products = Product::where('status', $request->status)->get();
+            $products = Product::where('status', $request->status)->orderByDesc('id')->get();
         }
         if($request->cat_id == 'all' && $request->brand_id == 'all' && $request->status == 'all'){
-            $products = Product::get();
+            $products = Product::orderByDesc('id')->get();
         }
         $pd = '';
         $id = 1;
         foreach ($products as $product) {
             if($product->sub_category_id){$sub_category = $product->subCategory->name;}else{$sub_category = "";}
             if($product->child_category_id){$child_category = $product->childCategory->name;}else{$child_category = "";}
-            if($product->home_banner == "on"){$home_banner = "checked";}else{$home_banner = "";}
+            if($product->home_banner == "on"){$home_banner = "checked";}else{$home_banner = "disabled";}
             if($product->home_slider == "on"){$home_slider = "checked";}else{$home_slider = "";}
             if($product->status == "on"){$status = "checked";}else{$status = "";}
             if($product->featured == "on"){$featured = "checked";}else{$featured = "";}
@@ -348,6 +349,10 @@ class ProductController extends Controller
                     </td>';
             $pd .=  '<td>
                         <div class="d-flex">
+                            <a href="'.route('single.product', $product->slug).'" class="btn btn-info p-2 me-2">
+                                <i class="bx bx-low-vision"></i>
+                            </a>
+
                             <a href="'.route('product.edit', $product->id).'" class="btn btn-primary p-2 me-2">
                                 <i class="bx bx-edit-alt"></i>
                             </a>

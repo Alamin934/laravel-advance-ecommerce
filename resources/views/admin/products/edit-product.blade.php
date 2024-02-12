@@ -54,9 +54,9 @@
                                     <input type="text" value="{{$product->tags}}" name="tags" class="form-control" />
                                 </div>
                             </div>
-                            {{-- Categories & Brand --}}
+                            {{-- Categories & Brand
                             <div class="row">
-                                {{-- Category/SubCategory --}}
+                                Category/SubCategory
                                 <div class="col mb-3">
                                     <label class="form-label">Category/SubCategory <span
                                             class="text-danger">*</span></label>
@@ -79,7 +79,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                {{-- ChildCategory --}}
+                                ChildCategory
                                 <div class="col mb-3">
                                     <label class="form-label">ChildCategory</label>
                                     <select type="text" name="child_category" class="form-select">
@@ -93,6 +93,51 @@
                                         @endif
                                     </select>
                                 </div>
+
+                            </div> --}}
+                            {{-- Categories & Brand --}}
+                            <div class="row">
+                                {{-- Category --}}
+                                <div class="col mb-3">
+                                    <label class="form-label">Category<span class="text-danger">*</span></label>
+                                    <select type="text" name="category" class="form-select">
+                                        <option disabled selected>Select...</option>
+                                        @foreach ($categories as $category)
+                                        <option {{$category->id == $product->category_id ? 'selected' : ''}}
+                                            value="{{$category->id}}">
+                                            {{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="col mb-3 sub_category">
+                                    <label class="form-label">SubCategory</label>
+                                    <select type="text" name="sub_category" class="form-select">
+                                        <option disabled selected>Select...</option>
+                                        @foreach ($subCategories as $subCategory)
+                                        @if ($subCategory->category_id == $product->category_id)
+                                        <option {{$subCategory->id == $product->sub_category_id ? 'selected' : ''}}
+                                            value="{{$subCategory->id}}">{{ $subCategory->name}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                {{-- ChildCategory --}}
+                                {{-- @if ($product->child_category_id) --}}
+                                <div class="col mb-3 child_category">
+                                    <label class="form-label">ChildCategory</label>
+                                    <select type="text" name="child_category" class="form-select">
+                                        <option disabled selected>Select...</option>
+                                        @foreach ($childCategories as $childCategory)
+                                        @if ($childCategory->sub_category_id == $product->sub_category_id)
+                                        <option {{$childCategory->id == $product->child_category_id ? 'selected' : ''}}
+                                            value="{{$childCategory->id}}">{{$childCategory->name}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                {{-- @endif --}}
                                 {{-- Brands --}}
                                 <div class="col mb-3">
                                     <label class="form-label">Brands</label>
@@ -153,16 +198,22 @@
                                 <label class="form-label">Product Thumbnail</label>
                                 <input type="file" name="thumbnail" class="dropify" />
                                 <input type="hidden" name="old_thumbnail" value="{{$product->thumbnail}}" />
-                                {{-- <img style="height:200px; width:auto!important;"
-                                    src="{{asset('admin/assets/files/products/'.$product->thumbnail)}}" alt="" /> --}}
+                                <div>
+                                    <p class="mb-0 mt-3 text-danger">Current Thumbnail</p>
+                                    <img style="width:200px; height:auto!important;"
+                                        src="{{asset('admin/assets/files/products/'.$product->thumbnail)}}" alt="" />
+                                </div>
 
                                 {{-- Product Gallery --}}
                                 <div class="mt-3">
                                     <label class="form-label">Product Gallery</label>
                                     <input type="file" class="form-control" name="images[]" multiple />
                                     @if ($product->images)
+                                    <p class="mb-0 mt-3 text-danger">Current Gallery Images</p>
                                     @foreach ($product->images as $image)
                                     <input type="hidden" name="old_images[]" value="{{$image}}" />
+                                    <img style="width:150px; height:auto!important;"
+                                        src="{{asset('admin/assets/files/products/'.$image)}}" alt="" />
                                     @endforeach
                                     @endif
                                 </div>
@@ -214,5 +265,10 @@
 @endsection
 @push('scripts')
 <script>
+    // display sub category when category is selected
+    dependedSelect("select[name='category']", '/dependedSubCategory/', "select[name='sub_category']", ".sub_category");
+    // display child category when sub category is selected
+    dependedSelect("select[name='sub_category']", '/dependedChildCategory/', "select[name='child_category']",
+    ".child_category");
 </script>
 @endpush

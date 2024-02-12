@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('category_id')->constrained();
-            $table->foreignId('sub_category_id')->constrained();
-            $table->integer('child_category_id')->nullable();
+            $table->foreignId('sub_category_id')->constrained()->nullable();
+            $table->foreignId('child_category_id')->constrained()->nullable();
             $table->foreignId('brand_id')->constrained()->nullable();
             $table->string('title');
             $table->longText('description');

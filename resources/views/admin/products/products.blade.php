@@ -53,11 +53,11 @@
                             <th>Code</th>
                             <th>Price</th>
                             <th>Category</th>
-                            <th>Sub Category</th>
-                            <th>Child Category</th>
+                            <th>Sub Cat</th>
+                            <th>Child Cat</th>
                             <th>InStock</th>
-                            <th>Home Banner</th>
-                            <th>Home Slider</th>
+                            <th>Banner</th>
+                            <th>Slider</th>
                             <th>Featured</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -70,7 +70,7 @@
                             <td>
                                 <img src="{{asset('admin/assets/files/products/'.$product->thumbnail)}}" alt=""
                                     class="me-3" style="height:40px;width:auto">
-                                {{Illuminate\Support\Str::words($product->title, 5, '...')}}
+                                {{Illuminate\Support\Str::words($product->title, 4, '')}}
                             </td>
                             <td>{{ $product->code }}</td>
                             <td>{{ $product->selling_price ?? $product->purchase_price }}</td>
@@ -83,7 +83,7 @@
                                     <input data-id="{{$product->id}} {{$product->home_banner}}"
                                         class="form-check-input home_banner" type="checkbox" role="switch"
                                         {{$product->home_banner == 'on' ?
-                                    'checked' : ''}} @disabled(true) />
+                                    'checked' : 'disabled'}} />
                                 </div>
                             </td>
                             <td>
@@ -111,8 +111,7 @@
                             </td>
                             <td>
                                 <div class="d-flex">
-                                    <a href="{{route('single.product', $product->slug)}}"
-                                        class="btn btn-primary p-2 me-2">
+                                    <a href="{{route('single.product', $product->slug)}}" class="btn btn-info p-2 me-2">
                                         <i class='bx bx-low-vision'></i>
                                     </a>
 
@@ -133,7 +132,7 @@
                 </table>
             </div>
             <div class="px-5 mt-4">
-                {{-- {{ $products->links() }} --}}
+                {{ $products->links() }}
             </div>
         </div>
         <!--/ Basic Bootstrap Table -->
