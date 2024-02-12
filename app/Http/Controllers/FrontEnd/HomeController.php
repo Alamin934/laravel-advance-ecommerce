@@ -11,7 +11,8 @@ class HomeController extends Controller
 {
     public function index(){
         $banner = Product::where('home_banner', 'on')->latest()->first();
-        return view('home', compact('banner'));
+        $featureds = Product::where('featured', 'on')->where('status', 'on')->orderByDesc('id')->take(16)->get();
+        return view('home', compact('banner', 'featureds'));
     }
 
     public function singleProduct(string $slug){

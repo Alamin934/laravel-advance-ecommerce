@@ -1679,7 +1679,8 @@ select option {
 .product_image img {
 	display: block;
 	position: relative;
-	max-width: 100%;
+	max-width: 85%;
+	margin: 0px auto;
 }
 
 .product_content {
