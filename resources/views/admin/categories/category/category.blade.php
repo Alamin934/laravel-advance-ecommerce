@@ -38,7 +38,7 @@
                                     alt="{{ $category->slug }}">
                                 @endif
                             </td>
-                            <td>{!! $category->home_page == 1 ? '<span class="btn btn-success btn-sm">Yes</span>'
+                            <td>{!! $category->is_home == 1 ? '<span class="btn btn-success btn-sm">Yes</span>'
                                 :
                                 '<span class="btn btn-info btn-sm">No</span>' !!}</td>
                             <td>
@@ -94,12 +94,12 @@
                                     @enderror
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <label for="home_page" class="form-label">Show On Home Page</label>
-                                    <select name="home_page" id="home_page" class="form-select">
+                                    <label for="is_home" class="form-label">Show On Home Page</label>
+                                    <select name="is_home" id="is_home" class="form-select">
                                         <option value="1">Yes</option>
                                         <option value="0">No</option>
                                     </select>
-                                    @error('home_page')
+                                    @error('is_home')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
@@ -150,12 +150,12 @@
                                     @enderror
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <label for="home_page" class="form-label">Show On Home Page</label>
-                                    <select name="edit_home_page" id="edit_home_page" class="form-select">
+                                    <label for="is_home" class="form-label">Show On Home Page</label>
+                                    <select name="edit_is_home" id="edit_is_home" class="form-select">
                                         <option class="yes" value="1">Yes</option>
                                         <option class="no" value="0">No</option>
                                     </select>
-                                    @error('edit_home_page')
+                                    @error('edit_is_home')
                                     <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
@@ -189,12 +189,12 @@
                         $('#edit_cat_id').val(data.id);
                         $('#edit_cat_name').val(data.name);
                         $('#old_icon').val(data.icon);
-                        if(data.home_page == 1){
-                            $('#edit_home_page option.yes').attr('selected', true);
-                            $('#edit_home_page option.no').attr('selected', false);
+                        if(data.is_home == 1){
+                            $('#edit_is_home option.yes').attr('selected', true);
+                            $('#edit_is_home option.no').attr('selected', false);
                         }else{
-                            $('#edit_home_page option.yes').attr('selected', false);
-                            $('#edit_home_page option.no').attr('selected', true);
+                            $('#edit_is_home option.yes').attr('selected', false);
+                            $('#edit_is_home option.no').attr('selected', true);
                         }
                     }
                 });

@@ -37,7 +37,7 @@ class CategoryController extends Controller
         $validated = $request->validate([
             'name' => 'required|unique:categories',
             'icon' => 'required|image',
-            'home_page' => 'required|numeric',
+            'is_home' => 'required|numeric',
         ]);
 
         $icon = '';
@@ -48,14 +48,14 @@ class CategoryController extends Controller
 
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
-            $image->contain(32, 32);
+            $image->contain(64, 64);
             $image->toPng()->save('admin/assets/files/category/'.$new_file_name);
         }
         $category = Category::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name, '-'),
             'icon' => $icon,
-            'home_page' => $request->home_page,
+            'is_home' => $request->is_home,
         ]);
         $notification = ['message'=>'Category Added successfully', 'alert-type'=>'success'];
         return redirect()->back()->with($notification);
@@ -84,11 +84,10 @@ class CategoryController extends Controller
     {
         $validated = $request->validate([
             'edit_cat_name' => 'required',Rule::unique('categories')->ignore($request->edit_cat_id),
-            'edit_icon' => 'required|image',
-            'edit_home_page' => 'required|numeric',
+            'edit_is_home' => 'required|numeric',
         ]);
 
-        if($request->old_icon != null){
+        if($request->hasfile('edit_icon') && !empty($request->old_icon)){
             unlink(public_path('admin/assets/files/category/'.$request->old_icon));
         }
 
@@ -100,15 +99,15 @@ class CategoryController extends Controller
 
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
-            $image->contain(32, 32);
+            $image->contain(64, 64);
             $image->toPng()->save('admin/assets/files/category/'.$new_file_name);
         }
 
         $category = Category::where('id', $request->edit_cat_id)->update([
             'name' => $request->edit_cat_name,
             'slug' => Str::slug($request->edit_cat_name, '-'),
-            'icon' => $icon,
-            'home_page' => $request->edit_home_page,
+            'icon' => $icon!='' ? $icon : $request->old_icon,
+            'is_home' => $request->edit_is_home,
         ]);
 
         $notification = ['message'=>'Category Updated successfully', 'alert-type'=>'success'];

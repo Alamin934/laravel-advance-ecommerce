@@ -13,7 +13,10 @@ class HomeController extends Controller
         $banner = Product::where('home_banner', 'on')->latest()->first();
         $featureds = Product::where('featured', 'on')->where('status', 'on')->orderByDesc('id')->take(16)->get();
         $most_populars = Product::where('status', 'on')->where('product_views','>', '2')->orderByDesc('product_views')->take(16)->get();
-        return view('home', compact('banner', 'featureds', 'most_populars'));
+        $categories = Category::inRandomOrder()->get();
+        $new_arrivals = Category::where('is_home', 1)->get();
+
+        return view('home', compact('banner', 'featureds', 'most_populars','categories','new_arrivals'));
     }
 
     public function singleProduct(string $slug){
