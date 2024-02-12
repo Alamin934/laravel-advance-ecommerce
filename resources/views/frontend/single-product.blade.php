@@ -129,7 +129,8 @@
             <div class="col-12 px-0">
                 <div class="product_text card">
                     <div class="card-header">
-                        <h5 class="mb-0">Product Details</h5>
+                        <h5 class="mb-0">Product Details of
+                            {{$product->title}}</h5>
                     </div>
                     <div class="card-body">
                         {!!$product->description!!}

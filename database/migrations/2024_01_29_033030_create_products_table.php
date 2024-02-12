@@ -30,6 +30,7 @@ return new class extends Migration
             $table->decimal('discount_price', 8, 2)->nullable();
             $table->string('video')->nullable();
             $table->string('stock_quantity');
+            $table->integer('product_views')->default(0);
             $table->string('home_banner')->nullable();
             $table->string('home_slider')->nullable();
             $table->string('featured')->nullable();

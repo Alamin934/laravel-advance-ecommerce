@@ -12,11 +12,13 @@ class HomeController extends Controller
     public function index(){
         $banner = Product::where('home_banner', 'on')->latest()->first();
         $featureds = Product::where('featured', 'on')->where('status', 'on')->orderByDesc('id')->take(16)->get();
-        return view('home', compact('banner', 'featureds'));
+        $most_populars = Product::where('status', 'on')->where('product_views','>', '2')->orderByDesc('product_views')->take(16)->get();
+        return view('home', compact('banner', 'featureds', 'most_populars'));
     }
 
     public function singleProduct(string $slug){
         $product = Product::where('slug', $slug)->first();
+        Product::where('slug', $slug)->increment('product_views');
         $related_products = Product::where('sub_category_id', $product->sub_category_id)->get();
         return view('frontend.single-product' ,compact('product','related_products'));
     }

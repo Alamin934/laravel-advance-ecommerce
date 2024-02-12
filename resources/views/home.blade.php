@@ -262,13 +262,12 @@
                         <div class="tabs">
                             <ul class="clearfix">
                                 <li class="active">Featured</li>
-                                {{-- <li>On Sale</li>
-                                <li>Best Rated</li> --}}
+                                <li>Most Popolar</li>
                             </ul>
                             <div class="tabs_line"><span></span></div>
                         </div>
 
-                        <!-- Product Panel -->
+                        <!-- Featured Product Panel -->
                         <div class="product_panel panel active">
                             <div class="featured_slider slider">
                                 <!-- Slider Item -->
@@ -326,44 +325,66 @@
                             <div class="featured_slider_dots_cover"></div>
                         </div>
 
-                        <!-- Product Panel -->
-                        {{-- <div class="product_panel panel">
+                        <!-- Most Popular Product Panel -->
+                        <div class="product_panel panel">
                             <div class="featured_slider slider">
                                 <!-- Slider Item -->
+                                @foreach ($most_populars as $most_popular)
                                 <div class="featured_slider_item">
                                     <div class="border_active"></div>
                                     <div
                                         class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
                                         <div
                                             class="product_image d-flex flex-column align-items-center justify-content-center">
-                                            <img src="{{ asset('admin/frontend') }}/images/featured_1.png" alt="">
+                                            <a href="{{route('single.product', $most_popular->slug)}}">
+                                                <img src="{{ asset('admin/assets/files/products/'.$most_popular->thumbnail) }}"
+                                                    alt="">
+                                            </a>
                                         </div>
                                         <div class="product_content">
-                                            <div class="product_price discount">$225<span>$300</span></div>
+                                            <div class="product_price discount">
+                                                @if ($most_popular->selling_price)
+                                                ${{\Illuminate\Support\Number::format($most_popular->selling_price)}}
+                                                <span>${{\Illuminate\Support\Number::format($most_popular->purchase_price)}}</span>
+                                                @else
+                                                ${{\Illuminate\Support\Number::format($most_popular->purchase_price)}}
+                                                @endif
+                                            </div>
                                             <div class="product_name">
-                                                <div><a href="{{ asset('admin/frontend') }}/product.html">Huawei
-                                                        MediaPad...</a></div>
+                                                <div><a href="{{route('single.product', $most_popular->slug)}}">{{\Illuminate\Support\Str::words($most_popular->title,
+                                                        2) }}</a></div>
                                             </div>
                                             <div class="product_extras">
+                                                @if ($most_popular->color)
                                                 <div class="product_color">
                                                     <input type="radio" checked name="product_color"
                                                         style="background:#b19c83">
                                                     <input type="radio" name="product_color" style="background:#000000">
                                                     <input type="radio" name="product_color" style="background:#999999">
                                                 </div>
+                                                @endif
                                                 <button class="product_cart_button">Add to Cart</button>
                                             </div>
                                         </div>
-                                        <div class="product_fav"><i class="fas fa-heart"></i></div>
-                                        <ul class="product_marks">
+                                        @auth
+                                        <div class="product_fav" data-id="{{$most_popular->id}}"
+                                            title="Add to Wishlist">
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        @endauth
+                                        {{-- <ul class="product_marks">
                                             <li class="product_mark product_discount">-25%</li>
                                             <li class="product_mark product_new">new</li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
+                                @endforeach
+
                             </div>
                             <div class="featured_slider_dots_cover"></div>
-                        </div> --}}
+                        </div>
+
+
                     </div>
                 </div>
 
