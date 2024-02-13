@@ -923,8 +923,8 @@ $(document).ready(function () {
 			url: "/add-to-wishlist/" + product_id,
 			success: function (response) {
 				if (response.status == 'success') {
-					$('.wishlist_count').html('');
-					$('.wishlist_count').html(response.wishlist_count);
+					$('.wishlist_count span').html('');
+					$('.wishlist_count span').html(response.wishlist_count);
 					toastr.success(response.message);
 				} else {
 					toastr.error(response.message);
@@ -944,7 +944,11 @@ $(document).ready(function () {
 			url: "/add-to-cart",
 			data: { 'id': id, 'qty': qty },
 			success: function (response) {
+				console.log(response);
 				if (response.status == 'success') {
+					$(".cart_count span, .cart_price span").html('');
+					$(".cart_count span").html(response.total_item);
+					$(".cart_price span").html(response.total_price);
 					$("#add_to_cart").trigger('reset');
 					toastr.success("Product added to cart");
 				}

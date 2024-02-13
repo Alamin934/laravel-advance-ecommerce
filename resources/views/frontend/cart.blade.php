@@ -15,12 +15,14 @@
                             items</h5>
                     </div>
                     <div class="table-responsive text-nowrap">
-                        <table class="table">
+                        <table class="table cart_table">
                             <thead>
                                 <tr align="center">
                                     <th>SL</th>
                                     <th style="text-align: start">Title</th>
                                     <th>Quantity</th>
+                                    <th>Size</th>
+                                    <th>Color</th>
                                     <th>Price</th>
                                     <th>Total Price</th>
                                     <th>Actions</th>
@@ -46,7 +48,20 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{$product->qty}}</td>
+                                    <td>
+                                        <input type="number" class="cart_update form-control text-center"
+                                            value="{{$product->qty}}" name="qty">
+                                    </td>
+                                    <td>
+                                        <select class="cart_update" name="size">
+                                            <option value="">Select Size</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select class="cart_update" name="color">
+                                            <option value="">Select Color</option>
+                                        </select>
+                                    </td>
                                     <td>{{Illuminate\Support\Number::format($product->price)}}</td>
                                     <td class="font-weight-bold">
                                         {{Illuminate\Support\Number::format($product->qty*$product->price)}}</td>
@@ -55,8 +70,8 @@
                                             class="btn btn-primary btn-sm mb-2" title="See the full details of product">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="javascript:void(0)" data-id=""
-                                            class="btn btn-danger btn-sm me-1 mb-2 text-white delete"
+                                        <a href="javascript:void(0)" data-id="{{$product->rowId}}"
+                                            class="btn btn-danger btn-sm me-1 mb-2 text-white delete_cart_item"
                                             title="Remove from product">
                                             <i class="fas fa-trash"></i>
                                         </a>
@@ -79,7 +94,7 @@
                 <div class="card">
                     <h5 class="card-header">Total Amount</h5>
                     <div class="card-body">
-                        <table class="table">
+                        <table class="table total_amount">
                             <tr>
                                 <th class="border-top-0">Tax: </th>
                                 <td class="border-top-0">{{Cart::tax()}}</td>
@@ -113,4 +128,40 @@
 @push('style')
 <link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/shop_styles.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/shop_responsive.css">
+@endpush
+@push('scripts')
+<script>
+    $(document).ready(function () {
+            $(document).on('click','.delete_cart_item', function (e) {
+                e.preventDefault();
+                let rowId = $(this).data('id');
+                swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: "GET",
+                            url: "/remove-from-cart/"+rowId,
+                            success: function (response) {
+                                if (response.status == 'success') {
+                                    $('.cart_table').load(location.href + ' .cart_table');
+                                    $('.total_amount').load(location.href + ' .total_amount');
+
+                                    $(".cart_count span, .cart_price span").html('');
+                                    $(".cart_count span").html(response.total_item);
+                                    $(".cart_price span").html(response.total_price);
+                                    toastr.success("Product remove from cart successfully");
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        });
+</script>
 @endpush

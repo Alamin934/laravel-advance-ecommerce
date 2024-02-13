@@ -28,7 +28,6 @@ class CartController extends Controller
             'qty' => $request->qty ?? 1,
             'price' => $product->selling_price ?? $product->purchase_price,
             'weight' => 1,
-            'taxRate' => 0,
             'options' => [
                 'size' => '',
                 'color' => '',
@@ -38,7 +37,15 @@ class CartController extends Controller
                 'slug' => $product->slug,
             ]
         ]);
+        $total_item = Cart::count();
+        $total_price = Cart::total();
 
-        return response()->json(['status'=>'success']);
+        return response()->json(['status'=>'success', 'total_item'=>$total_item, 'total_price'=>$total_price]);
+    }
+    public function removeFromCart(string $rowId){
+        Cart::remove($rowId);
+        $total_item = Cart::count();
+        $total_price = Cart::total();
+        return response()->json(['status'=>'success','total_item'=>$total_item, 'total_price'=>$total_price]);
     }
 }
