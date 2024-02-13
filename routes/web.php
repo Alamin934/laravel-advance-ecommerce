@@ -15,6 +15,7 @@ Route::controller(HomeController::class)->group(function () {
 
 Route::controller(CartController::class)->group(function () {
     Route::post('/add-to-cart','addToCart')->name('add.cart');
+    Route::get('/cart','displayCart')->name('display.cart');
 });
 Route::view('/shop','frontend.shop')->name('shop');
 

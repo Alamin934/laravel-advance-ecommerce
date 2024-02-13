@@ -10,15 +10,22 @@ use Cart;
 
 class CartController extends Controller
 {
+    public function displayCart() {
+        $cart = Cart::content();
+        return view('frontend.cart', compact('cart'));
+    }
+
     public function addToCart(Request $request){
         $product = Product::find($request->id);
+        // Cart::destroy();
         Cart::add([
             'id' => $request->id,
             'name' => $product->title,
             'qty' => $request->qty ?? 1,
             'price' => $product->selling_price ?? $product->purchase_price,
             'weight' => 1,
-            'options' => ['size' => '', 'color' => '']
+            'taxRate' => 0,
+            'options' => ['size' => '', 'color' => '','thumbnail' => $product->thumbnail,]
         ]);
 
         return response()->json(['status'=>'success']);

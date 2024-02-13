@@ -279,25 +279,4 @@
 
 @push('scripts')
 <script src="{{ asset('admin/frontend') }}/js/product_custom.js"></script>
-<script>
-    $(document).ready(function () {
-        $(document).on('click','.cart_button', function () {
-            let id = $('.cart_button').data('id');
-            let qty = $('#quantity_input').val();
-
-            $.ajax({
-                type: "POST",
-                url: "{{route('add.cart')}}",
-                data: {'id':id, 'qty':qty},
-                success: function (response) {
-                    if(response.status == 'success'){
-                        $("#add_to_cart").trigger('reset');
-                        toastr.success("Product added to cart");
-                        // cart();
-                    }
-                }
-            });
-        });
-    });
-</script>
 @endpush

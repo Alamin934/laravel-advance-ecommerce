@@ -933,4 +933,24 @@ $(document).ready(function () {
 		});
 	});
 
+	// add to cart
+	$(document).on('click', '.cart_button', function (e) {
+		e.preventDefault();
+		let id = $(this).data('id');
+		let qty = $('#quantity_input').val();
+
+		$.ajax({
+			type: "POST",
+			url: "add-to-cart",
+			data: { 'id': id, 'qty': qty },
+			success: function (response) {
+				if (response.status == 'success') {
+					$("#add_to_cart").trigger('reset');
+					toastr.success("Product added to cart");
+				}
+			}
+		});
+	});
+
+
 });

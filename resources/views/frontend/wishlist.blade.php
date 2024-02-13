@@ -37,6 +37,7 @@
                                 <p><strong>{{ $wishlist->product->title }}</strong></p>
                                 <p>Brand: {{ $wishlist->product->brand ? $wishlist->product->brand->brand_name : 'No
                                     Brand' }}</p>
+
                                 <p>Category:
                                     {{$wishlist->product->category->name.' >
                                     '}}{{$wishlist->product->subCategory->name
@@ -65,7 +66,8 @@
                                             class="btn btn-primary btn-sm mb-2" title="See the full details of product">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="" class="btn btn-info btn-sm mb-2 text-white"
+                                        <a href="" data-id="{{ $wishlist->product->id }}"
+                                            class="btn btn-info btn-sm mb-2 text-white cart_button"
                                             title="Added to the cart">
                                             <i class="fas fa-shopping-cart"></i>
                                         </a>
