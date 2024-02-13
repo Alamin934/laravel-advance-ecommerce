@@ -25,7 +25,14 @@ class CartController extends Controller
             'price' => $product->selling_price ?? $product->purchase_price,
             'weight' => 1,
             'taxRate' => 0,
-            'options' => ['size' => '', 'color' => '','thumbnail' => $product->thumbnail,]
+            'options' => [
+                'size' => '',
+                'color' => '',
+                'thumbnail' => $product->thumbnail,
+                'category' => $product->category->name,
+                'brand' => !empty($product->brand_id) ? $product->brand->brand_name : 'No Brand',
+                'slug' => $product->slug,
+            ]
         ]);
 
         return response()->json(['status'=>'success']);

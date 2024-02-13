@@ -32,12 +32,18 @@
                                 <tr align="center">
                                     <td>{{$loop->iteration}}</td>
                                     <td align="start">
-                                        <div>
+                                        <div class="d-flex">
                                             <img src="{{asset('admin/assets/files/products/'.$product->options->thumbnail)}}"
-                                                alt="" class="me-3" style="height:40px;width:auto">
-                                            <span class="font-weight-bold">
-                                                {{Illuminate\Support\Str::words($product->name, 4, '')}}
-                                            </span>
+                                                alt="" class="mr-3" style="height:40px;width:auto">
+                                            <div>
+                                                <span class="font-weight-bold">
+                                                    {{Illuminate\Support\Str::words($product->name, 4, '')}}
+                                                </span>
+                                                <br>
+                                                <span>Brand: {{ $product->options->brand }}</span>
+                                                <br>
+                                                <span>Category: {{ $product->options->category }}</span>
+                                            </div>
                                         </div>
                                     </td>
                                     <td>{{$product->qty}}</td>
@@ -45,10 +51,10 @@
                                     <td class="font-weight-bold">
                                         {{Illuminate\Support\Number::format($product->qty*$product->price)}}</td>
                                     <td>
-                                        {{-- <a href="{{route('single.product', $product->options->slug)}}"
+                                        <a href="{{route('single.product', $product->options->slug)}}"
                                             class="btn btn-primary btn-sm mb-2" title="See the full details of product">
                                             <i class="fas fa-eye"></i>
-                                        </a> --}}
+                                        </a>
                                         <a href="javascript:void(0)" data-id=""
                                             class="btn btn-danger btn-sm me-1 mb-2 text-white delete"
                                             title="Remove from product">
@@ -58,7 +64,11 @@
                                 </tr>
                                 @endforeach
                                 @else
-                                <h3 class="text-center">product is Empty</h3>
+                                <tr align="center">
+                                    <td colspan="6">
+                                        <h3>Cart is Empty</h3>
+                                    </td>
+                                </tr>
                                 @endif
                             </tbody>
                         </table>

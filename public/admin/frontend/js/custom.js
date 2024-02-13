@@ -940,8 +940,8 @@ $(document).ready(function () {
 		let qty = $('#quantity_input').val();
 
 		$.ajax({
-			type: "POST",
-			url: "add-to-cart",
+			type: "GET",
+			url: "/add-to-cart",
 			data: { 'id': id, 'qty': qty },
 			success: function (response) {
 				if (response.status == 'success') {
