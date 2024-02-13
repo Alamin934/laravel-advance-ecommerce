@@ -11,8 +11,12 @@ use Cart;
 class CartController extends Controller
 {
     public function displayCart() {
-        $cart = Cart::content();
-        return view('frontend.cart', compact('cart'));
+        if(auth()->user()){
+            $cart = Cart::content();
+            return view('frontend.cart', compact('cart'));
+        }else{
+            return redirect()->back()->with(['message'=>'Please Login for Cart Items', 'alert-type'=>'error']);
+        }
     }
 
     public function addToCart(Request $request){

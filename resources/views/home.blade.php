@@ -310,11 +310,9 @@
                                                     Cart</button>
                                             </div>
                                         </div>
-                                        @auth
                                         <div class="product_fav" data-id="{{$featured->id}}" title="Add to Wishlist">
                                             <i class="fas fa-heart"></i>
                                         </div>
-                                        @endauth
                                         {{-- <ul class="product_marks">
                                             <li class="product_mark product_discount">-25%</li>
                                             <li class="product_mark product_new">new</li>
@@ -370,12 +368,12 @@
                                                     Cart</button>
                                             </div>
                                         </div>
-                                        @auth
+
                                         <div class="product_fav" data-id="{{$most_popular->id}}"
                                             title="Add to Wishlist">
                                             <i class="fas fa-heart"></i>
                                         </div>
-                                        @endauth
+
                                         {{-- <ul class="product_marks">
                                             <li class="product_mark product_discount">-25%</li>
                                             <li class="product_mark product_new">new</li>
@@ -619,11 +617,11 @@
                                                         Cart</button>
                                                 </div>
                                             </div>
-                                            @auth
+
                                             <div class="product_fav" data-id="{{$product->id}}" title="Add to Wishlist">
                                                 <i class="fas fa-heart"></i>
                                             </div>
-                                            @endauth
+
                                             {{-- <ul class="product_marks">
                                                 <li class="product_mark product_discount">-25%</li>
                                                 <li class="product_mark product_new">new</li>
@@ -665,11 +663,11 @@
                                         <form action="#"><button class="arrivals_single_button">Add to
                                                 Cart</button></form>
                                     </div>
-                                    @auth
+
                                     <div class="product_fav" data-id="{{$featured->id}}" title="Add to Wishlist">
                                         <i class="fas fa-heart"></i>
                                     </div>
-                                    @endauth
+
                                     <ul class="arrivals_single_marks product_marks">
                                         <li class="arrivals_single_mark product_mark product_new">new</li>
                                     </ul>

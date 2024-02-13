@@ -103,10 +103,8 @@
                             <div class="button_container">
                                 <button type="button" class="button cart_button" data-id="{{$product->id}}">Add to
                                     Cart</button>
-                                @auth
                                 <div class="product_fav" data-id="{{$product->id}}" title="Add to Wishlist"><i
                                         class="fas fa-heart"></i></div>
-                                @endauth
                             </div>
                         </form>
                         {{-- Cart From End --}}

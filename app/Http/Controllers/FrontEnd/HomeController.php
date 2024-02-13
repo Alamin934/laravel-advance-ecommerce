@@ -30,15 +30,19 @@ class HomeController extends Controller
 
     public function addToWishlist($id) {
         $wishlist_product = Wishlist::where('product_id', $id)->where('user_id', Auth::id())->first();
-        if($wishlist_product){
-            return response()->json(['status'=>'error', 'message'=>'This product already has been to Wishlist.']);
+        if(auth()->user() != null){
+            if($wishlist_product){
+                return response()->json(['status'=>'error', 'message'=>'This product already has been to Wishlist.']);
+            }else{
+                $add_to_wishlist = Wishlist::create([
+                    'user_id' => Auth::id(),
+                    'product_id' => $id,
+                ]);
+                $wishlist_count = Wishlist::where('user_id', Auth::id())->count();
+                return response()->json(['status'=>'success', 'message'=>'Product Added to Wishlist.', 'wishlist_count'=>$wishlist_count]);
+            }
         }else{
-            $add_to_wishlist = Wishlist::create([
-                'user_id' => Auth::id(),
-                'product_id' => $id,
-            ]);
-            $wishlist_count = Wishlist::where('user_id', Auth::id())->count();
-            return response()->json(['status'=>'success', 'message'=>'Product Added to Wishlist.', 'wishlist_count'=>$wishlist_count]);
+            return response()->json(['status'=>'error', 'message'=>'Please Login for Add to Wishlist']);
         }
     }
     public function showWishlist() {
