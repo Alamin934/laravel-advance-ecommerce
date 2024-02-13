@@ -45,13 +45,14 @@
                         : 'No Brand'}}</p>
                     <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
                     <div class="order_info d-flex flex-row">
-                        <form action="#">
+                        {{-- Cart Form --}}
+                        <form method="POST" id="add_to_cart">
                             <div class="clearfix" style="z-index: 1000;">
 
                                 <!-- Product Quantity -->
                                 <div class="product_quantity clearfix">
                                     <span>Quantity: </span>
-                                    <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+                                    <input id="quantity_input" name="quantity" type="text" pattern="[1-9]*" value="1">
                                     <div class="quantity_buttons">
                                         <div id="quantity_inc_button" class="quantity_inc quantity_control"><i
                                                 class="fas fa-chevron-up"></i></div>
@@ -100,14 +101,15 @@
                             </div>
                             @endif
                             <div class="button_container">
-                                <button type="button" class="button cart_button">Add to Cart</button>
+                                <button type="button" class="button cart_button" data-id="{{$product->id}}">Add to
+                                    Cart</button>
                                 @auth
                                 <div class="product_fav" data-id="{{$product->id}}" title="Add to Wishlist"><i
                                         class="fas fa-heart"></i></div>
                                 @endauth
                             </div>
-
                         </form>
+                        {{-- Cart From End --}}
                     </div>
                 </div>
             </div>
@@ -277,4 +279,25 @@
 
 @push('scripts')
 <script src="{{ asset('admin/frontend') }}/js/product_custom.js"></script>
+<script>
+    $(document).ready(function () {
+        $(document).on('click','.cart_button', function () {
+            let id = $('.cart_button').data('id');
+            let qty = $('#quantity_input').val();
+
+            $.ajax({
+                type: "POST",
+                url: "{{route('add.cart')}}",
+                data: {'id':id, 'qty':qty},
+                success: function (response) {
+                    if(response.status == 'success'){
+                        $("#add_to_cart").trigger('reset');
+                        toastr.success("Product added to cart");
+                        // cart();
+                    }
+                }
+            });
+        });
+    });
+</script>
 @endpush

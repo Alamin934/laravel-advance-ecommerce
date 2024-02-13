@@ -305,7 +305,9 @@
                                                     <input type="radio" name="product_color" style="background:#999999">
                                                 </div>
                                                 @endif
-                                                <button class="product_cart_button">Add to Cart</button>
+                                                <button data-id="{{$featured->id}}"
+                                                    class="product_cart_button cart_button">Add to
+                                                    Cart</button>
                                             </div>
                                         </div>
                                         @auth
@@ -363,7 +365,9 @@
                                                     <input type="radio" name="product_color" style="background:#999999">
                                                 </div>
                                                 @endif
-                                                <button class="product_cart_button">Add to Cart</button>
+                                                <button data-id="{{$most_popular->id}}"
+                                                    class="product_cart_button cart_button">Add to
+                                                    Cart</button>
                                             </div>
                                         </div>
                                         @auth
@@ -610,7 +614,9 @@
                                                             style="background:#999999">
                                                     </div>
                                                     @endif
-                                                    <button class="product_cart_button">Add to Cart</button>
+                                                    <button data-id="{{$product->id}}"
+                                                        class="product_cart_button cart_button">Add to
+                                                        Cart</button>
                                                 </div>
                                             </div>
                                             @auth
@@ -2293,6 +2299,26 @@
 </div>
 @endsection
 
-@push('style')
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $(document).on('click','.cart_button', function () {
+            let id = $('.cart_button').data('id');
+            let qty = $('#quantity_input').val();
 
+            $.ajax({
+                type: "POST",
+                url: "{{route('add.cart')}}",
+                data: {'id':id, 'qty':qty},
+                success: function (response) {
+                    if(response.status == 'success'){
+                        $("#add_to_cart").trigger('reset');
+                        toastr.success("Product added to cart");
+                        // cart();
+                    }
+                }
+            });
+        });
+    });
+</script>
 @endpush
