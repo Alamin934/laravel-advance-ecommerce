@@ -53,14 +53,40 @@
                                             value="{{$product->qty}}" name="qty">
                                     </td>
                                     <td>
-                                        <select class="cart_update" name="size">
-                                            <option value="">Select Size</option>
+                                        @if($product->options->size)
+                                        <select class="cart_update" name="size" style="width: 70px">
+                                            <option value="{{$product->options->size}}">{{$product->options->size}}
+                                            </option>
                                         </select>
+                                        @else
+                                        <small class="btn btn-info p-1">No Size</small>
+                                        @endif
                                     </td>
                                     <td>
-                                        <select class="cart_update" name="color">
-                                            <option value="">Select Color</option>
-                                        </select>
+                                        @if ($product->options->color)
+                                        <ul class="product_color mt-0" style="width: 110px!important">
+                                            <li style="padding-left:10px; padding-right:25px;">
+                                                <span>Color: </span>
+                                                <div class="color_mark_container">
+                                                    <div id="selected_color" name="product_color" class="color_mark"
+                                                        style="background-color: {{$product->options->color}};"></div>
+                                                </div>
+                                                <div class="color_dropdown_button" style="width:20px;"><i
+                                                        class="fas fa-chevron-down"></i>
+                                                </div>
+
+                                                <ul class="color_list">
+                                                    @foreach ($product->options->all_color as $color)
+                                                    <li>
+                                                        <div class="color_mark" style="background: {{$color}};"></div>
+                                                    </li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        @else
+                                        <small class="btn btn-info p-1">No Color</small>
+                                        @endif
                                     </td>
                                     <td>{{Illuminate\Support\Number::format($product->price)}}</td>
                                     <td class="font-weight-bold">
@@ -126,8 +152,8 @@
 @endsection
 
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/shop_styles.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/shop_responsive.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/product_styles.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/product_responsive.css">
 @endpush
 @push('scripts')
 <script>

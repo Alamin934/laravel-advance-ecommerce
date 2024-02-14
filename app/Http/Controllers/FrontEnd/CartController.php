@@ -29,8 +29,9 @@ class CartController extends Controller
             'price' => $product->selling_price ?? $product->purchase_price,
             'weight' => 1,
             'options' => [
-                'size' => '',
-                'color' => '',
+                'size' => $request->size ?? null,
+                'all_color' => $product->color ?? null,
+                'color' => $request->color ?? null,
                 'thumbnail' => $product->thumbnail,
                 'category' => $product->category->name,
                 'brand' => !empty($product->brand_id) ? $product->brand->brand_name : 'No Brand',

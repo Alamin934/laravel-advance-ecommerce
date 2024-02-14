@@ -784,17 +784,27 @@ section {
 }
 
 select {
-	display: inline;
-	border: 0;
 	width: auto;
-	margin-left: 10px;
 	outline: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	border-bottom: 2px solid #555;
-	color: #7b00ff;
+	padding: 5px;
+	border-color: #dfdfdf;
+	border-radius: 4px;
+	height: 40px;
 	-webkit-transition: all .4s ease-in-out;
 	transition: all .4s ease-in-out;
+}
+
+select[name="product_size"] {
+	background: url("data:image/svg+xml,<svg width='10px' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='rgba(0, 0, 0, 0.3)'><path d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/></svg>") no-repeat;
+	background-position: calc(100% - 1.25rem) center !important;
+	-moz-appearance: none !important;
+	-webkit-appearance: none !important;
+	appearance: none !important;
+	padding-left: 25px !important;
+	font-size: 16px;
+	font-weight: 300;
+	color: rgba(0, 0, 0, 0.5);
+	width: 182px !important;
 }
 
 select:hover {

@@ -938,13 +938,15 @@ $(document).ready(function () {
 		e.preventDefault();
 		let id = $(this).data('id');
 		let qty = $('#quantity_input').val();
-
+		let color = $('#selected_color').css("background-color");
+		let size = $('select[name="product_size"]').val();
+		let data = { 'id': id, 'qty': qty, 'color': color, 'size': size };
 		$.ajax({
 			type: "GET",
 			url: "/add-to-cart",
-			data: { 'id': id, 'qty': qty },
+			data: data,
 			success: function (response) {
-				console.log(response);
+				// console.log(response);
 				if (response.status == 'success') {
 					$(".cart_count span, .cart_price span").html('');
 					$(".cart_count span").html(response.total_item);

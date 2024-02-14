@@ -62,29 +62,37 @@
                                 </div>
 
                                 <!-- Product Color -->
-                                {{-- @if ($product->color) --}}
+                                @if ($product->color)
                                 <ul class="product_color">
                                     <li>
                                         <span>Color: </span>
                                         <div class="color_mark_container">
-                                            <div id="selected_color" class="color_mark"></div>
+                                            <div id="selected_color" name="product_color" class="color_mark"
+                                                style="background-color: {{$product->color[0]}};"></div>
                                         </div>
                                         <div class="color_dropdown_button"><i class="fas fa-chevron-down"></i></div>
 
                                         <ul class="color_list">
+                                            @foreach ($product->color as $color)
                                             <li>
-                                                <div class="color_mark" style="background: #999999;"></div>
+                                                <div class="color_mark" style="background: {{$color}};"></div>
                                             </li>
-                                            <li>
-                                                <div class="color_mark" style="background: #b19c83;"></div>
-                                            </li>
-                                            <li>
-                                                <div class="color_mark" style="background: #000000;"></div>
-                                            </li>
+                                            @endforeach
                                         </ul>
                                     </li>
                                 </ul>
-                                {{-- @endif --}}
+                                @endif
+
+                                @if ($product->size)
+                                <div>
+                                    <select name="product_size" class="product_color">
+                                        <option selected disabled>Size:</option>
+                                        @foreach($product->size as $size)
+                                        <option value="{{$size}}">{{$size}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @endif
 
                             </div>
 
