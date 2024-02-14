@@ -1018,3 +1018,14 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item .menu-lin
 .layout-footer-fixed .content-footer {
   box-shadow: 0 0 0.375rem 0.25rem rgba(161, 172, 184, 0.15);
 }
+
+.remove_color {
+  position: absolute;
+  top: -15px;
+  right: -4px;
+}
+
+button.add_color {
+  height: fit-content;
+  margin: auto 0px;
+}

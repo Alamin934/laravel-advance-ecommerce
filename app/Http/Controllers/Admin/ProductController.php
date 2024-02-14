@@ -39,7 +39,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
+        // return $request->all();
         $validated = $request->validate([
             'title' => 'required|unique:products|max:255',
             'code' => 'required|unique:products',
@@ -48,6 +48,7 @@ class ProductController extends Controller
             'stock_quantity' => 'required|numeric',
             'description' => 'required',
             'thumbnail' => 'required|file|image',
+            'color' => 'array|between:0,5',
         ]);
         
 
@@ -104,6 +105,8 @@ class ProductController extends Controller
             'code' => $request->code,
             'unit' => $request->unit,
             'tags' => $request->tags,
+            'color' => $request->color,
+            'size' => $request->size,
             'purchase_price' => $request->purchase_price,
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,
@@ -154,6 +157,7 @@ class ProductController extends Controller
             'purchase_price' => 'required|numeric',
             'stock_quantity' => 'required|numeric',
             'description' => 'required',
+            'color' => 'array|between:0,5',
         ]);
 
         if($request->hasfile('images') && !empty($request->old_images)){
@@ -217,6 +221,8 @@ class ProductController extends Controller
             'code' => $request->code,
             'unit' => $request->unit,
             'tags' => $request->tags,
+            'color' => $request->color,
+            'size' => $request->size ?? explode(" ",$request->old_size),
             'purchase_price' => $request->purchase_price,
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,

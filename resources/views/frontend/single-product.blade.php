@@ -62,7 +62,7 @@
                                 </div>
 
                                 <!-- Product Color -->
-                                @if ($product->color)
+                                {{-- @if ($product->color) --}}
                                 <ul class="product_color">
                                     <li>
                                         <span>Color: </span>
@@ -84,7 +84,7 @@
                                         </ul>
                                     </li>
                                 </ul>
-                                @endif
+                                {{-- @endif --}}
 
                             </div>
 

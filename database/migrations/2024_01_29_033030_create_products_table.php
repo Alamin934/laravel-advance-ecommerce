@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('code');
             $table->string('unit')->nullable();
             $table->string('tags')->nullable();
+            $table->string('color')->nullable();
+            $table->string('size')->nullable();
             $table->decimal('purchase_price', 8, 2);
             $table->decimal('selling_price', 8, 2)->nullable();
             $table->decimal('discount_price', 8, 2)->nullable();

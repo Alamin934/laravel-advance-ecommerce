@@ -154,6 +154,32 @@
                                         <input type="file" class="form-control" name="images[]" multiple />
                                     </div>
                                 </div>
+                                {{-- Color --}}
+                                <div class="col-12 mt-4 card p-3">
+                                    <label class="form-label mt-1">Colors</label>
+                                    <div class="d-flex flex-wrap colors">
+
+                                        <button type="button" title="Add your colors"
+                                            class="btn btn-primary btn-sm add_color">
+                                            <i class='bx bx-plus'></i>
+                                        </button>
+                                    </div>
+                                    <small class="text-danger">You can select one or many colors</small>
+                                </div>
+                                {{-- Size --}}
+                                <div class="col-12 mt-4 card p-3">
+                                    <label class="form-label mt-1">Size</label>
+                                    <select name="size[]" class="form-select" size="4" multiple>
+                                        <option selected disabled>Nothing Selected</option>
+                                        <option value="M">M</option>
+                                        <option value="L">L</option>
+                                        <option value="XL">XL</option>
+                                        <option value="XLL">XLL</option>
+                                        @for ($s=2; $s<=12; $s+=2) <option value="{{30+$s}}">{{30+$s}}</option>
+                                            @endfor
+                                    </select>
+                                    <small class="text-danger">You can select one or many Size</small>
+                                </div>
                                 {{-- Home Banner --}}
                                 <div class="col-12 mt-4 card p-3">
                                     <div class="form-check form-switch">
@@ -204,39 +230,29 @@
     dependedSelect("select[name='category']", '/dependedSubCategory/', "select[name='sub_category']", ".sub_category");
     // display child category when sub category is selected
     dependedSelect("select[name='sub_category']", '/dependedChildCategory/', "select[name='child_category']", ".child_category");
-    // $(document).ready(function () {
-        // Depended ChildCategory on SubCategory
-        // $("select[name='category']").on("change", function () {
-        //     let id = $(this).val();
-        //     let subCatSelect = "select[name='sub_category']";
-        //     if (id) {
-        //         $.ajax({
-        //             type: "GET",
-        //             url: '/dependedSubCategory/' + id,
-        //             dataType: "json",
-        //             success: function (data) {
-        //                 if (data != '') {
-        //                     $(subCatSelect).empty();
-        //                     $("select[name='child_category']").empty();
-        //                     $('.child_category').fadeOut();
 
-        //                     $(subCatSelect).append('<option value=""> Select...</option >');
-        //                     $('.sub_category').fadeIn();
-        //                     $.each(data, function (index, value) {
-        //                         $(subCatSelect).append(`<option value='${index}'>${value}</option>`);
-        //                     });
-        //                 } else {
-        //                     $(subCatSelect).empty();
-        //                     $('.sub_category').fadeOut();
-        //                 }
-        //             }
-        //         });
-        //     } else {
-        //         $(subCatSelect).empty();
-        //         $('.sub_category').fadeOut();
-        //     }
-        // });
-    // });
+    $(document).ready(function () {
+        // Set border color after select color
+        $(document).on('change', '.form-control-color', function () {
+            $(this).addClass('border border-info');
+        });
+
+        // add new color after click
+        $(document).on('click', '.add_color', function (e) {
+            e.preventDefault();
+            $(this).parent('.colors').prepend(`<div class="color position-relative me-2 my-3">
+                <input class="form-control form-control-color" type="color" name="color[]"/>
+            
+                <button type="button" class="btn btn-danger p-0 remove_color">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>`);
+        });
+        $(document).on('click', '.remove_color', function (e) {
+            e.preventDefault();
+            $(this).parent('.color').remove();
+        });
+    });
 
 </script>
 @endpush
