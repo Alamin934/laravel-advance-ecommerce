@@ -938,8 +938,8 @@ $(document).ready(function () {
 		e.preventDefault();
 		let id = $(this).data('id');
 		let qty = $('#quantity_input').val();
-		let color = $(this).parent('.product_extras').find('.selected_color:checked').css("background-color");
-		let color2 = $(this).parents('form#add_to_cart').find('#selected_color').css("backgroundColor");
+		let color = $('.selected_color:checked').css("background-color");
+		let color2 = $('#selected_color').css("backgroundColor");
 		let size = $('select[name="product_size"]').val();
 		let data = { 'id': id, 'qty': qty, 'color': color ? color : color2, 'size': size };
 

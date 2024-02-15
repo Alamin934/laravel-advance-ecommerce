@@ -49,13 +49,14 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <input type="number" class="cart_update form-control text-center"
-                                            value="{{$product->qty}}" name="qty">
+                                        <input data-id="{{$product->rowId}}" type="number"
+                                            class="cart_update form-control text-center" value="{{$product->qty}}"
+                                            name="qty">
                                     </td>
                                     <td>
                                         @if($product->options->pd_size)
                                         <select class="cart_update form-control" name="size"
-                                            style="width: 150px;height:50px">
+                                            style="width: 150px;height:50px" data-id="{{$product->rowId}}">
                                             <option selected disabled>Nothing Selected</option>
                                             <option {{$product->options->size == "M" ? 'selected' : ''}} value="M">M
                                             </option>
@@ -89,7 +90,9 @@
                                                 <ul class="color_list">
                                                     @foreach ($product->options->all_color as $color)
                                                     <li>
-                                                        <div class="color_mark" style="background: {{$color}};"></div>
+                                                        <div data-id="{{$product->rowId}}"
+                                                            class="cart_update color_mark" name="color"
+                                                            style="background: {{$color}};"></div>
                                                     </li>
                                                     @endforeach
                                                 </ul>
@@ -170,36 +173,57 @@
 <script src="{{ asset('admin/frontend') }}/js/product_custom.js"></script>
 <script>
     $(document).ready(function () {
-            $(document).on('click','.delete_cart_item', function (e) {
-                e.preventDefault();
-                let rowId = $(this).data('id');
-                swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this imaginary file!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        $.ajax({
-                            type: "GET",
-                            url: "/remove-from-cart/"+rowId,
-                            success: function (response) {
-                                if (response.status == 'success') {
-                                    $('.cart_table').load(location.href + ' .cart_table');
-                                    $('.total_amount').load(location.href + ' .total_amount');
 
-                                    $(".cart_count span, .cart_price span").html('');
-                                    $(".cart_count span").html(response.total_item);
-                                    $(".cart_price span").html(response.total_price);
-                                    toastr.success("Product remove from cart successfully");
-                                }
+        $('.cart_update').on({
+            change: function () {
+                let qty;
+                let size;
+                if($(this).attr('name')=='qty'){
+                    qty = $(this).val();
+                }
+                if($(this).attr('name')=='size'){
+                    size = $(this).val();
+                }
+            },
+            click: function () { 
+                let color;
+                if($(this).attr('name')=='color'){
+                    color = $(this).css('backgroundColor');
+                }   
+            }
+        });
+            
+
+        $(document).on('click','.delete_cart_item', function (e) {
+            e.preventDefault();
+            let rowId = $(this).data('id');
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        type: "GET",
+                        url: "/remove-from-cart/"+rowId,
+                        success: function (response) {
+                            if (response.status == 'success') {
+                                $('.cart_table').load(location.href + ' .cart_table');
+                                $('.total_amount').load(location.href + ' .total_amount');
+
+                                $(".cart_count span, .cart_price span").html('');
+                                $(".cart_count span").html(response.total_item);
+                                $(".cart_price span").html(response.total_price);
+                                toastr.success("Product remove from cart successfully");
                             }
-                        });
-                    }
-                });
+                        }
+                    });
+                }
             });
         });
+    });
 </script>
 @endpush

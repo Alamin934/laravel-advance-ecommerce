@@ -47,9 +47,9 @@
                                 <!-- Data -->
                             </div>
 
-                            <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                                <div class="d-lg-flex d-block justify-content-between">
-                                    <!-- Price -->
+                            <div class="col-lg-3 col-md-3 mb-4 mb-lg-0">
+                                <!-- Price -->
+                                <div>
                                     @if ($wishlist->product->selling_price)
                                     <div class="text-start">
                                         <strike>${{\Illuminate\Support\Number::format($wishlist->product->purchase_price)}}</strike>
@@ -60,24 +60,60 @@
                                         ${{\Illuminate\Support\Number::format($wishlist->product->purchase_price)}}
                                     </div>
                                     @endif
-                                    <!-- Price -->
-                                    <div class="mt-lg-0 mt-3">
-                                        <a href="{{route('single.product', $wishlist->product->slug)}}"
-                                            class="btn btn-primary btn-sm mb-2" title="See the full details of product">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                        <a href="" data-id="{{ $wishlist->product->id }}"
-                                            class="btn btn-info btn-sm mb-2 text-white cart_button"
-                                            title="Added to the cart">
-                                            <i class="fas fa-shopping-cart"></i>
-                                        </a>
-                                        <a href="javascript:void(0)" data-id="{{$wishlist->id}}"
-                                            class="btn btn-danger btn-sm me-1 mb-2 text-white delete"
-                                            title="Remove from wishlist">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </div>
                                 </div>
+                                {{-- Size and Color --}}
+
+                                @if ($wishlist->product->color)
+                                <ul class="product_color">
+                                    <li>
+                                        <span>Color: </span>
+                                        <div class="color_mark_container">
+                                            <div id="selected_color" name="product_color"
+                                                class="selected_color color_mark"
+                                                style="background-color: {{$wishlist->product->color[0]}};"></div>
+                                        </div>
+                                        <div class="color_dropdown_button"><i class="fas fa-chevron-down"></i></div>
+
+                                        <ul class="color_list">
+                                            @foreach ($wishlist->product->color as $color)
+                                            <li>
+                                                <div class="color_mark" style="background: {{$color}};"></div>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                </ul>
+                                @endif
+                                <!-- Product Size -->
+                                <div>
+                                    @if ($wishlist->product->size)
+                                    <div>
+                                        <select name="product_size" class="product_color">
+                                            <option selected disabled>Size:</option>
+                                            @foreach($wishlist->product->size as $size)
+                                            <option value="{{$size}}">{{$size}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <!-- Price -->
+                            <div class="col-lg-2 col-md-3">
+                                <a href="{{route('single.product', $wishlist->product->slug)}}"
+                                    class="btn btn-primary btn-sm mb-2" title="See the full details of product">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="" data-id="{{ $wishlist->product->id }}"
+                                    class="btn btn-info p-2 mb-2 text-white cart_button" title="Added to the cart"
+                                    style="font-size: 14px; line-height:0px">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </a>
+                                <a href="javascript:void(0)" data-id="{{$wishlist->id}}"
+                                    class="btn btn-danger btn-sm me-1 mb-2 text-white delete"
+                                    title="Remove from wishlist">
+                                    <i class="fas fa-trash"></i>
+                                </a>
                             </div>
                         </div>
                         <!-- Single item -->
@@ -95,12 +131,11 @@
 @endsection
 
 @push('style')
-<link rel="stylesheet" type="text/css"
-    href="{{ asset('admin/frontend') }}/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/shop_styles.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/shop_responsive.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/product_styles.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/product_responsive.css">
 @endpush
 @push('scripts')
+<script src="{{ asset('admin/frontend') }}/js/product_custom.js"></script>
 <script>
     function ajaxDeleteWithToastr(method, url, data, toastrMsg) {
         swal({
