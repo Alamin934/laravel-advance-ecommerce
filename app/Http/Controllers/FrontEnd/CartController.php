@@ -30,6 +30,7 @@ class CartController extends Controller
             'weight' => 1,
             'options' => [
                 'size' => $request->size ?? null,
+                'pd_size' => $product->size ?? null,
                 'all_color' => $product->color ?? null,
                 'color' => $request->color ?? null,
                 'thumbnail' => $product->thumbnail,

@@ -67,7 +67,8 @@
                                     <li>
                                         <span>Color: </span>
                                         <div class="color_mark_container">
-                                            <div id="selected_color" name="product_color" class="color_mark"
+                                            <div id="selected_color" name="product_color"
+                                                class="selected_color color_mark"
                                                 style="background-color: {{$product->color[0]}};"></div>
                                         </div>
                                         <div class="color_dropdown_button"><i class="fas fa-chevron-down"></i></div>

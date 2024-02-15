@@ -150,11 +150,11 @@ $(document).ready(function () {
 		});
 
 
-		$('select').on('change', function (e) {
-			placeholder.text(this.value);
+		// $('select').on('change', function (e) {
+		// 	placeholder.text(this.value);
 
-			$(this).animate({ width: placeholder.width() + 'px' });
-		});
+		// 	$(this).animate({ width: placeholder.width() + 'px' });
+		// });
 	}
 
 	/* 
@@ -938,15 +938,15 @@ $(document).ready(function () {
 		e.preventDefault();
 		let id = $(this).data('id');
 		let qty = $('#quantity_input').val();
-		let color = $('#selected_color').css("background-color");
+		let color = $('.selected_color:checked,.selected_color').css("background-color");
 		let size = $('select[name="product_size"]').val();
 		let data = { 'id': id, 'qty': qty, 'color': color, 'size': size };
+
 		$.ajax({
 			type: "GET",
 			url: "/add-to-cart",
 			data: data,
 			success: function (response) {
-				// console.log(response);
 				if (response.status == 'success') {
 					$(".cart_count span, .cart_price span").html('');
 					$(".cart_count span").html(response.total_item);

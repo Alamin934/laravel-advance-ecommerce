@@ -53,22 +53,33 @@
                                             value="{{$product->qty}}" name="qty">
                                     </td>
                                     <td>
-                                        @if($product->options->size)
-                                        <select class="cart_update" name="size" style="width: 70px">
-                                            <option value="{{$product->options->size}}">{{$product->options->size}}
+                                        @if($product->options->pd_size)
+                                        <select class="cart_update form-control" name="size"
+                                            style="width: 150px;height:50px">
+                                            <option selected disabled>Nothing Selected</option>
+                                            <option {{$product->options->size == "M" ? 'selected' : ''}} value="M">M
                                             </option>
+                                            <option {{$product->options->size == "L" ? 'selected' : ''}} value="L">L
+                                            </option>
+                                            <option {{$product->options->size == "XL" ? 'selected' : ''}} value="XL">XL
+                                            </option>
+                                            <option {{$product->options->size == "XLL" ? 'selected' : ''}}
+                                                value="XLL">XLL</option>
+                                            @for ($s=2; $s<=12; $s+=2) <option {{$product->options->size == 30+$s
+                                                ? 'selected' : ''}} value="{{30+$s}}">{{30+$s}}</option>
+                                                @endfor
                                         </select>
                                         @else
                                         <small class="btn btn-info p-1">No Size</small>
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($product->options->color)
+                                        @if ($product->options->all_color)
                                         <ul class="product_color mt-0" style="width: 110px!important">
                                             <li style="padding-left:10px; padding-right:25px;">
                                                 <span>Color: </span>
                                                 <div class="color_mark_container">
-                                                    <div id="selected_color" name="product_color" class="color_mark"
+                                                    <div name="product_color" class="selected_color color_mark"
                                                         style="background-color: {{$product->options->color}};"></div>
                                                 </div>
                                                 <div class="color_dropdown_button" style="width:20px;"><i
@@ -156,6 +167,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/product_responsive.css">
 @endpush
 @push('scripts')
+<script src="{{ asset('admin/frontend') }}/js/product_custom.js"></script>
 <script>
     $(document).ready(function () {
             $(document).on('click','.delete_cart_item', function (e) {

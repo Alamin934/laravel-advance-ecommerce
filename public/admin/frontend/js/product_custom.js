@@ -120,11 +120,11 @@ $(document).ready(function () {
 		});
 
 
-		$('select').on('change', function (e) {
-			placeholder.text(this.value);
+		// $('select').on('change', function (e) {
+		// 	placeholder.text(this.value);
 
-			$(this).animate({ width: placeholder.width() + 'px' });
-		});
+		// 	$(this).animate({ width: placeholder.width() + 'px' });
+		// });
 	}
 
 	/* 
@@ -312,13 +312,13 @@ $(document).ready(function () {
 
 	function initColor() {
 		if ($('.product_color').length) {
-			var selectedCol = $('#selected_color');
+			var selectedCol = $('.selected_color');
 			var colorItems = $('.color_list li .color_mark');
 			colorItems.each(function () {
 				var colorItem = $(this);
 				colorItem.on('click', function () {
 					var color = colorItem.css('backgroundColor');
-					selectedCol.css('backgroundColor', color);
+					colorItem.parents('.product_color').find(selectedCol).css('backgroundColor', color);
 				});
 			});
 		}
