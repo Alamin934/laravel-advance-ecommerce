@@ -21,8 +21,6 @@ class CartController extends Controller
 
     public function addToCart(Request $request){
         $product = Product::find($request->id);
-        // return $request;
-        // Cart::destroy();
         Cart::add([
             'id' => $request->id,
             'name' => $product->title,
@@ -31,13 +29,7 @@ class CartController extends Controller
             'weight' => 1,
             'options' => [
                 'size' => $request->size ?? null,
-                'pd_size' => $product->size ?? null,
-                'all_color' => $product->color ?? null,
                 'color' => $request->color ?? null,
-                'thumbnail' => $product->thumbnail,
-                'category' => $product->category->name,
-                'brand' => !empty($product->brand_id) ? $product->brand->brand_name : 'No Brand',
-                'slug' => $product->slug,
             ]
         ]);
         $total_item = Cart::count();
@@ -45,6 +37,26 @@ class CartController extends Controller
 
         return response()->json(['status'=>'success', 'total_item'=>$total_item, 'total_price'=>$total_price]);
     }
+
+    public function updateQty(Request $request, string $rowId){
+        if($request->qty){
+            Cart::update($rowId, $request->qty);
+            return response()->json(['status'=>'success','msg'=>'Quantity Updated']);
+        }
+    }
+    public function updateSize(Request $request, string $rowId){
+        if($request->size){
+            Cart::update($rowId, ['options'=>['size'=>$request->size,'color'=>$request->color]]);
+            return response()->json(['status'=>'success','msg'=>'Size Updated']);
+        }
+    }
+    public function updateColor(Request $request, string $rowId){
+        if($request->color){
+            Cart::update($rowId, ['options'=>['size'=>$request->size,'color'=>$request->color]]);
+            return response()->json(['status'=>'success','msg'=>'Color Updated',]);
+        }
+    }
+
     public function removeFromCart(string $rowId){
         Cart::remove($rowId);
         $total_item = Cart::count();

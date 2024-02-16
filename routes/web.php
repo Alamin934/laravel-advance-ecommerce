@@ -16,6 +16,9 @@ Route::controller(HomeController::class)->group(function () {
 Route::controller(CartController::class)->group(function () {
     Route::get('/add-to-cart','addToCart')->name('add.cart');
     Route::get('/cart','displayCart')->name('display.cart');
+    Route::get('/update-qty/{id}','updateQty')->name('update.qty');
+    Route::get('/update-size/{id}','updateSize')->name('update.size');
+    Route::get('/update-color/{id}','updateColor')->name('update.color');
     Route::get('/remove-from-cart/{id}','removeFromCart')->name('remove.cart');
 });
 Route::view('/shop','frontend.shop')->name('shop');

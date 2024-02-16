@@ -31,31 +31,34 @@
                             <tbody class="table-border-bottom-0">
                                 @if (count($cart)>0)
                                 @foreach ($cart as $product)
+                                @php
+                                $current_pd = \App\Models\Product::find($product->id);
+                                @endphp
                                 <tr align="center">
                                     <td>{{$loop->iteration}}</td>
                                     <td align="start">
                                         <div class="d-flex">
-                                            <img src="{{asset('admin/assets/files/products/'.$product->options->thumbnail)}}"
+                                            <img src="{{asset('admin/assets/files/products/'.$current_pd->thumbnail)}}"
                                                 alt="" class="mr-3" style="height:40px;width:auto">
                                             <div>
                                                 <span class="font-weight-bold">
                                                     {{Illuminate\Support\Str::words($product->name, 4, '')}}
                                                 </span>
                                                 <br>
-                                                <span>Brand: {{ $product->options->brand }}</span>
+                                                <span>Brand: {{ $current_pd->brand->brand_name ?? 'No Brand' }}</span>
                                                 <br>
-                                                <span>Category: {{ $product->options->category }}</span>
+                                                <span>Category: {{ $current_pd->category->name }}</span>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
                                         <input data-id="{{$product->rowId}}" type="number"
-                                            class="cart_update form-control text-center" value="{{$product->qty}}"
+                                            class="update_qty form-control text-center" value="{{$product->qty}}"
                                             name="qty">
                                     </td>
                                     <td>
-                                        @if($product->options->pd_size)
-                                        <select class="cart_update form-control" name="size"
+                                        @if($current_pd->size)
+                                        <select class="update_size form-control" name="size"
                                             style="width: 150px;height:50px" data-id="{{$product->rowId}}">
                                             <option selected disabled>Nothing Selected</option>
                                             <option {{$product->options->size == "M" ? 'selected' : ''}} value="M">M
@@ -75,7 +78,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($product->options->all_color)
+                                        @if ($current_pd->color)
                                         <ul class="product_color mt-0" style="width: 110px!important">
                                             <li style="padding-left:10px; padding-right:25px;">
                                                 <span>Color: </span>
@@ -88,15 +91,18 @@
                                                 </div>
 
                                                 <ul class="color_list">
-                                                    @foreach ($product->options->all_color as $color)
+                                                    @foreach ($current_pd->color as $color)
                                                     <li>
                                                         <div data-id="{{$product->rowId}}"
-                                                            class="cart_update color_mark" name="color"
+                                                            class="update_color color_mark" name="color"
                                                             style="background: {{$color}};"></div>
                                                     </li>
                                                     @endforeach
                                                 </ul>
                                             </li>
+                                            <small class="text-danger"
+                                                style="margin-left: -50px;">{{$product->options->color ? '' : 'Nothing
+                                                Selceted'}}</small>
                                         </ul>
                                         @else
                                         <small class="btn btn-info p-1">No Color</small>
@@ -106,8 +112,8 @@
                                     <td class="font-weight-bold">
                                         {{Illuminate\Support\Number::format($product->qty*$product->price)}}</td>
                                     <td>
-                                        <a href="{{route('single.product', $product->options->slug)}}"
-                                            class="btn btn-primary btn-sm mb-2" title="See the full details of product">
+                                        <a href="" class="btn btn-primary btn-sm mb-2"
+                                            title="See the full details of product">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                         <a href="javascript:void(0)" data-id="{{$product->rowId}}"
@@ -172,28 +178,70 @@
 @push('scripts')
 <script src="{{ asset('admin/frontend') }}/js/product_custom.js"></script>
 <script>
+    function updateCartPageAfterChange(){
+        $('.cart_table').load(location.href + ' .cart_table');
+        $('.total_amount').load(location.href + ' .total_amount');
+        
+        // $(".cart_count span, .cart_price span").html('');
+        // $(".cart_count span").html(response.total_item);
+        // $(".cart_price span").html(response.total_price);
+    }
     $(document).ready(function () {
 
-        $('.cart_update').on({
-            change: function () {
-                let qty;
-                let size;
-                if($(this).attr('name')=='qty'){
-                    qty = $(this).val();
+        $(document).on('click','.update_qty',function(){
+            let rowId = $(this).data('id');
+            let qty = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: "/update-qty/"+rowId,
+                data: {'qty':qty},
+                success: function (response) {
+                    console.log(response);
+                    if(response.status == 'success'){
+                        toastr.success(response.msg);
+                        updateCartPageAfterChange();
+                    }
                 }
-                if($(this).attr('name')=='size'){
-                    size = $(this).val();
-                }
-            },
-            click: function () { 
-                let color;
-                if($(this).attr('name')=='color'){
-                    color = $(this).css('backgroundColor');
-                }   
-            }
-        });
-            
+            }); 
+        });      
 
+        $(document).on('click','.update_color',function(){
+            let rowId = $(this).data('id');
+            let size = $(this).parents('tr').find('.update_size').val();
+            let color = $(this).css('backgroundColor');
+            $.ajax({
+                type: "GET",
+                url: "/update-color/"+rowId,
+                data: {'size':size,'color':color},
+                success: function (response) {
+                    console.log(response);
+                    if(response.status == 'success'){
+                        toastr.success(response.msg);
+                        updateCartPageAfterChange();
+                    }
+                }
+            }); 
+        });       
+
+        $(document).on('change','.update_size',function(){
+            let rowId = $(this).data('id');
+            let color = $(this).parents('tr').find(".selected_color").css('backgroundColor');
+            let size = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: "/update-size/"+rowId,
+                data: {'size':size,'color':color},
+                success: function (response) {
+                    console.log(response);
+                    if(response.status == 'success'){
+                        toastr.success(response.msg);
+                        updateCartPageAfterChange();
+                    }
+                }
+            }); 
+        });       
+
+        // Delete Item From Cart
         $(document).on('click','.delete_cart_item', function (e) {
             e.preventDefault();
             let rowId = $(this).data('id');
