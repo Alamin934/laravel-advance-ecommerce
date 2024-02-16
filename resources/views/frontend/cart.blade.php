@@ -54,7 +54,7 @@
                                     <td>
                                         <input data-id="{{$product->rowId}}" type="number"
                                             class="update_qty form-control text-center" value="{{$product->qty}}"
-                                            name="qty">
+                                            min="1" name="qty">
                                     </td>
                                     <td>
                                         @if($current_pd->size)
@@ -178,67 +178,47 @@
 @push('scripts')
 <script src="{{ asset('admin/frontend') }}/js/product_custom.js"></script>
 <script>
-    function updateCartPageAfterChange(){
-        $('.cart_table').load(location.href + ' .cart_table');
-        $('.total_amount').load(location.href + ' .total_amount');
+    function updateCartPageAfterChange(response){
+        $('.table-responsive').load(location.href + ' .cart_table');
+        $('.card-body').load(location.href + ' .total_amount');
         
-        // $(".cart_count span, .cart_price span").html('');
-        // $(".cart_count span").html(response.total_item);
-        // $(".cart_price span").html(response.total_price);
+        $(".cart_count span, .cart_price span").html('');
+        $(".cart_count span").html(response.total_item);
+        $(".cart_price span").html(response.total_price);
+    }
+    function ajaxUpdateCartItems(url, data){
+        $.ajax({
+            type: "GET",
+            url: url,
+            data: data,
+            success: function (response) {
+                if(response.status == 'success'){
+                    toastr.success(response.msg);
+                    updateCartPageAfterChange(response);
+                }
+            }
+        }); 
     }
     $(document).ready(function () {
 
         $(document).on('click','.update_qty',function(){
             let rowId = $(this).data('id');
             let qty = $(this).val();
-            $.ajax({
-                type: "GET",
-                url: "/update-qty/"+rowId,
-                data: {'qty':qty},
-                success: function (response) {
-                    console.log(response);
-                    if(response.status == 'success'){
-                        toastr.success(response.msg);
-                        updateCartPageAfterChange();
-                    }
-                }
-            }); 
+            ajaxUpdateCartItems("/update-qty/"+rowId, {'qty':qty});
         });      
 
         $(document).on('click','.update_color',function(){
             let rowId = $(this).data('id');
             let size = $(this).parents('tr').find('.update_size').val();
             let color = $(this).css('backgroundColor');
-            $.ajax({
-                type: "GET",
-                url: "/update-color/"+rowId,
-                data: {'size':size,'color':color},
-                success: function (response) {
-                    console.log(response);
-                    if(response.status == 'success'){
-                        toastr.success(response.msg);
-                        updateCartPageAfterChange();
-                    }
-                }
-            }); 
+            ajaxUpdateCartItems("/update-color/"+rowId, {'size':size,'color':color});
         });       
 
         $(document).on('change','.update_size',function(){
             let rowId = $(this).data('id');
             let color = $(this).parents('tr').find(".selected_color").css('backgroundColor');
             let size = $(this).val();
-            $.ajax({
-                type: "GET",
-                url: "/update-size/"+rowId,
-                data: {'size':size,'color':color},
-                success: function (response) {
-                    console.log(response);
-                    if(response.status == 'success'){
-                        toastr.success(response.msg);
-                        updateCartPageAfterChange();
-                    }
-                }
-            }); 
+            ajaxUpdateCartItems("/update-size/"+rowId, {'size':size,'color':color});
         });       
 
         // Delete Item From Cart
@@ -254,21 +234,7 @@
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    $.ajax({
-                        type: "GET",
-                        url: "/remove-from-cart/"+rowId,
-                        success: function (response) {
-                            if (response.status == 'success') {
-                                $('.cart_table').load(location.href + ' .cart_table');
-                                $('.total_amount').load(location.href + ' .total_amount');
-
-                                $(".cart_count span, .cart_price span").html('');
-                                $(".cart_count span").html(response.total_item);
-                                $(".cart_price span").html(response.total_price);
-                                toastr.success("Product remove from cart successfully");
-                            }
-                        }
-                    });
+                    ajaxUpdateCartItems("/remove-from-cart/"+rowId, null);
                 }
             });
         });

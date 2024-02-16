@@ -10,6 +10,7 @@ use Cart;
 
 class CartController extends Controller
 {
+
     public function displayCart() {
         if(auth()->user()){
             $cart = Cart::content();
@@ -34,14 +35,15 @@ class CartController extends Controller
         ]);
         $total_item = Cart::count();
         $total_price = Cart::total();
-
         return response()->json(['status'=>'success', 'total_item'=>$total_item, 'total_price'=>$total_price]);
     }
 
     public function updateQty(Request $request, string $rowId){
         if($request->qty){
             Cart::update($rowId, $request->qty);
-            return response()->json(['status'=>'success','msg'=>'Quantity Updated']);
+            $total_item = Cart::count();
+            $total_price = Cart::total();
+            return response()->json(['status'=>'success','msg'=>'Quantity Updated','total_item'=>$total_item, 'total_price'=>$total_price]);
         }
     }
     public function updateSize(Request $request, string $rowId){
@@ -61,6 +63,6 @@ class CartController extends Controller
         Cart::remove($rowId);
         $total_item = Cart::count();
         $total_price = Cart::total();
-        return response()->json(['status'=>'success','total_item'=>$total_item, 'total_price'=>$total_price]);
+        return response()->json(['status'=>'success','msg'=>'Product remove from cart successfully','total_item'=>$total_item, 'total_price'=>$total_price]);
     }
 }
