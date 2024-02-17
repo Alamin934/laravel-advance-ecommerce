@@ -35,14 +35,29 @@
                             <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                 <!-- Data -->
                                 <p><strong>{{ $wishlist->product->title }}</strong></p>
-                                <p>Brand: {{ $wishlist->product->brand ? $wishlist->product->brand->name : 'No
-                                    Brand' }}</p>
-
+                                {{-- Brand --}}
+                                <p>Brand: <a
+                                        href="{{$wishlist->product->brand ? route('linkWise.product', ['id'=>$wishlist->product->brand->id, 'link'=>'brand']) : 'javascript:void(0)'}}">{{
+                                        $wishlist->product->brand ? $wishlist->product->brand->name : 'No
+                                        Brand' }}</a></p>
+                                {{-- Category --}}
                                 <p>Category:
-                                    {{$wishlist->product->category->name.' >
-                                    '}}{{$wishlist->product->subCategory->name
-                                    ?? ''}}
-                                    {{$wishlist->product->childCategory->name ?? ''}}
+                                    <a
+                                        href="{{route('linkWise.product', ['id'=>$wishlist->product->category->id, 'link'=>'category'])}}">{{$wishlist->product->subCategory
+                                        ? $wishlist->product->category->name.' >' :
+                                        $wishlist->product->category->name}}
+                                    </a>
+                                    <a
+                                        href="{{route('linkWise.product', ['id'=>$wishlist->product->subCategory->id ?? ' ', 'link'=>'sub_category'])}}">
+                                        {{$wishlist->product->childCategory ? $wishlist->product->subCategory->name.' >'
+                                        :
+                                        ($wishlist->product->subCategory ? $wishlist->product->subCategory->name : '')}}
+                                    </a>
+                                    <a
+                                        href="{{route('linkWise.product', ['id'=>$wishlist->product->childCategory->id ?? ' ', 'link'=>'child_category'])}}">
+                                        {{$wishlist->product->childCategory->name
+                                        ?? ''}}
+                                    </a>
                                 </p>
                                 <!-- Data -->
                             </div>

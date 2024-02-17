@@ -45,9 +45,30 @@
                                                     {{Illuminate\Support\Str::words($product->name, 4, '')}}
                                                 </span>
                                                 <br>
-                                                <span>Brand: {{ $current_pd->brand->name ?? 'No Brand' }}</span>
+                                                <span>Brand:
+                                                    <a href="{{$current_pd->brand ? route('linkWise.product', ['id'=>$current_pd->brand->id, 'link'=>'brand']) : 'javascript:void(0)'}}">
+                                                    {{ $current_pd->brand ?  $current_pd->brand->name : 'No Brand' }}
+                                                    </a>
+                                                </span>
                                                 <br>
-                                                <span>Category: {{ $current_pd->category->name }}</span>
+                                                <span>Category: 
+                                                    <a
+                                                        href="{{route('linkWise.product', ['id'=>$current_pd->category->id, 'link'=>'category'])}}">{{$current_pd->subCategory
+                                                        ? $current_pd->category->name.' >' :
+                                                        $current_pd->category->name}}
+                                                    </a>
+                                                    <a
+                                                        href="{{route('linkWise.product', ['id'=>$current_pd->subCategory->id ?? ' ', 'link'=>'sub_category'])}}">
+                                                        {{$current_pd->childCategory ? $current_pd->subCategory->name.' >'
+                                                        :
+                                                        ($current_pd->subCategory ? $current_pd->subCategory->name : '')}}
+                                                    </a>
+                                                    <a
+                                                        href="{{route('linkWise.product', ['id'=>$current_pd->childCategory->id ?? ' ', 'link'=>'child_category'])}}">
+                                                        {{$current_pd->childCategory->name
+                                                        ?? ''}}
+                                                    </a>
+                                                </span>
                                             </div>
                                         </div>
                                     </td>
