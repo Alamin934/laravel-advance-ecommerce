@@ -96,7 +96,7 @@
                                         <select type="text" name="brand" class="form-select">
                                             <option disabled value="" selected>Select...</option>
                                             @foreach ($brands as $brand)
-                                            <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                                            <option value="{{$brand->id}}">{{$brand->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

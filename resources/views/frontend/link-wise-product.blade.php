@@ -12,7 +12,7 @@
     </div>
     <div class="home_overlay"></div>
     <div class="home_content d-flex flex-column align-items-center justify-content-center">
-        <h2 class="home_title">{{$category->name}}</h2>
+        <h2 class="home_title">{{$link->name}}</h2>
     </div>
 </div>
 
@@ -26,16 +26,43 @@
                 <div class="shop_sidebar">
                     <div class="sidebar_section">
                         <div class="sidebar_title">Categories</div>
-                        <ul class="sidebar_categories">
-                            <li><a href="#">Computers & Laptops</a></li>
-                            <li><a href="#">Cameras & Photos</a></li>
-                            <li><a href="#">Hardware</a></li>
-                            <li><a href="#">Smartphones & Tablets</a></li>
-                            <li><a href="#">TV & Audio</a></li>
-                            <li><a href="#">Gadgets</a></li>
-                            <li><a href="#">Car Electronics</a></li>
-                            <li><a href="#">Video Games & Consoles</a></li>
-                            <li><a href="#">Accessories</a></li>
+                        <ul class="sidebar_categories cat_menu">
+                            @foreach ($categories as $category)
+                            @if(count($category->products)>0)
+                            <li class="{{count($category->sub_categories) == 0 ? '' : 'hassubs'}}">
+                                <a href="{{route('linkWise.product', ['id'=>$category->id, 'link'=>'category'])}}">
+                                    {{ $category->name }}
+                                    <span
+                                        class="badge badge-pill badge-primary font-weight-normal">{{count($category->products)}}</span>
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                                <ul>
+                                    @foreach ($category->sub_categories as $sub_category)
+
+                                    <li class="{{count($sub_category->ChildCategory) == 0 ? '' : 'hassubs'}}">
+                                        <a href="{{route('linkWise.product', ['id'=>$sub_category->id, 'link'=>'sub_category'])}}">{{$sub_category->name}}
+                                            {{-- <span
+                                                class="badge badge-pill badge-primary font-weight-normal">{{count($sub_category->products)}}</span>
+                                            --}}
+                                            <i class="fas fa-chevron-right"></i></a>
+                                        <ul>
+                                            @foreach ($sub_category->ChildCategory as $child_category)
+
+                                            <li>
+                                                <a href="{{route('linkWise.product', ['id'=>$child_category->id, 'link'=>'child_category'])}}">{{$child_category->name}}
+                                                    {{-- <span
+                                                        class="badge badge-pill badge-primary font-weight-normal">{{count($child_category->products)}}</span>
+                                                    --}}
+                                                    <i class="fas fa-chevron-right"></i></a>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            @endif
+                            @endforeach
                         </ul>
                     </div>
                     <div class="sidebar_section filter_by_section">
@@ -63,14 +90,15 @@
                     <div class="sidebar_section">
                         <div class="sidebar_subtitle brands_subtitle">Brands</div>
                         <ul class="brands_list">
-                            <li class="brand"><a href="#">Apple</a></li>
-                            <li class="brand"><a href="#">Beoplay</a></li>
-                            <li class="brand"><a href="#">Google</a></li>
-                            <li class="brand"><a href="#">Meizu</a></li>
-                            <li class="brand"><a href="#">OnePlus</a></li>
-                            <li class="brand"><a href="#">Samsung</a></li>
-                            <li class="brand"><a href="#">Sony</a></li>
-                            <li class="brand"><a href="#">Xiaomi</a></li>
+                            @foreach ($brands as $brand)
+                            @if(count($brand->products) > 0)
+                            <li class="brand"><a
+                                    href="{{route('linkWise.product', ['id'=>$brand->id, 'link'=>'brand'])}}">{{$brand->name}}<span
+                                        style="padding-top: 5px;"
+                                        class="badge badge-pill badge-primary font-weight-normal small ml-2">{{count($brand->products)}}</span></a>
+                            </li>
+                            @endif
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -137,7 +165,9 @@
                     </div>
 
                     <!-- Shop Page Navigation -->
-
+                    <div>
+                        {{$products->links()}}
+                    </div>
                     {{-- <div class="shop_page_nav d-flex flex-row">
                         <div class="page_prev d-flex flex-column align-items-center justify-content-center"><i
                                 class="fas fa-chevron-left"></i></div>
@@ -160,192 +190,36 @@
 </div>
 
 <!-- Recently Viewed -->
-<div class="viewed">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="viewed_title_container">
-                    <h3 class="viewed_title">Recently Viewed</h3>
-                    <div class="viewed_nav_container">
-                        <div class="viewed_nav viewed_prev"><i class="fas fa-chevron-left"></i></div>
-                        <div class="viewed_nav viewed_next"><i class="fas fa-chevron-right"></i></div>
-                    </div>
-                </div>
-
-                <div class="viewed_slider_container">
-
-                    <!-- Recently Viewed Slider -->
-
-                    <div class="owl-carousel owl-theme viewed_slider">
-
-                        <!-- Recently Viewed Item -->
-                        <div class="owl-item">
-                            <div
-                                class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="{{ asset('admin/frontend') }}/images/view_1.jpg"
-                                        alt=""></div>
-                                <div class="viewed_content text-center">
-                                    <div class="viewed_price">$225<span>$300</span></div>
-                                    <div class="viewed_name"><a href="#">Beoplay H7</a></div>
-                                </div>
-                                <ul class="item_marks">
-                                    <li class="item_mark item_discount">-25%</li>
-                                    <li class="item_mark item_new">new</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Recently Viewed Item -->
-                        <div class="owl-item">
-                            <div
-                                class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="{{ asset('admin/frontend') }}/images/view_2.jpg"
-                                        alt=""></div>
-                                <div class="viewed_content text-center">
-                                    <div class="viewed_price">$379</div>
-                                    <div class="viewed_name"><a href="#">LUNA Smartphone</a></div>
-                                </div>
-                                <ul class="item_marks">
-                                    <li class="item_mark item_discount">-25%</li>
-                                    <li class="item_mark item_new">new</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Recently Viewed Item -->
-                        <div class="owl-item">
-                            <div
-                                class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="{{ asset('admin/frontend') }}/images/view_3.jpg"
-                                        alt=""></div>
-                                <div class="viewed_content text-center">
-                                    <div class="viewed_price">$225</div>
-                                    <div class="viewed_name"><a href="#">Samsung J730F...</a></div>
-                                </div>
-                                <ul class="item_marks">
-                                    <li class="item_mark item_discount">-25%</li>
-                                    <li class="item_mark item_new">new</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Recently Viewed Item -->
-                        <div class="owl-item">
-                            <div
-                                class="viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="{{ asset('admin/frontend') }}/images/view_4.jpg"
-                                        alt=""></div>
-                                <div class="viewed_content text-center">
-                                    <div class="viewed_price">$379</div>
-                                    <div class="viewed_name"><a href="#">Huawei MediaPad...</a></div>
-                                </div>
-                                <ul class="item_marks">
-                                    <li class="item_mark item_discount">-25%</li>
-                                    <li class="item_mark item_new">new</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Recently Viewed Item -->
-                        <div class="owl-item">
-                            <div
-                                class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="{{ asset('admin/frontend') }}/images/view_5.jpg"
-                                        alt=""></div>
-                                <div class="viewed_content text-center">
-                                    <div class="viewed_price">$225<span>$300</span></div>
-                                    <div class="viewed_name"><a href="#">Sony PS4 Slim</a></div>
-                                </div>
-                                <ul class="item_marks">
-                                    <li class="item_mark item_discount">-25%</li>
-                                    <li class="item_mark item_new">new</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Recently Viewed Item -->
-                        <div class="owl-item">
-                            <div
-                                class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="{{ asset('admin/frontend') }}/images/view_6.jpg"
-                                        alt=""></div>
-                                <div class="viewed_content text-center">
-                                    <div class="viewed_price">$375</div>
-                                    <div class="viewed_name"><a href="#">Speedlink...</a></div>
-                                </div>
-                                <ul class="item_marks">
-                                    <li class="item_mark item_discount">-25%</li>
-                                    <li class="item_mark item_new">new</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@include('frontend.partials.recently-viewed')
 
 <!-- Brands -->
-<div class="brands">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="brands_slider_container">
-
-                    <!-- Brands Slider -->
-
-                    <div class="owl-carousel owl-theme brands_slider">
-
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_1.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_2.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_3.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_4.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_5.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_6.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_7.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_8.jpg" alt=""></div>
-                        </div>
-
-                    </div>
-
-                    <!-- Brands Slider Navigation -->
-                    <div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
-                    <div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@include('frontend.partials.brands')
 
 @endsection
 
 @push('style')
+<style>
+    .sidebar_categories li {
+        padding-left: 0px !important;
+        padding-right: 15px !important;
+        margin-bottom: 0 !important;
+    }
+
+    .sidebar_categories li ul {
+        top: 46px !important;
+        left: 15% !important;
+        z-index: 9999;
+        padding-left: 15px !important;
+    }
+
+    .sidebar_categories li ul li ul {
+        z-index: 9999;
+    }
+
+    .product_image img {
+        max-width: 95% !important;
+    }
+</style>
 <link rel="stylesheet" type="text/css"
     href="{{ asset('admin/frontend') }}/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/shop_styles.css">

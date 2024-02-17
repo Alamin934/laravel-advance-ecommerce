@@ -41,7 +41,7 @@
                     </div>
                     <div class="product_name">{{$product->title}}</div>
                     <p class="mb-0"><span class="text-dark">Stock:</span> {{$product->stock_quantity}}</p>
-                    <p><span class="text-dark">Brand:</span> {{$product->brand ? $product->brand->brand_name
+                    <p><span class="text-dark">Brand:</span> {{$product->brand ? $product->brand->name
                         : 'No Brand'}}</p>
                     <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
                     <div class="order_info d-flex flex-row">

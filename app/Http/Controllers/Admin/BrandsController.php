@@ -35,10 +35,10 @@ class BrandsController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'brand_name' => 'required | unique:brands',
+            'name' => 'required | unique:brands',
         ]);
 
-        $slug = Str::slug($request->brand_name, '-');
+        $slug = Str::slug($request->name, '-');
 
         if($request->file('brand_logo')){
             // get & make a new file
@@ -54,13 +54,13 @@ class BrandsController extends Controller
 
             // insert into database
             $brand = Brand::create([
-                'brand_name' => $request->brand_name,
+                'name' => $request->name,
                 'brand_slug' => $slug,
                 'brand_logo' => $new_file_name,
             ]);
         }else{
             $brand = Brand::create([
-                'brand_name' => $request->brand_name,
+                'name' => $request->name,
                 'brand_slug' => $slug,
             ]);
         }
@@ -93,10 +93,10 @@ class BrandsController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
-            'brand_name' => 'required',Rule::unique('brands')->ignore($id)
+            'name' => 'required',Rule::unique('brands')->ignore($id)
         ]);
 
-        $slug = Str::slug($request->brand_name, '-');
+        $slug = Str::slug($request->name, '-');
 
         if($request->file('brand_logo')){
             $file = $request->file('brand_logo');
@@ -113,12 +113,12 @@ class BrandsController extends Controller
             }
 
             $brand = Brand::where('id', $id)->update([
-                'brand_name' => $request->brand_name,
+                'name' => $request->name,
                 'brand_logo' => $new_file_name,
             ]);
         }else{
             $brand = Brand::where('id', $id)->update([
-                'brand_name' => $request->brand_name,
+                'name' => $request->name,
             ]);
         }
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
-use App\Models\{Product,Category,Wishlist,Brand};
+use App\Models\{Product,Category,SubCategory,ChildCategory,Wishlist,Brand};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -60,9 +60,28 @@ class HomeController extends Controller
     }
 
     // Link Wise Product Display
-    public function linkWiseProduct(string $id){
-        $category = Category::find($id);
-        $products = Product::where('category_id', $id)->get();
-        return view('frontend.link-wise-product', compact('products','category'));
+    public function linkWiseProduct(Request $request,string $id){
+        $brands = Brand::get();
+        $recent_views = Product::where('status', 'on')->where('product_views', '>','0')->orderByDesc('updated_at')->take(16)->get();
+        
+        $products;
+        $link;
+        if($request->query('link') == 'category'){
+            $products = Product::where('category_id', $id)->orderByDesc('id')->paginate(20);
+            $link = Category::find($id);
+        }
+        if($request->query('link') == 'sub_category'){
+            $products = Product::where('sub_category_id', $id)->orderByDesc('id')->paginate(20);
+            $link = SubCategory::find($id);
+        }
+        if($request->query('link') == 'child_category'){
+            $products = Product::where('child_category_id', $id)->orderByDesc('id')->paginate(20);
+            $link = ChildCategory::find($id);
+        }
+        if($request->query('link') == 'brand'){
+            $products = Product::where('brand_id', $id)->orderByDesc('id')->paginate(20);
+            $link = Brand::find($id);
+        }
+        return view('frontend.link-wise-product', compact('products','link','brands','recent_views'));
     }
 }

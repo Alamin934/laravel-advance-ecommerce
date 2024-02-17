@@ -30,7 +30,7 @@
                         <select name="filter_brand" class="form-select product_filter">
                             <option value="all">All</option>
                             @foreach (\App\Models\Brand::all() as $brand)
-                            <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                            <option value="{{$brand->id}}">{{$brand->name}}</option>
                             @endforeach
                         </select>
                     </div>

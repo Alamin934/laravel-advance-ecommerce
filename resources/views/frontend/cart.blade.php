@@ -45,7 +45,7 @@
                                                     {{Illuminate\Support\Str::words($product->name, 4, '')}}
                                                 </span>
                                                 <br>
-                                                <span>Brand: {{ $current_pd->brand->brand_name ?? 'No Brand' }}</span>
+                                                <span>Brand: {{ $current_pd->brand->name ?? 'No Brand' }}</span>
                                                 <br>
                                                 <span>Category: {{ $current_pd->category->name }}</span>
                                             </div>

@@ -17,7 +17,7 @@
                             @foreach ($categories as $category)
 
                             <li class="{{count($category->sub_categories) == 0 ? '' : 'hassubs'}}">
-                                <a href="{{route('linkWise.product', $category->id)}}">
+                                <a href="{{route('linkWise.product', ['id'=>$category->id, 'link'=>'category'])}}">
                                     <img src="{{asset('admin/assets/files/category/'.$category->icon)}}"
                                         style="width:20px;margin-right:5px;" alt="{{ $category->slug }}">
                                     {{ $category->name }}
@@ -29,7 +29,7 @@
                                     @foreach ($category->sub_categories as $sub_category)
 
                                     <li class="{{count($sub_category->ChildCategory) == 0 ? '' : 'hassubs'}}">
-                                        <a href="{{route('linkWise.product', $sub_category->id)}}">{{$sub_category->name}}
+                                        <a href="{{route('linkWise.product', ['id'=>$sub_category->id, 'link'=>'sub_category'])}}">{{$sub_category->name}}
                                             {{-- <span
                                                 class="badge badge-pill badge-primary font-weight-normal">{{count($sub_category->products)}}</span>
                                             --}}
@@ -38,7 +38,7 @@
                                             @foreach ($sub_category->ChildCategory as $child_category)
 
                                             <li>
-                                                <a href="{{route('linkWise.product', $child_category->id)}}">{{$child_category->name}}
+                                                <a href="{{route('linkWise.product', ['id'=>$child_category->id, 'link'=>'child_category'])}}">{{$child_category->name}}
                                                     {{-- <span
                                                         class="badge badge-pill badge-primary font-weight-normal">{{count($child_category->products)}}</span>
                                                     --}}

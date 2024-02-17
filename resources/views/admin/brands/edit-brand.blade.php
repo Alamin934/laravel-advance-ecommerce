@@ -18,9 +18,9 @@
                 <div class="row">
                     <div class="col-12 mb-3">
                         <label class="form-label">Brand Name</label>
-                        <input type="text" value="{{$brand->brand_name}}" name="brand_name"
+                        <input type="text" value="{{$brand->name}}" name="name"
                             class="form-control form-control-lg" placeholder="Enter child Category Name" />
-                        @error('brand_name')
+                        @error('name')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
@@ -31,7 +31,7 @@
                         {{-- Old Brand Logo --}}
 
                         <img src="{{asset('admin/assets/files/brands/'.$brand->brand_logo)}}"
-                            alt="{{$brand->brand_name}}">
+                            alt="{{$brand->name}}">
                         <input type="hidden" name="old_brand_logo" value="{{$brand->brand_logo}}">
                     </div>
                 </div>

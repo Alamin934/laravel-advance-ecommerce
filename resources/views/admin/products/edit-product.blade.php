@@ -145,7 +145,7 @@
                                         <option disabled value="" selected>Select...</option>
                                         @foreach ($brands as $brand)
                                         <option value="{{$brand->id}}" {{$brand->id == $product->brand_id ? 'selected' :
-                                            ''}}>{{$brand->brand_name}}</option>
+                                            ''}}>{{$brand->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -17,9 +17,9 @@
                 <div class="row">
                     <div class="col-12 mb-3">
                         <label class="form-label">Brand Name</label>
-                        <input type="text" value="{{old('brand_name')}}" name="brand_name"
+                        <input type="text" value="{{old('name')}}" name="name"
                             class="form-control form-control-lg" placeholder="Enter child Category Name" />
-                        @error('brand_name')
+                        @error('name')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>

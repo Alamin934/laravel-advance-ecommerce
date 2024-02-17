@@ -28,7 +28,7 @@
                         @foreach ($brands as $brand)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $brand->brand_name }}</td>
+                            <td>{{ $brand->name }}</td>
                             <td>{{ $brand->brand_slug }}</td>
                             <td>
                                 <img width="130" src="{{asset('admin/assets/files/brands/'.$brand->brand_logo)}}"

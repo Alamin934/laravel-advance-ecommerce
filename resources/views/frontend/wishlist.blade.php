@@ -35,7 +35,7 @@
                             <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
                                 <!-- Data -->
                                 <p><strong>{{ $wishlist->product->title }}</strong></p>
-                                <p>Brand: {{ $wishlist->product->brand ? $wishlist->product->brand->brand_name : 'No
+                                <p>Brand: {{ $wishlist->product->brand ? $wishlist->product->brand->name : 'No
                                     Brand' }}</p>
 
                                 <p>Category:
