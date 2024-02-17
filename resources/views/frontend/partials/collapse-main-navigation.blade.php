@@ -17,24 +17,32 @@
                             @foreach ($categories as $category)
 
                             <li class="{{count($category->sub_categories) == 0 ? '' : 'hassubs'}}">
-                                <a href="{{ $category->slug }}">
+                                <a href="{{route('linkWise.product', $category->id)}}">
                                     <img src="{{asset('admin/assets/files/category/'.$category->icon)}}"
                                         style="width:20px;margin-right:5px;" alt="{{ $category->slug }}">
                                     {{ $category->name }}
+                                    <span
+                                        class="badge badge-pill badge-primary font-weight-normal">{{count($category->products)}}</span>
                                     <i class="fas fa-chevron-right"></i>
                                 </a>
                                 <ul>
                                     @foreach ($category->sub_categories as $sub_category)
 
                                     <li class="{{count($sub_category->ChildCategory) == 0 ? '' : 'hassubs'}}">
-                                        <a href="{{$sub_category->slug}}">{{$sub_category->name}}<i
-                                                class="fas fa-chevron-right"></i></a>
+                                        <a href="{{route('linkWise.product', $sub_category->id)}}">{{$sub_category->name}}
+                                            {{-- <span
+                                                class="badge badge-pill badge-primary font-weight-normal">{{count($sub_category->products)}}</span>
+                                            --}}
+                                            <i class="fas fa-chevron-right"></i></a>
                                         <ul>
                                             @foreach ($sub_category->ChildCategory as $child_category)
 
                                             <li>
-                                                <a href="{{$child_category->slug}}">{{$child_category->name}}<i
-                                                        class="fas fa-chevron-right"></i></a>
+                                                <a href="{{route('linkWise.product', $child_category->id)}}">{{$child_category->name}}
+                                                    {{-- <span
+                                                        class="badge badge-pill badge-primary font-weight-normal">{{count($child_category->products)}}</span>
+                                                    --}}
+                                                    <i class="fas fa-chevron-right"></i></a>
                                             </li>
                                             @endforeach
                                         </ul>

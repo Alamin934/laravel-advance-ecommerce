@@ -13,12 +13,12 @@ class HomeController extends Controller
         $banner = Product::where('home_banner', 'on')->latest()->first();
         $featureds = Product::where('featured', 'on')->where('status', 'on')->orderByDesc('id')->take(16)->get();
         $most_populars = Product::where('status', 'on')->where('product_views','>', '2')->orderByDesc('product_views')->take(16)->get();
-        $categories = Category::inRandomOrder()->get();
+        // $categories = Category::inRandomOrder()->get();
         $new_arrivals = Category::where('is_home', 1)->get();
         $recent_views = Product::where('status', 'on')->where('product_views', '>','0')->orderByDesc('updated_at')->take(16)->get();
         $brands = Brand::get();
 
-        return view('home', compact('banner', 'featureds', 'most_populars','categories','new_arrivals','recent_views','brands'));
+        return view('home', compact('banner', 'featureds', 'most_populars','new_arrivals','recent_views','brands'));
     }
 
     public function singleProduct(string $slug){
@@ -45,15 +45,24 @@ class HomeController extends Controller
             return response()->json(['status'=>'error', 'message'=>'Please Login for Add to Wishlist']);
         }
     }
+
     public function showWishlist() {
         $wishlist_product = Wishlist::where('user_id', Auth::id())->get();
         // return $wishlist_product;
         return view('frontend.wishlist', compact('wishlist_product'));
     }
+
     public function removeToWishlist($id) {
         $wishlist_product = Wishlist::find($id);
         $wishlist_product->delete();
         $wishlist_count = Wishlist::where('user_id', Auth::id())->count();
         return response()->json(['status'=>'success','wishlist_count'=>$wishlist_count]);
+    }
+
+    // Link Wise Product Display
+    public function linkWiseProduct(string $id){
+        $category = Category::find($id);
+        $products = Product::where('category_id', $id)->get();
+        return view('frontend.link-wise-product', compact('products','category'));
     }
 }
