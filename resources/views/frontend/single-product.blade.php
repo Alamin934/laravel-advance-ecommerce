@@ -35,8 +35,18 @@
             <div class="col-lg-4 col-6 order-3">
                 <div class="product_description">
                     <div class="product_category">
-                        <a href="">{{$product->subCategory ? $product->category->name.' >' : $product->category->name}}</a>
-                        <a href="">
+                        <a href="{{route('linkWise.product', ['id'=>$product->category->id, 'link'=>'category'])}}">{{$product->subCategory ? $product->category->name.' >' : $product->category->name}}</a>
+                        <a href="{{route('linkWise.product', ['id'=>$product->subCategory->id ?? ' ', 'link'=>'sub_category'])}}">
+                            {{$product->childCategory ? $product->subCategory->name.' >' : ($product->subCategory ? $product->subCategory->name : '')}}
+                            {{-- @if ($product->childCategory)
+                                {{$product->subCategory->name.' >'}}
+                            @elseif ($product->subCategory)
+                                {{$product->subCategory->name}}
+                            @else
+                                {{''}}
+                            @endif --}}
+                        </a>
+                        {{-- <a href="{{route('linkWise.product', ['id'=>$product->subCategory->id, 'link'=>'sub_category'])}}">
                             @if ($product->childCategory)
                                 {{$product->subCategory->name.' >'}}
                             @elseif ($product->subCategory)
@@ -44,8 +54,8 @@
                             @else
                                 {{''}}
                             @endif
-                        </a>
-                        <a href="">{{$product->childCategory->name ?? ''}}</a>
+                        </a> --}}
+                        <a href="{{route('linkWise.product', ['id'=>$product->childCategory->id ?? ' ', 'link'=>'child_category'])}}">{{$product->childCategory->name ?? ''}}</a>
                         
                         
                     </div>
