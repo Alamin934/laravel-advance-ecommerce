@@ -421,12 +421,14 @@
                         <!-- Popular Categories Item -->
                         @foreach ($categories as $category)
                         <div class="owl-item">
-                            <div class="popular_category d-flex flex-column align-items-center justify-content-center">
-                                <div class="popular_category_image"><img
-                                        src="{{ asset('admin/assets/files/category/'.$category->icon) }}" alt="">
+                            <a href="{{route('linkWise.product',['id'=>$category->id, 'link'=>'category'])}}" class="text-dark">
+                                <div class="popular_category d-flex flex-column align-items-center justify-content-center">
+                                    <div class="popular_category_image"><img
+                                            src="{{ asset('admin/assets/files/category/'.$category->icon) }}" alt="">
+                                    </div>
+                                    <div class="popular_category_text">{{$category->name}}</div>
                                 </div>
-                                <div class="popular_category_text">{{$category->name}}</div>
-                            </div>
+                            </a>
                         </div>
                         @endforeach
                     </div>

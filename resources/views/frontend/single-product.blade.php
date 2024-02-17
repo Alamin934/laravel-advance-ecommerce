@@ -35,9 +35,19 @@
             <div class="col-lg-4 col-6 order-3">
                 <div class="product_description">
                     <div class="product_category">
-                        {{$product->category->name}} >
-                        {{$product->subCategory ? $product->subCategory->name.' >' : ''}}
-                        {{$product->childCategory->name ?? ''}}
+                        <a href="">{{$product->subCategory ? $product->category->name.' >' : $product->category->name}}</a>
+                        <a href="">
+                            @if ($product->childCategory)
+                                {{$product->subCategory->name.' >'}}
+                            @elseif ($product->subCategory)
+                                {{$product->subCategory->name}}
+                            @else
+                                {{''}}
+                            @endif
+                        </a>
+                        <a href="">{{$product->childCategory->name ?? ''}}</a>
+                        
+                        
                     </div>
                     <div class="product_name">{{$product->title}}</div>
                     <p class="mb-0"><span class="text-dark">Stock:</span> {{$product->stock_quantity}}</p>
