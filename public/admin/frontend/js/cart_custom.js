@@ -193,7 +193,7 @@ $(document).ready(function()
 	function openMenu()
 	{
 		var menu = $('.page_menu');
-		var menuContent = $('.page_menu_content');
+		var menuContent = $('.page_menu_nav');
 		TweenMax.set(menuContent, {height:"auto"});
 		TweenMax.from(menuContent, 0.3, {height:0});
 		menuActive = true;
@@ -202,7 +202,7 @@ $(document).ready(function()
 	function closeMenu()
 	{
 		var menu = $('.page_menu');
-		var menuContent = $('.page_menu_content');
+		var menuContent = $('.page_menu_nav');
 		TweenMax.to(menuContent, 0.3, {height:0});
 		menuActive = false;
 	}

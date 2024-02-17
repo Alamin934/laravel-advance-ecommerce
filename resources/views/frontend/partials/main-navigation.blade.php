@@ -17,8 +17,12 @@
                             @foreach ($categories as $category)
 
                             <li class="{{count($category->sub_categories) == 0 ? '' : 'hassubs'}}">
-                                <a href="{{ $category->slug }}">{{ $category->name }}<i
-                                        class="fas fa-chevron-right"></i></a>
+                                <a href="{{ $category->slug }}">
+                                    <img src="{{asset('admin/assets/files/category/'.$category->icon)}}"
+                                        style="width:20px;margin-right:5px;" alt="{{ $category->slug }}">
+                                    {{ $category->name }}
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
                                 <ul>
                                     @foreach ($category->sub_categories as $sub_category)
 
@@ -46,66 +50,18 @@
 
                     <div class="main_nav_menu ml-auto">
                         <ul class="standard_dropdown main_nav_dropdown">
-                            <li><a href="#">Home<i class="fas fa-chevron-down"></i></a></li>
-                            <li class="hassubs">
-                                <a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
+                            <li><a href="{{route('home')}}">Home<i class="fas fa-chevron-down"></i></a></li>
+                            <li><a href="{{route('shop')}}">Shop<i class="fas fa-chevron-down"></i></a></li>
+                            {{-- <li class="hassubs">
+                                <a href="javascript:void(0)">Pages<i class="fas fa-chevron-down"></i></a>
                                 <ul>
                                     <li>
-                                        <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                        <ul>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                            </li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                            </li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                            </li>
-                                        </ul>
+                                        <a href="{{route('shop')}}">Shop
+                                            <i class="fas fa-chevron-down"></i>
+                                        </a>
                                     </li>
-                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
                                 </ul>
-                            </li>
-                            <li class="hassubs">
-                                <a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
-                                <ul>
-                                    <li>
-                                        <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                        <ul>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                            </li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                            </li>
-                                            <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                </ul>
-                            </li>
-                            <li class="hassubs">
-                                <a href="#">Pages<i class="fas fa-chevron-down"></i></a>
-                                <ul>
-                                    <li><a href="{{ asset('admin/frontend') }}/shop.html">Shop<i
-                                                class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="{{ asset('admin/frontend') }}/product.html">Product<i
-                                                class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="{{ asset('admin/frontend') }}/blog.html">Blog<i
-                                                class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="{{ asset('admin/frontend') }}/blog_single.html">Blog Post<i
-                                                class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="{{ asset('admin/frontend') }}/regular.html">Regular Post<i
-                                                class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="{{ asset('admin/frontend') }}/cart.html">Cart<i
-                                                class="fas fa-chevron-down"></i></a></li>
-                                    <li><a href="{{ asset('admin/frontend') }}/contact.html">Contact<i
-                                                class="fas fa-chevron-down"></i></a></li>
-                                </ul>
-                            </li>
-                            <li><a href="{{ asset('admin/frontend') }}/blog.html">Blog<i
-                                        class="fas fa-chevron-down"></i></a></li>
+                            </li> --}}
                             <li><a href="{{ asset('admin/frontend') }}/contact.html">Contact<i
                                         class="fas fa-chevron-down"></i></a></li>
                         </ul>

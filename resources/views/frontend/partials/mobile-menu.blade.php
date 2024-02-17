@@ -30,49 +30,14 @@
                                 <li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
                             </ul>
                         </li>
+
                         <li class="page_menu_item">
-                            <a href="#">Home<i class="fa fa-angle-down"></i></a>
+                            <a href="{{route('home')}}">Home<i class="fa fa-angle-down"></i></a>
                         </li>
-                        <li class="page_menu_item has-children">
-                            <a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection">
-                                <li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
-                                <li class="page_menu_item has-children">
-                                    <a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
-                                    <ul class="page_menu_selection">
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
+                        <li class="page_menu_item">
+                            <a href="{{route('shop')}}">Shop<i class="fa fa-angle-down"></i></a>
                         </li>
-                        <li class="page_menu_item has-children">
-                            <a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection">
-                                <li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
-                        </li>
-                        <li class="page_menu_item has-children">
-                            <a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
-                            <ul class="page_menu_selection">
-                                <li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                            </ul>
-                        </li>
-                        <li class="page_menu_item"><a href="{{ asset('admin/frontend') }}/blog.html">blog<i
-                                    class="fa fa-angle-down"></i></a></li>
-                        <li class="page_menu_item"><a href="{{ asset('admin/frontend') }}/contact.html">contact<i
-                                    class="fa fa-angle-down"></i></a></li>
+                        <li class="page_menu_item"><a href="">contact<i class="fa fa-angle-down"></i></a></li>
                     </ul>
 
                     <div class="menu_contact">

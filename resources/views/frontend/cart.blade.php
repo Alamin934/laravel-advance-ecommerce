@@ -7,8 +7,8 @@
 @section('main-content')
 <section class="h-100 gradient-custom">
     <div class="container py-5">
-        <div class="row">
-            <div class="col-lg-9 col-md-8 mb-4 mb-md-0">
+        <div class="row justify-content-end">
+            <div class="col-12 mb-4">
                 <div class="card">
                     <div class="">
                         <h5 class="card-header">Cart - <span class="product_count">{{Cart::count()}}</span>
@@ -52,8 +52,8 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <input data-id="{{$product->rowId}}" type="number"
-                                            class="update_qty form-control text-center" value="{{$product->qty}}"
+                                        <input style="height: 50px" data-id="{{$product->rowId}}" type="number"
+                                            class="update_qty form-control text-center w-50" value="{{$product->qty}}"
                                             min="1" name="qty">
                                     </td>
                                     <td>
@@ -136,7 +136,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4">
+            <div class="col-5">
                 <div class="card">
                     <h5 class="card-header">Total Amount</h5>
                     <div class="card-body">
@@ -178,14 +178,18 @@
 @push('scripts')
 <script src="{{ asset('admin/frontend') }}/js/product_custom.js"></script>
 <script>
+    // load data with ajax
     function updateCartPageAfterChange(response){
         $('.table-responsive').load(location.href + ' .cart_table');
         $('.card-body').load(location.href + ' .total_amount');
         
-        $(".cart_count span, .cart_price span").html('');
-        $(".cart_count span").html(response.total_item);
-        $(".cart_price span").html(response.total_price);
+        if(response.total_item && response.total_price){
+            $(".cart_count span, .cart_price span").html('');
+            $(".cart_count span").html(response.total_item);
+            $(".cart_price span").html(response.total_price);
+        }
     }
+    // Cart update ajax call
     function ajaxUpdateCartItems(url, data){
         $.ajax({
             type: "GET",
@@ -200,20 +204,20 @@
         }); 
     }
     $(document).ready(function () {
-
+        // Cart Quantity Update
         $(document).on('click','.update_qty',function(){
             let rowId = $(this).data('id');
             let qty = $(this).val();
             ajaxUpdateCartItems("/update-qty/"+rowId, {'qty':qty});
         });      
-
+        // Cart Color UPdate
         $(document).on('click','.update_color',function(){
             let rowId = $(this).data('id');
             let size = $(this).parents('tr').find('.update_size').val();
             let color = $(this).css('backgroundColor');
             ajaxUpdateCartItems("/update-color/"+rowId, {'size':size,'color':color});
         });       
-
+        // Cart Size Update
         $(document).on('change','.update_size',function(){
             let rowId = $(this).data('id');
             let color = $(this).parents('tr').find(".selected_color").css('backgroundColor');
