@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\FrontEnd\{HomeController,CartController};
+use App\Http\Controllers\FrontEnd\{HomeController,CartController,SettingController};
 use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function () {
@@ -49,6 +49,10 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(function () {
     // Orders
     Route::view('/orders','frontend.dashboard.orders')->name('orders');
+
+    // shipping
+    Route::get('/settings',[SettingController::class, 'settings'])->name('settings');
+    Route::post('/shipping',[SettingController::class, 'shippingStore'])->name('shipping.store');
 
     // Profile Information
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

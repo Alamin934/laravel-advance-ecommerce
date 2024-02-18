@@ -29,6 +29,10 @@
                                 </li>
                                 <li class="nav-item border-top">
                                     <a class="nav-link text-dark" href="{{route('dashboard.profile.edit')}}"><i
+                                            class="fas fa-user mr-2"></i>Profile</a>
+                                </li>
+                                <li class="nav-item border-top">
+                                    <a class="nav-link text-dark" href="{{route('dashboard.settings')}}"><i
                                             class="fas fa-edit mr-2"></i>Settings</a>
                                 </li>
                                 <li class="nav-item border-top">
