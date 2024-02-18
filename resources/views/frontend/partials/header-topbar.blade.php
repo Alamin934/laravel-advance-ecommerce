@@ -1,4 +1,4 @@
-@if(!request()->routeIs('dashboard.dashboard'))
+@if(!request()->routeIs('dashboard.*'))
 <!-- Top Bar -->
 <div class="top_bar">
     <div class="container">

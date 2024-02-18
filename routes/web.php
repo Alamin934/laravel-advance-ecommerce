@@ -22,12 +22,15 @@ Route::controller(HomeController::class)->group(function () {
 
 // Cart
 Route::controller(CartController::class)->group(function () {
-    Route::get('/add-to-cart','addToCart')->name('add.cart');
     Route::get('/cart','displayCart')->name('display.cart');
-    Route::get('/update-qty/{id}','updateQty')->name('update.qty');
-    Route::get('/update-size/{id}','updateSize')->name('update.size');
-    Route::get('/update-color/{id}','updateColor')->name('update.color');
-    Route::get('/remove-from-cart/{id}','removeFromCart')->name('remove.cart');
+
+    Route::middleware(['auth', 'verified'])->group(function () {
+        Route::get('/add-to-cart','addToCart')->name('add.cart');
+        Route::get('/update-qty/{id}','updateQty')->name('update.qty');
+        Route::get('/update-size/{id}','updateSize')->name('update.size');
+        Route::get('/update-color/{id}','updateColor')->name('update.color');
+        Route::get('/remove-from-cart/{id}','removeFromCart')->name('remove.cart');
+    });
 });
 
 // Shop
@@ -43,12 +46,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard.dashboard');
 
 // Dashboard Sub Route
-Route::prefix('dashboard')->name('dashboard.')->group(function () {
+Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(function () {
+    // Orders
     Route::view('/orders','frontend.dashboard.orders')->name('orders');
-});
 
-// Profile
-Route::middleware('auth')->group(function () {
+    // Profile Information
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

@@ -28,7 +28,8 @@
                                         Order</a>
                                 </li>
                                 <li class="nav-item border-top">
-                                    <a class="nav-link text-dark" href="#"><i class="fas fa-edit mr-2"></i>Settings</a>
+                                    <a class="nav-link text-dark" href="{{route('dashboard.profile.edit')}}"><i
+                                            class="fas fa-edit mr-2"></i>Settings</a>
                                 </li>
                                 <li class="nav-item border-top">
                                     <form action="{{route('logout')}}" method="post">
