@@ -11,7 +11,8 @@
                         @foreach ($brands as $brand)
                         <div class="owl-item">
                             <div class="brands_item d-flex flex-column justify-content-center">
-                                <a href="" title="{{$brand->name}}">
+                                <a href="{{route('linkWise.product', ['id'=>$brand->id, 'link'=>'brand'])}}"
+                                    title="{{$brand->name}}">
                                     <img style="width:120px"
                                         src="{{ asset('assets/admin/files/brands/'.$brand->brand_logo) }}" alt="">
                                 </a>

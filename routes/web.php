@@ -18,6 +18,9 @@ Route::controller(HomeController::class)->group(function () {
     
     // Link Wise Product
     Route::get('/link-wise-product/{id}','linkWiseProduct')->name('linkWise.product');
+
+    // Newsletter email store
+    Route::post('/newsletter','newsLetter')->name('newsletter.store');
 });
 
 // Cart

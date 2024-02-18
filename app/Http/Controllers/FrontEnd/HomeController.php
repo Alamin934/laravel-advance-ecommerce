@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\{Product,Category,SubCategory,ChildCategory,Wishlist,Brand};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -84,5 +85,23 @@ class HomeController extends Controller
             $link = Brand::find($id);
         }
         return view('frontend.link-wise-product', compact('products','link','brands','recent_views'));
+    }
+
+    // Store NewsLetter
+    public function newsLetter(Request $request){
+        $validated = $request->validate([
+            'email'=>'required|email',
+        ]);
+        $newsletter = DB::table('newsletters')->where('email', $request->email)->first();
+        if($newsletter){
+            return response()->json(['status'=>'error', 'msg'=>'You already Subscribed us.']);
+        }else{
+            DB::table('newsletters')->insert([
+                'email'=>$request->email,
+                'created_at'=>now(),
+                'updated_at'=>now(),
+            ]);
+            return response()->json(['status'=>'success', 'msg'=>'Thanks for Subscribed us.']);
+        }
     }
 }

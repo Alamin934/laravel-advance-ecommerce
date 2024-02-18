@@ -48,6 +48,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('home')->with($notification);;
+        return redirect()->route('home');
     }
 }

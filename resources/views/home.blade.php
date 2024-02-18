@@ -1132,10 +1132,36 @@
 @push('scripts')
 <script>
     $(document).ready(function () {
-            $(document).on('click','.selected_color', function () {
-                $(this).attr('checked', true);
-                console.log('color:home',$('.selected_color:checked').css("background-color"));
+        // home page product add to cart color check on click
+        $(document).on('click','.selected_color', function () {
+            $(this).attr('checked', true);
+        });
+        // Store Email for Newsletter
+        $(document).on('click','.newsletter_button', function (e) {
+            e.preventDefault();
+            let email = $('input.newsletter_input').val();
+            $.ajax({
+                type: "POST",
+                url: "{{route('newsletter.store')}}",
+                data: {email:email},
+                success: function (response) {
+                    if(response.status=='success'){
+                        toastr.success(response.msg);
+                        $('.newsletter_input').val('');
+                        $('.error-msg').html('');
+                    }else{
+                        $('.error-msg').html('');
+                        $('.newsletter_input').val('');
+                        toastr.error(response.msg);
+                    }
+                },error: function(err){
+                    let error = err.responseJSON;
+                    $.each(error.errors, function (index, value) { 
+                            $('.error-msg').html(`<span class='text-danger'>${value}</span>`);
+                    });
+                }
             });
         });
+    });
 </script>
 @endpush

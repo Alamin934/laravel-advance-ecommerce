@@ -10,11 +10,7 @@ class SettingController extends Controller
 {
     public function settings(){
         $shipping = DB::table('shippings')->latest()->first();
-        if($shipping){
-            return view('frontend.dashboard.settings',compact('shipping'));
-        }else{
-            return view('frontend.dashboard.settings');
-        }
+        return view('frontend.dashboard.settings',compact('shipping'));
     }
 
     public function shippingStore(Request $request){
