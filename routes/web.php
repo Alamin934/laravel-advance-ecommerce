@@ -38,7 +38,7 @@ Route::get('/dashboard', function () {
     if(auth()->user()->is_admin === 1){
         return redirect()->route('admin.dashboard');
     }else{
-        return view('dashboard');
+        return view('frontend.dashboard.dashboard');
     }
 })->middleware(['auth', 'verified'])->name('dashboard');
 

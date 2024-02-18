@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 
 @section('main-nav')
 @include('frontend.partials.collapse-main-navigation')
@@ -138,7 +138,9 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('assets/admin/files/products/'.$product->thumbnail) }}" alt="">
+                                <a href="{{route('single.product', $product->slug)}}">
+                                    <img src="{{ asset('assets/admin/files/products/'.$product->thumbnail) }}" alt="{{$product->title}}">
+                                </a>
                             </div>
                             <div class="product_content">
                                 @if($product->selling_price)

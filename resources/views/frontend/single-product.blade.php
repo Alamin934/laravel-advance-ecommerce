@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 
 @section('main-nav')
 @include('frontend.partials.collapse-main-navigation')
@@ -149,7 +149,7 @@
 
         </div>
         <div class="row">
-            <div class="col-12 px-0">
+            <div class="col-md-9 px-0">
                 <div class="product_text card">
                     <div class="card-header">
                         <h5 class="mb-0">Product Details of
@@ -160,7 +160,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 px-0">
+            <div class="col-md-9 px-0">
                 <div class="product_text card">
                     <div class="card-header">
                         <h5 class="mb-0">Product Reviews</h5>

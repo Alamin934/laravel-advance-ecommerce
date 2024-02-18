@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 
 @section('main-nav')
 @include('frontend.partials.collapse-main-navigation')
@@ -46,12 +46,13 @@
                                                 </span>
                                                 <br>
                                                 <span>Brand:
-                                                    <a href="{{$current_pd->brand ? route('linkWise.product', ['id'=>$current_pd->brand->id, 'link'=>'brand']) : 'javascript:void(0)'}}">
-                                                    {{ $current_pd->brand ?  $current_pd->brand->name : 'No Brand' }}
+                                                    <a
+                                                        href="{{$current_pd->brand ? route('linkWise.product', ['id'=>$current_pd->brand->id, 'link'=>'brand']) : 'javascript:void(0)'}}">
+                                                        {{ $current_pd->brand ? $current_pd->brand->name : 'No Brand' }}
                                                     </a>
                                                 </span>
                                                 <br>
-                                                <span>Category: 
+                                                <span>Category:
                                                     <a
                                                         href="{{route('linkWise.product', ['id'=>$current_pd->category->id, 'link'=>'category'])}}">{{$current_pd->subCategory
                                                         ? $current_pd->category->name.' >' :
@@ -59,9 +60,11 @@
                                                     </a>
                                                     <a
                                                         href="{{route('linkWise.product', ['id'=>$current_pd->subCategory->id ?? ' ', 'link'=>'sub_category'])}}">
-                                                        {{$current_pd->childCategory ? $current_pd->subCategory->name.' >'
+                                                        {{$current_pd->childCategory ? $current_pd->subCategory->name.'
+                                                        >'
                                                         :
-                                                        ($current_pd->subCategory ? $current_pd->subCategory->name : '')}}
+                                                        ($current_pd->subCategory ? $current_pd->subCategory->name :
+                                                        '')}}
                                                     </a>
                                                     <a
                                                         href="{{route('linkWise.product', ['id'=>$current_pd->childCategory->id ?? ' ', 'link'=>'child_category'])}}">
@@ -259,7 +262,23 @@
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    ajaxUpdateCartItems("/remove-from-cart/"+rowId, null);
+                    // ajaxUpdateCartItems("/remove-from-cart/"+rowId, null);
+                    $.ajax({
+                        type: "GET",
+                        url: "/remove-from-cart/"+rowId,
+                        data: null,
+                        success: function (response) {
+                            if(response.status == 'success'){
+                                toastr.success(response.msg);
+                                $('.table-responsive').load(location.href + ' .cart_table');
+                                $('.card-body').load(location.href + ' .total_amount');
+
+                                $(".cart_count span, .cart_price span").html('');
+                                $(".cart_count span").html(response.total_item);
+                                $(".cart_price span").html(response.total_price);
+                            }
+                        }
+                    }); 
                 }
             });
         });
