@@ -49,10 +49,17 @@
         <!-- Main Content -->
         <main>
             @yield('main-content')
+
+            @if (request()->routeIs('dashboard.*'))
+            {{-- User Dashboard --}}
+            @include('frontend.dashboard.dashboard-layout')
+            @endif
         </main>
 
+        @if(!request()->routeIs('dashboard.*'))
         <!-- Newsletter -->
         @include('frontend.partials.newsletter')
+        @endif
 
         <!-- Footer -->
         @include('frontend.partials.footer')

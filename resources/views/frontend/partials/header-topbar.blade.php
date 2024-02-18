@@ -1,10 +1,12 @@
+@if(!request()->routeIs('dashboard.dashboard'))
 <!-- Top Bar -->
 <div class="top_bar">
     <div class="container">
         <div class="row">
             <div class="col d-flex flex-row">
                 <div class="top_bar_contact_item">
-                    <div class="top_bar_icon"><img src="{{ asset('assets/frontend') }}/images/phone.png" alt=""></div>+38
+                    <div class="top_bar_icon"><img src="{{ asset('assets/frontend') }}/images/phone.png" alt=""></div>
+                    +38
                     068 005 3570
                 </div>
                 <div class="top_bar_contact_item">
@@ -33,7 +35,7 @@
                     </div>
                     <div class="top_bar_user">
                         @auth
-                        <div><a href="{{route('dashboard')}}">Dashboard</a></div>
+                        <div><a href="{{route('dashboard.dashboard')}}">Dashboard</a></div>
                         @endauth
                         @guest
                         <div class="user_icon"><img src="{{ asset('assets/frontend') }}/images/user.svg" alt=""></div>
@@ -46,7 +48,7 @@
         </div>
     </div>
 </div>
-
+@endif
 <!-- Header Main -->
 <div class="header_main">
     <div class="container">
@@ -73,7 +75,9 @@
                                         <i class="fas fa-chevron-down"></i>
                                         <ul class="custom_list clc">
                                             @foreach ($categories as $category)
-                                            <li class="mb-0"><a class="clc" href="{{route('linkWise.product', ['id'=>$category->id, 'link'=>'category'])}}">{{$category->name}}</a></li>
+                                            <li class="mb-0"><a class="clc"
+                                                    href="{{route('linkWise.product', ['id'=>$category->id, 'link'=>'category'])}}">{{$category->name}}</a>
+                                            </li>
                                             @endforeach
                                         </ul>
                                     </div>

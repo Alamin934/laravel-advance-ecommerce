@@ -421,8 +421,10 @@
                         <!-- Popular Categories Item -->
                         @foreach ($categories as $category)
                         <div class="owl-item">
-                            <a href="{{route('linkWise.product',['id'=>$category->id, 'link'=>'category'])}}" class="text-dark">
-                                <div class="popular_category d-flex flex-column align-items-center justify-content-center">
+                            <a href="{{route('linkWise.product',['id'=>$category->id, 'link'=>'category'])}}"
+                                class="text-dark">
+                                <div
+                                    class="popular_category d-flex flex-column align-items-center justify-content-center">
                                     <div class="popular_category_image"><img
                                             src="{{ asset('assets/admin/files/category/'.$category->icon) }}" alt="">
                                     </div>
@@ -460,11 +462,11 @@
                                     <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur
                                         adipiscing elit. Maecenas fermentum laoreet.</div>
                                     <div class="rating_r rating_r_4 banner_2_rating">
-                                        <i class="fas fa-star text-warning m-1"></i>
-                                        <i class="fas fa-star text-warning m-1"></i>
-                                        <i class="fas fa-star text-warning m-1"></i>
-                                        <i class="fas fa-star text-warning m-1"></i>
-                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
                                     </div>
                                     <div class="button banner_2_button"><a href="#">Explore</a></div>
                                 </div>
@@ -494,11 +496,11 @@
                                     <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur
                                         adipiscing elit. Maecenas fermentum laoreet.</div>
                                     <div class="rating_r rating_r_4 banner_2_rating">
-                                        <i class="fas fa-star text-warning m-1"></i>
-                                        <i class="fas fa-star text-warning m-1"></i>
-                                        <i class="fas fa-star text-warning m-1"></i>
-                                        <i class="fas fa-star text-warning m-1"></i>
-                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
                                     </div>
                                     <div class="button banner_2_button"><a href="#">Explore</a></div>
                                 </div>
@@ -528,11 +530,11 @@
                                     <div class="banner_2_text">Lorem ipsum dolor sit amet, consectetur
                                         adipiscing elit. Maecenas fermentum laoreet.</div>
                                     <div class="rating_r rating_r_4 banner_2_rating">
-                                        <i class="fas fa-star text-warning m-1"></i>
-                                        <i class="fas fa-star text-warning m-1"></i>
-                                        <i class="fas fa-star text-warning m-1"></i>
-                                        <i class="fas fa-star text-warning m-1"></i>
-                                        <i class="fas fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
+                                        <i class="fa fa-star text-warning m-1"></i>
                                     </div>
                                     <div class="button banner_2_button"><a href="#">Explore</a></div>
                                 </div>
@@ -656,11 +658,11 @@
                                                 \Illuminate\Support\Number::format($banner->purchase_price)}}</div>
                                         </div>
                                         <div class="rating_r rating_r_4 arrivals_single_rating">
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
                                         </div>
                                         <button type="button" data-id="{{$banner->id}}"
                                             class="cart_button arrivals_single_button">Add to
@@ -956,11 +958,11 @@
                                     <div class="review_name">Roberto Sanchez</div>
                                     <div class="review_rating_container">
                                         <div class="rating_r rating_r_4 review_rating">
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="review_time">2 day ago</div>
                                     </div>
@@ -984,11 +986,11 @@
                                     <div class="review_name">Brandon Flowers</div>
                                     <div class="review_rating_container">
                                         <div class="rating_r rating_r_4 review_rating">
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="review_time">2 day ago</div>
                                     </div>
@@ -1012,11 +1014,11 @@
                                     <div class="review_name">Emilia Clarke</div>
                                     <div class="review_rating_container">
                                         <div class="rating_r rating_r_4 review_rating">
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="review_time">2 day ago</div>
                                     </div>
@@ -1040,11 +1042,11 @@
                                     <div class="review_name">Roberto Sanchez</div>
                                     <div class="review_rating_container">
                                         <div class="rating_r rating_r_4 review_rating">
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="review_time">2 day ago</div>
                                     </div>
@@ -1068,11 +1070,11 @@
                                     <div class="review_name">Brandon Flowers</div>
                                     <div class="review_rating_container">
                                         <div class="rating_r rating_r_4 review_rating">
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="review_time">2 day ago</div>
                                     </div>
@@ -1096,11 +1098,11 @@
                                     <div class="review_name">Emilia Clarke</div>
                                     <div class="review_rating_container">
                                         <div class="rating_r rating_r_4 review_rating">
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
-                                            <i class="fas fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
+                                            <i class="fa fa-star text-warning m-1"></i>
                                         </div>
                                         <div class="review_time">2 day ago</div>
                                     </div>

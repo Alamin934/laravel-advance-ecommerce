@@ -40,7 +40,12 @@ Route::get('/dashboard', function () {
     }else{
         return view('frontend.dashboard.dashboard');
     }
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard.dashboard');
+
+// Dashboard Sub Route
+Route::prefix('dashboard')->name('dashboard.')->group(function () {
+    Route::view('/orders','frontend.dashboard.orders')->name('orders');
+});
 
 // Profile
 Route::middleware('auth')->group(function () {
