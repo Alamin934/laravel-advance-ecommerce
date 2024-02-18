@@ -68,7 +68,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
-                                <img src="{{asset('admin/assets/files/products/'.$product->thumbnail)}}" alt=""
+                                <img src="{{asset('assets/admin/files/products/'.$product->thumbnail)}}" alt=""
                                     class="me-3" style="height:40px;width:auto">
                                 {{Illuminate\Support\Str::words($product->title, 4, '')}}
                             </td>

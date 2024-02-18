@@ -7,18 +7,18 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('admin/frontend')}}/styles/bootstrap4/bootstrap.min.css">
-    <link href="{{ asset('admin/frontend') }}/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet"
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/styles/bootstrap4/bootstrap.min.css">
+    <link href="{{ asset('assets/frontend') }}/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet"
         type="text/css">
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('admin/frontend') }}/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+        href="{{ asset('assets/frontend') }}/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('admin/frontend') }}/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/plugins/OwlCarousel2-2.2.1/animate.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/plugins/slick-1.8.0/slick.css">
-    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/toastr.min.css" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/main_styles.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/responsive.css">
+        href="{{ asset('assets/frontend') }}/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/plugins/slick-1.8.0/slick.css">
+    <link rel="stylesheet" href="{{ asset('assets/admin') }}/css/toastr.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/styles/responsive.css">
     @stack('style')
 
     <title>{{ config('app.name', 'Laravel E-Commerce') }}</title>
@@ -62,20 +62,20 @@
 
     </div>
 
-    <script src="{{ asset('admin/frontend') }}/js/jquery-3.3.1.min.js"></script>
-    <script src="{{ asset('admin/frontend') }}/styles/bootstrap4/popper.js"></script>
-    <script src="{{ asset('admin/frontend') }}/styles/bootstrap4/bootstrap.min.js"></script>
-    <script src="{{ asset('admin/frontend') }}/plugins/greensock/TweenMax.min.js"></script>
-    <script src="{{ asset('admin/frontend') }}/plugins/greensock/TimelineMax.min.js"></script>
-    <script src="{{ asset('admin/frontend') }}/plugins/scrollmagic/ScrollMagic.min.js"></script>
-    <script src="{{ asset('admin/frontend') }}/plugins/greensock/animation.gsap.min.js"></script>
-    <script src="{{ asset('admin/frontend') }}/plugins/greensock/ScrollToPlugin.min.js"></script>
-    <script src="{{ asset('admin/frontend') }}/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-    <script src="{{ asset('admin/frontend') }}/plugins/slick-1.8.0/slick.js"></script>
-    <script src="{{ asset('admin/frontend') }}/plugins/easing/easing.js"></script>
-    <script src="{{ asset('admin') }}/assets/js/toastr.min.js"></script>
-    <script src="{{ asset('admin') }}/assets/js/sweetalert.min.js"></script>
-    <script src="{{ asset('admin/frontend') }}/js/custom.js"></script>
+    <script src="{{ asset('assets/frontend') }}/js/jquery-3.3.1.min.js"></script>
+    <script src="{{ asset('assets/frontend') }}/styles/bootstrap4/popper.js"></script>
+    <script src="{{ asset('assets/frontend') }}/styles/bootstrap4/bootstrap.min.js"></script>
+    <script src="{{ asset('assets/frontend') }}/plugins/greensock/TweenMax.min.js"></script>
+    <script src="{{ asset('assets/frontend') }}/plugins/greensock/TimelineMax.min.js"></script>
+    <script src="{{ asset('assets/frontend') }}/plugins/scrollmagic/ScrollMagic.min.js"></script>
+    <script src="{{ asset('assets/frontend') }}/plugins/greensock/animation.gsap.min.js"></script>
+    <script src="{{ asset('assets/frontend') }}/plugins/greensock/ScrollToPlugin.min.js"></script>
+    <script src="{{ asset('assets/frontend') }}/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="{{ asset('assets/frontend') }}/plugins/slick-1.8.0/slick.js"></script>
+    <script src="{{ asset('assets/frontend') }}/plugins/easing/easing.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/toastr.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/sweetalert.min.js"></script>
+    <script src="{{ asset('assets/frontend') }}/js/custom.js"></script>
 
     @stack('scripts')
 

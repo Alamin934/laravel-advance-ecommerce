@@ -43,12 +43,12 @@
                     <div class="menu_contact">
                         <div class="menu_contact_item">
                             <div class="menu_contact_icon"><img
-                                    src="{{ asset('admin/frontend') }}/images/phone_white.png" alt=""></div>
+                                    src="{{ asset('assets/frontend') }}/images/phone_white.png" alt=""></div>
                             +38 068 005 3570
                         </div>
                         <div class="menu_contact_item">
                             <div class="menu_contact_icon"><img
-                                    src="{{ asset('admin/frontend') }}/images/mail_white.png" alt=""></div>
+                                    src="{{ asset('assets/frontend') }}/images/mail_white.png" alt=""></div>
                         </div>
                     </div>
                 </div>

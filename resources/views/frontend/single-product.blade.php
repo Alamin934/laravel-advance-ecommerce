@@ -12,18 +12,18 @@
             <!-- Selected Image -->
             <div class="col-lg-5 order-lg-1 order-2">
                 <div class="image_selected">
-                    <img src="{{asset('admin/assets/files/products/'.$product->thumbnail)}}" alt="">
+                    <img src="{{asset('assets/admin/files/products/'.$product->thumbnail)}}" alt="">
                 </div>
                 <div>
                     <!-- Images -->
                     <ul class="image_list">
-                        <li data-image="{{asset('admin/assets/files/products/'.$product->thumbnail)}}">
-                            <img src="{{asset('admin/assets/files/products/'.$product->thumbnail)}}" alt="">
+                        <li data-image="{{asset('assets/admin/files/products/'.$product->thumbnail)}}">
+                            <img src="{{asset('assets/admin/files/products/'.$product->thumbnail)}}" alt="">
                         </li>
                         @if ($product->images)
                         @foreach ($product->images as $image)
-                        <li data-image="{{asset('admin/assets/files/products/'.$image)}}">
-                            <img src="{{asset('admin/assets/files/products/'.$image)}}" alt="">
+                        <li data-image="{{asset('assets/admin/files/products/'.$image)}}">
+                            <img src="{{asset('assets/admin/files/products/'.$image)}}" alt="">
                         </li>
                         @endforeach
                         @endif
@@ -199,7 +199,7 @@
                             <div
                                 class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
                                 <div class="viewed_image">
-                                    <img src="{{asset('admin/assets/files/products/'.$related_product->thumbnail)}}"
+                                    <img src="{{asset('assets/admin/files/products/'.$related_product->thumbnail)}}"
                                         alt="">
                                 </div>
                                 <div class="viewed_content text-center">
@@ -235,69 +235,16 @@
 </div>
 
 <!-- Brands -->
+@include('frontend.partials.brands')
 
-<div class="brands">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="brands_slider_container">
-
-                    <!-- Brands Slider -->
-
-                    <div class="owl-carousel owl-theme brands_slider">
-
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{asset('admin/frontend')}}/images/brands_1.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{asset('admin/frontend')}}/images/brands_2.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{asset('admin/frontend')}}/images/brands_3.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{asset('admin/frontend')}}/images/brands_4.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{asset('admin/frontend')}}/images/brands_5.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{asset('admin/frontend')}}/images/brands_6.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{asset('admin/frontend')}}/images/brands_7.jpg" alt=""></div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{asset('admin/frontend')}}/images/brands_8.jpg" alt=""></div>
-                        </div>
-
-                    </div>
-
-                    <!-- Brands Slider Navigation -->
-                    <div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
-                    <div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 @push('style')
 <link rel="stylesheet" type="text/css"
-    href="{{ asset('admin/frontend') }}/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/product_styles.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/product_responsive.css">
+    href="{{ asset('assets/frontend') }}/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/styles/product_styles.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/styles/product_responsive.css">
 @endpush
 
 @push('scripts')
-<script src="{{ asset('admin/frontend') }}/js/product_custom.js"></script>
+<script src="{{ asset('assets/frontend') }}/js/product_custom.js"></script>
 @endpush

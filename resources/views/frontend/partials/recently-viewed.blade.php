@@ -21,7 +21,7 @@
                                 class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
                                 <div class="viewed_image">
                                     <a href="{{route('single.product', $recent_view->slug)}}">
-                                        <img src="{{ asset('admin/assets/files/products/'.$recent_view->thumbnail) }}"
+                                        <img src="{{ asset('assets/admin/files/products/'.$recent_view->thumbnail) }}"
                                             alt="">
                                     </a>
                                 </div>

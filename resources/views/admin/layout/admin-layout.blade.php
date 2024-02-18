@@ -14,7 +14,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('admin') }}/assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/admin') }}/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,23 +23,23 @@
         href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet" />
 
-    <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="{{ asset('assets/admin') }}/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/css/core.css"
+    <link rel="stylesheet" href="{{ asset('assets/admin') }}/vendor/css/core.css"
         class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/css/theme-default.css"
+    <link rel="stylesheet" href="{{ asset('assets/admin') }}/vendor/css/theme-default.css"
         class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/demo.css" />
-    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/toastr.min.css" />
-    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/dropify.min.css" />
-    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/tagify.css" />
+    <link rel="stylesheet" href="{{ asset('assets/admin') }}/css/demo.css" />
+    <link rel="stylesheet" href="{{ asset('assets/admin') }}/css/toastr.min.css" />
+    <link rel="stylesheet" href="{{ asset('assets/admin') }}/css/dropify.min.css" />
+    <link rel="stylesheet" href="{{ asset('assets/admin') }}/css/tagify.css" />
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="{{ asset('admin') }}/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="{{ asset('assets/admin') }}/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="{{ asset('assets/admin') }}/vendor/libs/apex-charts/apex-charts.css" />
 
     <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet'
         type='text/css' />
@@ -48,8 +48,8 @@
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="{{ asset('admin') }}/assets/vendor/js/helpers.js"></script>
-    <script src="{{ asset('admin') }}/assets/js/config.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendor/js/helpers.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/config.js"></script>
 </head>
 
 <body>
@@ -116,36 +116,36 @@
     </div>
     <!-- / Layout wrapper -->
     <!-- Core JS -->
-    <!-- build:js /assets/vendor/js/core.js -->
+    <!-- build:js /vendor/js/core.js -->
 
-    <script src="{{ asset('admin') }}/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="{{ asset('admin') }}/assets/vendor/libs/popper/popper.js"></script>
-    <script src="{{ asset('admin') }}/assets/vendor/js/bootstrap.js"></script>
-    <script src="{{ asset('admin') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="{{ asset('admin') }}/assets/vendor/js/menu.js"></script>
-    <script src="{{ asset('admin') }}/assets/js/toastr.min.js"></script>
-    <script src="{{ asset('admin') }}/assets/js/sweetalert.min.js"></script>
-    <script src="{{ asset('admin') }}/assets/js/dropify.min.js"></script>
-    <script src="{{ asset('admin') }}/assets/js/jQuery.tagify.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendor/libs/jquery/jquery.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendor/libs/popper/popper.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendor/js/bootstrap.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendor/js/menu.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/toastr.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/sweetalert.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/dropify.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/jQuery.tagify.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
 
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="{{ asset('admin') }}/assets/vendor/libs/apex-charts/apexcharts.js">
+    <script src="{{ asset('assets/admin') }}/vendor/libs/apex-charts/apexcharts.js">
     </script>
 
     <!-- Main JS -->
-    <script src="{{ asset('admin') }}/assets/js/main.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="{{ asset('admin') }}/assets/js/dashboards-analytics.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/dashboards-analytics.js"></script>
     {{-- <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script> --}}
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'>
     </script>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script src="{{ asset('admin') }}/assets/js/custom.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/custom.js"></script>
     <script>
         // Toaster
         @if (session()->has('message'))

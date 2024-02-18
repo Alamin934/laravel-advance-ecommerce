@@ -50,7 +50,7 @@ class BrandsController extends Controller
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
             $image->contain(150, 70);
-            $image->toPng()->save('admin/assets/files/brands/'.$new_file_name);
+            $image->toPng()->save('assets/admin/files/brands/'.$new_file_name);
 
             // insert into database
             $brand = Brand::create([
@@ -65,7 +65,7 @@ class BrandsController extends Controller
             ]);
         }
 
-        // $file->move('admin/assets/files/brands/', $new_file_name);
+        // $file->move('assets/admin/files/brands/', $new_file_name);
         $notification = ['message'=>'Brand Added successfully', 'alert-type'=>'success'];
         return redirect()->route('brand.index')->with($notification);
     }
@@ -106,10 +106,10 @@ class BrandsController extends Controller
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
             $image->contain(150, 70);
-            $image->toPng()->save('admin/assets/files/brands/'.$new_file_name);
+            $image->toPng()->save('assets/admin/files/brands/'.$new_file_name);
 
             if($request->hasFile('brand_logo') && !empty($request->old_brand_logo)){
-                unlink(public_path('admin/assets/files/brands/'.$request->old_brand_logo));
+                unlink(public_path('assets/admin/files/brands/'.$request->old_brand_logo));
             }
 
             $brand = Brand::where('id', $id)->update([
@@ -133,7 +133,7 @@ class BrandsController extends Controller
     {
         $brand = Brand::find($id);
         if(!empty($brand->brand_logo)){
-            unlink(public_path('admin/assets/files/brands/'.$brand->brand_logo));
+            unlink(public_path('assets/admin/files/brands/'.$brand->brand_logo));
         }
 
         $brand->delete();

@@ -38,7 +38,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td align="start">
                                         <div class="d-flex">
-                                            <img src="{{asset('admin/assets/files/products/'.$current_pd->thumbnail)}}"
+                                            <img src="{{asset('assets/admin/files/products/'.$current_pd->thumbnail)}}"
                                                 alt="" class="mr-3" style="height:40px;width:auto">
                                             <div>
                                                 <span class="font-weight-bold">
@@ -193,11 +193,11 @@
 @endsection
 
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/product_styles.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/product_responsive.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/styles/product_styles.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/styles/product_responsive.css">
 @endpush
 @push('scripts')
-<script src="{{ asset('admin/frontend') }}/js/product_custom.js"></script>
+<script src="{{ asset('assets/frontend') }}/js/product_custom.js"></script>
 <script>
     // load data with ajax
     function updateCartPageAfterChange(response){

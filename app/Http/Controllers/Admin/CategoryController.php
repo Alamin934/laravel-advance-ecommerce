@@ -49,7 +49,7 @@ class CategoryController extends Controller
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
             $image->contain(64, 64);
-            $image->toPng()->save('admin/assets/files/category/'.$new_file_name);
+            $image->toPng()->save('assets/admin/files/category/'.$new_file_name);
         }
         $category = Category::create([
             'name' => $request->name,
@@ -88,7 +88,7 @@ class CategoryController extends Controller
         ]);
 
         if($request->hasfile('edit_icon') && !empty($request->old_icon)){
-            unlink(public_path('admin/assets/files/category/'.$request->old_icon));
+            unlink(public_path('assets/admin/files/category/'.$request->old_icon));
         }
 
         $icon = '';
@@ -100,7 +100,7 @@ class CategoryController extends Controller
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
             $image->contain(64, 64);
-            $image->toPng()->save('admin/assets/files/category/'.$new_file_name);
+            $image->toPng()->save('assets/admin/files/category/'.$new_file_name);
         }
 
         $category = Category::where('id', $request->edit_cat_id)->update([
@@ -122,7 +122,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
 
-        unlink(public_path('admin/assets/files/category/'.$category->icon));
+        unlink(public_path('assets/admin/files/category/'.$category->icon));
 
 
         $notification = ['message'=>'Category deleted successfully', 'alert-type'=>'success'];

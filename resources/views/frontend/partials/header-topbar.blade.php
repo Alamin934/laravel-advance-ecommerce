@@ -4,11 +4,11 @@
         <div class="row">
             <div class="col d-flex flex-row">
                 <div class="top_bar_contact_item">
-                    <div class="top_bar_icon"><img src="{{ asset('admin/frontend') }}/images/phone.png" alt=""></div>+38
+                    <div class="top_bar_icon"><img src="{{ asset('assets/frontend') }}/images/phone.png" alt=""></div>+38
                     068 005 3570
                 </div>
                 <div class="top_bar_contact_item">
-                    <div class="top_bar_icon"><img src="{{ asset('admin/frontend') }}/images/mail.png" alt=""></div>
+                    <div class="top_bar_icon"><img src="{{ asset('assets/frontend') }}/images/mail.png" alt=""></div>
                 </div>
                 <div class="top_bar_content ml-auto">
                     <div class="top_bar_menu">
@@ -36,7 +36,7 @@
                         <div><a href="{{route('dashboard')}}">Dashboard</a></div>
                         @endauth
                         @guest
-                        <div class="user_icon"><img src="{{ asset('admin/frontend') }}/images/user.svg" alt=""></div>
+                        <div class="user_icon"><img src="{{ asset('assets/frontend') }}/images/user.svg" alt=""></div>
                         <div><a href="{{route('register')}}">Register</a></div>
                         <div><a href="{{route('login')}}">Sign in</a></div>
                         @endguest
@@ -85,7 +85,7 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="header_search_button trans_300" value="Submit"><img
-                                        src="{{ asset('admin/frontend') }}/images/search.png" alt=""></button>
+                                        src="{{ asset('assets/frontend') }}/images/search.png" alt=""></button>
                             </form>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
             <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                 <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
                     <div class="wishlist d-flex flex-row align-items-center justify-content-end">
-                        <div class="wishlist_icon"><img src="{{ asset('admin/frontend') }}/images/heart.png" alt="">
+                        <div class="wishlist_icon"><img src="{{ asset('assets/frontend') }}/images/heart.png" alt="">
                             @php
                             $wishlist_count = \App\Models\Wishlist::where('user_id', Auth::id())->count();
                             @endphp
@@ -111,7 +111,7 @@
                     <div class="cart">
                         <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                             <div class="cart_icon">
-                                <img src="{{ asset('admin/frontend') }}/images/cart.png" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/cart.png" alt="">
                                 <div class="cart_count"><span>{{Cart::count()}}</span></div>
                             </div>
                             <div class="cart_content">

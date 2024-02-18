@@ -25,7 +25,8 @@ class HomeController extends Controller
         $product = Product::where('slug', $slug)->first();
         Product::where('slug', $slug)->increment('product_views');
         $related_products = Product::where('sub_category_id', $product->sub_category_id)->get();
-        return view('frontend.single-product' ,compact('product','related_products'));
+        $brands = Brand::get();
+        return view('frontend.single-product' ,compact('product','related_products','brands'));
     }
 
     public function addToWishlist($id) {

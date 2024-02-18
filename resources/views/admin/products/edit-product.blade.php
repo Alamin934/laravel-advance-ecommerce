@@ -201,7 +201,7 @@
                                 <div>
                                     <p class="mb-0 mt-3 text-danger">Current Thumbnail</p>
                                     <img style="width:200px; height:auto!important;"
-                                        src="{{asset('admin/assets/files/products/'.$product->thumbnail)}}" alt="" />
+                                        src="{{asset('assets/admin/files/products/'.$product->thumbnail)}}" alt="" />
                                 </div>
 
                                 {{-- Product Gallery --}}
@@ -213,7 +213,7 @@
                                     @foreach ($product->images as $image)
                                     <input type="hidden" name="old_images[]" value="{{$image}}" />
                                     <img style="width:150px; height:auto!important;"
-                                        src="{{asset('admin/assets/files/products/'.$image)}}" alt="" />
+                                        src="{{asset('assets/admin/files/products/'.$image)}}" alt="" />
                                     @endforeach
                                     @endif
                                 </div>

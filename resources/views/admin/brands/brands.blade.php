@@ -31,7 +31,7 @@
                             <td>{{ $brand->name }}</td>
                             <td>{{ $brand->brand_slug }}</td>
                             <td>
-                                <img width="130" src="{{asset('admin/assets/files/brands/'.$brand->brand_logo)}}"
+                                <img width="130" src="{{asset('assets/admin/files/brands/'.$brand->brand_logo)}}"
                                     alt="">
                             </td>
                             <td>

@@ -18,7 +18,7 @@
 
                             <li class="{{count($category->sub_categories) == 0 ? '' : 'hassubs'}}">
                                 <a href="{{route('linkWise.product', ['id'=>$category->id, 'link'=>'category'])}}">
-                                    <img src="{{asset('admin/assets/files/category/'.$category->icon)}}"
+                                    <img src="{{asset('assets/admin/files/category/'.$category->icon)}}"
                                         style="width:20px;margin-right:5px;" alt="{{ $category->slug }}">
                                     {{ $category->name }}
                                     <span

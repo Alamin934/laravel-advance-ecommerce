@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('admin') }}/assets/css/toastr.min.css" />
+    <link rel="stylesheet" href="{{ asset('assets/admin') }}/css/toastr.min.css" />
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -31,9 +31,9 @@
         </div>
     </div>
 
-    <script src="{{ asset('admin') }}/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="{{ asset('admin') }}/assets/js/toastr.min.js"></script>
-    <script src="{{ asset('admin') }}/assets/js/sweetalert.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendor/libs/jquery/jquery.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/toastr.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/js/sweetalert.min.js"></script>
 </body>
 
 </html>

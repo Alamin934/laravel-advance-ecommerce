@@ -7,11 +7,11 @@
 @section('main-content')
 <!-- Banner -->
 <div class="banner">
-    <div class="banner_background" style="background-image:url({{'admin/frontend/'}}images/banner_background.jpg)">
+    <div class="banner_background" style="background-image:url({{'assets/frontend/'}}images/banner_background.jpg)">
     </div>
     <div class="container fill_height">
         <div class="row fill_height">
-            <div class="banner_product_image"><img src="{{ asset('admin/assets/files/products/'.$banner->thumbnail) }}"
+            <div class="banner_product_image"><img src="{{ asset('assets/admin/files/products/'.$banner->thumbnail) }}"
                     alt="">
             </div>
             <div class="col-lg-5 offset-lg-4 fill_height">
@@ -44,7 +44,7 @@
             <div class="col-lg-3 col-md-6 char_col">
 
                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                    <div class="char_icon"><img src="{{ asset('admin/frontend') }}/images/char_1.png" alt="">
+                    <div class="char_icon"><img src="{{ asset('assets/frontend') }}/images/char_1.png" alt="">
                     </div>
                     <div class="char_content">
                         <div class="char_title">Free Delivery</div>
@@ -57,7 +57,7 @@
             <div class="col-lg-3 col-md-6 char_col">
 
                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                    <div class="char_icon"><img src="{{ asset('admin/frontend') }}/images/char_2.png" alt="">
+                    <div class="char_icon"><img src="{{ asset('assets/frontend') }}/images/char_2.png" alt="">
                     </div>
                     <div class="char_content">
                         <div class="char_title">Free Delivery</div>
@@ -70,7 +70,7 @@
             <div class="col-lg-3 col-md-6 char_col">
 
                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                    <div class="char_icon"><img src="{{ asset('admin/frontend') }}/images/char_3.png" alt="">
+                    <div class="char_icon"><img src="{{ asset('assets/frontend') }}/images/char_3.png" alt="">
                     </div>
                     <div class="char_content">
                         <div class="char_title">Free Delivery</div>
@@ -83,7 +83,7 @@
             <div class="col-lg-3 col-md-6 char_col">
 
                 <div class="char_item d-flex flex-row align-items-center justify-content-start">
-                    <div class="char_icon"><img src="{{ asset('admin/frontend') }}/images/char_4.png" alt="">
+                    <div class="char_icon"><img src="{{ asset('assets/frontend') }}/images/char_4.png" alt="">
                     </div>
                     <div class="char_content">
                         <div class="char_title">Free Delivery</div>
@@ -111,7 +111,7 @@
 
                             <!-- Deals Item -->
                             <div class="owl-item deals_item">
-                                <div class="deals_image"><img src="{{ asset('admin/frontend') }}/images/deals.png"
+                                <div class="deals_image"><img src="{{ asset('assets/frontend') }}/images/deals.png"
                                         alt=""></div>
                                 <div class="deals_content">
                                     <div class="deals_info_line d-flex flex-row justify-content-start">
@@ -156,7 +156,7 @@
 
                             <!-- Deals Item -->
                             <div class="owl-item deals_item">
-                                <div class="deals_image"><img src="{{ asset('admin/frontend') }}/images/deals.png"
+                                <div class="deals_image"><img src="{{ asset('assets/frontend') }}/images/deals.png"
                                         alt=""></div>
                                 <div class="deals_content">
                                     <div class="deals_info_line d-flex flex-row justify-content-start">
@@ -201,7 +201,7 @@
 
                             <!-- Deals Item -->
                             <div class="owl-item deals_item">
-                                <div class="deals_image"><img src="{{ asset('admin/frontend') }}/images/deals.png"
+                                <div class="deals_image"><img src="{{ asset('assets/frontend') }}/images/deals.png"
                                         alt=""></div>
                                 <div class="deals_content">
                                     <div class="deals_info_line d-flex flex-row justify-content-start">
@@ -279,7 +279,7 @@
                                         <div
                                             class="product_image d-flex flex-column align-items-center justify-content-center">
                                             <a href="{{route('single.product', $featured->slug)}}">
-                                                <img src="{{ asset('admin/assets/files/products/'.$featured->thumbnail) }}"
+                                                <img src="{{ asset('assets/admin/files/products/'.$featured->thumbnail) }}"
                                                     alt="">
                                             </a>
                                         </div>
@@ -337,7 +337,7 @@
                                         <div
                                             class="product_image d-flex flex-column align-items-center justify-content-center">
                                             <a href="{{route('single.product', $most_popular->slug)}}">
-                                                <img src="{{ asset('admin/assets/files/products/'.$most_popular->thumbnail) }}"
+                                                <img src="{{ asset('assets/admin/files/products/'.$most_popular->thumbnail) }}"
                                                     alt="">
                                             </a>
                                         </div>
@@ -424,7 +424,7 @@
                             <a href="{{route('linkWise.product',['id'=>$category->id, 'link'=>'category'])}}" class="text-dark">
                                 <div class="popular_category d-flex flex-column align-items-center justify-content-center">
                                     <div class="popular_category_image"><img
-                                            src="{{ asset('admin/assets/files/category/'.$category->icon) }}" alt="">
+                                            src="{{ asset('assets/admin/files/category/'.$category->icon) }}" alt="">
                                     </div>
                                     <div class="popular_category_text">{{$category->name}}</div>
                                 </div>
@@ -440,7 +440,7 @@
 
 <!-- Banner -->
 <div class="banner_2">
-    <div class="banner_2_background" style="background-image:url({{'admin/frontend/'}}images/banner_2_background.jpg)">
+    <div class="banner_2_background" style="background-image:url({{'assets/frontend/'}}images/banner_2_background.jpg)">
     </div>
     <div class="banner_2_container">
         <div class="banner_2_dots"></div>
@@ -473,7 +473,7 @@
                             <div class="col-lg-8 col-md-6 fill_height">
                                 <div class="banner_2_image_container">
                                     <div class="banner_2_image"><img
-                                            src="{{ asset('admin/frontend') }}/images/banner_2_product.png" alt="">
+                                            src="{{ asset('assets/frontend') }}/images/banner_2_product.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -507,7 +507,7 @@
                             <div class="col-lg-8 col-md-6 fill_height">
                                 <div class="banner_2_image_container">
                                     <div class="banner_2_image"><img
-                                            src="{{ asset('admin/frontend') }}/images/banner_2_product.png" alt="">
+                                            src="{{ asset('assets/frontend') }}/images/banner_2_product.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -541,7 +541,7 @@
                             <div class="col-lg-8 col-md-6 fill_height">
                                 <div class="banner_2_image_container">
                                     <div class="banner_2_image"><img
-                                            src="{{ asset('admin/frontend') }}/images/banner_2_product.png" alt="">
+                                            src="{{ asset('assets/frontend') }}/images/banner_2_product.png" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -586,7 +586,7 @@
                                             <div
                                                 class="product_image d-flex flex-column align-items-center justify-content-center">
                                                 <a href="{{route('single.product', $product->slug)}}">
-                                                    <img src="{{ asset('admin/assets/files/products/'.$product->thumbnail) }}"
+                                                    <img src="{{ asset('assets/admin/files/products/'.$product->thumbnail) }}"
                                                         alt="">
                                                 </a>
                                             </div>
@@ -641,7 +641,7 @@
                             <div class="arrivals_single clearfix">
                                 <div class="d-flex flex-column align-items-center justify-content-center">
                                     <div class="arrivals_single_image"><img
-                                            src="{{ asset('admin/assets/files/products/'.$banner->thumbnail) }}" alt="">
+                                            src="{{ asset('assets/admin/files/products/'.$banner->thumbnail) }}" alt="">
                                     </div>
                                     <div class="arrivals_single_content">
                                         <div class="arrivals_single_category"><a
@@ -704,7 +704,7 @@
                         </div>
                     </div>
                     <div class="ml-auto">
-                        <div class="advert_image"><img src="{{ asset('admin/frontend') }}/images/adv_1.png" alt="">
+                        <div class="advert_image"><img src="{{ asset('assets/frontend') }}/images/adv_1.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -722,7 +722,7 @@
                         <div class="advert_text">Lorem ipsum dolor sit amet, consectetur.</div>
                     </div>
                     <div class="ml-auto">
-                        <div class="advert_image"><img src="{{ asset('admin/frontend') }}/images/adv_2.png" alt="">
+                        <div class="advert_image"><img src="{{ asset('assets/frontend') }}/images/adv_2.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -739,7 +739,7 @@
                         <div class="advert_text">Lorem ipsum dolor sit amet, consectetur.</div>
                     </div>
                     <div class="ml-auto">
-                        <div class="advert_image"><img src="{{ asset('admin/frontend') }}/images/adv_3.png" alt="">
+                        <div class="advert_image"><img src="{{ asset('assets/frontend') }}/images/adv_3.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -751,7 +751,7 @@
 
 <!-- Trends -->
 <div class="trends">
-    <div class="trends_background" style="background-image:url({{'admin/frontend/'}}/images/trends_background.jpg)">
+    <div class="trends_background" style="background-image:url({{'assets/frontend/'}}/images/trends_background.jpg)">
     </div>
     <div class="trends_overlay"></div>
     <div class="container">
@@ -783,13 +783,13 @@
                         <div class="owl-item">
                             <div class="trends_item is_new">
                                 <div class="trends_image d-flex flex-column align-items-center justify-content-center">
-                                    <img src="{{ asset('admin/frontend') }}/images/trends_1.jpg" alt="">
+                                    <img src="{{ asset('assets/frontend') }}/images/trends_1.jpg" alt="">
                                 </div>
                                 <div class="trends_content">
                                     <div class="trends_category"><a href="#">Smartphones</a></div>
                                     <div class="trends_info clearfix">
                                         <div class="trends_name"><a
-                                                href="{{ asset('admin/frontend') }}/product.html">Jump White</a>
+                                                href="{{ asset('assets/frontend') }}/product.html">Jump White</a>
                                         </div>
                                         <div class="trends_price">$379</div>
                                     </div>
@@ -806,13 +806,13 @@
                         <div class="owl-item">
                             <div class="trends_item">
                                 <div class="trends_image d-flex flex-column align-items-center justify-content-center">
-                                    <img src="{{ asset('admin/frontend') }}/images/trends_2.jpg" alt="">
+                                    <img src="{{ asset('assets/frontend') }}/images/trends_2.jpg" alt="">
                                 </div>
                                 <div class="trends_content">
                                     <div class="trends_category"><a href="#">Smartphones</a></div>
                                     <div class="trends_info clearfix">
                                         <div class="trends_name"><a
-                                                href="{{ asset('admin/frontend') }}/product.html">Samsung
+                                                href="{{ asset('assets/frontend') }}/product.html">Samsung
                                                 Charm...</a>
                                         </div>
                                         <div class="trends_price">$379</div>
@@ -830,13 +830,13 @@
                         <div class="owl-item">
                             <div class="trends_item is_new">
                                 <div class="trends_image d-flex flex-column align-items-center justify-content-center">
-                                    <img src="{{ asset('admin/frontend') }}/images/trends_3.jpg" alt="">
+                                    <img src="{{ asset('assets/frontend') }}/images/trends_3.jpg" alt="">
                                 </div>
                                 <div class="trends_content">
                                     <div class="trends_category"><a href="#">Smartphones</a></div>
                                     <div class="trends_info clearfix">
                                         <div class="trends_name"><a
-                                                href="{{ asset('admin/frontend') }}/product.html">DJI Phantom
+                                                href="{{ asset('assets/frontend') }}/product.html">DJI Phantom
                                                 3...</a>
                                         </div>
                                         <div class="trends_price">$379</div>
@@ -854,13 +854,13 @@
                         <div class="owl-item">
                             <div class="trends_item is_new">
                                 <div class="trends_image d-flex flex-column align-items-center justify-content-center">
-                                    <img src="{{ asset('admin/frontend') }}/images/trends_1.jpg" alt="">
+                                    <img src="{{ asset('assets/frontend') }}/images/trends_1.jpg" alt="">
                                 </div>
                                 <div class="trends_content">
                                     <div class="trends_category"><a href="#">Smartphones</a></div>
                                     <div class="trends_info clearfix">
                                         <div class="trends_name"><a
-                                                href="{{ asset('admin/frontend') }}/product.html">Jump White</a>
+                                                href="{{ asset('assets/frontend') }}/product.html">Jump White</a>
                                         </div>
                                         <div class="trends_price">$379</div>
                                     </div>
@@ -877,13 +877,13 @@
                         <div class="owl-item">
                             <div class="trends_item">
                                 <div class="trends_image d-flex flex-column align-items-center justify-content-center">
-                                    <img src="{{ asset('admin/frontend') }}/images/trends_2.jpg" alt="">
+                                    <img src="{{ asset('assets/frontend') }}/images/trends_2.jpg" alt="">
                                 </div>
                                 <div class="trends_content">
                                     <div class="trends_category"><a href="#">Smartphones</a></div>
                                     <div class="trends_info clearfix">
                                         <div class="trends_name"><a
-                                                href="{{ asset('admin/frontend') }}/product.html">Jump White</a>
+                                                href="{{ asset('assets/frontend') }}/product.html">Jump White</a>
                                         </div>
                                         <div class="trends_price">$379</div>
                                     </div>
@@ -900,13 +900,13 @@
                         <div class="owl-item">
                             <div class="trends_item is_new">
                                 <div class="trends_image d-flex flex-column align-items-center justify-content-center">
-                                    <img src="{{ asset('admin/frontend') }}/images/trends_3.jpg" alt="">
+                                    <img src="{{ asset('assets/frontend') }}/images/trends_3.jpg" alt="">
                                 </div>
                                 <div class="trends_content">
                                     <div class="trends_category"><a href="#">Smartphones</a></div>
                                     <div class="trends_info clearfix">
                                         <div class="trends_name"><a
-                                                href="{{ asset('admin/frontend') }}/product.html">Jump White</a>
+                                                href="{{ asset('assets/frontend') }}/product.html">Jump White</a>
                                         </div>
                                         <div class="trends_price">$379</div>
                                     </div>
@@ -949,7 +949,7 @@
                             <div class="review d-flex flex-row align-items-start justify-content-start">
                                 <div>
                                     <div class="review_image"><img
-                                            src="{{ asset('admin/frontend') }}/images/review_1.jpg" alt="">
+                                            src="{{ asset('assets/frontend') }}/images/review_1.jpg" alt="">
                                     </div>
                                 </div>
                                 <div class="review_content">
@@ -977,7 +977,7 @@
                             <div class="review d-flex flex-row align-items-start justify-content-start">
                                 <div>
                                     <div class="review_image"><img
-                                            src="{{ asset('admin/frontend') }}/images/review_2.jpg" alt="">
+                                            src="{{ asset('assets/frontend') }}/images/review_2.jpg" alt="">
                                     </div>
                                 </div>
                                 <div class="review_content">
@@ -1005,7 +1005,7 @@
                             <div class="review d-flex flex-row align-items-start justify-content-start">
                                 <div>
                                     <div class="review_image"><img
-                                            src="{{ asset('admin/frontend') }}/images/review_3.jpg" alt="">
+                                            src="{{ asset('assets/frontend') }}/images/review_3.jpg" alt="">
                                     </div>
                                 </div>
                                 <div class="review_content">
@@ -1033,7 +1033,7 @@
                             <div class="review d-flex flex-row align-items-start justify-content-start">
                                 <div>
                                     <div class="review_image"><img
-                                            src="{{ asset('admin/frontend') }}/images/review_1.jpg" alt="">
+                                            src="{{ asset('assets/frontend') }}/images/review_1.jpg" alt="">
                                     </div>
                                 </div>
                                 <div class="review_content">
@@ -1061,7 +1061,7 @@
                             <div class="review d-flex flex-row align-items-start justify-content-start">
                                 <div>
                                     <div class="review_image"><img
-                                            src="{{ asset('admin/frontend') }}/images/review_2.jpg" alt="">
+                                            src="{{ asset('assets/frontend') }}/images/review_2.jpg" alt="">
                                     </div>
                                 </div>
                                 <div class="review_content">
@@ -1089,7 +1089,7 @@
                             <div class="review d-flex flex-row align-items-start justify-content-start">
                                 <div>
                                     <div class="review_image"><img
-                                            src="{{ asset('admin/frontend') }}/images/review_3.jpg" alt="">
+                                            src="{{ asset('assets/frontend') }}/images/review_3.jpg" alt="">
                                     </div>
                                 </div>
                                 <div class="review_content">

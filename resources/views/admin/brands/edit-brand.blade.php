@@ -30,7 +30,7 @@
                         <input type="file" name="brand_logo" class="dropify" />
                         {{-- Old Brand Logo --}}
 
-                        <img src="{{asset('admin/assets/files/brands/'.$brand->brand_logo)}}"
+                        <img src="{{asset('assets/admin/files/brands/'.$brand->brand_logo)}}"
                             alt="{{$brand->name}}">
                         <input type="hidden" name="old_brand_logo" value="{{$brand->brand_logo}}">
                     </div>

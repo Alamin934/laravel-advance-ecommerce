@@ -23,7 +23,7 @@
                                 <!-- Image -->
                                 <div class="bg-image hover-overlay hover-zoom ripple rounded"
                                     data-mdb-ripple-color="light">
-                                    <img src="{{asset('admin/assets/files/products/'.$wishlist->product->thumbnail)}}"
+                                    <img src="{{asset('assets/admin/files/products/'.$wishlist->product->thumbnail)}}"
                                         class="w-100" alt="{{ $wishlist->product->title }}" />
                                     <a href="#!">
                                         <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
@@ -146,11 +146,11 @@
 @endsection
 
 @push('style')
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/product_styles.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/product_responsive.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/styles/product_styles.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/styles/product_responsive.css">
 @endpush
 @push('scripts')
-<script src="{{ asset('admin/frontend') }}/js/product_custom.js"></script>
+<script src="{{ asset('assets/frontend') }}/js/product_custom.js"></script>
 <script>
     function ajaxDeleteWithToastr(method, url, data, toastrMsg) {
         swal({

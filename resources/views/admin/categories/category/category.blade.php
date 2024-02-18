@@ -34,7 +34,7 @@
                             <td>{{ $category->slug }}</td>
                             <td>
                                 @if ($category->icon != null)
-                                <img src="{{asset('admin/assets/files/category/'.$category->icon)}}"
+                                <img src="{{asset('assets/admin/files/category/'.$category->icon)}}"
                                     alt="{{ $category->slug }}">
                                 @endif
                             </td>

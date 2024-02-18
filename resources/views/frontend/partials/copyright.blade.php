@@ -14,10 +14,10 @@
                     </div>
                     <div class="logos ml-sm-auto">
                         <ul class="logos_list">
-                            <li><a href="#"><img src="{{ asset('admin/frontend') }}/images/logos_1.png" alt=""></a></li>
-                            <li><a href="#"><img src="{{ asset('admin/frontend') }}/images/logos_2.png" alt=""></a></li>
-                            <li><a href="#"><img src="{{ asset('admin/frontend') }}/images/logos_3.png" alt=""></a></li>
-                            <li><a href="#"><img src="{{ asset('admin/frontend') }}/images/logos_4.png" alt=""></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/frontend') }}/images/logos_1.png" alt=""></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/frontend') }}/images/logos_2.png" alt=""></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/frontend') }}/images/logos_3.png" alt=""></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/frontend') }}/images/logos_4.png" alt=""></a></li>
                         </ul>
                     </div>
                 </div>

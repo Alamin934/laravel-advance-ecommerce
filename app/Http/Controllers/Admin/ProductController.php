@@ -64,7 +64,7 @@ class ProductController extends Controller
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
             $image->contain(650, 450);
-            $image->toPng()->save('admin/assets/files/products/'.$new_file_name);
+            $image->toPng()->save('assets/admin/files/products/'.$new_file_name);
         }
         
         // Gallery Images
@@ -83,7 +83,7 @@ class ProductController extends Controller
                     $manager = new ImageManager(new Driver());
                     $image = $manager->read($file);
                     $image->contain(650, 450);
-                    $image->toPng()->save('admin/assets/files/products/'.$new_file_name);
+                    $image->toPng()->save('assets/admin/files/products/'.$new_file_name);
                 }
 
             }
@@ -162,11 +162,11 @@ class ProductController extends Controller
 
         if($request->hasfile('images') && !empty($request->old_images)){
             foreach ($request->old_images as $image) {
-                unlink(public_path('admin/assets/files/products/'.$image));
+                unlink(public_path('assets/admin/files/products/'.$image));
             }
         }
         if($request->hasfile('thumbnail') && $request->old_thumbnail != null){
-            unlink(public_path('admin/assets/files/products/'.$request->old_thumbnail));
+            unlink(public_path('assets/admin/files/products/'.$request->old_thumbnail));
         }
         
 
@@ -182,7 +182,7 @@ class ProductController extends Controller
             $manager = new ImageManager(new Driver());
             $image = $manager->read($file);
             $image->contain(650, 450);
-            $image->toPng()->save('admin/assets/files/products/'.$new_file_name);
+            $image->toPng()->save('assets/admin/files/products/'.$new_file_name);
         }
         
         // Gallery Images
@@ -201,7 +201,7 @@ class ProductController extends Controller
                     $manager = new ImageManager(new Driver());
                     $image = $manager->read($file);
                     $image->contain(650, 450);
-                    $image->toPng()->save('admin/assets/files/products/'.$new_file_name);
+                    $image->toPng()->save('assets/admin/files/products/'.$new_file_name);
                 }
             }
         }
@@ -246,10 +246,10 @@ class ProductController extends Controller
         $product = Product::find($request->id);
         if(!empty($product->images)){
             foreach ($product->images as $image) {
-                unlink(public_path('admin/assets/files/products/'.$image));
+                unlink(public_path('assets/admin/files/products/'.$image));
             }
         }
-        unlink(public_path('admin/assets/files/products/'.$product->thumbnail));
+        unlink(public_path('assets/admin/files/products/'.$product->thumbnail));
 
         $product->delete();
         return response()->json(['status'=> 'success']);
@@ -318,7 +318,7 @@ class ProductController extends Controller
             if($product->featured == "on"){$featured = "checked";}else{$featured = "";}
             $pd .= '<tr>';
             $pd .=  '<td>'. $id++ .'</td>';
-            $pd .=  '<td><img src="/admin/assets/files/products/'.$product->thumbnail.'" alt="" class="me-3" style="height:40px;width:auto">'.\Illuminate\Support\Str::words($product->title, 5, "...").'</td>';
+            $pd .=  '<td><img src="/assets/admin/files/products/'.$product->thumbnail.'" alt="" class="me-3" style="height:40px;width:auto">'.\Illuminate\Support\Str::words($product->title, 5, "...").'</td>';
             $pd .=  '<td>'.$product->code.'</td>';
             $pd .= '<td>'.$product->purchase_price.'</td>';
             $pd .=  '<td>'.$product->category->name.'</td>';

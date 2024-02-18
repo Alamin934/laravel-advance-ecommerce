@@ -13,7 +13,7 @@
                             <div class="brands_item d-flex flex-column justify-content-center">
                                 <a href="" title="{{$brand->name}}">
                                     <img style="width:120px"
-                                        src="{{ asset('admin/assets/files/brands/'.$brand->brand_logo) }}" alt="">
+                                        src="{{ asset('assets/admin/files/brands/'.$brand->brand_logo) }}" alt="">
                                 </a>
                             </div>
                         </div>

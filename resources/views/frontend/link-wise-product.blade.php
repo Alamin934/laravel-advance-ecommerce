@@ -8,7 +8,7 @@
 
 <div class="home">
     <div class="home_background parallax-window" data-parallax="scroll"
-        data-image-src="{{ asset('admin/frontend') }}/images/shop_background.jpg">
+        data-image-src="{{ asset('assets/frontend') }}/images/shop_background.jpg">
     </div>
     <div class="home_overlay"></div>
     <div class="home_content d-flex flex-column align-items-center justify-content-center">
@@ -138,7 +138,7 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/assets/files/products/'.$product->thumbnail) }}" alt="">
+                                <img src="{{ asset('assets/admin/files/products/'.$product->thumbnail) }}" alt="">
                             </div>
                             <div class="product_content">
                                 @if($product->selling_price)
@@ -221,14 +221,14 @@
     }
 </style>
 <link rel="stylesheet" type="text/css"
-    href="{{ asset('admin/frontend') }}/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/shop_styles.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/shop_responsive.css">
+    href="{{ asset('assets/frontend') }}/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/styles/shop_styles.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/styles/shop_responsive.css">
 @endpush
 
 @push('scripts')
-<script src="{{ asset('admin/frontend') }}/plugins/Isotope/isotope.pkgd.min.js"></script>
-<script src="{{ asset('admin/frontend') }}/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-<script src="{{ asset('admin/frontend') }}/plugins/parallax-js-master/parallax.min.js"></script>
-<script src="{{ asset('admin/frontend') }}/js/shop_custom.js"></script>
+<script src="{{ asset('assets/frontend') }}/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="{{ asset('assets/frontend') }}/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="{{ asset('assets/frontend') }}/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="{{ asset('assets/frontend') }}/js/shop_custom.js"></script>
 @endpush

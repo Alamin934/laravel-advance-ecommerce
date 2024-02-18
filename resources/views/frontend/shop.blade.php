@@ -8,7 +8,7 @@
 
 <div class="home">
     <div class="home_background parallax-window" data-parallax="scroll"
-        data-image-src="{{ asset('admin/frontend') }}/images/shop_background.jpg">
+        data-image-src="{{ asset('assets/frontend') }}/images/shop_background.jpg">
     </div>
     <div class="home_overlay"></div>
     <div class="home_content d-flex flex-column align-items-center justify-content-center">
@@ -110,7 +110,7 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/new_5.jpg" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/new_5.jpg" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$225</div>
@@ -129,7 +129,7 @@
                         <div class="product_item discount">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/featured_1.png" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/featured_1.png" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$225<span>$300</span></div>
@@ -148,7 +148,7 @@
                         <div class="product_item">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/featured_2.png" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/featured_2.png" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$379</div>
@@ -167,7 +167,7 @@
                         <div class="product_item">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/featured_3.png" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/featured_3.png" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$225</div>
@@ -186,7 +186,7 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/featured_4.png" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/featured_4.png" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$379</div>
@@ -205,7 +205,7 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/shop_1.jpg" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/shop_1.jpg" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$379</div>
@@ -224,7 +224,7 @@
                         <div class="product_item">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/featured_5.png" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/featured_5.png" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$379<span>$300</span></div>
@@ -243,7 +243,7 @@
                         <div class="product_item">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/featured_6.png" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/featured_6.png" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$225<span>$300</span></div>
@@ -262,7 +262,7 @@
                         <div class="product_item">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/featured_7.png" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/featured_7.png" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$225</div>
@@ -281,7 +281,7 @@
                         <div class="product_item">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/featured_8.png" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/featured_8.png" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$379</div>
@@ -300,7 +300,7 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/new_1.jpg" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/new_1.jpg" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$225</div>
@@ -319,7 +319,7 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/new_2.jpg" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/new_2.jpg" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$225</div>
@@ -338,7 +338,7 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/new_3.jpg" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/new_3.jpg" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$225</div>
@@ -357,7 +357,7 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/new_4.jpg" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/new_4.jpg" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$379</div>
@@ -376,7 +376,7 @@
                         <div class="product_item discount">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/featured_1.png" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/featured_1.png" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$225<span>$300</span></div>
@@ -395,7 +395,7 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/new_6.jpg" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/new_6.jpg" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$379</div>
@@ -414,7 +414,7 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/new_7.jpg" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/new_7.jpg" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$225</div>
@@ -433,7 +433,7 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/new_8.jpg" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/new_8.jpg" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$379</div>
@@ -452,7 +452,7 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/shop_2.jpg" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/shop_2.jpg" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$225</div>
@@ -471,7 +471,7 @@
                         <div class="product_item is_new">
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                                <img src="{{ asset('admin/frontend') }}/images/featured_5.png" alt="">
+                                <img src="{{ asset('assets/frontend') }}/images/featured_5.png" alt="">
                             </div>
                             <div class="product_content">
                                 <div class="product_price">$379</div>
@@ -534,7 +534,7 @@
                         <div class="owl-item">
                             <div
                                 class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="{{ asset('admin/frontend') }}/images/view_1.jpg"
+                                <div class="viewed_image"><img src="{{ asset('assets/frontend') }}/images/view_1.jpg"
                                         alt=""></div>
                                 <div class="viewed_content text-center">
                                     <div class="viewed_price">$225<span>$300</span></div>
@@ -551,7 +551,7 @@
                         <div class="owl-item">
                             <div
                                 class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="{{ asset('admin/frontend') }}/images/view_2.jpg"
+                                <div class="viewed_image"><img src="{{ asset('assets/frontend') }}/images/view_2.jpg"
                                         alt=""></div>
                                 <div class="viewed_content text-center">
                                     <div class="viewed_price">$379</div>
@@ -568,7 +568,7 @@
                         <div class="owl-item">
                             <div
                                 class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="{{ asset('admin/frontend') }}/images/view_3.jpg"
+                                <div class="viewed_image"><img src="{{ asset('assets/frontend') }}/images/view_3.jpg"
                                         alt=""></div>
                                 <div class="viewed_content text-center">
                                     <div class="viewed_price">$225</div>
@@ -585,7 +585,7 @@
                         <div class="owl-item">
                             <div
                                 class="viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="{{ asset('admin/frontend') }}/images/view_4.jpg"
+                                <div class="viewed_image"><img src="{{ asset('assets/frontend') }}/images/view_4.jpg"
                                         alt=""></div>
                                 <div class="viewed_content text-center">
                                     <div class="viewed_price">$379</div>
@@ -602,7 +602,7 @@
                         <div class="owl-item">
                             <div
                                 class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="{{ asset('admin/frontend') }}/images/view_5.jpg"
+                                <div class="viewed_image"><img src="{{ asset('assets/frontend') }}/images/view_5.jpg"
                                         alt=""></div>
                                 <div class="viewed_content text-center">
                                     <div class="viewed_price">$225<span>$300</span></div>
@@ -619,7 +619,7 @@
                         <div class="owl-item">
                             <div
                                 class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                <div class="viewed_image"><img src="{{ asset('admin/frontend') }}/images/view_6.jpg"
+                                <div class="viewed_image"><img src="{{ asset('assets/frontend') }}/images/view_6.jpg"
                                         alt=""></div>
                                 <div class="viewed_content text-center">
                                     <div class="viewed_price">$375</div>
@@ -652,35 +652,35 @@
 
                         <div class="owl-item">
                             <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_1.jpg" alt=""></div>
+                                    src="{{ asset('assets/frontend') }}/images/brands_1.jpg" alt=""></div>
                         </div>
                         <div class="owl-item">
                             <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_2.jpg" alt=""></div>
+                                    src="{{ asset('assets/frontend') }}/images/brands_2.jpg" alt=""></div>
                         </div>
                         <div class="owl-item">
                             <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_3.jpg" alt=""></div>
+                                    src="{{ asset('assets/frontend') }}/images/brands_3.jpg" alt=""></div>
                         </div>
                         <div class="owl-item">
                             <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_4.jpg" alt=""></div>
+                                    src="{{ asset('assets/frontend') }}/images/brands_4.jpg" alt=""></div>
                         </div>
                         <div class="owl-item">
                             <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_5.jpg" alt=""></div>
+                                    src="{{ asset('assets/frontend') }}/images/brands_5.jpg" alt=""></div>
                         </div>
                         <div class="owl-item">
                             <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_6.jpg" alt=""></div>
+                                    src="{{ asset('assets/frontend') }}/images/brands_6.jpg" alt=""></div>
                         </div>
                         <div class="owl-item">
                             <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_7.jpg" alt=""></div>
+                                    src="{{ asset('assets/frontend') }}/images/brands_7.jpg" alt=""></div>
                         </div>
                         <div class="owl-item">
                             <div class="brands_item d-flex flex-column justify-content-center"><img
-                                    src="{{ asset('admin/frontend') }}/images/brands_8.jpg" alt=""></div>
+                                    src="{{ asset('assets/frontend') }}/images/brands_8.jpg" alt=""></div>
                         </div>
 
                     </div>
@@ -699,14 +699,14 @@
 
 @push('style')
 <link rel="stylesheet" type="text/css"
-    href="{{ asset('admin/frontend') }}/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/shop_styles.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('admin/frontend') }}/styles/shop_responsive.css">
+    href="{{ asset('assets/frontend') }}/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/styles/shop_styles.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/frontend') }}/styles/shop_responsive.css">
 @endpush
 
 @push('scripts')
-<script src="{{ asset('admin/frontend') }}/plugins/Isotope/isotope.pkgd.min.js"></script>
-<script src="{{ asset('admin/frontend') }}/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-<script src="{{ asset('admin/frontend') }}/plugins/parallax-js-master/parallax.min.js"></script>
-<script src="{{ asset('admin/frontend') }}/js/shop_custom.js"></script>
+<script src="{{ asset('assets/frontend') }}/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="{{ asset('assets/frontend') }}/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="{{ asset('assets/frontend') }}/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="{{ asset('assets/frontend') }}/js/shop_custom.js"></script>
 @endpush

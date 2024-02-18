@@ -5,7 +5,7 @@
                 <div
                     class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
                     <div class="newsletter_title_container">
-                        <div class="newsletter_icon"><img src="{{ asset('admin/frontend') }}/images/send.png" alt="">
+                        <div class="newsletter_icon"><img src="{{ asset('assets/frontend') }}/images/send.png" alt="">
                         </div>
                         <div class="newsletter_title">Sign up for Newsletter</div>
                         <div class="newsletter_text">
