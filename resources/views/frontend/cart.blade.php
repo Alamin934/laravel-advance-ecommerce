@@ -142,7 +142,8 @@
                                             <small class="btn btn-info p-1">No Color</small>
                                             @endif
                                         </td>
-                                        <td>{{Illuminate\Support\Number::format($product->price)}}</td>
+                                        <td>{{Illuminate\Support\Number::format($product->price)." X ".$product->qty}}
+                                        </td>
                                         <td class="font-weight-bold">
                                             {{Illuminate\Support\Number::format($product->qty*$product->price)}}</td>
                                         <td>
@@ -183,8 +184,7 @@
                 <div class="cart_buttons">
                     <button type="button" class="button cart_button_clear" @if(count($cart)==0)
                         @disabled(true)@endif>Empty Cart</button>
-                    <a href="{{count($cart)==0 ? '' : route('checkout')}}"
-                        class="button cart_button_checkout">Checkout</a>
+                    <a href="{{route('checkout')}}" class="button cart_button_checkout">Checkout</a>
                 </div>
             </div>
         </div>
