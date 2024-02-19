@@ -12,12 +12,8 @@ class CartController extends Controller
 {
 
     public function displayCart() {
-        if(auth()->user()){
-            $cart = Cart::content();
-            return view('frontend.cart', compact('cart'));
-        }else{
-            return redirect()->back()->with(['message'=>'Please Login for Cart Items', 'alert-type'=>'error']);
-        }
+        $cart = Cart::content();
+        return view('frontend.cart', compact('cart'));
     }
 
     public function addToCart(Request $request){
@@ -46,12 +42,14 @@ class CartController extends Controller
             return response()->json(['status'=>'success','msg'=>'Quantity Updated','total_item'=>$total_item, 'total_price'=>$total_price]);
         }
     }
+
     public function updateSize(Request $request, string $rowId){
         if($request->size){
             Cart::update($rowId, ['options'=>['size'=>$request->size,'color'=>$request->color]]);
             return response()->json(['status'=>'success','msg'=>'Size Updated']);
         }
     }
+
     public function updateColor(Request $request, string $rowId){
         if($request->color){
             Cart::update($rowId, ['options'=>['size'=>$request->size,'color'=>$request->color]]);
@@ -65,4 +63,13 @@ class CartController extends Controller
         $total_price = Cart::total();
         return response()->json(['status'=>'success','msg'=>'Product remove from cart successfully','total_item'=>$total_item, 'total_price'=>$total_price]);
     }
+
+    public function emptyCart(){
+        Cart::destroy();
+        $total_item = Cart::count();
+        $total_price = Cart::total();
+        return response()->json(['status'=>'success','msg'=>'Product remove from cart successfully','total_item'=>$total_item, 'total_price'=>$total_price]);
+    }
+
+
 }

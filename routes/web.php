@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\FrontEnd\{HomeController,CartController,SettingController};
+use App\Http\Controllers\FrontEnd\{HomeController,CartController,SettingController,CheckoutController};
 use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function () {
@@ -26,15 +26,19 @@ Route::controller(HomeController::class)->group(function () {
 // Cart
 Route::controller(CartController::class)->group(function () {
     Route::get('/cart','displayCart')->name('display.cart');
+    Route::get('/add-to-cart','addToCart')->name('add.cart');
 
-    Route::middleware(['auth', 'verified'])->group(function () {
-        Route::get('/add-to-cart','addToCart')->name('add.cart');
+    // Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/update-qty/{id}','updateQty')->name('update.qty');
         Route::get('/update-size/{id}','updateSize')->name('update.size');
         Route::get('/update-color/{id}','updateColor')->name('update.color');
         Route::get('/remove-from-cart/{id}','removeFromCart')->name('remove.cart');
-    });
+        Route::post('/empty-cart','emptyCart')->name('empty.cart');
+    // });
 });
+
+// Checkout Routes
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 
 // Shop
 Route::view('/shop','frontend.shop')->name('shop');
