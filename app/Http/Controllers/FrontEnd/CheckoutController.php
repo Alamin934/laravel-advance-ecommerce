@@ -31,13 +31,17 @@ class CheckoutController extends Controller
         elseif(date("Y-m-d") > date("Y-m-d", strtotime($coupon->valid_date))){
             return response()->json(['status'=>'error', 'msg'=>'Coupon Expired.']);
         }else{
-            $subTotal = Cart::subTotal(2,'.','');
-            session(['coupon' => [
-                'coupon_name' => $coupon->coupon_code,
-                'discount' => $coupon->amount,
-                'after_discount' => $subTotal - $coupon->amount,
-            ]]);
-            return response()->json(['status'=>'success', 'msg'=>'Coupon Applied.']);
+            if($coupon->amount > Cart::total()){
+                return response()->json(['status'=>'error', 'msg'=>'Sorry, You can not use this Coupon.']);
+            }else{
+                $subTotal = Cart::subTotal(2,'.','');
+                session(['coupon' => [
+                    'coupon_name' => $coupon->coupon_code,
+                    'discount' => $coupon->amount,
+                    'after_discount' => number_format($subTotal - $coupon->amount,2),
+                ]]);
+                return response()->json(['status'=>'success', 'msg'=>'Coupon Applied.']);
+            }
         }
     }
     public function removeCoupon(Request $request){

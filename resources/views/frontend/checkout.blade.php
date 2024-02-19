@@ -9,8 +9,9 @@
     <div class="container py-5">
         <div class="row justify-content-end">
             <div class="col-md-9">
-                <div class="shipping card-body shadow-sm border border-light">
-                    <form method="POST" id="addShipping">
+                <h3>Shipping Details</h3>
+                <div class="shipping card-body shadow-sm border border-light mt-3">
+                    <form method="POST" id="place_order">
                         @csrf
                         {{-- Email --}}
                         <div class="form-group">
@@ -59,7 +60,7 @@
                             </div>
                         </div>
                         {{-- Payment options --}}
-                        <div class="d-flex justify-content-between flex-wrap mt-2">
+                        <div class="d-flex justify-content-between flex-wrap my-2">
                             <div class="form-check">
                                 <input class="form-check-input form-check-inline" type="radio" name="payment"
                                     id="paypal" value="paypal">
@@ -76,9 +77,14 @@
                                 <label class="form-check-label" for="cashOnDelivery">Cash On Delivery</label>
                             </div>
                         </div>
+
+                        <div>
+                            <button type="button" class="btn btn-info place_order mt-3">Place Order</button>
+                        </div>
                     </form>
                 </div>
             </div>
+            {{-- Total Summery --}}
             <div class="col-md-3">
                 <div class="card border-light shadow-sm">
                     <h5 class="card-header bg-white shadow-sm border-light m-2">Total Summery</h5>
