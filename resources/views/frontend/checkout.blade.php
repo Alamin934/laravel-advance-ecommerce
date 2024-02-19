@@ -11,47 +11,68 @@
             <div class="col-md-9">
                 <h3>Shipping Details</h3>
                 <div class="shipping card-body shadow-sm border border-light mt-3">
-                    <form method="POST" id="place_order">
+                    <form method="POST" action="{{route('place.order')}}">
                         @csrf
                         {{-- Email --}}
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">Email <span class="text-danger">*</span></label>
                             <input type="email" class="form-control" id="email" name="email" placeholder="Email"
                                 value="{{$shipping->email ?? ''}}">
+                            @error('email')
+                            <p class="text-danger mb-0">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-row">
                             {{-- Name --}}
                             <div class="form-group col-md-6">
-                                <label for="name">Name</label>
+                                <label for="name">Name <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Name"
                                     value="{{$shipping->name ?? ''}}">
+                                @error('name')
+                                <p class="text-danger mb-0">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="phone">Phone</label>
+                                <label for="phone">Phone <span class="text-danger">*</span></label>
                                 <input type="phone" class="form-control" id="phone" name="phone" placeholder="Phone"
                                     value="{{$shipping->phone ?? ''}}">
+                                @error('phone')
+                                <p class="text-danger mb-0">{{$message}}</p>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="address">Address</label>
+                            <label for="address">Address <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="address" name="address" placeholder="Address"
                                 value="{{$shipping->address ?? ''}}">
+                            @error('address')
+                            <p class="text-danger mb-0">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="city">City</label>
+                                <label for="city">City <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="city" name="city"
                                     value="{{$shipping->city ?? ''}}">
+                                @error('city')
+                                <p class="text-danger mb-0">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="state">State</label>
+                                <label for="state">State <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="state" name="state"
                                     value="{{$shipping->state ?? ''}}">
+                                @error('state')
+                                <p class="text-danger mb-0">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="form-group col-md-2">
-                                <label for="postal_code">Zip/Postal Code</label>
+                                <label for="postal_code">Zip/Postal Code <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="postal_code" name="postal_code"
                                     value="{{$shipping->postal_code ?? ''}}">
+                                @error('postal_code')
+                                <p class="text-danger mb-0">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="country">Country</label>
@@ -73,14 +94,15 @@
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input form-check-inline" type="radio" name="payment"
-                                    id="cashOnDelivery" value="cashOnDelivery" checked>
+                                    id="cashOnDelivery" value="cash-on-delivery" checked>
                                 <label class="form-check-label" for="cashOnDelivery">Cash On Delivery</label>
                             </div>
+                            @error('payment')
+                            <p class="text-danger mb-0">{{$message}}</p>
+                            @enderror
                         </div>
 
-                        <div>
-                            <button type="button" class="btn btn-info place_order mt-3">Place Order</button>
-                        </div>
+                        <button class="btn btn-info mt-3">Place Order</button>
                     </form>
                 </div>
             </div>
@@ -153,6 +175,8 @@
                         if(response.status == 'success'){
                             toastr.success(response.msg);
                             $('.total_amount').load(location.href + ' .table');
+                            // $(".cart_price span").html('');
+                            $(".cart_price span").html(response.total_price);
                         }else{
                             toastr.error(response.msg);
                         }
@@ -172,6 +196,7 @@
                     if(response.status == 'success'){
                         toastr.success(response.msg);
                         $('.total_amount').load(location.href + ' .table');
+                       $(".cart_price span").html(response.total_price);
                     }
                 }
             });

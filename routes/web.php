@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\FrontEnd\{HomeController,CartController,SettingController,CheckoutController};
+use App\Http\Controllers\FrontEnd\{HomeController,CartController,SettingController,CheckoutController,OrderController};
 use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function () {
@@ -41,6 +41,9 @@ Route::controller(CartController::class)->group(function () {
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::get('/apply-coupon', [CheckoutController::class, 'applyCoupon'])->name('apply.coupon');
 Route::get('/remove-coupon', [CheckoutController::class, 'removeCoupon'])->name('remove.coupon');
+
+// Orders route
+Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('place.order');
 
 // Shop
 Route::view('/shop','frontend.shop')->name('shop');

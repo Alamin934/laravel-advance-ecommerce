@@ -9,6 +9,7 @@ use Cart;
 
 class CheckoutController extends Controller
 {
+    // Display Checkout page
     public function index(){
         if(auth()->user() && Cart::content()->count() > 0){
             $shipping = DB::table('shippings')->where('user_id', auth()->user()->id)->latest()->first();
@@ -23,6 +24,7 @@ class CheckoutController extends Controller
         }
     }
 
+    // Apply Coupon
     public function applyCoupon(Request $request){
         $coupon = DB::table('coupons')->where('coupon_code', $request->coupon_code)->first();
         if(empty($coupon)){
@@ -40,13 +42,15 @@ class CheckoutController extends Controller
                     'discount' => $coupon->amount,
                     'after_discount' => number_format($subTotal - $coupon->amount,2),
                 ]]);
-                return response()->json(['status'=>'success', 'msg'=>'Coupon Applied.']);
+                return response()->json(['status'=>'success', 'msg'=>'Coupon Applied.','total_price'=>number_format($subTotal - $coupon->amount,2)]);
             }
         }
     }
+    // Remove Coupon
     public function removeCoupon(Request $request){
+        $total_price = Cart::total();
         session()->forget('coupon');
-        return response()->json(['status'=>'success', 'msg'=>'Coupon Removed.']);
+        return response()->json(['status'=>'success', 'msg'=>'Coupon Removed.','total_price'=>$total_price]);
 
     }
 }
