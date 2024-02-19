@@ -40,6 +40,7 @@ Route::controller(CartController::class)->group(function () {
 // Checkout Routes
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::get('/apply-coupon', [CheckoutController::class, 'applyCoupon'])->name('apply.coupon');
+Route::get('/remove-coupon', [CheckoutController::class, 'removeCoupon'])->name('remove.coupon');
 
 // Shop
 Route::view('/shop','frontend.shop')->name('shop');

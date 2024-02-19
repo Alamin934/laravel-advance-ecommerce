@@ -5,13 +5,6 @@
 @endsection
 
 @section('main-content')
-<pre>
-    @if (session()->has('coupon'))
-        @php
-        print_r(session()->get('coupon'));
-        @endphp
-    @endif
-</pre>
 <section class="h-100 gradient-custom">
     <div class="container py-5">
         <div class="row justify-content-end">
@@ -118,7 +111,8 @@
                                     </form>
                                     <span class="text-danger d-none coupon-err"></span>
                                     @else
-                                    <button type="submit" class="btn btn-info mt-2">Remove Coupon</button>
+                                    <button type="submit" id="remove-coupon" class="btn btn-info mt-2">Remove
+                                        Coupon</button>
                                     @endif
                                 </td>
                             </tr>
@@ -161,6 +155,20 @@
             }else{
                 $('.coupon-err').html('The field is required!').removeClass('d-none');
             }
+        });
+        // Removed Coupon with ajax
+        $(document).on('click','#remove-coupon', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "get",
+                url: "{{route('remove.coupon')}}",
+                success: function (response) {
+                    if(response.status == 'success'){
+                        toastr.success(response.msg);
+                        $('.total_amount').load(location.href + ' .table');
+                    }
+                }
+            });
         });
     });
     // load data with ajax

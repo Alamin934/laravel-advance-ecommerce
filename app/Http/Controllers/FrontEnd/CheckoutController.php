@@ -40,4 +40,9 @@ class CheckoutController extends Controller
             return response()->json(['status'=>'success', 'msg'=>'Coupon Applied.']);
         }
     }
+    public function removeCoupon(Request $request){
+        session()->forget('coupon');
+        return response()->json(['status'=>'success', 'msg'=>'Coupon Removed.']);
+
+    }
 }
