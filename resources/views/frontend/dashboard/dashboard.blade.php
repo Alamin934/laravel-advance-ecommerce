@@ -3,34 +3,34 @@
 @section('dashboard-content')
 <div class="row">
     <div class="col-md-3 mb-3">
-        <div class="card bg-success">
+        <div class="card bg-warning">
             <div class="card-body text-center">
-                <a href="" class="text-white">My Total Order</a>
-                <p class="text-white mb-0">15</p>
+                <a href="" class="text-dark">Total Order</a>
+                <p class="text-dark mb-0">{{$total}}</p>
             </div>
         </div>
     </div>
     <div class="col-md-3 mb-3">
-        <div class="card bg-warning">
+        <div class="card bg-success">
             <div class="card-body text-center">
-                <a href="" class="text-white">My Total Order</a>
-                <p class="text-white mb-0">15</p>
+                <a href="" class="text-white">Complete Order</a>
+                <p class="text-white mb-0">{{$complete}}</p>
             </div>
         </div>
     </div>
     <div class="col-md-3 mb-3">
         <div class="card bg-info">
             <div class="card-body text-center">
-                <a href="" class="text-white">My Total Order</a>
-                <p class="text-white mb-0">15</p>
+                <a href="" class="text-white">Return Order</a>
+                <p class="text-white mb-0">{{$return}}</p>
             </div>
         </div>
     </div>
     <div class="col-md-3 mb-3">
         <div class="card bg-danger">
             <div class="card-body text-center">
-                <a href="" class="text-white">My Total Order</a>
-                <p class="text-white mb-0">15</p>
+                <a href="" class="text-white">Cancel Order</a>
+                <p class="text-white mb-0">{{$cancel}}</p>
             </div>
         </div>
     </div>
@@ -42,31 +42,43 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Order Id</th>
+                    <th scope="col">Order Date</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Payment Type</th>
+                    <th scope="col">Status</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($orders as $order)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th scope="row">#{{$order->order_id}}</th>
+                    <td>{{$order->created_at->format('d-m-Y')}}</td>
+                    <td>{{$order->coupon_after_discount ?? $order->total}}</td>
+                    <td>{{$order->payment_type}}</td>
+                    <td>
+                        @switch($order->order_status)
+                        @case("pending")
+                        <span class="badge badge-primary">Pending</span>
+                        @break
+                        @case("recieved")
+                        <span class="badge badge-info">Recieved</span>
+                        @break
+                        @case("shipped")
+                        <span class="badge badge-dark">Shipped</span>
+                        @break
+                        @case("returned")
+                        <span class="badge badge-warning">Returned</span>
+                        @break
+                        @case("completed")
+                        <span class="badge badge-success">Completed</span>
+                        @break
+                        @default
+                        <span class="badge badge-danger">Cancel</span>
+                        @endswitch
+                    </td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

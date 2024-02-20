@@ -33,7 +33,7 @@ class CheckoutController extends Controller
         elseif(date("Y-m-d") > date("Y-m-d", strtotime($coupon->valid_date))){
             return response()->json(['status'=>'error', 'msg'=>'Coupon Expired.']);
         }else{
-            if($coupon->amount > Cart::total()){
+            if($coupon->amount > Cart::total(2,'.','')){
                 return response()->json(['status'=>'error', 'msg'=>'Sorry, You can not use this Coupon.']);
             }else{
                 $subTotal = Cart::subTotal(2,'.','');

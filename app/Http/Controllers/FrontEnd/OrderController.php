@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Mail\{OrderPlaced,OrderPlacedNotifyAdmin};
 use Illuminate\Support\Facades\Mail;
-use App\Jobs\PlaceOrderJob;
 use Cart;
 
 class OrderController extends Controller
@@ -56,7 +55,7 @@ class OrderController extends Controller
             'tax' => 0,
             'shipping_charge' => 0,
             'order_status' => 'pending',
-            'order_id' => Str::upper(Str::random(8)),
+            'order_id' => rand(10000000, 99999999),
         ]);
 
         
@@ -73,8 +72,8 @@ class OrderController extends Controller
                 'total_price' => $item->price*$item->qty,
             ]);
         }
-        Mail::to($request->user())->send(new OrderPlaced($order));
-        Mail::to('admin@admin.com')->send(new OrderPlacedNotifyAdmin($order));
+        // Mail::to($request->user())->send(new OrderPlaced($order));
+        // Mail::to('admin@admin.com')->send(new OrderPlacedNotifyAdmin($order));
 
 
         Cart::destroy();
@@ -83,4 +82,34 @@ class OrderController extends Controller
         }
         return redirect()->route('home')->with(['message'=>'Order Placed successfully', 'alert-type'=>'success']);
     }
+
+
+    public function showOrders(){
+        if(auth()->user()->is_admin === 1){
+            return redirect()->route('admin.dashboard');
+        }else{
+            $user_id = auth()->user()->id;
+            $orders = Order::where('user_id', $user_id)->orderByDesc('id')->take(5)->get();
+            $total = Order::where('user_id', $user_id)->count();
+            $complete = Order::where('user_id', $user_id)->where('order_status', 'completed')->count();
+            $return = Order::where('user_id', $user_id)->where('order_status', 'returned')->count();
+            $cancel = Order::where('user_id', $user_id)->where('order_status', 'canceled')->count();
+            return view('frontend.dashboard.dashboard', compact('orders','total','complete','return','cancel'));
+        }
+    }
+    
+    public function myOrders(){
+        $user_id = auth()->user()->id;
+        $orders = Order::where('user_id', $user_id)->orderByDesc('id')->get();
+        return view('frontend.dashboard.orders', compact('orders'));
+    }
+    
+    public function orderDetails(string $id){
+        $user_id = auth()->user()->id;
+        $order = Order::where('user_id', $user_id)->where('id', $id)->first();
+        $order_details = OrderDetails::where('user_id', $user_id)->where('order_id', $id)->get();
+        return view('frontend.dashboard.order-details', compact('order_details', 'order'));
+    }
+
+
 }

@@ -49,18 +49,14 @@ Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('place
 Route::view('/shop','frontend.shop')->name('shop');
 
 // Dashboard
-Route::get('/dashboard', function () {
-    if(auth()->user()->is_admin === 1){
-        return redirect()->route('admin.dashboard');
-    }else{
-        return view('frontend.dashboard.dashboard');
-    }
-})->middleware(['auth', 'verified'])->name('dashboard.dashboard');
+Route::get('/dashboard', [OrderController::class, 'showOrders'])->middleware(['auth', 'verified'])->name('dashboard.dashboard');
+
 
 // Dashboard Sub Route
 Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(function () {
     // Orders
-    Route::view('/orders','frontend.dashboard.orders')->name('orders');
+    Route::get('/orders', [OrderController::class, 'myOrders'])->name('orders');
+    Route::get('/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order.details');
 
     // shipping
     Route::get('/settings',[SettingController::class, 'settings'])->name('settings');
