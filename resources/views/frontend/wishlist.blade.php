@@ -67,12 +67,12 @@
                                 <div>
                                     @if ($wishlist->product->selling_price)
                                     <div class="text-start">
-                                        <strike>${{\Illuminate\Support\Number::format($wishlist->product->purchase_price)}}</strike>
-                                        <strong>${{\Illuminate\Support\Number::format($wishlist->product->selling_price)}}</strong>
+                                        <strike>৳{{\Illuminate\Support\Number::format($wishlist->product->purchase_price)}}</strike>
+                                        <strong>৳{{\Illuminate\Support\Number::format($wishlist->product->selling_price)}}</strong>
                                     </div>
                                     @else
                                     <div class="text-start">
-                                        ${{\Illuminate\Support\Number::format($wishlist->product->purchase_price)}}
+                                        ৳{{\Illuminate\Support\Number::format($wishlist->product->purchase_price)}}
                                     </div>
                                     @endif
                                 </div>

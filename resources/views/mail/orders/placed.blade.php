@@ -432,7 +432,7 @@
                                                                                                         class="esd-block-text es-p20t es-p20b es-m-p0t es-m-p0b">
                                                                                                         <p
                                                                                                             class="p_price">
-                                                                                                            ${{$order_detail->price}}
+                                                                                                            ৳{{$order_detail->price}}
                                                                                                         </p>
                                                                                                     </td>
                                                                                                 </tr>
@@ -535,9 +535,9 @@
                                                                                                 <tr>
                                                                                                     <td align="right"
                                                                                                         class="esd-block-text">
-                                                                                                        <p>${{$order->sub_total}}<br>${{$order->coupon_discount
+                                                                                                        <p>৳{{$order->sub_total}}<br>৳{{$order->coupon_discount
                                                                                                             ??
-                                                                                                            '0.00'}}<br>${{$order->tax}}<br>${{$order->shipping_charge}}<br><strong>${{$order->coupon_after_discount
+                                                                                                            '0.00'}}<br>৳{{$order->tax}}<br>৳{{$order->shipping_charge}}<br><strong>৳{{$order->coupon_after_discount
                                                                                                                 ??
                                                                                                                 $order->total}}</strong>
                                                                                                         </p>

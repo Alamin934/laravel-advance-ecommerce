@@ -40,7 +40,8 @@
                                     @foreach ($category->sub_categories as $sub_category)
 
                                     <li class="{{count($sub_category->ChildCategory) == 0 ? '' : 'hassubs'}}">
-                                        <a href="{{route('linkWise.product', ['id'=>$sub_category->id, 'link'=>'sub_category'])}}">{{$sub_category->name}}
+                                        <a
+                                            href="{{route('linkWise.product', ['id'=>$sub_category->id, 'link'=>'sub_category'])}}">{{$sub_category->name}}
                                             {{-- <span
                                                 class="badge badge-pill badge-primary font-weight-normal">{{count($sub_category->products)}}</span>
                                             --}}
@@ -49,7 +50,8 @@
                                             @foreach ($sub_category->ChildCategory as $child_category)
 
                                             <li>
-                                                <a href="{{route('linkWise.product', ['id'=>$child_category->id, 'link'=>'child_category'])}}">{{$child_category->name}}
+                                                <a
+                                                    href="{{route('linkWise.product', ['id'=>$child_category->id, 'link'=>'child_category'])}}">{{$child_category->name}}
                                                     {{-- <span
                                                         class="badge badge-pill badge-primary font-weight-normal">{{count($child_category->products)}}</span>
                                                     --}}
@@ -139,18 +141,19 @@
                             <div class="product_border"></div>
                             <div class="product_image d-flex flex-column align-items-center justify-content-center">
                                 <a href="{{route('single.product', $product->slug)}}">
-                                    <img src="{{ asset('assets/admin/files/products/'.$product->thumbnail) }}" alt="{{$product->title}}">
+                                    <img src="{{ asset('assets/admin/files/products/'.$product->thumbnail) }}"
+                                        alt="{{$product->title}}">
                                 </a>
                             </div>
                             <div class="product_content">
                                 @if($product->selling_price)
                                 <div class="product_price">
                                     <small
-                                        class="font-weight-normal d-block"><del>${{$product->purchase_price}}</del></small>
-                                    ${{$product->selling_price}}
+                                        class="font-weight-normal d-block"><del>৳{{$product->purchase_price}}</del></small>
+                                    ৳{{$product->selling_price}}
                                 </div>
                                 @else
-                                <div class="product_price">${{$product->purchase_price}}</div>
+                                <div class="product_price">৳{{$product->purchase_price}}</div>
                                 @endif
                                 <div class="product_name">
                                     <div><a href="{{route('single.product',$product->slug)}}"

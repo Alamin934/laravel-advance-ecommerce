@@ -94,6 +94,11 @@
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input form-check-inline" type="radio" name="payment"
+                                    id="aamarPay" value="aamarPay">
+                                <label class="form-check-label" for="aamarPay">AamarPay</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input form-check-inline" type="radio" name="payment"
                                     id="cashOnDelivery" value="cash-on-delivery" checked>
                                 <label class="form-check-label" for="cashOnDelivery">Cash On Delivery</label>
                             </div>

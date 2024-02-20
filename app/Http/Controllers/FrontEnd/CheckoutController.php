@@ -26,7 +26,7 @@ class CheckoutController extends Controller
 
     // Apply Coupon
     public function applyCoupon(Request $request){
-        $coupon = DB::table('coupons')->where('coupon_code', $request->coupon_code)->first();
+        $coupon = DB::table('coupons')->where('coupon_code', $request->coupon_code)->where('status', 1)->first();
         if(empty($coupon)){
             return response()->json(['status'=>'error', 'msg'=>'Coupon is Invalid.']);
         }

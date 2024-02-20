@@ -35,28 +35,36 @@
             <div class="col-lg-4 col-6 order-3">
                 <div class="product_description">
                     <div class="product_category">
-                        <a href="{{route('linkWise.product', ['id'=>$product->category->id, 'link'=>'category'])}}">{{$product->subCategory ? $product->category->name.' >' : $product->category->name}}</a>
-                        <a href="{{route('linkWise.product', ['id'=>$product->subCategory->id ?? ' ', 'link'=>'sub_category'])}}">
-                            {{$product->childCategory ? $product->subCategory->name.' >' : ($product->subCategory ? $product->subCategory->name : '')}}
+                        <a href="{{route('linkWise.product', ['id'=>$product->category->id, 'link'=>'category'])}}">{{$product->subCategory
+                            ? $product->category->name.' >' : $product->category->name}}</a>
+                        <a
+                            href="{{route('linkWise.product', ['id'=>$product->subCategory->id ?? ' ', 'link'=>'sub_category'])}}">
+                            {{$product->childCategory ? $product->subCategory->name.' >' : ($product->subCategory ?
+                            $product->subCategory->name : '')}}
                         </a>
-                        {{-- <a href="{{route('linkWise.product', ['id'=>$product->subCategory->id, 'link'=>'sub_category'])}}">
+                        {{-- <a
+                            href="{{route('linkWise.product', ['id'=>$product->subCategory->id, 'link'=>'sub_category'])}}">
                             @if ($product->childCategory)
-                                {{$product->subCategory->name.' >'}}
+                            {{$product->subCategory->name.' >'}}
                             @elseif ($product->subCategory)
-                                {{$product->subCategory->name}}
+                            {{$product->subCategory->name}}
                             @else
-                                {{''}}
+                            {{''}}
                             @endif
                         </a> --}}
-                        <a href="{{route('linkWise.product', ['id'=>$product->childCategory->id ?? ' ', 'link'=>'child_category'])}}">{{$product->childCategory->name ?? ''}}</a>
-                        
-                        
+                        <a
+                            href="{{route('linkWise.product', ['id'=>$product->childCategory->id ?? ' ', 'link'=>'child_category'])}}">{{$product->childCategory->name
+                            ?? ''}}</a>
+
+
                     </div>
                     <div class="product_name">{{$product->title}}</div>
                     <p class="mb-0"><span class="text-dark">Stock:</span> {{$product->stock_quantity}}</p>
-                    
-                    <p><span class="text-dark">Brand:</span> <a href="{{$product->brand ? route('linkWise.product', ['id'=>$product->brand->id, 'link'=>'brand']) : 'javascript:void(0)'}}">{{$product->brand ? $product->brand->name
-                        : 'No Brand'}}</a></p>
+
+                    <p><span class="text-dark">Brand:</span> <a
+                            href="{{$product->brand ? route('linkWise.product', ['id'=>$product->brand->id, 'link'=>'brand']) : 'javascript:void(0)'}}">{{$product->brand
+                            ? $product->brand->name
+                            : 'No Brand'}}</a></p>
                     <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
                     <div class="order_info d-flex flex-row">
                         {{-- Cart Form --}}
@@ -114,13 +122,13 @@
                             @if ($product->selling_price)
                             <div>
                                 <strike
-                                    class="text-danger d-inline-block">${{\Illuminate\Support\Number::format($product->purchase_price)}}</strike>
+                                    class="text-danger d-inline-block">৳{{\Illuminate\Support\Number::format($product->purchase_price)}}</strike>
                                 <span
-                                    class="product_price">${{\Illuminate\Support\Number::format($product->selling_price)}}</span>
+                                    class="product_price">৳{{\Illuminate\Support\Number::format($product->selling_price)}}</span>
                             </div>
                             @else
                             <div class="product_price">
-                                ${{\Illuminate\Support\Number::format($product->purchase_price)}}
+                                ৳{{\Illuminate\Support\Number::format($product->purchase_price)}}
                             </div>
                             @endif
                             <div class="button_container">
@@ -206,13 +214,13 @@
                                     @if ($related_product->selling_price)
                                     <div>
                                         <strike
-                                            class="d-inline-block">${{\Illuminate\Support\Number::format($related_product->purchase_price)}}</strike>
+                                            class="d-inline-block">৳{{\Illuminate\Support\Number::format($related_product->purchase_price)}}</strike>
                                         <span
-                                            class="viewed_price">${{\Illuminate\Support\Number::format($related_product->selling_price)}}</span>
+                                            class="viewed_price">৳{{\Illuminate\Support\Number::format($related_product->selling_price)}}</span>
                                     </div>
                                     @else
                                     <div class="viewed_price">
-                                        ${{\Illuminate\Support\Number::format($related_product->purchase_price)}}
+                                        ৳{{\Illuminate\Support\Number::format($related_product->purchase_price)}}
                                     </div>
                                     @endif
                                     <div class="viewed_name"><a

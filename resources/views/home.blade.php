@@ -19,11 +19,11 @@
                     <h1 class="banner_text">{{$banner->title}}</h1>
                     @if ($banner->selling_price)
                     <div class="banner_price">
-                        <span>${{\Illuminate\Support\Number::format($banner->purchase_price)}}</span>${{\Illuminate\Support\Number::format($banner->selling_price)}}
+                        <span>৳{{\Illuminate\Support\Number::format($banner->purchase_price)}}</span>৳{{\Illuminate\Support\Number::format($banner->selling_price)}}
                     </div>
                     @else
                     <div class="banner_price">
-                        ${{\Illuminate\Support\Number::format($banner->selling_price)}}
+                        ৳{{\Illuminate\Support\Number::format($banner->selling_price)}}
                     </div>
                     @endif
                     <div class="banner_product_name">{{$banner->brand->name}}</div>
@@ -286,10 +286,10 @@
                                         <div class="product_content">
                                             <div class="product_price discount">
                                                 @if ($featured->selling_price)
-                                                ${{\Illuminate\Support\Number::format($featured->selling_price)}}
-                                                <span>${{\Illuminate\Support\Number::format($featured->purchase_price)}}</span>
+                                                ৳{{\Illuminate\Support\Number::format($featured->selling_price)}}
+                                                <span>৳{{\Illuminate\Support\Number::format($featured->purchase_price)}}</span>
                                                 @else
-                                                ${{\Illuminate\Support\Number::format($featured->purchase_price)}}
+                                                ৳{{\Illuminate\Support\Number::format($featured->purchase_price)}}
                                                 @endif
                                             </div>
                                             <div class="product_name">
@@ -344,10 +344,10 @@
                                         <div class="product_content">
                                             <div class="product_price discount">
                                                 @if ($most_popular->selling_price)
-                                                ${{\Illuminate\Support\Number::format($most_popular->selling_price)}}
-                                                <span>${{\Illuminate\Support\Number::format($most_popular->purchase_price)}}</span>
+                                                ৳{{\Illuminate\Support\Number::format($most_popular->selling_price)}}
+                                                <span>৳{{\Illuminate\Support\Number::format($most_popular->purchase_price)}}</span>
                                                 @else
-                                                ${{\Illuminate\Support\Number::format($most_popular->purchase_price)}}
+                                                ৳{{\Illuminate\Support\Number::format($most_popular->purchase_price)}}
                                                 @endif
                                             </div>
                                             <div class="product_name">
@@ -595,10 +595,10 @@
                                             <div class="product_content">
                                                 <div class="product_price discount">
                                                     @if ($product->selling_price)
-                                                    ${{\Illuminate\Support\Number::format($product->selling_price)}}
-                                                    <span>${{\Illuminate\Support\Number::format($product->purchase_price)}}</span>
+                                                    ৳{{\Illuminate\Support\Number::format($product->selling_price)}}
+                                                    <span>৳{{\Illuminate\Support\Number::format($product->purchase_price)}}</span>
                                                     @else
-                                                    ${{\Illuminate\Support\Number::format($product->purchase_price)}}
+                                                    ৳{{\Illuminate\Support\Number::format($product->purchase_price)}}
                                                     @endif
                                                 </div>
                                                 <div class="product_name">
@@ -654,7 +654,7 @@
                                                     2)}}</a>
                                             </div>
                                             <div class="arrivals_single_price text-right">
-                                                ${{\Illuminate\Support\Number::format($banner->selling_price) ??
+                                                ৳{{\Illuminate\Support\Number::format($banner->selling_price) ??
                                                 \Illuminate\Support\Number::format($banner->purchase_price)}}</div>
                                         </div>
                                         <div class="rating_r rating_r_4 arrivals_single_rating">

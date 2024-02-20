@@ -28,10 +28,10 @@
                                 <div class="viewed_content text-center">
                                     <div class="viewed_price">
                                         @if ($recent_view->selling_price)
-                                        ${{\Illuminate\Support\Number::format($recent_view->selling_price)}}
-                                        <span>${{\Illuminate\Support\Number::format($recent_view->purchase_price)}}</span>
+                                        ৳{{\Illuminate\Support\Number::format($recent_view->selling_price)}}
+                                        <span>৳{{\Illuminate\Support\Number::format($recent_view->purchase_price)}}</span>
                                         @else
-                                        ${{\Illuminate\Support\Number::format($recent_view->purchase_price)}}
+                                        ৳{{\Illuminate\Support\Number::format($recent_view->purchase_price)}}
                                         @endif
                                     </div>
                                     <div class="viewed_name">

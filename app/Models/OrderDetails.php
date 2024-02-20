@@ -9,7 +9,7 @@ use App\Models\{Order,Product};
 class OrderDetails extends Model
 {
     use HasFactory;
-    public $guarded = [];
+    protected $guarded = [];
 
     public function order(){
         return $this->belongsTo(Order::class);

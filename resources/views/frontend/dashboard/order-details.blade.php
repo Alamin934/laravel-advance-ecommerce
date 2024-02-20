@@ -50,7 +50,7 @@ return $color;
                             </p>
                         </div>
                         <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                            <p class="text-muted mb-0 small">${{$order_detail->total_price}}</p>
+                            <p class="text-muted mb-0 small">৳{{$order_detail->total_price}}</p>
                         </div>
                     </div>
                 </div>
@@ -68,19 +68,18 @@ return $color;
 
             <div class="d-flex justify-content-between pt-2">
                 <p class="fw-bold mb-0">Order Details</p>
-                <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> ${{$order->coupon_after_discount ??
-                    $order->total}}</p>
+                <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> ৳{{$order->total}}</p>
             </div>
 
             <div class="d-flex justify-content-between pt-2">
                 <p class="text-muted mb-0">Order Number : {{$order->order_id}}</p>
-                <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> ${{$order->coupon_discount ??
+                <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> ৳{{$order->coupon_discount ??
                     '0.00'}}</p>
             </div>
 
             <div class="d-flex justify-content-between">
                 <p class="text-muted mb-0">Order Date : {{$order->created_at->format("d M, Y")}}</p>
-                <p class="text-muted mb-0"><span class="fw-bold me-4">Tax: </span> ${{$order->tax}}</p>
+                <p class="text-muted mb-0"><span class="fw-bold me-4">Tax: </span> ৳{{$order->tax}}</p>
             </div>
 
             <div class="d-flex justify-content-between">
@@ -91,10 +90,10 @@ return $color;
 
             <div class="d-flex justify-content-between">
                 <p class="text-muted mb-0">Phone : {{$order->customer_phone}}</p>
-                @if ($order->payment_type != 'cash-on-delivery')
+                {{-- @if ($order->payment_type != 'cash-on-delivery') --}}
                 <p class="text-muted mb-0"><span class="fw-bold me-4">Payment method:</span>
                     {{strtoupper($order->payment_type)}}</p>
-                @endif
+                {{-- @endif --}}
             </div>
 
             <div class="d-flex justify-content-between">
@@ -110,10 +109,18 @@ return $color;
         </div>
         <div class="card-footer border-0 mt-4 px-4 py-5 bg-info">
             <h4 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">
-                {{$order->payment_type == 'cash-on-delivery' ? 'Due' : 'Total Paid'}}: <span
-                    class="h2 mb-0 ml-2">${{($order->payment_type == 'cash-on-delivery' ?
-                    $order->coupon_after_discount : $order->total) ? $order->coupon_after_discount :
-                    $order->total}}</span></h4>
+                {{$order->payment_type == 'cash-on-delivery' ? 'Due' : 'Total Paid'}}:
+                <span class="h2 mb-0 ml-2">
+                    @if ($order->payment_type == 'cash-on-delivery')
+                    ৳{{$order->coupon_after_discount ?? $order->total}}
+                    @else
+                    ৳{{$order->coupon_after_discount ?? $order->total}}
+                    @endif
+                    {{-- ৳{{$order->payment_type == 'cash-on-delivery' ?
+                    $order->total : ($order->total ? $order->coupon_after_discount :
+                    $order->total)}} --}}
+                </span>
+            </h4>
         </div>
     </div>
 </div>

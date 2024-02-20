@@ -68,4 +68,8 @@ Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(functi
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::post('success',[OrderController::class,'success'])->name('success');
+Route::post('fail',[OrderController::class,'fail'])->name('fail');
+Route::get('cancel',[OrderController::class,'cancel'])->name('cancel');
+
 require __DIR__.'/auth.php';

@@ -46,7 +46,8 @@
                     <th scope="col">Order Date</th>
                     <th scope="col">Total</th>
                     <th scope="col">Payment Type</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Payment Status</th>
+                    <th scope="col">Order Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -57,11 +58,20 @@
                     <td>{{$order->coupon_after_discount ?? $order->total}}</td>
                     <td>{{$order->payment_type}}</td>
                     <td>
+                        @switch($order->payment_status)
+                        @case("received")
+                        <span class="badge badge-primary">Recieved</span>
+                        @break
+                        @default
+                        <span class="badge badge-danger">Pending</span>
+                        @endswitch
+                    </td>
+                    <td>
                         @switch($order->order_status)
                         @case("pending")
                         <span class="badge badge-primary">Pending</span>
                         @break
-                        @case("recieved")
+                        @case("received")
                         <span class="badge badge-info">Recieved</span>
                         @break
                         @case("shipped")
