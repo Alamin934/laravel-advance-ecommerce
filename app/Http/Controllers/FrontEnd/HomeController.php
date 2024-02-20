@@ -7,6 +7,8 @@ use App\Models\{Product,Category,SubCategory,ChildCategory,Wishlist,Brand};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Mail\NewsletterUserMail;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -101,6 +103,7 @@ class HomeController extends Controller
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ]);
+            Mail::to($request->email)->send(new NewsletterUserMail());
             return response()->json(['status'=>'success', 'msg'=>'Thanks for Subscribed us.']);
         }
     }

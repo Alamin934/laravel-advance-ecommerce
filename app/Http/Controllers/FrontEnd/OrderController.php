@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\{Order,OrderDetails};
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Mail\{OrderPlaced,OrderPlacedNotifyAdmin};
+use Illuminate\Support\Facades\Mail;
+use App\Jobs\PlaceOrderJob;
 use Cart;
 
 class OrderController extends Controller
@@ -56,6 +59,7 @@ class OrderController extends Controller
             'order_id' => Str::upper(Str::random(8)),
         ]);
 
+        
         $cart = Cart::content();
         foreach($cart as $item){
             $order->order_details()->create([
@@ -69,6 +73,10 @@ class OrderController extends Controller
                 'total_price' => $item->price*$item->qty,
             ]);
         }
+        Mail::to($request->user())->send(new OrderPlaced($order));
+        Mail::to('admin@admin.com')->send(new OrderPlacedNotifyAdmin($order));
+
+
         Cart::destroy();
         if(session()->has('coupon')){
             session()->forget('coupon');
