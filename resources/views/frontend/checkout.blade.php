@@ -11,7 +11,7 @@
             <div class="col-md-9">
                 <h3>Shipping Details</h3>
                 <div class="shipping card-body shadow-sm border border-light mt-3">
-                    <form method="POST" action="{{route('place.order')}}">
+                    <form method="POST" action="{{route('dashboard.place.order')}}">
                         @csrf
                         {{-- Email --}}
                         <div class="form-group">

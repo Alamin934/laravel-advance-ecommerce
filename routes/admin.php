@@ -33,6 +33,10 @@ Route::middleware(['is_admin.auth','is_admin'])->group(function () {
     Route::prefix('admin/setting')->name('setting.')->controller(SettingController::class)->group(function () {
         Route::get('/smtp', 'stmpIndex')->name('smtp.index');
         Route::post('/smtp/{id}', 'stmpUpdate')->name('smtp.update');
+
+        Route::get('/bd-payment-getway', 'bdPaymentGetwayInfo')->name('bd.payment.getway');
+        Route::post('/store-bd-payment-getway', 'storeBdPaymentGetway')->name('store.bd.payment.getway');
+        Route::post('/delete-bd-payment-getway', 'deleteBdPaymentGetway')->name('delete.bd.payment.getway');
     });
 
 

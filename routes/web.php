@@ -4,6 +4,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FrontEnd\{HomeController,CartController,SettingController,CheckoutController,OrderController};
 use Illuminate\Support\Facades\Route;
 
+Route::fallback(function () {
+    abort(404);
+});
+
 Route::controller(HomeController::class)->group(function () {
     // Home
     Route::get('/','index')->name('home');
@@ -12,9 +16,11 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/single-product/{slug}','singleProduct')->name('single.product');
 
     // Wishlist
-    Route::get('/wishlist','showWishlist')->name('show.wishlist');
-    Route::get('/add-to-wishlist/{id}','addToWishlist')->name('add.wishlist');
-    Route::get('/remove-to-wishlist/{id}','removeToWishlist')->name('remove.wishlist');
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/wishlist','showWishlist')->name('show.wishlist');
+        Route::get('/add-to-wishlist/{id}','addToWishlist')->name('add.wishlist');
+        Route::get('/remove-to-wishlist/{id}','removeToWishlist')->name('remove.wishlist');
+    });
     
     // Link Wise Product
     Route::get('/link-wise-product/{id}','linkWiseProduct')->name('linkWise.product');
@@ -28,35 +34,32 @@ Route::controller(CartController::class)->group(function () {
     Route::get('/cart','displayCart')->name('display.cart');
     Route::get('/add-to-cart','addToCart')->name('add.cart');
 
-    // Route::middleware(['auth', 'verified'])->group(function () {
-        Route::get('/update-qty/{id}','updateQty')->name('update.qty');
-        Route::get('/update-size/{id}','updateSize')->name('update.size');
-        Route::get('/update-color/{id}','updateColor')->name('update.color');
-        Route::get('/remove-from-cart/{id}','removeFromCart')->name('remove.cart');
-        Route::post('/empty-cart','emptyCart')->name('empty.cart');
-    // });
+    Route::get('/update-qty/{id}','updateQty')->name('update.qty');
+    Route::get('/update-size/{id}','updateSize')->name('update.size');
+    Route::get('/update-color/{id}','updateColor')->name('update.color');
+    Route::get('/remove-from-cart/{id}','removeFromCart')->name('remove.cart');
+    Route::post('/empty-cart','emptyCart')->name('empty.cart');
+
 });
 
 // Checkout Routes
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-Route::get('/apply-coupon', [CheckoutController::class, 'applyCoupon'])->name('apply.coupon');
-Route::get('/remove-coupon', [CheckoutController::class, 'removeCoupon'])->name('remove.coupon');
-
-// Orders route
-Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('place.order');
+// Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+    Route::get('/apply-coupon', [CheckoutController::class, 'applyCoupon'])->name('apply.coupon');
+    Route::get('/remove-coupon', [CheckoutController::class, 'removeCoupon'])->name('remove.coupon');
+// });
 
 // Shop
 Route::view('/shop','frontend.shop')->name('shop');
 
-// Dashboard
-Route::get('/dashboard', [OrderController::class, 'showOrders'])->middleware(['auth', 'verified'])->name('dashboard.dashboard');
-
-
 // Dashboard Sub Route
-Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(function () {
-    // Orders
+Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')->group(function () {
+    // Dashboard
+    Route::get('/', [OrderController::class, 'showOrders'])->middleware(['auth', 'verified'])->name('dashboard');
+    // Orders route
     Route::get('/orders', [OrderController::class, 'myOrders'])->name('orders');
     Route::get('/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order.details');
+    Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('place.order');
 
     // shipping
     Route::get('/settings',[SettingController::class, 'settings'])->name('settings');

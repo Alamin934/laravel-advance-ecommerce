@@ -45,7 +45,7 @@
 
 
     <!-- Page CSS -->
-
+    @stack('styles')
     <!-- Helpers -->
     <script src="{{ asset('assets/admin') }}/vendor/js/helpers.js"></script>
     <script src="{{ asset('assets/admin') }}/js/config.js"></script>

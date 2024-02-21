@@ -239,7 +239,7 @@ class OrderController extends Controller
     }
 
     public function fail(Request $request){
-        return $request;
+        return redirect()->route('checkout')->with(['message'=>'Payment Failed. Order not placed. please try again.', 'alert-type'=>'error']);;
     }
 
     public function cancel(){

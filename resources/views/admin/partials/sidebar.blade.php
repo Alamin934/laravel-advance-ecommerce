@@ -123,6 +123,11 @@
                         <div data-i18n="Smtp">Smtp</div>
                     </a>
                 </li>
+                <li class="menu-item {{request()->routeIs('setting.bd.payment.getway') ? 'active' : ''}}">
+                    <a href="{{route('setting.bd.payment.getway')}}" class="menu-link">
+                        <div data-i18n="Payment Getway">Payment Getway</div>
+                    </a>
+                </li>
             </ul>
         </li>
 

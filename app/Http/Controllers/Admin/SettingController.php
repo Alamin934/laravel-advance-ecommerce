@@ -36,4 +36,34 @@ class SettingController extends Controller
         $notification = ['message'=>'SMTP Updated Successfully', 'alert-type'=>'success'];
         return redirect()->back()->with($notification);
     }
+
+    public function bdPaymentGetwayInfo(){
+        $aamarPay = DB::table('bd_payment_getway_info')->where('getway_name', 'aamarPay')->first();
+        $sslcommerze = DB::table('bd_payment_getway_info')->where('getway_name', 'sslcommerze')->first();
+        return view('admin.settings.bd-payment-getway-setup',compact('aamarPay','sslcommerze'));
+    }
+
+    public function storeBdPaymentGetway(Request $request){
+        $validated = $request->validate([
+            'store_id' => 'required',
+            'secret_key' => 'required',
+        ]);
+
+        DB::table('bd_payment_getway_info')->upsert(
+            [
+                'getway_name'=>$request->getway_name,
+                'store_id'=>$request->store_id,
+                'secret_key'=>$request->secret_key,
+                'status'=>$request->status,
+            ],
+            ['getway_name'],
+            ['store_id','secret_key','status']
+        );
+
+        return response()->json(['status'=>'success'], 200);
+    }
+    public function deleteBdPaymentGetway(Request $request){
+        DB::table('bd_payment_getway_info')->where('getway_name', $request->getway_name)->delete();
+        return response()->json(['status'=>'success'], 200);
+    }
 }
