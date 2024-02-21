@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Order,OrderDetails};
+use App\Mail\UpdateOrderStatusMail;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -60,10 +62,21 @@ class OrderController extends Controller
     }
 
     public function updateStatus(Request $request){
-        $orders = Order::where('id', $request->order_id)->update([
+        Order::where('id', $request->order_id)->update([
             'order_status' => $request->order_status,
             'payment_status' => $request->payment_status,
         ]);
+
+        $data = [];
+        $data['order'] = Order::find($request->order_id);
+        if($request->order_status == 'shipped'){
+            $data['status'] = "Your Order has been Shipped";
+            Mail::to($request->email)->send(new UpdateOrderStatusMail($data));
+        }
+        if($request->order_status == 'delivered'){
+            $data['status'] = "Your Order has been Deliverd";
+            Mail::to($request->email)->send(new UpdateOrderStatusMail($data));
+        }
 
         return response()->json(['status'=>'success']);
     }

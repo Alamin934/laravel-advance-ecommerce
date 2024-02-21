@@ -145,8 +145,9 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="order-id" name="order_id">
+                    <input type="hidden" id="cus-email" name="email">
                     <div class="mb-3">
-                        <label class="form-label">Change Order Status</label>
+                        <label class="form-label">Order Status</label>
                         <select class="form-select" id="order-status" name="order_status">
                             <option select @disabled(true)>Select</option>
                             <option value="pending">Pending</option>
@@ -158,7 +159,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Change Payment Status</label>
+                        <label class="form-label">Payment Status</label>
                         <select select class="form-select" id="payment-status" name="payment_status">
                             <option @disabled(true)>Select</option>
                             <option value="pending">Pending</option>
@@ -278,6 +279,7 @@
                 url: `/admin/order/${id}/edit`,
                 success: function (response) {
                     $("#order-id").val(response.id);
+                    $("#cus-email").val(response.customer_email);
                     $("#order-status option").each(function(){
                         let orderStatus = $(this).val()
                         if(response.order_status == orderStatus){
