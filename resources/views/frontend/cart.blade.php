@@ -177,7 +177,7 @@
                 <div class="order_total">
                     <div class="order_total_content text-md-right">
                         <div class="order_total_title">Order Total:</div>
-                        <div class="order_total_amount">$<span>{{Cart::total()}}</span></div>
+                        <div class="order_total_amount">৳<span>{{Cart::total()}}</span></div>
                     </div>
                 </div>
 

@@ -20,7 +20,7 @@ class CheckoutController extends Controller
             return view('frontend.checkout', compact('cart','shipping'));
         }
         elseif(auth()->user() && Cart::content()->count() == 0){
-            return redirect()->back()->with(['message'=>'Cart is Empty. Add some product', 'alert-type'=>'error']);
+            return redirect()->route('display.cart')->with(['message'=>'Cart is Empty. Add some product', 'alert-type'=>'error']);
         }
         else{
             return redirect()->back()->with(['message'=>'Please Login for checkout', 'alert-type'=>'error']);

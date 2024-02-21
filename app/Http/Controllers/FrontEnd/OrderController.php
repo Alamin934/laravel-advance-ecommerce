@@ -205,7 +205,7 @@ class OrderController extends Controller
             'coupon_discount' => $discount ?? null,
             'coupon_after_discount' => $after_discount ?? null,
             'payment_type' => 'aamarPay',
-            'payment_status' => 'pending',
+            'payment_status' => 'received',
             'tax' => 0,
             'shipping_charge' => 0,
             'order_status' => 'received',

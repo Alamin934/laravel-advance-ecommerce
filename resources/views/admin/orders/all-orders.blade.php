@@ -31,9 +31,12 @@
                             <th>Phone</th>
                             <th>Email</th>
                             <th>Sub Total</th>
-                            <th>Coupon</th>
+                            <th>Coupon Code</th>
                             <th>Dicount</th>
                             <th>Total</th>
+                            <th>Order Status</th>
+                            <th>Payment Type</th>
+                            <th>Payment Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -41,11 +44,6 @@
                         @foreach ($orders as $order)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            {{-- <td> --}}
-                                {{-- <img src="{{asset('assets/admin/files/orders/'.$order->thumbnail)}}" alt=""
-                                    class="me-3" style="height:40px;width:auto">
-                                {{Illuminate\Support\Str::words($order->title, 4, '')}} --}}
-                                {{-- </td> --}}
                             <td>{{ $order->customer_name }}</td>
                             <td>{{ $order->customer_phone }}</td>
                             <td>{{ $order->customer_email }}</td>
@@ -53,20 +51,41 @@
                             <td>{{ $order->coupon_code }}</td>
                             <td>{{ $order->coupon_discount }}</td>
                             <td>{{ $order->coupon_after_discount ?? $order->total }}</td>
-                            {{-- <td>{{ $order->category->name }}</td>
-                            <td>{{$order->subCategory->name ?? ''}}</td>
-                            <td>{{$order->childCategory->name ?? ''}}</td>
-                            <td>{{ $order->stock_quantity }}</td> --}}
-                            {{-- <td> --}}
-                                {{-- <div class="form-check form-switch">
-                                    <input data-id="{{$order->id}} {{$order->status}}" class="form-check-input status"
-                                        type="checkbox" role="switch" {{$order->status
-                                    == 'on' ? 'checked' : ''}} >
-                                </div> --}}
-                                {{-- </td> --}}
+                            <td>
+                                @switch($order->order_status)
+                                @case("pending")
+                                <span class="badge text-bg-danger">Pending</span>
+                                @break
+                                @case("received")
+                                <span class="badge text-bg-primary">Recieved</span>
+                                @break
+                                @case("shipped")
+                                <span class="badge text-bg-info">Shipped</span>
+                                @break
+                                @case("returned")
+                                <span class="badge text-bg-warning">Returned</span>
+                                @break
+                                @case("completed")
+                                <span class="badge text-bg-success">Completed</span>
+                                @break
+                                @default
+                                <span class="badge text-bg-danger">Cancel</span>
+                                @endswitch
+                            </td>
+                            <td>{{ $order->payment_type }}</td>
+                            <td>
+                                @switch($order->payment_status)
+                                @case("received")
+                                <span class="badge text-bg-primary">Recieved</span>
+                                @break
+                                @default
+                                <span class="badge text-bg-danger">Pending</span>
+                                @endswitch
+                            </td>
                             <td>
                                 <div class="d-flex">
-                                    <a href="" class="btn btn-info p-2 me-2">
+                                    <a href="{{route('order.show', $order->id)}}" class="btn btn-info p-2 me-2"
+                                        title="See Orders Details">
                                         <i class='bx bx-low-vision'></i>
                                     </a>
 

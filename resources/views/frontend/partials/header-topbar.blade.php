@@ -116,7 +116,7 @@
                                 <div class="cart_text">
                                     <a href="{{route('display.cart')}}">Cart</a>
                                 </div>
-                                <div class="cart_price">$<span>{{Cart::total()}}</span></div>
+                                <div class="cart_price">৳<span>{{Cart::total()}}</span></div>
                             </div>
                         </div>
                     </div>
