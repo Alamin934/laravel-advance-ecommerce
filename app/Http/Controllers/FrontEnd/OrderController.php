@@ -13,6 +13,10 @@ use Cart;
 
 class OrderController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     public function placeOrder(Request $request){
 
         $this->authorize('create', Order::class);
@@ -84,68 +88,74 @@ class OrderController extends Controller
             return redirect()->route('home')->with(['message'=>'Order Placed successfully', 'alert-type'=>'success']);
 
         }else{
-            $tran_id = "test".rand(1111111,9999999);//unique transection id for every transection 
-            $currency= "BDT"; //aamarPay support Two type of currency USD & BDT  
-            $amount = $after_discount ?? Cart::total(2,'.','');   //10 taka is the minimum amount for show card option in aamarPay payment gateway
-            //For live Store Id & Signature Key please mail to support@aamarpay.com
-            $store_id = "aamarpaytest"; 
-            $signature_key = "dbb74894e82415a2f7ff0ec3a97e4183"; 
-            $url = "https://​sandbox​.aamarpay.com/jsonpost.php"; // for Live Transection use "https://secure.aamarpay.com/jsonpost.php"
-            $curl = curl_init();
+            $aamarPayInfo = DB::table('bd_payment_getway_info')->where('getway_name', 'aamarPay')->first();
 
-            curl_setopt_array($curl, array(
-            CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS =>'{
-                "store_id": "'.$store_id.'",
-                "tran_id": "'.$tran_id.'",
-                "success_url": "'.route('success').'",
-                "fail_url": "'.route('fail').'",
-                "cancel_url": "'.route('cancel').'",
-                "amount": "'.$amount.'",
-                "currency": "'.$currency.'",
-                "signature_key": "'.$signature_key.'",
-                "desc": "Merchant Registration Payment",
-                "cus_name": "'.$request->name.'",
-                "cus_email": "'.$request->email.'",
-                "cus_add1": "'.$request->address.'",
-                "cus_add2": "'.$request->address.'",
-                "cus_city": "'.$request->city.'",
-                "cus_state": "'.$request->state.'",
-                "cus_postcode": "'.$request->postal_code.'",
-                "cus_country": "'.$request->country.'",
-                "cus_phone": "'.$request->phone.'",
-                "opt_a": "'.$request->state.'",
-                "opt_b": "'.$request->postal_code.'",
-                "cus_phone": "'.$request->phone.'",
-                "type": "json"
-            }',
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json'
-            ),
-            ));
+            if($aamarPayInfo){
+                $tran_id = "test".rand(1111111,9999999);//unique transection id for every transection 
+                $currency= "BDT"; //aamarPay support Two type of currency USD & BDT  
+                $amount = $after_discount ?? Cart::total(2,'.','');   //10 taka is the minimum amount for show card option in aamarPay payment gateway
+                //For live Store Id & Signature Key please mail to support@aamarpay.com
+                $store_id = $aamarPayInfo->store_id; 
+                $signature_key = $aamarPayInfo->secret_key; 
+                $url = "https://​sandbox​.aamarpay.com/jsonpost.php"; // for Live Transection use "https://secure.aamarpay.com/jsonpost.php"
+                $curl = curl_init();
 
-            $response = curl_exec($curl);
+                curl_setopt_array($curl, array(
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS =>'{
+                    "store_id": "'.$store_id.'",
+                    "tran_id": "'.$tran_id.'",
+                    "success_url": "'.route('success').'",
+                    "fail_url": "'.route('fail').'",
+                    "cancel_url": "'.route('cancel').'",
+                    "amount": "'.$amount.'",
+                    "currency": "'.$currency.'",
+                    "signature_key": "'.$signature_key.'",
+                    "desc": "Merchant Registration Payment",
+                    "cus_name": "'.$request->name.'",
+                    "cus_email": "'.$request->email.'",
+                    "cus_add1": "'.$request->address.'",
+                    "cus_add2": "'.$request->address.'",
+                    "cus_city": "'.$request->city.'",
+                    "cus_state": "'.$request->state.'",
+                    "cus_postcode": "'.$request->postal_code.'",
+                    "cus_country": "'.$request->country.'",
+                    "cus_phone": "'.$request->phone.'",
+                    "opt_a": "'.$request->state.'",
+                    "opt_b": "'.$request->postal_code.'",
+                    "cus_phone": "'.$request->phone.'",
+                    "type": "json"
+                }',
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type: application/json'
+                ),
+                ));
 
-            curl_close($curl);
-            // dd($response);
-            
-            $responseObj = json_decode($response);
+                $response = curl_exec($curl);
 
-            if(isset($responseObj->payment_url) && !empty($responseObj->payment_url)) {
+                curl_close($curl);
+                // dd($response);
+                
+                $responseObj = json_decode($response);
 
-                $paymentUrl = $responseObj->payment_url;
-                // dd($paymentUrl);
-                return redirect()->away($paymentUrl);
+                if(isset($responseObj->payment_url) && !empty($responseObj->payment_url)) {
 
+                    $paymentUrl = $responseObj->payment_url;
+                    // dd($paymentUrl);
+                    return redirect()->away($paymentUrl);
+
+                }else{
+                    echo $response;
+                }
             }else{
-                echo $response;
+                return redirect()->back()->with(['message'=>'This Payment method is not available now. please try with another.', 'alert-type'=>'error']);
             }
 
         }

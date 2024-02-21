@@ -9,6 +9,9 @@ use Cart;
 
 class CheckoutController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     // Display Checkout page
     public function index(){
         if(auth()->user() && Cart::content()->count() > 0){

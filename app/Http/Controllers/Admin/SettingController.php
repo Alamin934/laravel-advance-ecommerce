@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Hash;
 
 class SettingController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['is_admin.auth','is_admin']);
+    }
+    
     public function stmpIndex(){
         $smtp = DB::table('smtps')->first();
         return view('admin.settings.smtp', compact('smtp'));

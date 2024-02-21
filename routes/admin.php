@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{AdminController,CategoryController,SubCategoryController,ChildCategoryController, BrandsController,SettingController,ProductController,CouponController};
+use App\Http\Controllers\Admin\{AdminController,CategoryController,SubCategoryController,ChildCategoryController, BrandsController,SettingController,ProductController,CouponController,OrderController};
 
 
 Route::prefix('admin')->name('admin.')->controller(AdminController::class)->group(function () {
@@ -27,7 +27,11 @@ Route::middleware(['is_admin.auth','is_admin'])->group(function () {
     Route::post('/admin/product/changeStatus/{status}', [ProductController::class, 'changeStatus']);
     Route::post('/admin/product/filterProduct', [ProductController::class, 'filterProduct'])->name('product.filter');
     
+    // Coupon
     Route::resource('admin/coupon', CouponController::class);
+    
+    // Orders
+    Route::resource('admin/order', OrderController::class);
     
     // Website Settings
     Route::prefix('admin/setting')->name('setting.')->controller(SettingController::class)->group(function () {

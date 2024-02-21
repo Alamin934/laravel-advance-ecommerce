@@ -71,8 +71,8 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::post('success',[OrderController::class,'success'])->name('success');
-Route::post('fail',[OrderController::class,'fail'])->name('fail');
-Route::get('cancel',[OrderController::class,'cancel'])->name('cancel');
+Route::post('success',[OrderController::class,'success'])->name('success')->middleware(['auth', 'verified']);
+Route::post('fail',[OrderController::class,'fail'])->name('fail')->middleware(['auth', 'verified']);
+Route::get('cancel',[OrderController::class,'cancel'])->name('cancel')->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

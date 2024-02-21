@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class SettingController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     public function settings(){
         $shipping = DB::table('shippings')->latest()->first();
         return view('frontend.dashboard.settings',compact('shipping'));

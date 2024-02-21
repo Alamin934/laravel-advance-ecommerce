@@ -14,6 +14,9 @@ use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['is_admin.auth','is_admin']);
+    }
     /**
      * Display a listing of the resource.
      */

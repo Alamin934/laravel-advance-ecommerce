@@ -103,6 +103,23 @@
             </ul>
         </li>
 
+        <!-- Orders -->
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Orders</span></li>
+        <!-- Orders interface -->
+        <li class="menu-item {{request()->routeIs('order.*') ? 'active open' : ''}}">
+            <a href="javascript:void(0)" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-box"></i>
+                <div data-i18n="User interface">Orders</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{request()->routeIs('order.index') ? 'active' : ''}}">
+                    <a href="{{route('order.index')}}" class="menu-link">
+                        <div data-i18n="All Orders">All Orders</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
 
         <!-- Settings -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Settings</span></li>
