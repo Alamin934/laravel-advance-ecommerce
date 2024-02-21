@@ -135,16 +135,17 @@
 <div class="modal fade" tabindex="-1" id="updateOrderStatus" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form method="POST">
+        <div class="modal-content updateStatus">
+            <form method="POST" id="updateStatus">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="order-id" name="order_id">
                     <div class="mb-3">
                         <label class="form-label">Change Order Status</label>
-                        <select class="form-select" id="order-status">
+                        <select class="form-select" id="order-status" name="order_status">
                             <option select @disabled(true)>Select</option>
                             <option value="pending">Pending</option>
                             <option value="received">Recieved</option>
@@ -156,18 +157,18 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Change Payment Status</label>
-                        <select select class="form-select" id="payment-status">
+                        <select select class="form-select" id="payment-status" name="payment_status">
                             <option @disabled(true)>Select</option>
                             <option value="pending">Pending</option>
                             <option value="received">Recieved</option>
                         </select>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -266,13 +267,14 @@
         ordersFilterWithAjax('.payment_status_filter','{{route("payment.status.filter")}}');
         ordersFilterWithAjax('.payment_type_filter','{{route("payment.type.filter")}}');
 
-        // Update Featured without Reload
+        // Edit Order without Reload
         $(document).on('click', '.updateOrderStatus', function() {
             let id = $(this).data('id');
             $.ajax({
                 type: "GET",
                 url: `/admin/order/${id}/edit`,
                 success: function (response) {
+                    $("#order-id").val(response.id);
                     $("#order-status option").each(function(){
                         let orderStatus = $(this).val()
                         if(response.order_status == orderStatus){
@@ -292,19 +294,26 @@
         });
         
         
-        // // Update order Status without Reload
-        // $(document).on('change', '.status', function() {
-        //     let status = $(this).data('id');
-        //     $.ajax({
-        //         type: "POST",
-        //         url: "/admin/order/changeStatus/"+status,
-        //         data: status,
-        //         success: function (response) {
-        //             $('.orders').load(location.href+' .orders');
-        //             toastr.success(response.status);
-        //         }
-        //     }); 
-        // });
+        // Update order/payment Status without Reload
+        $(document).on('submit', 'form#updateStatus', function(e) {
+            e.preventDefault();
+            let formData = new FormData($(this)[0]);
+            $.ajax({
+                type: "POST",
+                url: "/admin/order/updateStatus",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if(response.status == 'success'){
+                        $("#updateOrderStatus").modal('hide');
+                        $('.updateStatus').load(location.href+' form#updateStatus');
+                        $('.table-responsive').load(location.href+' .table');
+                        toastr.success("Status Updated Successfully");
+                    }
+                }
+            }); 
+        });
     });
 </script>
 @endpush

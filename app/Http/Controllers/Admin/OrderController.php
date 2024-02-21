@@ -58,4 +58,13 @@ class OrderController extends Controller
         }
         return response()->json(['orders'=>$orders, 'payment_type'=>$request->val]);
     }
+
+    public function updateStatus(Request $request){
+        $orders = Order::where('id', $request->order_id)->update([
+            'order_status' => $request->order_status,
+            'payment_status' => $request->payment_status,
+        ]);
+
+        return response()->json(['status'=>'success']);
+    }
 }
