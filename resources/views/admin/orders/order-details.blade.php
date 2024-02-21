@@ -54,7 +54,7 @@
             </div>
 
             <div class="d-flex justify-content-between pt-2">
-                <p class="text-muted mb-0 fw-bold">Order Number : <span class="fw-normal">{{$order->order_id}}</span>
+                <p class="text-muted mb-0 fw-bold">Order Id : <span class="fw-normal">#{{$order->order_id}}</span>
                 </p>
                 <p class="text-muted mb-0"><span class="fw-bold me-2">Discount: </span> ৳{{$order->coupon_discount ??
                     '0.00'}}</p>

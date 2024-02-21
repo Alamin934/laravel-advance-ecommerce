@@ -49,6 +49,7 @@
                     <thead>
                         <tr>
                             <th>SL</th>
+                            <th>Order Id</th>
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Email</th>
@@ -66,6 +67,7 @@
                         @foreach ($orders as $order)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
+                            <td>{{ "#".$order->order_id }}</td>
                             <td>{{ $order->customer_name }}</td>
                             <td>{{ $order->customer_phone }}</td>
                             <td>{{ $order->customer_email }}</td>
@@ -87,8 +89,8 @@
                                 @case("returned")
                                 <span class="badge text-bg-warning">Returned</span>
                                 @break
-                                @case("completed")
-                                <span class="badge text-bg-success">Completed</span>
+                                @case("delivered")
+                                <span class="badge text-bg-success">Delivered</span>
                                 @break
                                 @default
                                 <span class="badge text-bg-danger">Cancel</span>
@@ -151,7 +153,7 @@
                             <option value="received">Recieved</option>
                             <option value="shipped">Shipped</option>
                             <option value="returned">Returned</option>
-                            <option value="completed">Completed</option>
+                            <option value="delivered">Delivered</option>
                             <option value="cancel">Cancel</option>
                         </select>
                     </div>
@@ -210,8 +212,8 @@
                                     case "returned" :
                                     order_status = '<span class="badge text-bg-warning">Returned</span>';
                                     break;
-                                    case "completed" :
-                                    order_status = '<span class="badge text-bg-success">Completed</span>';
+                                    case "delivered" :
+                                    order_status = '<span class="badge text-bg-success">Delivered</span>';
                                     break;
                                     default:
                                     order_status = '<span class="badge text-bg-danger">Cancel</span>';
@@ -227,12 +229,13 @@
                                 html+=`
                                 <tr>
                                     <td>${index+1}</td>
+                                    <td>#${order.order_id}</td>
                                     <td>${order.customer_name}</td>
                                     <td>${order.customer_phone}</td>
                                     <td>${order.customer_email}</td>
                                     <td>${order.sub_total}</td>
-                                    <td>${order.coupon_code}</td>
-                                    <td>${order.coupon_discount}</td>
+                                    <td>${order.coupon_code ? order.coupon_code : ''}</td>
+                                    <td>${order.coupon_discount ? order.coupon_discount : ''}</td>
                                     <td>${order.coupon_after_discount ? order.coupon_after_discount : order.total}</td>
                                     <td>${order_status}</td>
                                     <td>${order.payment_type}</td>

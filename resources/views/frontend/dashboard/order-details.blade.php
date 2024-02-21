@@ -60,8 +60,11 @@ return $color;
                 <div class="col">
                     <ul id="progressbar">
                         <li class="step0 active" id="step1">PLACED</li>
-                        <li class="step0 text-center" id="step2">SHIPPED</li>
-                        <li class="step0 text-muted text-right" id="step3">DELIVERED</li>
+                        <li class="step0 {{($order->order_status == 'shipped' || $order->order_status == 'delivered') ? 'active' :''}} text-center"
+                            id="step2">
+                            SHIPPED</li>
+                        <li class="step0 {{$order->order_status == 'delivered' ? 'active' :''}} text-muted text-right"
+                            id="step3">DELIVERED</li>
                     </ul>
                 </div>
             </div>
@@ -72,7 +75,7 @@ return $color;
             </div>
 
             <div class="d-flex justify-content-between pt-2">
-                <p class="text-muted mb-0">Order Number : {{$order->order_id}}</p>
+                <p class="text-muted mb-0">Order Id : #{{$order->order_id}}</p>
                 <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> ৳{{$order->coupon_discount ??
                     '0.00'}}</p>
             </div>

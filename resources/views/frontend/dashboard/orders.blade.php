@@ -36,8 +36,8 @@
                     @case("returned")
                     <span class="badge badge-warning">Returned</span>
                     @break
-                    @case("completed")
-                    <span class="badge badge-success">Completed</span>
+                    @case("delivered")
+                    <span class="badge badge-success">Delivered</span>
                     @break
                     @default
                     <span class="badge badge-danger">Cancel</span>
