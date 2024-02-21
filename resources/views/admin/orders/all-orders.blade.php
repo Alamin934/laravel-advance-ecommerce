@@ -111,7 +111,9 @@
                                         <i class='bx bx-low-vision'></i>
                                     </a>
 
-                                    <a href="" class="btn btn-primary p-2 me-2">
+                                    <a href="" data-id="{{$order->id}}" data-bs-toggle="modal"
+                                        data-bs-target="#updateOrderStatus"
+                                        class="btn btn-primary p-2 me-2 updateOrderStatus">
                                         <i class="bx bx-edit-alt"></i>
                                     </a>
 
@@ -129,6 +131,47 @@
         <!--/ Basic Bootstrap Table -->
     </div>
 </div>
+{{-- Update status modal --}}
+<div class="modal fade" tabindex="-1" id="updateOrderStatus" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">Change Order Status</label>
+                        <select class="form-select" id="order-status">
+                            <option select @disabled(true)>Select</option>
+                            <option value="pending">Pending</option>
+                            <option value="received">Recieved</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="returned">Returned</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancel">Cancel</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Change Payment Status</label>
+                        <select select class="form-select" id="payment-status">
+                            <option @disabled(true)>Select</option>
+                            <option value="pending">Pending</option>
+                            <option value="received">Recieved</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 @push('scripts')
 <script>
@@ -199,7 +242,7 @@
                                                 <i class='bx bx-low-vision'></i>
                                             </a>
                                         
-                                            <a href="" class="btn btn-primary p-2 me-2">
+                                            <a href="" data-id="{{$order->id}}" data-bs-toggle="modal" data-bs-target="#updateOrderStatus" class="btn btn-primary p-2 me-2 updateOrderStatus">
                                                 <i class="bx bx-edit-alt"></i>
                                             </a>
                                         
@@ -224,18 +267,29 @@
         ordersFilterWithAjax('.payment_type_filter','{{route("payment.type.filter")}}');
 
         // Update Featured without Reload
-        // $(document).on('change', '.featured', function() {
-        //     let featured = $(this).data('id');
-        //     $.ajax({
-        //         type: "POST",
-        //         url: "/admin/order/changeFeatured/"+featured,
-        //         data: featured,
-        //         success: function (response) {
-        //             $('.orders').load(location.href+' .orders');
-        //             toastr.success(response.status);
-        //         }
-        //     });
-        // });
+        $(document).on('click', '.updateOrderStatus', function() {
+            let id = $(this).data('id');
+            $.ajax({
+                type: "GET",
+                url: `/admin/order/${id}/edit`,
+                success: function (response) {
+                    $("#order-status option").each(function(){
+                        let orderStatus = $(this).val()
+                        if(response.order_status == orderStatus){
+                            $("#order-status option:selected").attr('selected',false);
+                            $("#order-status option[value='"+orderStatus+"']").attr('selected',true);
+                        }
+                    });
+                    $("#payment-status option").each(function(){
+                        let paymentStatus = $(this).val()
+                        if(response.payment_status == paymentStatus){
+                            $("#payment-status option:selected").attr('selected',false);
+                            $("#payment-status option[value='"+paymentStatus+"']").attr('selected',true);
+                        }
+                    });
+                }
+            });
+        });
         
         
         // // Update order Status without Reload

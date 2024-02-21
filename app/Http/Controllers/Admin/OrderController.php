@@ -24,6 +24,11 @@ class OrderController extends Controller
         return view('admin.orders.order-details',compact('order','order_details'));
     }
 
+    public function edit(string $id){
+        $order = Order::findOrFail($id);
+        return response()->json($order);
+    }
+
     public function orderStatusFilter(Request $request){
         $orders = '';
         if($request->val == 'all'){
