@@ -27,6 +27,10 @@ Route::controller(HomeController::class)->group(function () {
 
     // Newsletter email store
     Route::post('/newsletter','newsLetter')->name('newsletter.store');
+
+    // Contact Routes
+    Route::get('/contact','contactIndex')->name('contact');
+    Route::post('/contact','contactStore')->name('contact.store');
 });
 
 // Cart

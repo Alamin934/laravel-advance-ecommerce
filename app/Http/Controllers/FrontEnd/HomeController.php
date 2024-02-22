@@ -107,4 +107,29 @@ class HomeController extends Controller
             return response()->json(['status'=>'success', 'msg'=>'Thanks for Subscribed us.']);
         }
     }
+
+
+    public function contactIndex(){
+        return view('frontend.contact');
+    }
+
+    public function contactStore(Request $request){
+        $validated = $request->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'phone'=>'required',
+            'message'=>'required',
+        ]);
+        $message = DB::table('contacts')->insert([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'message'=>$request->message,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        // Mail::to('admin@admin.com')->send(new ContactAdminMail($message));
+        // Mail::to($request->email)->send(new ContactUserMail());
+        return response()->json(['status'=>'success']);
+    }
 }
