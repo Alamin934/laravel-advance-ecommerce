@@ -959,5 +959,20 @@ $(document).ready(function () {
 		});
 	});
 
+	// Display login Form to Top Bar
+	$(document).on('click', '#singIn', function (e) {
+		e.stopPropagation();
+		$('.singInForm').removeClass('d-none').fadeIn();
+	});
+
+	// Hide Login form when click outside
+	$(document).mouseup(function (e) {
+		if ($(e.target).
+			closest(".singInForm").
+			length === 0) {
+			$(".singInForm").fadeOut();
+		}
+	});
+
 
 });

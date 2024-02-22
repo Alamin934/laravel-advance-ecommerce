@@ -38,6 +38,8 @@
                             <a href="{{route('shop')}}">Shop<i class="fa fa-angle-down"></i></a>
                         </li>
                         <li class="page_menu_item"><a href="">contact<i class="fa fa-angle-down"></i></a></li>
+                        <li class="page_menu_item"><a href="{{route('register')}}">Register</a></li>
+                        <li class="page_menu_item"><a href="{{route('login')}}">Sign in</a></li>
                     </ul>
 
                     <div class="menu_contact">
