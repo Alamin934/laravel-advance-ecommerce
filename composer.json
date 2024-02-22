@@ -9,12 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "bumbummen99/shoppingcart": "dev-update-laraval-10",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^3.3",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
-        "laravel/tinker": "^2.8",
-        "bumbummen99/shoppingcart": "dev-update-laraval-10"
+        "laravel/socialite": "^5.12",
+        "laravel/tinker": "^2.8"
     },
     "repositories": [
         {

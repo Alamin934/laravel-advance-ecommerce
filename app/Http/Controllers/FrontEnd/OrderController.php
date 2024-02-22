@@ -261,7 +261,7 @@ class OrderController extends Controller
             $user_id = auth()->user()->id;
             $orders = Order::where('user_id', $user_id)->orderByDesc('id')->take(5)->get();
             $total = Order::where('user_id', $user_id)->count();
-            $complete = Order::where('user_id', $user_id)->where('order_status', 'completed')->count();
+            $complete = Order::where('user_id', $user_id)->where('order_status', 'delivered')->count();
             $return = Order::where('user_id', $user_id)->where('order_status', 'returned')->count();
             $cancel = Order::where('user_id', $user_id)->where('order_status', 'canceled')->count();
             return view('frontend.dashboard.dashboard', compact('orders','total','complete','return','cancel'));

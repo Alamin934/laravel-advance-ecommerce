@@ -113,7 +113,13 @@
                     toastr.error("{{session()->get('message')}}");
                     break;
             }
-        @endif       
+        @endif
+        
+        $(document).ready(function () {
+            $(document).on('click',$('[data-target="#loginModal"]'), function () {
+                $('div').removeClass('modal-backdrop fade show');
+            });
+        });
     </script>
 
 </body>

@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{AdminController,CategoryController,SubCategoryController,ChildCategoryController, BrandsController,SettingController,ProductController,CouponController,OrderController};
+use App\Http\Controllers\Auth\socialiteLoginController;
 
 
 Route::prefix('admin')->name('admin.')->controller(AdminController::class)->group(function () {
@@ -46,9 +47,11 @@ Route::middleware(['is_admin.auth','is_admin'])->group(function () {
         Route::post('/store-bd-payment-getway', 'storeBdPaymentGetway')->name('store.bd.payment.getway');
         Route::post('/delete-bd-payment-getway', 'deleteBdPaymentGetway')->name('delete.bd.payment.getway');
     });
-
-
 });
+
+// Socialite Login Routes
+Route::get('/auth/redirect', [socialiteLoginController::class, 'googleAuthRedirect'])->name('google.auth.redirect');
+Route::get('/auth/callback', [socialiteLoginController::class, 'googleAuthCallback'])->name('google.auth.callback');
 
 
 

@@ -23,6 +23,9 @@ class User extends Authenticatable
         'phone',
         'is_admin',
         'password',
+        'avatar',
+        'token',
+        'refresh_token',
     ];
 
     /**

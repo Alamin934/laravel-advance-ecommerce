@@ -40,7 +40,46 @@
                         @guest
                         <div class="user_icon"><img src="{{ asset('assets/frontend') }}/images/user.svg" alt=""></div>
                         <div><a href="{{route('register')}}">Register</a></div>
-                        <div><a href="{{route('login')}}">Sign in</a></div>
+                        <div class="standard_dropdown top_bar_dropdown">
+                            <li>
+                                <a href="javascript:void(0)">Sign in</a>
+                                <ul class="card" style="width: 350px">
+                                    <div class="card-body">
+                                        <form action="{{ route('login') }}" method="POST">
+                                            @csrf
+                                            <div class="form-row w-100 mr-0">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" id="email" name="email">
+                                            </div>
+                                            <div class="form-row w-100 mr-0">
+                                                <label for="exampleInputPassword1">Password</label>
+                                                <input type="password" class="form-control" id="password"
+                                                    name="password">
+                                            </div>
+                                            <div class="form-row w-100 mr-0 form-check">
+                                                <input type="checkbox" class="form-check-input" id="remember_me"
+                                                    name="remember">
+                                                <label class="form-check-label" for="exampleCheck1">{{ __('Remember
+                                                    me')
+                                                    }}</label>
+                                            </div>
+                                            <div class="w-100 mr-0">
+                                                @if (Route::has('password.request'))
+                                                <a class="text-primary" href="{{ route('password.request') }}">
+                                                    {{ __('Forgot your password?') }}
+                                                </a>
+                                                @endif
+                                                <button type="submit" class="btn btn-primary">Login</button>
+                                            </div>
+                                        </form>
+                                        <div class="mt-3">
+                                            <a href="{{route('google.auth.redirect')}}" class="btn btn-info text-white"
+                                                style="line-height: 31px!important;">Login with Google</a>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </li>
+                        </div>
                         @endguest
                     </div>
                 </div>

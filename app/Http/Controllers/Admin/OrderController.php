@@ -71,11 +71,11 @@ class OrderController extends Controller
         $data['order'] = Order::find($request->order_id);
         if($request->order_status == 'shipped'){
             $data['status'] = "Your Order has been Shipped";
-            Mail::to($request->email)->send(new UpdateOrderStatusMail($data));
+            // Mail::to($request->email)->queue(new UpdateOrderStatusMail($data));
         }
         if($request->order_status == 'delivered'){
             $data['status'] = "Your Order has been Deliverd";
-            Mail::to($request->email)->send(new UpdateOrderStatusMail($data));
+            // Mail::to($request->email)->queue(new UpdateOrderStatusMail($data));
         }
 
         return response()->json(['status'=>'success']);
