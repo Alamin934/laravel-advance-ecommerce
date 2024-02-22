@@ -1,4 +1,4 @@
-@if(!request()->routeIs('dashboard.*'))
+{{-- @if(!request()->routeIs('dashboard.*')) --}}
 <!-- Top Bar -->
 <div class="top_bar">
     <div class="container">
@@ -35,7 +35,40 @@
                     </div>
                     <div class="top_bar_user">
                         @auth
-                        <div><a href="{{route('dashboard.dashboard')}}">Dashboard</a></div>
+                        <div>
+                            <ul class="standard_dropdown top_bar_dropdown">
+                                <li>
+                                    <a href="javascript:void(0)">{{auth()->user()->name}}</a>
+                                    <ul>
+                                        <li>
+                                            @if (request()->routeIs('dashboard.*'))
+                                            <a href="{{route('home')}}"><i
+                                                    class="fas fa-home mr-2 d-inline-block"></i>Home</a>
+                                            @else
+                                            <a href="{{route('dashboard.dashboard')}}"><i
+                                                    class="fas fa-home mr-2 d-inline-block"></i>Dashboard</a>
+                                            <a href="{{route('dashboard.orders')}}"><i
+                                                    class="fas fa-clipboard mr-2 d-inline-block"></i>My
+                                                Order</a>
+                                            <a href="{{route('dashboard.profile.edit')}}"><i
+                                                    class="fas fa-user mr-2 d-inline-block"></i>Profile</a>
+                                            <a href="{{route('dashboard.settings')}}"><i
+                                                    class="fas fa-edit mr-2 d-inline-block"></i>Settings</a>
+
+                                            <form action="{{route('logout')}}" method="post" class="home-logout">
+                                                @csrf
+                                                <button type="submit" class="btn bg-transparent border-0 py-2 px-0"
+                                                    style="font-weight: 300">
+                                                    <i class="fas fa-sign-out-alt mr-2"></i>
+                                                    <span class="align-middle">Log Out</span>
+                                                </button>
+                                            </form>
+                                            @endif
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                         @endauth
                         @guest
                         <div class="user_icon"><img src="{{ asset('assets/frontend') }}/images/user.svg" alt=""></div>
@@ -87,7 +120,7 @@
         </div>
     </div>
 </div>
-@endif
+{{-- @endif --}}
 <!-- Header Main -->
 <div class="header_main">
     <div class="container">
