@@ -14,8 +14,12 @@ class SettingController extends Controller
     }
     
     public function settings(){
-        $shipping = DB::table('shippings')->latest()->first();
-        return view('frontend.dashboard.settings',compact('shipping'));
+        if(auth()->user()->is_admin === 1){
+            return redirect()->route('admin.dashboard');
+        }else{
+            $shipping = DB::table('shippings')->latest()->first();
+            return view('frontend.dashboard.settings',compact('shipping'));
+        }
     }
 
     public function shippingStore(Request $request){

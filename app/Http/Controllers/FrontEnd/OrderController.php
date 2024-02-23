@@ -269,16 +269,24 @@ class OrderController extends Controller
     }
     
     public function myOrders(){
-        $user_id = auth()->user()->id;
-        $orders = Order::where('user_id', $user_id)->orderByDesc('id')->get();
-        return view('frontend.dashboard.orders', compact('orders'));
+        if(auth()->user()->is_admin === 1){
+            return redirect()->route('admin.dashboard');
+        }else{
+            $user_id = auth()->user()->id;
+            $orders = Order::where('user_id', $user_id)->orderByDesc('id')->get();
+            return view('frontend.dashboard.orders', compact('orders'));
+        }
     }
     
     public function orderDetails(string $id){
-        $user_id = auth()->user()->id;
-        $order = Order::where('user_id', $user_id)->where('id', $id)->first();
-        $order_details = OrderDetails::where('user_id', $user_id)->where('order_id', $id)->get();
-        return view('frontend.dashboard.order-details', compact('order_details', 'order'));
+        if(auth()->user()->is_admin === 1){
+            return redirect()->route('admin.dashboard');
+        }else{
+            $user_id = auth()->user()->id;
+            $order = Order::where('user_id', $user_id)->where('id', $id)->first();
+            $order_details = OrderDetails::where('user_id', $user_id)->where('order_id', $id)->get();
+            return view('frontend.dashboard.order-details', compact('order_details', 'order'));
+        }
     }
 
 

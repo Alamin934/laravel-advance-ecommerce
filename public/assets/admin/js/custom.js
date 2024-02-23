@@ -97,8 +97,7 @@ function ajaxStoreAndUpdate(method, url, data, modalId, toastrMsg) {
             if (response.status == 'success') {
                 $('.error-msg').hide();
                 $(modalId).modal('hide');
-                $(this).trigger('reset');
-                $('.table').load(location.href + ' .table');
+                $('.table-responsive').load(location.href + ' .table');
                 toastr.success(toastrMsg);
             }
         }, error: function (err) {

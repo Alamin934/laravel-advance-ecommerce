@@ -59,7 +59,7 @@ Route::view('/shop','frontend.shop')->name('shop');
 // Dashboard Sub Route
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')->group(function () {
     // Dashboard
-    Route::get('/', [OrderController::class, 'showOrders'])->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/', [OrderController::class, 'showOrders'])->name('dashboard');
     // Orders route
     Route::get('/orders', [OrderController::class, 'myOrders'])->name('orders');
     Route::get('/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order.details');

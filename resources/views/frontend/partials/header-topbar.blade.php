@@ -40,7 +40,7 @@
                                 <li>
                                     <a href="javascript:void(0)">{{auth()->user()->name}}</a>
                                     <ul>
-                                        <li>
+                                        <li class="h-100">
                                             @if (request()->routeIs('dashboard.*'))
                                             <a href="{{route('home')}}"><i
                                                     class="fas fa-home mr-2 d-inline-block"></i>Home</a>

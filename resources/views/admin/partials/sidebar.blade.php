@@ -87,6 +87,22 @@
             </ul>
         </li>
 
+        <!-- Roles -->
+        <li class="menu-item {{request()->routeIs('role.*') ? 'active open' : ''}}">
+            <a href="javascript:void(0)" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-box"></i>
+                <div data-i18n="Roles">Roles</div>
+            </a>
+
+            <ul class="menu-sub ">
+                <li class="menu-item {{request()->routeIs('role.index') ? 'active' : ''}}">
+                    <a href="{{route('role.index')}}" class="menu-link">
+                        <div data-i18n="Category">All Roles</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <!-- Offers -->
         <li class="menu-item {{request()->routeIs('coupon.*') ? 'active open' : ''}}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">

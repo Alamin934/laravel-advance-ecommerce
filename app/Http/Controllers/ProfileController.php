@@ -16,9 +16,13 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('frontend.dashboard.profile.edit', [
-            'user' => $request->user(),
-        ]);
+        if(auth()->user()->is_admin === 1){
+            return redirect()->route('admin.dashboard');
+        }else{
+            return view('frontend.dashboard.profile.edit', [
+                'user' => $request->user(),
+            ]);
+        }
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{AdminController,CategoryController,SubCategoryController,ChildCategoryController, BrandsController,SettingController,ProductController,CouponController,OrderController};
+use App\Http\Controllers\Admin\{AdminController,CategoryController,SubCategoryController,ChildCategoryController, BrandsController,SettingController,ProductController,CouponController,OrderController,RoleController};
 use App\Http\Controllers\Auth\socialiteLoginController;
 
 
@@ -22,6 +22,7 @@ Route::middleware(['is_admin.auth','is_admin'])->group(function () {
     Route::resource('admin/brand', BrandsController::class);
 
     Route::resource('admin/product', ProductController::class);
+
     Route::get('/dependedSubCategory/{id}', [ProductController::class, 'dependedSubCategory']);
     Route::get('/dependedChildCategory/{id}', [ProductController::class, 'dependedChildCategory']);
     Route::post('/admin/product/changeFeatured/{status}', [ProductController::class, 'changeFeatured']);
@@ -47,6 +48,9 @@ Route::middleware(['is_admin.auth','is_admin'])->group(function () {
         Route::post('/store-bd-payment-getway', 'storeBdPaymentGetway')->name('store.bd.payment.getway');
         Route::post('/delete-bd-payment-getway', 'deleteBdPaymentGetway')->name('delete.bd.payment.getway');
     });
+
+    // Roles
+    Route::resource('admin/role', RoleController::class);
 });
 
 // Socialite Login Routes
