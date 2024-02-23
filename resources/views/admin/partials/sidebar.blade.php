@@ -87,6 +87,22 @@
             </ul>
         </li>
 
+        <!-- Users -->
+        <li class="menu-item {{request()->routeIs('user.*') ? 'active open' : ''}}">
+            <a href="javascript:void(0)" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-box"></i>
+                <div data-i18n="Users">Users</div>
+            </a>
+
+            <ul class="menu-sub ">
+                <li class="menu-item {{request()->routeIs('user.index') ? 'active' : ''}}">
+                    <a href="{{route('user.index')}}" class="menu-link">
+                        <div data-i18n="Category">All Users</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <!-- Roles -->
         <li class="menu-item {{request()->routeIs('role.*') ? 'active open' : ''}}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">

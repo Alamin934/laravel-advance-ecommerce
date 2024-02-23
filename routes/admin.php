@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\{AdminController,CategoryController,SubCategoryController,ChildCategoryController, BrandsController,SettingController,ProductController,CouponController,OrderController,RoleController};
+use App\Http\Controllers\Admin\{AdminController,CategoryController,SubCategoryController,ChildCategoryController, BrandsController,SettingController,ProductController,CouponController,OrderController,RoleController,UserController};
 use App\Http\Controllers\Auth\socialiteLoginController;
 
 
@@ -48,6 +48,9 @@ Route::middleware(['is_admin.auth','is_admin'])->group(function () {
         Route::post('/store-bd-payment-getway', 'storeBdPaymentGetway')->name('store.bd.payment.getway');
         Route::post('/delete-bd-payment-getway', 'deleteBdPaymentGetway')->name('delete.bd.payment.getway');
     });
+
+    // Users
+    Route::resource('admin/user', UserController::class);
 
     // Roles
     Route::resource('admin/role', RoleController::class);
