@@ -71,7 +71,16 @@ class UserController extends Controller
             'name'  =>  $request->update_name,
             'email'  => $request->update_email,
         ]);
-        $user->roles()->sync($request->update_roles);
+        if(in_array('admin', $request->update_roles)){
+            $user->update([
+                'is_admin' => '1',
+            ]);
+        }
+        if(!in_array(0,$request->update_roles)){
+            $user->roles()->sync($request->update_roles);
+        }else{
+            $user->roles()->detach();
+        }
         
         if($request->filled('password')){
             User::whereId($request->update_id)->update([

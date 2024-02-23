@@ -120,11 +120,19 @@
             });
         });
 
+        $(document).on('click',"#update_roles", function () {
+            let roles = $(this).val();
+            if($.inArray('0', roles) === -1){
+                $("#update_roles option[value='0']").attr('disabled',true);
+            }
+        });
+
         // Update user
         $(document).on('submit','#updateUser', function(e){
             e.preventDefault();
             let user_id = $("#update_id").val();
             let formData = $(this).serialize();
+            $("#update_roles option[value='0']").attr('disabled',false);
             // Ajax Call Method
             ajaxStoreAndUpdate("PUT", "{{url('admin/user/{user_id}')}}", formData, "#editUser", "User Updated Successfully");
         });

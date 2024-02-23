@@ -39,6 +39,7 @@
                             <div class="col-12 mb-3">
                                 <label for="roles" class="form-label">Roles</label>
                                 <select class="form-select" multiple id="update_roles" name="update_roles[]">
+                                    <option value="0">Select</option>
                                     @foreach ($roles as $role)
                                     <option value="{{$role->id}}">{{$role->name}}</option>
                                     @endforeach
