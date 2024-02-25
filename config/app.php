@@ -70,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Dhaka',
 
     /*
     |--------------------------------------------------------------------------
@@ -122,7 +122,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY', base64_decode('32ncmiEhkJPniJKUOK+IyzMBJT7BDxlUpaPtsOaHhcE=')),
 
     'cipher' => 'AES-256-CBC',
 
