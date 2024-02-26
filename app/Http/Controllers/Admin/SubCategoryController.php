@@ -9,9 +9,6 @@ use App\Models\{Category,SubCategory};
 
 class SubCategoryController extends Controller
 {
-    public function __construct(){
-        $this->middleware(['is_admin.auth','is_admin']);
-    }
     /**
      * Display a listing of the resource.
      */

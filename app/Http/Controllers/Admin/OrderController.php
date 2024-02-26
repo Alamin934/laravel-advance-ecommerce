@@ -10,10 +10,6 @@ use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
-    public function __construct(){
-        $this->middleware(['is_admin.auth','is_admin']);
-    }
-
     public function index(){
         $query = Order::query();
         $orders = $query->latest()->get();

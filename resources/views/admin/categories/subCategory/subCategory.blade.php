@@ -45,12 +45,14 @@
                                         class="btn btn-danger p-2">
                                         <i class="bx bx-trash"></i>
                                     </a> --}}
+                                    @if (!Auth::user()->hasRole('editor') || Auth::user()->hasRole('moderator'))
                                     <form action="{{route('subCategory.destroy', $sub_category->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger p-2"><i
                                                 class="bx bx-trash"></i></button>
                                     </form>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

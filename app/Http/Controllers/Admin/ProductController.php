@@ -14,9 +14,7 @@ use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
-    public function __construct(){
-        $this->middleware(['is_admin.auth','is_admin']);
-    }
+
     /**
      * Display a listing of the resource.
      */
@@ -312,6 +310,7 @@ class ProductController extends Controller
         }
         $pd = '';
         $id = 1;
+        $role = auth()->user()->hasRole('editor');
         foreach ($products as $product) {
             if($product->sub_category_id){$sub_category = $product->subCategory->name;}else{$sub_category = "";}
             if($product->child_category_id){$child_category = $product->childCategory->name;}else{$child_category = "";}
@@ -363,13 +362,13 @@ class ProductController extends Controller
 
                             <a href="'.route('product.edit', $product->id).'" class="btn btn-primary p-2 me-2">
                                 <i class="bx bx-edit-alt"></i>
-                            </a>
-
-                            <button type="button" class="btn btn-danger deleteProduct p-2"
+                            </a>'.
+                            (($role == false || auth()->user()->hasRole('moderator')) ? 
+                            '<button type="button" class="btn btn-danger deleteProduct p-2"
                                 data-id="'.$product->id.'">
                                 <i class="bx bx-trash"></i>
-                            </button>
-                        </div>
+                            </button>' : '')
+                        .'</div>
                     </td>';
             $pd .= '</tr>';
         }

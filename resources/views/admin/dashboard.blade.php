@@ -157,7 +157,7 @@
                         <div class="card py-2 mb-3 bg-info-subtle">
                             <div class="card-body rounded d-flex justify-content-between align-items-center">
                                 <span class="fw-normal d-block text-dark"><i
-                                        class='bx bx-time-five fs-2 me-2 text-success'></i>Received
+                                        class='bx bxs-box fs-2 me-2 text-success'></i>Received
                                     Orders</span>
                                 <h3 class="text-success fw-normal mb-0">
                                     {{$received}}</h3>
@@ -166,7 +166,7 @@
                         <div class="card py-2 mb-3 bg-success-subtle">
                             <div class="card-body rounded d-flex justify-content-between align-items-center">
                                 <span class="fw-normal d-block text-dark"><i
-                                        class='bx bx-time-five fs-2 me-2 text-info'></i>Deliverd
+                                        class='bx bx-package fs-2 me-2 text-info'></i>Deliverd
                                     Orders</span>
                                 <h3 class="text-info fw-normal mb-0"> {{$deliverd}}</h3>
                             </div>
@@ -174,7 +174,7 @@
                         <div class="card py-2 mb-3 bg-danger-subtle">
                             <div class="card-body rounded d-flex justify-content-between align-items-center">
                                 <span class="fw-normal d-block text-dark"><i
-                                        class='bx bx-time-five fs-2 me-2 text-danger'></i>Returned
+                                        class='bx bxs-card fs-2 me-2 text-danger'></i>Returned
                                     Orders</span>
                                 <h3 class="text-danger fw-normal mb-0"> {{$returned}}</h3>
                             </div>
@@ -182,7 +182,7 @@
                         <div class="card py-2 bg-warning-subtle">
                             <div class="card-body rounded d-flex justify-content-between align-items-center">
                                 <span class="fw-normal d-block text-dark"><i
-                                        class='bx bx-time-five fs-2 me-2 text-warning'></i>Shipped
+                                        class='bx bxs-car fs-2 me-2 text-warning'></i>Shipped
                                     Orders</span>
                                 <h3 class="text-warning fw-normal mb-0"> {{$shipped}}</h3>
                             </div>

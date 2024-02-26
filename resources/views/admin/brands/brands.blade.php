@@ -40,13 +40,14 @@
                                     <a href="{{route('brand.edit', $brand->id)}}" class="btn btn-primary p-2 me-2">
                                         <i class="bx bx-edit-alt"></i>
                                     </a>
-
+                                    @if (!Auth::user()->hasRole('editor') || Auth::user()->hasRole('moderator'))
                                     <form action="{{route('brand.destroy', $brand->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger p-2"><i
                                                 class="bx bx-trash"></i></button>
                                     </form>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

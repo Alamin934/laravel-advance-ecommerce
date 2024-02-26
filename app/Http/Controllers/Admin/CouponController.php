@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class CouponController extends Controller
 {
-    public function __construct(){
-        $this->middleware(['is_admin.auth','is_admin']);
-    }
     
     public function index(){
         $coupons = DB::table('coupons')->get();

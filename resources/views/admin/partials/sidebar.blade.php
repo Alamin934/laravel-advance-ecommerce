@@ -86,7 +86,7 @@
                 </li>
             </ul>
         </li>
-
+        @if (Auth::user()->hasRole('admin'))
         <!-- Users -->
         <li class="menu-item {{request()->routeIs('user.*') ? 'active open' : ''}}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
@@ -118,7 +118,7 @@
                 </li>
             </ul>
         </li>
-
+        @endif
         <!-- Offers -->
         <li class="menu-item {{request()->routeIs('coupon.*') ? 'active open' : ''}}">
             <a href="javascript:void(0)" class="menu-link menu-toggle">
@@ -134,7 +134,7 @@
                 </li>
             </ul>
         </li>
-
+        @if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('moderator'))
         <!-- Orders -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Orders</span></li>
         <!-- Orders interface -->
@@ -151,8 +151,8 @@
                 </li>
             </ul>
         </li>
-
-
+        @endif
+        @if (Auth::user()->hasRole('admin'))
         <!-- Settings -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Settings</span></li>
         <!-- User interface -->
@@ -180,7 +180,7 @@
             </ul>
         </li>
 
-
+        @endif
         {{--
         <!-- Components -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>

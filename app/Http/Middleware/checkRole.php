@@ -16,10 +16,13 @@ class checkRole
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
         $user = $request->user();
-        $user_roles = $user->roles->pluck('name')->toArray();
-        if($user && count(array_intersect($user_roles, $roles))>0){
-            return $next($request);
+        if($user){
+            $user_roles = collect($user->roles->pluck('name'))->all();
+            if(count(array_intersect($user_roles, $roles))>0){
+                return $next($request);
+            }
+            return redirect()->back()->with(['message'=>'You don not have access.', 'alert-type'=>'error']);
         }
-        return redirect()->back();
+        return redirect()->route('home');
     }
 }
