@@ -53,7 +53,7 @@
                     @endswitch
                 </td>
                 <td>
-                    <a href="{{route('dashboard.order.details', $order->id)}}" class="btn btn-sm btn-info">Details</a>
+                    <a href="{{route('dashboard.order.details', $order->id)}}" class="btn btn-info">Details</a>
                 </td>
             </tr>
             @endforeach

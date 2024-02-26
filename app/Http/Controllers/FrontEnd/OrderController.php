@@ -48,8 +48,8 @@ class OrderController extends Controller
                 'state' => $request->state,
                 'postal_code' => $request->postal_code,
                 'country' => $request->country,
-                'sub_total' => Cart::subtotal(),
-                'total' => Cart::total(),
+                'sub_total' => Cart::subtotal(2,'.',''),
+                'total' => Cart::total(2,'.',''),
                 'coupon_code' => $coupon_name ?? null,
                 'coupon_discount' => $discount ?? null,
                 'coupon_after_discount' => $after_discount ?? null,
@@ -251,42 +251,6 @@ class OrderController extends Controller
 
     public function cancel(){
         return 'Canceled';
-    }
-
-
-    public function showOrders(){
-        if(auth()->user()->is_admin === 1){
-            return redirect()->route('admin.dashboard');
-        }else{
-            $user_id = auth()->user()->id;
-            $orders = Order::where('user_id', $user_id)->orderByDesc('id')->take(5)->get();
-            $total = Order::where('user_id', $user_id)->count();
-            $complete = Order::where('user_id', $user_id)->where('order_status', 'delivered')->count();
-            $return = Order::where('user_id', $user_id)->where('order_status', 'returned')->count();
-            $cancel = Order::where('user_id', $user_id)->where('order_status', 'canceled')->count();
-            return view('frontend.dashboard.dashboard', compact('orders','total','complete','return','cancel'));
-        }
-    }
-    
-    public function myOrders(){
-        if(auth()->user()->is_admin === 1){
-            return redirect()->route('admin.dashboard');
-        }else{
-            $user_id = auth()->user()->id;
-            $orders = Order::where('user_id', $user_id)->orderByDesc('id')->get();
-            return view('frontend.dashboard.orders', compact('orders'));
-        }
-    }
-    
-    public function orderDetails(string $id){
-        if(auth()->user()->is_admin === 1){
-            return redirect()->route('admin.dashboard');
-        }else{
-            $user_id = auth()->user()->id;
-            $order = Order::where('user_id', $user_id)->where('id', $id)->first();
-            $order_details = OrderDetails::where('user_id', $user_id)->where('order_id', $id)->get();
-            return view('frontend.dashboard.order-details', compact('order_details', 'order'));
-        }
     }
 
 

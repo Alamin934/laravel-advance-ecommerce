@@ -48,7 +48,7 @@ class CheckoutController extends Controller
     }
     // Remove Coupon
     public function removeCoupon(Request $request){
-        $total_price = Cart::total();
+        $total_price = Cart::total(2,'.','');
         session()->forget('coupon');
         return response()->json(['status'=>'success', 'msg'=>'Coupon Removed.','total_price'=>$total_price]);
 

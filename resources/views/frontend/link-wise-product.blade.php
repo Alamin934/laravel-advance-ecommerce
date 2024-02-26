@@ -83,8 +83,8 @@
                             <li class="color"><a href="#" style="background: #b19c83;"></a></li>
                             <li class="color"><a href="#" style="background: #000000;"></a></li>
                             <li class="color"><a href="#" style="background: #999999;"></a></li>
-                            <li class="color"><a href="#" style="background: #0e8ce4;"></a></li>
-                            <li class="color"><a href="#" style="background: #df3b3b;"></a></li>
+                            <li class="color"><a href="#" style="background: #696CFF;"></a></li>
+                            <li class="color"><a href="#" style="background: #FF3E1D;"></a></li>
                             <li class="color"><a href="#" style="background: #ffffff; border: solid 1px #e1e1e1;"></a>
                             </li>
                         </ul>

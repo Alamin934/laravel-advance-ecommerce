@@ -234,7 +234,7 @@
                                     </div>
                                     @endforeach
                                     @endif
-                                    <button type="button" class="btn btn-primary btn-sm add_color">
+                                    <button type="button" class="btn btn-primary add_color">
                                         <i class='bx bx-plus'></i>
                                     </button>
                                 </div>

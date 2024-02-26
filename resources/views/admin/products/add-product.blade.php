@@ -159,8 +159,7 @@
                                     <label class="form-label mt-1">Colors</label>
                                     <div class="d-flex flex-wrap colors">
 
-                                        <button type="button" title="Add your colors"
-                                            class="btn btn-primary btn-sm add_color">
+                                        <button type="button" title="Add your colors" class="btn btn-primary add_color">
                                             <i class='bx bx-plus'></i>
                                         </button>
                                     </div>

@@ -247,7 +247,7 @@ section {
 
 .button {
 	display: inline-block;
-	background: #0e8ce4;
+	background: #696CFF;
 	border-radius: 5px;
 	height: 48px;
 	-webkit-transition: all 200ms ease;
@@ -468,7 +468,7 @@ section {
 }
 
 .standard_dropdown li a:hover {
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 .standard_dropdown li a i {
@@ -607,7 +607,7 @@ section {
 .logo a {
 	font-size: 36px;
 	font-weight: 500;
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 .header_search {
@@ -783,7 +783,7 @@ section {
 }
 
 .custom_list li a:hover {
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 /* select {
@@ -818,7 +818,7 @@ select option {
 	right: 0;
 	width: 50px;
 	height: 100%;
-	background: #0e8ce4;
+	background: #696CFF;
 	border: none;
 	outline: none;
 	cursor: pointer;
@@ -854,7 +854,7 @@ select option {
 }
 
 .wishlist_text a:hover {
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 .cart_count {
@@ -863,7 +863,7 @@ select option {
 	right: -14px;
 	width: 23px;
 	height: 23px;
-	background: #0e8ce4;
+	background: #696CFF;
 	border-radius: 50%;
 	text-align: center;
 }
@@ -900,7 +900,7 @@ select option {
 }
 
 .cart_text a:hover {
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 .cart_price {
@@ -941,7 +941,7 @@ select option {
 .cat_menu_container {
 	width: 293px;
 	height: 100%;
-	background: #0e8ce4;
+	background: #696CFF;
 	padding-left: 35px;
 	cursor: pointer;
 	z-index: 1;
@@ -1037,7 +1037,7 @@ select option {
 }
 
 .cat_menu li a:hover {
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 .cat_menu li a i {
@@ -1132,7 +1132,7 @@ select option {
 
 .page_menu_content {
 	height: 0px;
-	background: #0e8ce4;
+	background: #696CFF;
 	padding-left: 15px;
 	padding-right: 15px;
 	overflow: hidden;
@@ -1335,7 +1335,7 @@ select option {
 }
 
 .shop_product_count span {
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 .shop_sorting {
@@ -1488,7 +1488,7 @@ select option {
 }
 
 .product_item.discount {
-	color: #df3b3b;
+	color: #FF3E1D;
 }
 
 .product_price span {
@@ -1533,7 +1533,7 @@ select option {
 }
 
 .product_name div a:hover {
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 .product_fav {
@@ -1612,14 +1612,14 @@ select option {
 
 .product_new {
 	display: none;
-	background: #0e8ce4;
+	background: #696CFF;
 	visibility: hidden;
 	opacity: 0;
 }
 
 .product_discount {
 	display: none;
-	background: #df3b3b;
+	background: #FF3E1D;
 	visibility: hidden;
 	opacity: 0;
 }
@@ -1699,7 +1699,7 @@ select option {
 }
 
 .page_nav li:hover a {
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 .page_nav li:last-child {
@@ -1742,7 +1742,7 @@ select option {
 }
 
 .sidebar_categories li a:hover {
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 .filter_by_section {
@@ -1823,7 +1823,7 @@ select option {
 }
 
 .brand a:hover {
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 /*********************************
@@ -1910,7 +1910,7 @@ select option {
 }
 
 .viewed_item.discount .viewed_price {
-	color: #df3b3b;
+	color: #FF3E1D;
 }
 
 .viewed_price span {
@@ -1947,7 +1947,7 @@ select option {
 }
 
 .viewed_name a:hover {
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 .item_marks {
@@ -1969,12 +1969,12 @@ select option {
 }
 
 .item_discount {
-	background: #df3b3b;
+	background: #FF3E1D;
 	margin-right: 5px;
 }
 
 .item_new {
-	background: #0e8ce4;
+	background: #696CFF;
 }
 
 .viewed_item.discount .item_discount {
@@ -2112,7 +2112,7 @@ select option {
 	padding-left: 25px;
 	font-size: 16px;
 	outline: none;
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 .newsletter_input:focus {
@@ -2151,7 +2151,7 @@ select option {
 	right: 0;
 	width: 153px;
 	height: 50px;
-	background: #0e8ce4;
+	background: #696CFF;
 	color: #FFFFFF;
 	line-height: 50px;
 	font-size: 18px;
@@ -2174,7 +2174,7 @@ select option {
 
 .newsletter_unsubscribe_link a {
 	font-size: 10px;
-	color: #0e8ce4;
+	color: #696CFF;
 	font-weight: 500;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
@@ -2222,7 +2222,7 @@ select option {
 .footer_phone {
 	font-size: 18px;
 	font-weight: 500;
-	color: #0e8ce4;
+	color: #696CFF;
 	margin-top: 13px;
 }
 
@@ -2261,7 +2261,7 @@ select option {
 }
 
 .footer_social ul li:hover i {
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 .footer_subtitle {
@@ -2293,7 +2293,7 @@ select option {
 }
 
 .footer_list li a:hover {
-	color: #0e8ce4;
+	color: #696CFF;
 }
 
 .footer_list_2 {

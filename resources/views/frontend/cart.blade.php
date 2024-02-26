@@ -147,12 +147,13 @@
                                         <td class="font-weight-bold">
                                             {{Illuminate\Support\Number::format($product->qty*$product->price)}}</td>
                                         <td>
-                                            <a href="" class="btn btn-info btn-sm mb-2 text-white"
+                                            <a href="{{route('single.product',$current_pd->slug)}}"
+                                                class="btn btn-info mb-2 text-white"
                                                 title="See the full details of product">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                             <a href="javascript:void(0)" data-id="{{$product->rowId}}"
-                                                class="btn btn-danger btn-sm me-1 mb-2 text-white delete_cart_item"
+                                                class="btn btn-danger me-1 mb-2 text-white delete_cart_item"
                                                 title="Remove from product">
                                                 <i class="fas fa-trash"></i>
                                             </a>

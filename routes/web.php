@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\FrontEnd\{HomeController,CartController,SettingController,CheckoutController,OrderController};
+use App\Http\Controllers\FrontEnd\{HomeController,CartController,SettingController,CheckoutController,OrderController,DashboardController};
 use Illuminate\Support\Facades\Route;
 
 Route::fallback(function () {
@@ -59,10 +59,11 @@ Route::view('/shop','frontend.shop')->name('shop');
 // Dashboard Sub Route
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->name('dashboard.')->group(function () {
     // Dashboard
-    Route::get('/', [OrderController::class, 'showOrders'])->name('dashboard');
+    Route::get('/', [DashboardController::class, 'showOrders'])->name('dashboard');
     // Orders route
-    Route::get('/orders', [OrderController::class, 'myOrders'])->name('orders');
-    Route::get('/order-details/{id}', [OrderController::class, 'orderDetails'])->name('order.details');
+    Route::get('/orders', [DashboardController::class, 'myOrders'])->name('orders');
+    Route::get('/order-details/{id}', [DashboardController::class, 'orderDetails'])->name('order.details');
+
     Route::post('/place-order', [OrderController::class, 'placeOrder'])->name('place.order');
 
     // shipping

@@ -8,6 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/frontend')}}/styles/bootstrap4/bootstrap.min.css">
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/admin') }}/vendor/css/core.css"
+        class="template-customizer-core-css" />
+    {{--
+    <link rel="stylesheet" href="{{ asset('assets/admin') }}/vendor/css/theme-default.css"
+        class="template-customizer-theme-css" /> --}}
     <link href="{{ asset('assets/frontend') }}/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet"
         type="text/css">
     <link rel="stylesheet" type="text/css"

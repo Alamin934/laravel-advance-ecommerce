@@ -32,16 +32,16 @@
                                 <!-- Image -->
                             </div>
 
-                            <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                                 <!-- Data -->
-                                <p><strong>{{ $wishlist->product->title }}</strong></p>
+                                <p class="p-0 mb-0"><strong>{{ $wishlist->product->title }}</strong></p>
                                 {{-- Brand --}}
-                                <p>Brand: <a
+                                <p class="p-0 mb-0">Brand: <a
                                         href="{{$wishlist->product->brand ? route('linkWise.product', ['id'=>$wishlist->product->brand->id, 'link'=>'brand']) : 'javascript:void(0)'}}">{{
                                         $wishlist->product->brand ? $wishlist->product->brand->name : 'No
                                         Brand' }}</a></p>
                                 {{-- Category --}}
-                                <p>Category:
+                                <p class="p-0 mb-0">Category:
                                     <a
                                         href="{{route('linkWise.product', ['id'=>$wishlist->product->category->id, 'link'=>'category'])}}">{{$wishlist->product->subCategory
                                         ? $wishlist->product->category->name.' >' :
@@ -114,19 +114,18 @@
                                 </div>
                             </div>
                             <!-- Price -->
-                            <div class="col-lg-2 col-md-3">
+                            <div class="col-lg-3 col-md-3">
                                 <a href="{{route('single.product', $wishlist->product->slug)}}"
-                                    class="btn btn-primary btn-sm mb-2" title="See the full details of product">
+                                    class="btn btn-primary mb-2" title="See the full details of product">
                                     <i class="fas fa-eye"></i>
                                 </a>
                                 <a href="" data-id="{{ $wishlist->product->id }}"
-                                    class="btn btn-info p-2 mb-2 text-white cart_button" title="Added to the cart"
-                                    style="font-size: 14px; line-height:0px">
+                                    class="btn btn-info mb-2 text-white cart_button" title="Added to the cart"
+                                    style="font-size: 14px; line-height:18px">
                                     <i class="fas fa-shopping-cart"></i>
                                 </a>
                                 <a href="javascript:void(0)" data-id="{{$wishlist->id}}"
-                                    class="btn btn-danger btn-sm me-1 mb-2 text-white delete"
-                                    title="Remove from wishlist">
+                                    class="btn btn-danger me-1 mb-2 text-white delete" title="Remove from wishlist">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </div>
