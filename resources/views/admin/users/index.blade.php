@@ -23,7 +23,7 @@
                             <th>Email</th>
                             <th>Admin</th>
                             <th>Roles</th>
-                            <th>Action</th>
+                            {{-- <th>Action</th> --}}
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
@@ -46,7 +46,7 @@
                                 <span class="badge text-bg-primary">{{ $role->name }}</span>
                                 @endforeach
                             </td>
-                            <td>
+                            {{-- <td>
                                 <div class="d-flex">
                                     <!-- Button trigger Edit Modal -->
                                     <a href="" class="btn btn-primary p-2 me-2 editUser" data-id="{{$user->id}}"
@@ -58,7 +58,7 @@
                                         <i class="bx bx-trash"></i>
                                     </button>
                                 </div>
-                            </td>
+                            </td> --}}
                         </tr>
                         @endforeach
                         @else
