@@ -1137,21 +1137,21 @@
             $(this).attr('checked', true);
         });
         // Store Email for Newsletter
-        $(document).on('click','.newsletter_button', function (e) {
+        $(document).on('submit','form.newsletter_form', function (e) {
             e.preventDefault();
-            let email = $('input.newsletter_input').val();
+            let data = $(this).serialize();
             $.ajax({
                 type: "POST",
                 url: "{{route('newsletter.store')}}",
-                data: {email:email},
+                data: data,
                 success: function (response) {
                     if(response.status=='success'){
                         toastr.success(response.msg);
-                        $('.newsletter_input').val('');
+                        $('form.newsletter_form').trigger('reset');
                         $('.error-msg').html('');
                     }else{
                         $('.error-msg').html('');
-                        $('.newsletter_input').val('');
+                        $('form.newsletter_form').trigger('reset');
                         toastr.error(response.msg);
                     }
                 },error: function(err){

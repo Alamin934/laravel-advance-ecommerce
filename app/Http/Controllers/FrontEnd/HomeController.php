@@ -103,7 +103,7 @@ class HomeController extends Controller
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ]);
-            Mail::to($request->email)->send(new NewsletterUserMail());
+            // Mail::to($request->email)->send(new NewsletterUserMail());
             return response()->json(['status'=>'success', 'msg'=>'Thanks for Subscribed us.']);
         }
     }
