@@ -54,7 +54,8 @@
                                         <i class="bx bx-edit-alt"></i>
                                     </a>
                                     {{-- Delete User --}}
-                                    <button type="button" class="btn btn-danger deleteuser p-2" data-id="{{$user->id}}">
+                                    {{-- <button type="button" class="btn btn-danger deleteuser p-2"
+                                        data-id="{{$user->id}}">
                                         <i class="bx bx-trash"></i>
                                     </button>
                                 </div>
