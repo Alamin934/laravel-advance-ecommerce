@@ -1279,7 +1279,7 @@ select option {
 .banner_product_image {
 	position: absolute;
 	top: -5px;
-	right: -52px;
+	right: -55%;
 	z-index: 0;
 }
 
