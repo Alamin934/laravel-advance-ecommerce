@@ -39,7 +39,7 @@
                             <ul class="standard_dropdown top_bar_dropdown">
                                 <li>
                                     <a href="javascript:void(0)">{{auth()->user()->name}}</a>
-                                    <ul>
+                                    <ul class="pl-0">
                                         <li class="h-100">
                                             @if (request()->routeIs('dashboard.*'))
                                             <a href="{{route('home')}}"><i
@@ -47,6 +47,7 @@
                                             @else
                                             <a href="{{route('dashboard.dashboard')}}"><i
                                                     class="fas fa-home mr-2 d-inline-block"></i>Dashboard</a>
+                                            @endif
                                             <a href="{{route('dashboard.orders')}}"><i
                                                     class="fas fa-clipboard mr-2 d-inline-block"></i>My
                                                 Order</a>
@@ -63,7 +64,6 @@
                                                     <span class="align-middle">Log Out</span>
                                                 </button>
                                             </form>
-                                            @endif
                                         </li>
                                     </ul>
                                 </li>

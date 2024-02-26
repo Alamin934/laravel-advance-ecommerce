@@ -49,10 +49,12 @@
                                         data-bs-target="#editCategory">
                                         <i class="bx bx-edit-alt"></i>
                                     </button>
+                                    @if (!Auth::user()->hasRole('editor') || Auth::user()->hasRole('moderator'))
                                     <a href="{{ route('category.delete', $category->id) }}" id="delete"
                                         class="btn btn-danger p-2">
                                         <i class="bx bx-trash"></i>
                                     </a>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

@@ -45,8 +45,9 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-medium d-block">John Doe</span>
-                                    <small class="text-muted">Admin</small>
+                                    <span class="fw-medium d-block">{{auth()->user()->name}}</span>
+                                    <small class="text-muted">{{ucwords(implode(', ',
+                                        Auth::user()->roles->pluck('name')->toArray()))}}</small>
                                 </div>
                             </div>
                         </a>
@@ -54,19 +55,19 @@
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
-                    <li>
-                        <a class="dropdown-item" href="{{url('/profile')}}">
+                    {{-- <li>
+                        <a class="dropdown-item" href="{{route('profile.edit')}}">
                             <i class="bx bx-user me-2"></i>
                             <span class="align-middle">My Profile</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a class="dropdown-item" href="{{route('setting.smtp.index')}}">
                             <i class="bx bx-cog me-2"></i>
                             <span class="align-middle">Settings</span>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a class="dropdown-item" href="#">
                             <span class="d-flex align-items-center align-middle">
                                 <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
@@ -75,7 +76,7 @@
                                     class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>

@@ -12,9 +12,6 @@ use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
-    public function __construct(){
-        $this->middleware(['is_admin.auth','is_admin']);
-    }
     /**
      * Display a listing of the resource.
      */
@@ -124,10 +121,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->delete();
-
         unlink(public_path('assets/admin/files/category/'.$category->icon));
-
-
         $notification = ['message'=>'Category deleted successfully', 'alert-type'=>'success'];
         return redirect()->back()->with($notification);
     }

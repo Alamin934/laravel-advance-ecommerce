@@ -43,11 +43,12 @@
                                         data-bs-toggle="modal" data-bs-target="#editCoupon">
                                         <i class="bx bx-edit-alt"></i>
                                     </a>
-
+                                    @if (!Auth::user()->hasRole('editor') || Auth::user()->hasRole('moderator'))
                                     <button type="button" class="btn btn-danger deleteCoupon p-2"
                                         data-id="{{$coupon->id}}">
                                         <i class="bx bx-trash"></i>
                                     </button>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

@@ -119,11 +119,12 @@
                                     <a href="{{route('product.edit', $product->id)}}" class="btn btn-primary p-2 me-2">
                                         <i class="bx bx-edit-alt"></i>
                                     </a>
-
+                                    @if (!Auth::user()->hasRole('editor') || Auth::user()->hasRole('moderator'))
                                     <button type="button" class="btn btn-danger deleteProduct p-2"
                                         data-id="{{$product->id}}">
                                         <i class="bx bx-trash"></i>
                                     </button>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
