@@ -21,9 +21,9 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                
-                if(auth()->user()->is_admin === 1){
-                    return redirect()->intended('admin.dashboard');
+                $user = $request->user();
+                if(auth()->user()->is_admin === 1 || $user->hasRole('admin') || $user->hasRole('moderator') || $user->hasRole('editor')){
+                    return redirect()->intended('admin/dashboard');
                 }
                 return redirect()->intended(RouteServiceProvider::HOME);
             }
